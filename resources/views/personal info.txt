@@ -1,0 +1,38 @@
+      <!-- begin form-group -->
+                                                            <div class="form-group row m-b-10">
+                                                                <label class="col-md-3 col-form-label text-md-right">First Name <span class="text-danger">*</span></label>
+                                                                <div class="col-md-6">
+                                                                    <input type="text" name="official_first_name_txt" placeholder="John" data-parsley-group="step-2" data-parsley-required="true" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <!-- end form-group -->
+                                                              <!-- begin form-group -->
+                                                            <div class="form-group row m-b-10">
+                                                                <label class="col-md-3 col-form-label text-md-right">Middle Name <span class="text-danger">*</span></label>
+                                                                <div class="col-md-6">
+                                                                    <input type="text" name="official_middle_name_txt" placeholder="Doe" data-parsley-group="step-2" data-parsley-required="true" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <!-- end form-group -->
+                                                            <!-- begin form-group -->
+                                                            <div class="form-group row m-b-10">
+                                                                <label class="col-md-3 col-form-label text-md-right">Last Name <span class="text-danger">*</span></label>
+                                                                <div class="col-md-6">
+                                                                    <input type="text" name="official_last_name_txt" placeholder="Smith" data-parsley-group="step-2" data-parsley-required="true" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <!-- end form-group -->
+                                                        <!-- begin form-group -->
+                                                            <div class="form-group row m-b-10">
+                                                                <label class="col-md-3 col-form-label text-md-right">Date of Birth <span class="text-danger">*</span></label>
+                                                         
+                                    <div class="col-md-6">
+                                        <div class="input-group date" id="datetimepicker1">
+                                            <input type="date" class="form-control"  name="official_birthdate_txt" data-parsley-group="step-2" data-parsley-required="true"/>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                                            <!-- end form-group -->
