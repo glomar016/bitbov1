@@ -173,7 +173,8 @@ class ResidentsController extends Controller
         $multi_rbi_occupation     = request('multi_rbi_occupation');
         $multi_rbi_rel_to_head    = request('multi_rbi_rel_to_head');
         $multi_rbi_status         = request('multi_rbi_status');
-        
+        $multi_rbi_blk            = request('multi_rbi_blk');
+
         for($i = 0 ;  $i < count($multi_rbi_first_name) ; $i++)
         {
             $check = DB::TABLE('T_RESIDENT_BASIC_INFO')
@@ -221,7 +222,8 @@ class ResidentsController extends Controller
                         'OCCUPATION' => $multi_rbi_occupation[$i],
                         'CITIZENSHIP' => $multi_rbi_citizenship[$i],
                         'IS_RBI_COMPLETE' => $check_rbi_if_complete ,
-                        'RELATION_TO_HOUSEHOLD_HEAD' => $multi_rbi_rel_to_head[$i],                 
+                        'RELATION_TO_HOUSEHOLD_HEAD' => $multi_rbi_rel_to_head[$i],
+                        'BLK_LOT_PHASE' =>  $multi_rbi_blk[$i], 
                         'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP'),
                         'ACTIVE_FLAG' => 1
                     ]

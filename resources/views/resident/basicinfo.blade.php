@@ -3741,6 +3741,11 @@ $("#register-btn").click(function(e){
         multi_rbi_occupation = [];
         multi_rbi_rel_to_head = [];
         multi_rbi_status = [];
+        multi_rbi_blk = [];
+
+        $(".rbi-blk").each(function(){
+            multi_rbi_blk.push($(this).val());
+        });
 
         $(".rbi-firstname").each(function(){
             multi_rbi_first_name.push($(this).val().toUpperCase());
@@ -3913,6 +3918,7 @@ $("#register-btn").click(function(e){
             multi_rbi_occupation     : multi_rbi_occupation,
             multi_rbi_rel_to_head    : multi_rbi_rel_to_head,
             multi_rbi_status         : multi_rbi_status,
+            multi_rbi_blk            : multi_rbi_blk,     
             _token                   : '{{csrf_token()}}'
 
 
@@ -4670,11 +4676,8 @@ label.error {
                 <ul  class="nav nav-tabs nav-tabs-inverse" style="background-color:#348fe2">
 
                     
-                        <li class="nav-item"><a href="#nav-tab-1" data-toggle="tab" style="background-color:#348fe2; color:white" class="nav-link active btns">RBI Form</a></li>
+                    <li class="nav-item"><a href="#nav-tab-1" data-toggle="tab" style="background-color:#348fe2; color:white" class="nav-link active btns">RBI Form</a></li>
                     <li class="nav-item"><a href="#nav-tab-2" data-toggle="tab" style="background-color:#348fe2; color:white" class="nav-link btns">MIC Form</a></li>
-        
-                    
-                    
                 </ul>
          <br>
          <div class="tab-content">
@@ -4937,7 +4940,8 @@ label.error {
                                                     <input type="text" name="rbi-hstreet" id="rbi-hstreet" placeholder="Sitio Veterans" class="form-control rbi-hstreet" style="text-transform: capitalize;"/>
                                                     <label id="rbi-hstreet-lbl" class="error" for="rbi-hstreet"></label>
 
-
+                                                    <input type="text" name="rbi-blk" id="rbi-blk" placeholder="Blk\Lot\Phase" class="form-control rbi-blk" style="text-transform: capitalize;"/>
+                                                    <label id="rbi-blk" class="error" for="rbi-blk"></label>
                                                 </div>
                                             </div>
                                             <div class="form-group row m-b-10">

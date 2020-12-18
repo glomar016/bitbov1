@@ -15,9 +15,7 @@
 <link href="{{asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css')}}" rel="stylesheet" />
 
 <!-- ================== END PAGE LEVEL STYLE ================== -->
-<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css')}}" rel="stylesheet" />
+
 
 
 @endsection
@@ -52,8 +50,7 @@ $(document).ready(function() {
 @endsection
 
 @section('table-js')
-<script src="{{asset('carousel/dist/util.js')}}"></script>
-<script src="{{asset('carousel/dist/carousel.js')}}"></script>
+
 <script src="{{asset('assets/plugins/DataTables/media/js/jquery.dataTables.js')}}"></script>
 <script src="{{asset('assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{asset('assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js')}}"></script>
@@ -61,33 +58,6 @@ $(document).ready(function() {
 
 @endsection
 
-
-@section('date-js')
-<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-<script src="{{asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
-<script src="{{asset('assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
-<script src="{{asset('assets/plugins/masked-input/masked-input.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>
-<script src="{{asset('assets/plugins/password-indicator/js/password-indicator.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js')}}"></script>
-<script src="{{asset('assets/plugins/jquery-tag-it/js/tag-it.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-daterangepicker/moment.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-<script src="{{asset('assets/plugins/select2/dist/js/select2.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-show-password/bootstrap-show-password.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js')}}"></script>
-<script src="{{asset('assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js')}}"></script>
-<script src="{{asset('assets/plugins/clipboard/clipboard.min.js')}}"></script>
-<script src="{{asset('assets/js/demo/form-plugins.demo.min.js')}}"></script>
-<!-- ================== END PAGE LEVEL JS ================== -->
-<script src="{{asset('assets/plugins/parsley/dist/parsley.js')}}"></script>
-
-@endsection
 
 @section('page-js')
 
@@ -99,7 +69,7 @@ $(document).ready(function() {
 @section('page-init-app') @show
 @section('table-js') @show
 @yield('page-add')
-@yield('date-js')
+
 @endif
 
 
@@ -469,7 +439,7 @@ $(document).ready(function()
                     </button>
                     The following are the existing records of ordinance in the barangay.
                 </div>
-                            
+                            <br>
                               <button type='button' class='btn btn-lime'data-toggle='modal' data-target='#OrdinanceModal' >
                                 <i class='fa fa-plus'></i> Add New
                             </button>

@@ -8,9 +8,6 @@
 <link href="{{asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css')}}" rel="stylesheet" />
 
 <!-- ================== END PAGE LEVEL STYLE ================== -->
-<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css')}}" rel="stylesheet" />
 
 
 @endsection

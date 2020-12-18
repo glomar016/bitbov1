@@ -40,7 +40,7 @@ header('Content-Type: text/html');?>
     {{--<script src="{{asset('assets/plugins/pace/pace.min.js')}}"></script>--}}
     <!-- ================== END BASE JS ================== -->
 </head>
-<body oncontextmenu="return false;"  onkeyup="DisableInspectElement(event)">
+<body oncontextmenu="return false;"  onkeyup="">
 
     <!--        CHAT START HERE-->
     {{--<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '37038893-ec48-4ba3-8612-b2ebc4dbe4f6', f: true }); done = true; } }; })();</script>--}}
@@ -103,7 +103,7 @@ header('Content-Type: text/html');?>
         <!-- #modal-EDIT ACCOUNT START -->
         <div class="modal fade" id="AccountModal">
             <div class="modal-dialog" style="max-width: 30%">
-                <form id="AccountForm" method="POST" >
+                <form id="EditAccountForm" method="POST" >
                     @csrf
 
                     <div class="modal-content">
@@ -666,18 +666,21 @@ Route::currentRouteName() == 'DisplayResidentElderly'
                 return false;
             }
         });
-        
 
-    $.ajax({
-            url:'CheckIfFirstLoggedIn',
-            success:function(data){
-                if(data == 1)
-                {
-                    $(".cp-default-password-modal-btn").click();
-                }                
-            }
-
-        });
+        var routename = "{{Route::currentRouteName()}}"
+        if(routename == "Dashboard") 
+        {
+                $.ajax({
+                url:'CheckIfFirstLoggedIn',
+                success:function(data){
+                    if(data == 1)
+                    {
+                        $(".cp-default-password-modal-btn").click();
+                    }                
+                }
+            });
+        }
+    
     
 
     
@@ -725,7 +728,7 @@ Route::currentRouteName() == 'DisplayResidentElderly'
     });
     
 
-    var Accountform = document.getElementById("AccountForm");
+    
 
     $(document).ready(function(){
 

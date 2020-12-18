@@ -8,9 +8,7 @@
 <link href="{{asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css')}}" rel="stylesheet" />
 
 <!-- ================== END PAGE LEVEL STYLE ================== -->
-<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css')}}" rel="stylesheet" />
+
 
 
 @endsection
@@ -176,7 +174,7 @@
                         
                     </div>
                 </div>
-                <div class="col-lg-1">
+                <div class="col-lg-2">
                     <div class="stats-content">
                      <label for="lastname">&nbsp</label><span id="lbllastname"></span>
                      <button type="submit" class='btn btn-lime form-control' >

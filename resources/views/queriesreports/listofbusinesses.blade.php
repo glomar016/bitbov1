@@ -8,9 +8,7 @@
 <link href="{{asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css')}}" rel="stylesheet" />
 
 <!-- ================== END PAGE LEVEL STYLE ================== -->
-<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css')}}" rel="stylesheet" />
+
 
 
 @endsection
@@ -178,21 +176,21 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="stats-content">
-                        <label style="display: block; text-align: left">     &nbspFrom Date</label>
+                        <label style="display: block; text-align: left">From Date</label>
                         <input type="date" id="fromdate" name="fromdate" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="stats-content">
-                        <label style="display: block; text-align: left">     &nbspTo Date</label>
+                        <label style="display: block; text-align: left">To Date</label>
                         <input type="date" id="todate" name="todate" class="form-control">
                     </div>
                 </div>
-                <div class="col-lg-1">
+                <div class="col-lg-2">
                     <div class="stats-content">
-                       <label for="lastname">&nbsp</label><span id="lbllastname"></span>
-                       <button type="submit" class='btn btn-lime form-control' >
-                        <i class='fa fa-print'></i> print
+                       <label for="lastname">&nbsp;</label><span id="lbllastname"></span>
+                       <button type="submit"print class='btn btn-lime form-control' >
+                        <i class='fa fa-'></i> print
                         </button>
                     </div>
                 </div>
