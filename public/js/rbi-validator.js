@@ -22,7 +22,7 @@ $(function () {
             // input elements
             // input elements
             $(".sw-btn-next").attr("disabled", true);
-            $(".add-rbi-btn").attr("disabled", true);
+            //$(".add-rbi-btn").attr("disabled", true);
 
             
 

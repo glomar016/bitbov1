@@ -154,7 +154,7 @@
 
 </script>
 {{--For ADD FORM--}}
-<script src="{{asset('assets/js/moment.js')}}"></script>
+
 <script>
     function getAge (){
         var dateOfBirth = $('#dateofbirth').val();
@@ -208,6 +208,7 @@
         else{
             years == 1? $('#rbi-age').val(years + " year old") : $('#rbi-age').val(years + " years old");
         }
+
     }
 
     $(document).ready(function() {
@@ -220,7 +221,7 @@
 
     // $('#dateofbirth').change(function () {
     //     var dtest = new Date();
-    //     var ndate = dtest.toJSON().slice(0, 10);
+    //     var nchecldate = dtest.toJSON().slice(0, 10);
     //     $('#dateofbirth').val() > ndate ? $('#dateofbirth').val(ndate) : $('#dateofbirth').val()
     //     validatedate("fordisplay");
     //     checkage();
@@ -3457,115 +3458,49 @@ $("#register-btn").click(function(e){
         });
 
 
-    function check_multi_age(dateofbirth){
-        birthDate = new Date(dateofbirth);
-        today = new Date();
-
-        var years = (today.getFullYear() - birthDate.getFullYear());
-
-        if (today.getMonth() < birthDate.getMonth() ||
-            today.getMonth() == birthDate.getMonth() && today.getDate() < birthDate.getDate()) {
-        years--;
-    }
-
-    return years;
-
-
-    }
+   
     $(document).on('change','#rbi-dateofbirth', function() {
-        getAgeRbi();
+       // getAgeRbi();
+
     });
-    // $(document).on('change','#rbi-dateofbirth', function(){
-    //     get_age =check_multi_age($(this).val());
-    //     var cdate = new Date(Date.now());
-    //         var rgdate = new Date($(this).val());
-    //         var ryear = parseInt(rgdate.getFullYear());
-    //         var rmont = parseInt(String(rgdate.getMonth() + 1).padStart(2, '0')) ;
-    //         var rday = parseInt(String(rgdate.getDate()).padStart(2, '0') ) ;
-    //         var cyear = parseInt(cdate.getFullYear());
-    //         var cmon = parseInt(cdate.getMonth() + 1);
-    //         var cday = parseInt(String(cdate.getDate()).padStart(2, '0'));
 
-    //         var age = cyear - ryear;
-
-    //         if (rday >= 32){
-    //             rday = 1;
-    //         }
-    //         if (rmont >= 13){
-    //             rmont = 1;
-    //         }
-    //         var current_year = new Date(cyear,cmon,cday);
-    //         var dob_year = new Date(ryear,rmont,rday);
-    //         var days = DaysBetween(dob_year,current_year);
-
-
-
-    //         if (age >= 1 ) {
-
-    //             age == 1 ? $("#rbi-age").val(age + " year old") : $("#rbi-age").val(age + " year's old")
-    //         }
-    //         else if ( age < 1 ){
-    //             days <= 1 ? $("#rbi-age").val(days + " day old") : $("#rbi-age").val(days + " day's old")
-    //         }
-    // });
     $(document).on('change','.rbi-dateofbirth', function(){
-        get_age =check_multi_age($(this).val());
-        var cdate = new Date(Date.now());
-            var rgdate = new Date($(this).val());
-            var ryear = parseInt(rgdate.getFullYear());
-            var rmont = parseInt(String(rgdate.getMonth() + 1).padStart(2, '0')) ;
-            var rday = parseInt(String(rgdate.getDate()).padStart(2, '0') ) ;
-            var cyear = parseInt(cdate.getFullYear());
-            var cmon = parseInt(cdate.getMonth() + 1);
-            var cday = parseInt(String(cdate.getDate()).padStart(2, '0'));
-
-            var age = cyear - ryear;
-
-            if (rday >= 32){
-                rday = 1;
-            }
-            if (rmont >= 13){
-                rmont = 1;
-            }
-            var current_year = new Date(cyear,cmon,cday);
-            var dob_year = new Date(ryear,rmont,rday);
-            var days = DaysBetween(dob_year,current_year);
-
-
-
-                if (age >= 1 ) {
-
-                    age == 1 ? $("#rbi-age"+$(this).attr('target')).val(age + " year old") :$("#rbi-age"+$(this).attr('target')).val(age + " year's old")
-                }
-                else if ( age < 1 ){
-                    days <= 1 ? $("#rbi-age"+$(this).attr('target')).val(days + " day old") :$("#rbi-age"+$(this).attr('target')).val(days + " day's old")
-                }
-
+        
+        testFunction($(this).val(), $('#rbi-age'));
     });
+
+    function testFunction(dobvalue, element) {
+
+        var dateOfBirth = dobvalue;
+        var inputDate = moment(dateOfBirth).format('YYYY-MM-DD');
+        var today = moment(new Date()).format('YYYY-MM-DD');
+        var years = moment().diff(dateOfBirth, 'years');
+
+        if(moment(inputDate).isSame(today) || inputDate > today ) {
+
+            element.val('Invalid birthdate');
+
+        } else if (years == 0) {
+
+            var days = moment().diff(dateOfBirth, 'days')
+            if(days != 0) {
+
+                days == 1? element.val(days + " day old") : element.val(days + " days old");
+
+            } else {
+
+                element.val('Invalid birthdate');
+
+            }
+
+        } else {
+
+            years == 1? element.val(years + " year old") : element.val(years + " years old");
+        }
+    } 
 
     $(document).on('change','.multidoba', function(){
-        get_age =check_multi_age($(this).val());
-        var cdate = new Date(Date.now());
-            var rgdate = new Date($(this).val());
-            var ryear = parseInt(rgdate.getFullYear());
-            var rmont = parseInt(String(rgdate.getMonth() + 1).padStart(2, '0')) ;
-            var rday = parseInt(String(rgdate.getDate()).padStart(2, '0') ) ;
-            var cyear = parseInt(cdate.getFullYear());
-            var cmon = parseInt(cdate.getMonth() + 1);
-            var cday = parseInt(String(cdate.getDate()).padStart(2, '0'));
-
-            var age = cyear - ryear;
-
-            if (rday >= 32){
-                rday = 1;
-            }
-            if (rmont >= 13){
-                rmont = 1;
-            }
-            var current_year = new Date(cyear,cmon,cday);
-            var dob_year = new Date(ryear,rmont,rday);
-            var days = DaysBetween(dob_year,current_year);
-
+        
 
             if (age >= 1 ) {
 
