@@ -94,7 +94,66 @@
         }
     });
 
+    $('#enrollment_status').change(function() {
+        var enstat = $(this).children(':selected').attr("value");
+        if(enstat == "Enrolled, public" || enstat == "Enrolled, private") {
+            $('#showSchoolDetails').show();
+        } else {
+            $('#showSchoolDetails').hide();
+        }
+    });
+
+    $('#pdelivery').change(function() {
+        var pdelivery = $(this).children(':selected').attr("value");
+        if(pdelivery == "Other") {
+            $('#showOtherDeliveryPlace').show();
+        } else {
+            $('#showOtherDeliveryPlace').hide();
+            $('#pdeliveryOther').val("").change();
+        }
+    });
+
+    $('#battendant').change(function() {
+        var attendant = $(this).children(':selected').attr("value");
+        if(attendant == "Other") {
+            $('#showOtherAttendant').show();
+        } else {
+            $('#showOtherAttendant').hide();
+            $('#battendantOther').val("").change();
+            
+        }
+    });
+
+    $('#fvisited').change(function() {
+        var healthFacility = $(this).children(':selected').attr("value");
+        if(healthFacility != "None") {
+            $('#showReasonForVisit').show();
+            $('#rvisit').val("Not applicable").change();
+        } else {
+            $('#showReasonForVisit').hide();
+        }
+    });
+
+    $('#r_coming').change(function() {
+        var reason = $(this).children(':selected').attr("value");
+        if(reason == "Other") {
+            $('#showOtherReasonForComing').show();
+        } else {
+            $('#showOtherReasonForComing').hide();
+            $('#otherReason').val("").change();
+        }
+    });
     
+    $('#mr_coming').change(function() {
+        var reason = $(this).children(':selected').attr("value");
+        if(reason == "Other") {
+            $('#showmOtherReasonForComing').show();
+        } else {
+            $('#showmOtherReasonForComing').hide();
+            $('#motherReason').val("").change();
+        }
+    });
+
 
 </script>
 {{--For ADD FORM--}}
@@ -153,9 +212,8 @@
     $('#dateofbirth').change(function () {
         var dtest = new Date();
         var nchecldate = dtest.toJSON().slice(0, 10);
-        $('#dateofbirth').val() > nchecldate ? $('#dateofbirth').val(nchecldate) : $('#dateofbirth').val()
-        alert('hello');
-        
+        $('#dateofbirth').val() > ndate ? $('#dateofbirth').val(ndate) : $('#dateofbirth').val()
+        validatedate("fordisplay");
         checkage();
     });
 
@@ -186,8 +244,88 @@
         checkmultiage(multidoba);
     });
 
-    $(document).on('change','#multityper',function()
-    {
+    $(document).on('change','#multienstat',function(){
+        var value = $(this).val();
+        if(value == 'Enrolled, public' || value == 'Enrolled, private') {
+            $('#showSchoolDetailsMulti').show();
+        } else {
+            $('#showSchoolDetailsMulti').hide();
+        }
+    });
+
+    $(document).on('change','#multipdelivery',function(){
+        var pdelivery = $(this).val();
+        if(pdelivery == "Other") {
+            $('#showMultiOtherDeliveryPlace').show();
+        } else {
+            $('#showMultiOtherDeliveryPlace').hide();
+            $('#multipdeliveryOther').val("").change();
+        }
+    });
+
+    $(document).on('change','#multibattendant',function(){
+        var attendant = $(this).val();
+        if(attendant == "Other") {
+            $('#showMultiAttendant').show();
+        } else {
+            $('#showMultiAttendant').hide();
+            $('#multibattendantOther').val("").change();
+            
+        }
+    });
+
+    $(document).on('change','#multifvisited',function(){
+        var healthFacility = $(this).val();
+        if(healthFacility != "None") {
+            $('#showMultiReasonForVisit').show();
+        } else {
+            $('#showMultiReasonForVisit').hide();
+        }
+    });
+
+    $(document).on('change','.is_registered_voter',function(){
+        var registeredVoter = $(this).val();
+        if(registeredVoter != 0) {
+            $('#showVotingPrecinct').show();
+        } else {
+            $('#showVotingPrecinct').hide();
+            $('#votingPrecinct').val("").change();
+
+        }
+    });
+
+    $(document).on('change','.multiirv',function(){
+        var registeredVoter = $(this).val();
+        if(registeredVoter != 0) {
+            $('#showMultiVotingPrecinct').show();
+        } else {
+            $('#showMultiVotingPrecinct').hide();
+            $('#multiVotingPrecinct').val("").change();
+        }
+    });
+
+    $(document).on('change','.multirc',function(){
+        var reason = $(this).val();
+        if(reason == "Other") {
+            $('#showMultiOtherReason').show();
+        } else {
+            $('#showMultiOtherReason').hide();
+            $('#multircOther').val("").change();
+        }
+    });
+
+    $(document).on('change','.multimrc',function(){
+        var reason = $(this).val();
+        if(reason == "Other") {
+            $('#showMultimOtherReason').show();
+        } else {
+            $('#showMultimOtherReason').hide();
+            $('#multimrcOther').val("").change();
+        }
+    });
+
+
+    $(document).on('change','#multityper',function(){
         var value = $(this).val();
         if(value == 'Migrants') {
             $('#multifromwhat').attr('placeholder','Enter Country');
@@ -213,30 +351,6 @@
         }
 
     });
-    $('.add-data').click(function(){
-
-
-        $('input[name=firstname]').val('Jonny');
-        $('input[name=middlenaname]').val('Vi');
-        $('input[name=lastname]').val('Papa');
-        
-        $('input[name=qualifier]').val('Jr');
-        $('input[name=placeofbirth]').val('Cebu');
-        $('input[name=Citizenship]').val('Filipino');
-        $('input[name=religion]').val('Catholic');
-        $('input[name=ethnicity]').val('Catholic');
-        $('input[name=contactnumber]').val('09223441122');
-        $('input[name=houseNumbering]').val('HFIO-10921');
-        $('input[name=houseno]').val('146');
-        $('input[name=hstreet]').val('Burnigol Street');
-        $('input[name=hphase]').val('Sitio Bakal');
-        $('input[name=bimmunization]').val('None');
-
-        $('input[name=personinhousehold]').val(2);
-        $('input[name=dateofbirth]').val('1996-02-04');
-        
-    });
-
 
     function checkmultiage(multidoba) {
         var dtext = $('#multidoba').val();
@@ -1160,41 +1274,57 @@ function loadsummary() {
         });
 
 
-        for(var i=0; i<dobs.length; i++) 
-        {   
-            age[i] = getYears(dobs[i]);
-           
 
-            if (age[i]==0 || age[i]<0) 
-            {
-                days[i] = getDays(dobs[i]);
-                if (days[i] <= 28 && days[i] >= 0) 
-                {
-                     
-                    n[i]="Yes";inf[i]="No";c[i]="No";a[i]="No";e[i]="No";
 
-                }
-                if (days[i] > 28 || days[i] < 365 ) 
-                {
 
+    console.log($multirelstohead)
+
+
+
+    for(var i=0; i<dobs.length; i++) {
+        cdate.push(new Date(Date.now()));
+        rgdate.push(new Date(dobs[i]));
+        ryear[i] = parseInt(rgdate[i].getFullYear());
+        rmont[i] = parseInt(String(rgdate[i].getMonth() + 1).padStart(2, '0'));
+        rday[i] = parseInt(String(rgdate[i].getDate()).padStart(2, '0'));
+        cyear[i] = parseInt(cdate[i].getFullYear());
+        cmon[i] = parseInt(cdate[i].getMonth() + 1);
+        cday[i] = parseInt(String(cdate[i].getDate()).padStart(2, '0'));
+        age[i] = cyear[i] - ryear[i];
+
+        if (rday[i] >= 32) { rday[i] = 1; }
+        if (rmont[i] >= 13) { rmont[i] = 1; }
+
+        current_year[i] = new Date(cyear[i],cmon[i],cday[i]);
+        dob_year[i] = new Date(ryear[i],rmont[i],rday[i]);
+        const oneDay = 1000 * 60 * 60 * 24;
+            //days[i] = DaysBetween(dob_year,current_year);
+            start[i] = Date.UTC(current_year[i].getFullYear(), current_year[i].getMonth(), current_year[i].getDate());
+            end[i] = Date.UTC(dob_year[i].getFullYear(), dob_year[i].getMonth(), dob_year[i].getDate());
+            days[i] = Math.round(Math.abs((start[i] - end[i] ) / oneDay));
+
+            if (age[i]==0 || age[i]<0) {
+
+                if (days[i] <= 28 && days[i] >= 0) {
+                     //fcolors[i]="#ffcdcc";
+                     n[i]="Yes";inf[i]="No";c[i]="No";a[i]="No";e[i]="No";
+                 }
+                 if (days[i] > 28 || days[i] < 365 ) {
                     n[i]="No";inf[i]="Yes";c[i]="No";a[i]="No";e[i]="No";
                 }
             }
-            if (age[i] >= 1 && age[i] <= 10) 
-            {
-
+            if (age[i] >= 1 && age[i] <= 10) {
                 n[i]="No";inf[i]="No";c[i]="Yes";a[i]="No";e[i]="No";
             }
-            if (age[i] >= 11 && age[i] <= 59) 
-            {
-
+            if (age[i] >= 11 && age[i] <= 59) {
                 n[i]="No";inf[i]="No";c[i]="No";a[i]="Yes";e[i]="No";
             }
-            if (age[i] >= 60) 
-            {
-                
+            if (age[i] >= 60) {
                 n[i]="No";inf[i]="No";c[i]="No";a[i]="No";e[i]="Yes";
             }
+
+
+
         }
 
         var j=1;
@@ -1214,7 +1344,11 @@ function loadsummary() {
             +'<tr>\n'
             +'<tr>\n'
             );
-
+        console.log(fnames)
+        console.log(mnames)
+        console.log(lnames)
+        console.log($multirelstohead)
+        console.log(dobs.length)
         var ncolors = []; var icolors = []; var ccolors = []; var acolors = []; var ecolors = []; var table;
         var length = 0;
         for (var i=0; i<dobs.length; i++ ) {
@@ -1404,6 +1538,131 @@ function loadsummary() {
 }
 
 
+
+
+
+function validatedate(value,fd) {
+
+
+    var dateofbirth = $('#dateofbirth').val();
+    var cdate = new Date(Date.now());
+    var rgdate = new Date(dateofbirth);
+    var ryear = parseInt(rgdate.getFullYear());
+    var rmont = parseInt(String(rgdate.getMonth() + 1).padStart(2, '0')) ;
+    var rday = parseInt(String(rgdate.getDate()).padStart(2, '0') ) ;
+    var cyear = parseInt(cdate.getFullYear());
+    var cmon = parseInt(cdate.getMonth() + 1);
+    var cday = parseInt(String(cdate.getDate()).padStart(2, '0'));
+
+    var age = cyear - ryear;
+
+    if (rday >= 32){
+        rday = 1;
+    }
+    if (rmont >= 13){
+        rmont = 1;
+    }
+    var current_year = new Date(cyear,cmon,cday);
+    var dob_year = new Date(ryear,rmont,rday);
+    var days = DaysBetween(dob_year,current_year);
+    console.log(age)
+    if(value == "fordisplay") {
+        if (age >= 1 ) {
+            age == 1 ? $("#age").val(age + " year old") : $("#age").val(age + " year's old")
+        }
+        else if ( age < 1 ){
+            days <= 1 ? $("#age").val(days + " day old") : $("#age").val(days + " day's old")
+        }
+
+    }
+    else if (value == "editdisplay") {
+
+    }
+    else
+        if ( value == "forajax" ) {
+
+            if (age==0 || age<0) {
+
+
+                if ( days <= 28 && days >= 0 ) {
+
+                    var status = "newborn";
+                    fd.append("status",status);
+                    Add(fd);
+                }
+                else if ( days >= 29 ) {
+
+                    var status = "infant";
+                    fd.append("status",status);
+                    Add(fd);
+                }
+            }
+            else if (age >= 1 && age <= 10) {
+                console.log('this is for children');
+                console.log('child');
+                var status = "child";
+                fd.append("status",status);
+                Add(fd);
+            }
+            else if (age >= 11 && age <= 19) {
+                console.log('adolescent');
+                console.log('child');
+                var status = "adolescent";
+                fd.append("status",status);
+                Add(fd);
+            }
+            else if ( age >= 60 ) {
+                console.log('elderly');
+                console.log('elderly');
+                var status = "elderly";
+                fd.append("status",status);
+                Add(fd);
+            }
+            else {
+                Add(fd);
+            }
+        }
+    }
+
+    function DaysBetween(DateofBirth, CurrentYear) {
+
+            const oneDay = 1000 * 60 * 60 * 24;
+            const start = Date.UTC(CurrentYear.getFullYear(), CurrentYear.getMonth(), CurrentYear.getDate());
+            const end = Date.UTC(DateofBirth.getFullYear(), DateofBirth.getMonth(), DateofBirth.getDate());
+            return Math.round(Math.abs((start - end ) / oneDay));
+    }
+
+    async function Add(fd) 
+    {
+         try
+         {
+            result = await $.ajax({
+                url:"{{route('BasicInfoAdd')}}",
+                type:'post',
+
+                data:fd,
+                success:function(data)
+                {
+                 console.log(data);
+                    if (data == "good")
+                    {
+                        swal("Data have been successfully added!", {
+                            icon: "success",
+                        });
+                            //window.location.reload();
+                    }
+
+                }
+            })
+        }
+        catch(error)
+        {
+            console.error(error)
+        }
+    }
+
+
+
 </script>
 
 <script type="text/javascript">
@@ -1428,11 +1687,9 @@ function loadsummary() {
 
 <script type="text/javascript">
 
-function titleCase(str) 
-{
+function titleCase(str) {
    var splitStr = str.toLowerCase().split(' ');
-   for (var i = 0; i < splitStr.length; i++) 
-   {
+   for (var i = 0; i < splitStr.length; i++) {
        // You do not need to check if i is larger than splitStr length, as your for does that for you
        // Assign it back to the array
        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
@@ -1688,11 +1945,27 @@ $(document).ready(function(){
         var fullname = lastname + ", " + firstname + " " + middlename;
 
 
+        var cdate = new Date(Date.now());
+        var rgdate = new Date(bdate);
+        var ryear = parseInt(rgdate.getFullYear());
+        var rmont = parseInt(String(rgdate.getMonth() + 1).padStart(2, '0')) ;
+        var rday = parseInt(String(rgdate.getDate()).padStart(2, '0') ) ;
+        var cyear = parseInt(cdate.getFullYear());
+        var cmon = parseInt(cdate.getMonth() + 1);
+        var cday = parseInt(String(cdate.getDate()).padStart(2, '0'));
+
+        var age = cyear - ryear;
+
+        if (rday >= 32){ rday = 1; }
+        if (rmont >= 13){ rmont = 1; }
+        var current_year = new Date(cyear,cmon,cday);
+        var dob_year = new Date(ryear,rmont,rday);
+        var days = DaysBetween(dob_year,current_year);
+        var parse_number = 0;
 
         //if (contactnumber != null) { parse_number = parseInt(contactnumber); }
         //if (house_no != null) { housenum = parseInt(house_no); }
-        if(age >= 1) { $('#edit_age').text(age) } 
-        else if (age < 1) { get_bday = displayAge(bdate,moment()); $('#edit_age').text(get_bday); }
+        if(age >= 1) { $('#edit_age').text(age); } else if (age < 1) {get_bday=displayAge(bdate,moment());$('#edit_age').text(get_bday);}
         $('#edit_db_name').text(fullname);
         $('#EditCatID').val(res_id);
         $('#editlname').val(lastname);
@@ -1724,7 +1997,6 @@ $(document).ready(function(){
         // $('#editsworking').val(started_working);
         // $('#editarrtime').val(date_arrival);
     });
-
    $('#btnExport').on('click', function(){
     swal({
         title: "Are you sure?",
@@ -1758,8 +2030,8 @@ $(document).ready(function(){
 
 });
 
-   $('#btnImport').on('click', function()
-   {
+   $('#btnImport').on('click', function(){
+
 
     if (jQuery.inArray(filextension, ['xlsx','xls','csv']) == -1)
     {
@@ -1813,6 +2085,7 @@ $(document).ready(function(){
         }
     }
 
+
 });
 
    function Cancelled(textvalue) {
@@ -1827,19 +2100,20 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
 
-    $('#mfn').change(function() 
-    {
-        if($(this).val()=="Mother" || $(this).val()=="Father") 
-        {
+  $('#mfn').change(function() {
 
-            $('#childrendiv').show();
-        } 
-        else 
-        {
+    if($(this).val()=="Mother" || $(this).val()=="Father") {
+        $('#childrendiv').show();
 
-            $('#childrendiv').hide()
-        }
-    });
+    } else {
+        $('#childrendiv').hide()
+    }
+
+
+
+});
+
+
 
   count_1 = 0;
   count_2 = 3;
@@ -1852,17 +2126,17 @@ $(document).ready(function(){
     $(this).closest('table').find('tbody').append(
         '<tr>\n'
 
-        +'<td><label style="text-align: left">&nbspFirst Name</label><input type="text" id=multifname name=multifname class="form-control multifname" placeholder="John" style="text-transform: capitalize;">&nbsp\n'
-        +'<label style="text-align: left; ">&nbspMiddle Name</label><input id=multimname name=multimname class="form-control multimname" placeholder="Doe" style="text-transform: capitalize;">&nbsp\n'
-        +'<label style="text-align: left">&nbspLast Name</label><input id=multilname name=multilname class="form-control multilname" placeholder="Smith" style="text-transform: capitalize;">&nbsp\n'
-        +'<label style="text-align: left">Qualifier</label><input type="text" id="multiqualifier" name="multiqualifier" class="form-control multiqualifier" placeholder="Jr." style="text-transform: capitalize;"/>&nbsp\n'
+        +'<td><label style="text-align: left">&nbspFirst Name</label><input type="text" id=multifname name=multifname class="form-control multifname" placeholder="John">&nbsp\n'
+        +'<label style="text-align: left">&nbspMiddle Name</label><input id=multimname name=multimname class="form-control multimname" placeholder="Doe">&nbsp\n'
+        +'<label style="text-align: left">&nbspLast Name</label><input id=multilname name=multilname class="form-control multilname" placeholder="Smith" value="'+$('#lastname').val()+'">&nbsp\n'
+        +'<label style="text-align: left">Qualifier</label><input type="text" id="multiqualifier" name="multiqualifier" class="form-control multiqualifier" placeholder="Jr." />&nbsp\n'
         +'<label style="text-align: left">&nbspRelation to Household head</label><select id=multireltohead name=multireltohead class="form-control multireltohead">&nbsp\n'
                 +'<option value="Spouse">Spouse </option>\n'
                 +'<option value="Son">Son </option>\n'
                 +'<option value="Daughter">Daughter </option>\n'
+                +'<option value="Stepson">Stepson</option>\n'
                 +'<option value="Stepdaughter">Stepdaughter </option>\n'
                 +'<option value="Son-in-law">Son-in-law</option>\n'
-                +'<option value="Stepson">Stepson</option>\n'
                 +'<option value="Daughter-in-law">Daughter-in-law</option>\n'
                 +'<option value="Grandson">Grandson </option>\n'
                 +'<option value="Granddaughter">Granddaughter </option>\n'
@@ -1878,14 +2152,12 @@ $(document).ready(function(){
                 +'<option value="Nonrelative">Nonrelative </option>\n'
                 +'<option value="Boarder">Boarder </option>\n'
                 +'<option value="Househelper">Househelper </option>\n'
-                // multi_doba dito
         +'</select>&nbsp\n'
         +'<label style="text-align: left">&nbspSex</label><div class="radio radio-css radio-inline"><input type="radio" name="multisex" class="multisex" id="MultiinlineCssRadioMale" value="Male" checked /> <label for="MultiinlineCssRadioMale">Male</label></div><div class="radio radio-css radio-inline"><input type="radio" class="multisex" name="multisex" id="MultiinlineCssRadioFemale" value="Female" /><label for="MultiinlineCssRadioFemale">Female</label></div><br><br>\n'
-        
-        +'<label style="text-align: left">&nbspDate of Birth</label><input type="date" target="'+get_count_3+'"id="multidoba" name=multidoba class="form-control multidoba">&nbsp\n'
+        +'<label style="text-align: left">&nbspDate of Birth</label><input type="date" target="'+get_count_3+'" id="multidoba" name=multidoba class="form-control multidoba">&nbsp\n'
         +'<label style="text-align: left">Age</label><input type="text" id="multiage'+get_count_3+'" name="multiage" class="form-control multiage" style="background-color: white;" readonly  />&nbsp\n'
-        +'<label style="text-align: left">&nbspPlace of Birth</label><input id=multipoba name=multipoba class="form-control multipoba"  placeholder="Place of Birth" style="text-transform: capitalize;">&nbsp\n'
-        +'<label style="text-align: left">&nbspCitizenship</label><input id=multictizi name=multictizi class="form-control multictizi" placeholder="Citizenship" style="text-transform: capitalize;">&nbsp\n'
+        +'<label style="text-align: left">&nbspPlace of Birth</label><input id=multipoba name=multipoba class="form-control multipoba"  placeholder="Place of Birth">&nbsp\n'
+        +'<label style="text-align: left">&nbspCitizenship</label><input id=multictizi name=multictizi class="form-control multictizi" placeholder="Citizenship">&nbsp\n'
         +'<label style="text-align: left">&nbspCivil Status</label><select id=multicvstat name=multicvstat class="form-control multicvstat">\n'
             +'<option value="Single" selected>Single</option>\n'
             +'<option value="Married">Married</option>\n'
@@ -1895,10 +2167,8 @@ $(document).ready(function(){
             +'<option value="Annulled">Annulled</option>\n'
             +'<option value="Unknown">Unknown</option>\n'
         +'</select>&nbsp\n'
-        +'<label style="text-align: left">&nbspReligion</label><input id=multireligion name=multireligion class="form-control multireligion" placeholder="Catholic" style="text-transform: capitalize;">&nbsp\n'
-
+        +'<label style="text-align: left">&nbspReligion</label><input id=multireligion name=multireligion class="form-control multireligion" placeholder="Catholic">&nbsp\n'
         +'<label style="text-align: left">&nbspEducational Attainment</label><select id=multieducatt name=multieducatt class="form-control multieducatt"  >\n'
-
             +'<option value="No education" selected>No education</option>'
             +'<option value="Pre-school" >Pre-school</option>'
             +'<option value="Elementary level">Elementary level</option>'
@@ -2267,613 +2537,685 @@ $(document).ready(function(){
 
 });
   }
-function getStatus(age,days) 
-{
-    if ( age == 0 || age < 0 ) 
-    {
-        if ( days <= 28 && days >= 0 ) 
-        {
-
-            return "newborn";
-        }
-        else if ( days >= 29 ) 
-        {
-
-            return "infant";
-        }
-    }
-    else if ( age >= 1 && age <= 10 ) 
-    {
-
-        return "child";
-    }
-    else if ( age >= 11 && age <= 59 )  
-    {
-
-        return "adolescent";
-    }
-    else if ( age >= 60 ) 
-    {
-
-        return "elderly";
-    }
-}
 
 $("#register-btn").click(function(e){
     e.preventDefault();
-    
+    // alert('asd')
     // start main household
     var mdateofbirth = $('#dateofbirth').val();
-    var mage = getYears(mdateofbirth);
-    var days = getDays(mdateofbirth);
+    var mcdate = new Date(Date.now());
+    var mrgdate = new Date(mdateofbirth);
+    var mryear = parseInt(mrgdate.getFullYear());
+    var mrmont = parseInt(String(mrgdate.getMonth() + 1).padStart(2, '0')) ;
+    var mrday = parseInt(String(mrgdate.getDate()).padStart(2, '0') ) ;
+    var mcyear = parseInt(mcdate.getFullYear());
+    var mcmon = parseInt(mcdate.getMonth() + 1);
+    var mcday = parseInt(String(mcdate.getDate()).padStart(2, '0'));
+    var mstatus = "";
+    var mage = mcyear - mryear;
     var mar_status =  $('#mfn').children(":selected").attr("value");
-    var status = getStatus(mage,days);
+
+
+    if (mrday >= 32){
+        mrday = 1;
+    }
+    if (mrmont >= 13){
+        mrmont = 1;
+    }
+    var current_year = new Date(mcyear,mcmon,mcday);
+    var dob_year = new Date(mryear,mrmont,mrday);
+    var days = DaysBetween(dob_year,current_year);
+
+
+
+
+            if (mage==0 || mage<0) {
+                if ( days <= 28 && days >= 0 ) {
+                    status = "newborn";
+                }
+                else if ( days >= 29 ) {
+
+                    status = "infant";
+                }
+            }
+            else if (mage >= 1 && mage <= 10) {
+                status = "child";
+            }
+            else if (mage >= 11 && mage <= 19) {
+                status = "adolescent";
+            }
+            else if ( mage >= 60 ) {
+
+                status = "elderly";
+
+            }
+            else
+            {
+                status = "";
+            }
+
+            //alert(status);
 
               //resident
-    var typeofdocument, wherectcissued;
-    var fname = $('#firstname').val();
-    var mname = $('#middlename').val();
-    var lname = $('#lastname').val();
-    var qualifier = $('#qualifier').val();
-    var selectedsex = $("input:radio[name=sex_gender]:checked").val();
-    var dateofbirth = $('#dateofbirth').val();
-    var civilstatus = $('#civilstatus').val();
-    var placeofbirth = $('#placeofbirth').val();
-      // var is_ofw = $("input:radio[name=is_ofw]:checked").val();
-
-    var citizenship = $('#Citizenship').val();
-    var occupation = $('#Occupation').val();
-    var monthlyIncome = $('#monthlyIncome').val();
-    var incomeStatus = $("#incomeStatus").children(":selected").attr("value");
-    var employmentStatus = $("#employmentStatus").children(":selected").attr("value");
-    var workplace = $('#placeofwork').val();
-    // var workstatus = $("#workstatus").children(":selected").attr("value");
-    var pdelivery = $('#pdelivery').children(":selected").attr("value");
-    if (pdelivery == "Other"){
-     pdelivery = $('#pdeliveryOther').val();
-    }
-
-    var battendant = $('#battendant').children(":selected").attr("value");
-    if (battendant == "Other"){
-     battendant = $('#battendantOther').val();
-    }
-
-    var bimmunization = $('#bimmunization').val();
-    var fvisited = $('#fvisited').children(":selected").attr("value");
-    var rvisit = $('#rvisit').children(":selected").attr("value");
-    var disability = $('#disability').children(":selected").attr("value");
-    var soloParent = $('#soloParent').children(":selected").attr("value");
-    var isRegisteredSeniorCitizen = $("input:radio[name=isRegisteredSeniorCitizen]:checked").val();
-    var is_registered_voter = $("input:radio[name=is_registered_voter]:checked").val();
-    var votingPrecinct = $('#votingPrecinct').val();
-    var previousResidence = $('#previousResidence').val();
-
-    var educationatt = $("#educationatt").children(":selected").attr("value");
-    var enrollment_status = $("#school_type").children(":selected").attr("value");
-    var school_type = $("#enrollment_status").children(":selected").attr("value");
-    var dateofstartwork = $('#dateofstartwork').val();
-    var relationtohead = $('#RelationToHead').val();
-    var dateofarrive = $('#dateofarrival').val();
-    // var is_indegenous = $("input:radio[name=radio_Indigenous]:checked").val();
-    var contactnumber = $('#contactnumber').val();
-    var homeownership = $('#homeownership').children(":selected").attr("value");
-    var buildmaterial = $("input:radio[name=radio_home_materials]:checked").val();
-    var numberofrooms = $('#numberofrooms').val();
-    var streetno = $('#streetno').val();
-    var barangayzone_id = $('#BarangayZone').children(":selected").attr("value");
-    var personinhousehold = $("#personinhousehold").val();
-    var arrivalreason = $('#ArrivalReason').children(":selected").attr("id");
-    var fromwhat = $('#fromwhat').val();
-    var r_coming = $('#r_coming').children(":selected").attr("value");
-    if (r_coming == "Other"){ r_coming = $('#otherReason').val(); }
-    var p_startdate = $('#p_startdate').val();
-    var p_enddate = $('#p_enddate').val();
-
-    var houseno = $('#houseno').val();
-    var hstreet = $('#hstreet').val();
-    var hphase = $('#hphase').val();
-    var hbuilding = $('#hbuilding').val();
-    var hunitno = $('#hunitno').val();
-    var hsubdivision = $('#hsubdivision').val();
-
-
-
-    var pschool = $('#pschool').val();
-    var religion = $('#religion').val();
-    var ethnicity = $('#ethnicity').val();
-    var lotownership = $('#lotownership').val();
-    var sdtraining = $('#sdtraining').val();
-
-    if(arrivalreason == 2) {
-    typeofdocument = $('#mdocument').val();
-    // wctcissued = $('#mwhenissued').val();
-    wherectcissued = $('#mwhereissued').val();
-    }
-    else if(arrivalreason == 3) {
-    typeofdocument = $('#mdocument').val();
-    // wctcissued = $('#mwhenissued').val();
-    wherectcissued = $('#mwhereissued').val();
-    }
-    else{
-    typeofdocument = "";
-    // wctcissued = "";
-    wherectcissued = "";
-    }
-
-
-    if ($("#cssCheckbox1Toilet").is(":checked")){ var toilet = 1; } else if ($("#cssCheckbox1Toilet").is(":not(:checked)")) { var toilet = 0; }
-
-    if ($("#cssCheckbox2Playarea").is(":checked")){ var playarea = 1; } else if ($("#cssCheckbox2Playarea").is(":not(:checked)")) { var playarea = 0; }
-
-    if ($("#cssCheckbox3Bedroom").is(":checked")){ var bedroom = 1; } else if ($("#cssCheckbox3Bedroom").is(":not(:checked)")) { var bedroom = 0; }
-
-    if ($("#cssCheckbox4diningroom").is(":checked")){ var dining = 1; } else if ($("#cssCheckbox4diningroom").is(":not(:checked)")) { var dining = 0; }
-
-    if ($("#cssCheckbox5sala").is(":checked")){ var sala = 1; } else if ($("#cssCheckbox5sala").is(":not(:checked)")) { var sala = 0; }
-
-    if ($("#cssCheckbox6kitchen").is(":checked")){ var kitchen = 1; } else if ($("#cssCheckbox6kitchen").is(":not(:checked)")) { var kitchen = 0; }
-    //
+              var typeofdocument, wherectcissued;
+              var fname = $('#firstname').val();
+              var mname = $('#middlename').val();
+              var lname = $('#lastname').val();
+              var qualifier = $('#qualifier').val();
+              var selectedsex = $("input:radio[name=sex_gender]:checked").val();
+              var dateofbirth = $('#dateofbirth').val();
+              var civilstatus = $('#civilstatus').val();
+              var placeofbirth = $('#placeofbirth').val();
+              // var is_ofw = $("input:radio[name=is_ofw]:checked").val();
+
+              var citizenship = $('#Citizenship').val();
+              var occupation = $('#Occupation').val();
+              var monthlyIncome = $('#monthlyIncome').val();
+              var incomeStatus = $("#incomeStatus").children(":selected").attr("value");
+              var employmentStatus = $("#employmentStatus").children(":selected").attr("value");
+              var workplace = $('#placeofwork').val();
+              // var workstatus = $("#workstatus").children(":selected").attr("value");
+              var pdelivery = $('#pdelivery').children(":selected").attr("value");
+              if (pdelivery == "Other"){
+                 pdelivery = $('#pdeliveryOther').val();
+              }
+
+              var battendant = $('#battendant').children(":selected").attr("value");
+              if (battendant == "Other"){
+                 battendant = $('#battendantOther').val();
+              }
+
+              var bimmunization = $('#bimmunization').val();
+              var fvisited = $('#fvisited').children(":selected").attr("value");
+              var rvisit = $('#rvisit').children(":selected").attr("value");
+              var disability = $('#disability').children(":selected").attr("value");
+              var soloParent = $('#soloParent').children(":selected").attr("value");
+              var isRegisteredSeniorCitizen = $("input:radio[name=isRegisteredSeniorCitizen]:checked").val();
+              var is_registered_voter = $("input:radio[name=is_registered_voter]:checked").val();
+              var votingPrecinct = $('#votingPrecinct').val();
+              var previousResidence = $('#previousResidence').val();
+
+              var educationatt = $("#educationatt").children(":selected").attr("value");
+              var enrollment_status = $("#school_type").children(":selected").attr("value");
+              var school_type = $("#enrollment_status").children(":selected").attr("value");
+              var dateofstartwork = $('#dateofstartwork').val();
+              var relationtohead = $('#RelationToHead').val();
+              var dateofarrive = $('#dateofarrival').val();
+              // var is_indegenous = $("input:radio[name=radio_Indigenous]:checked").val();
+              var contactnumber = $('#contactnumber').val();
+              var homeownership = $('#homeownership').children(":selected").attr("value");
+              var buildmaterial = $("input:radio[name=radio_home_materials]:checked").val();
+              var numberofrooms = $('#numberofrooms').val();
+              var streetno = $('#streetno').val();
+              var barangayzone_id = $('#BarangayZone').children(":selected").attr("value");
+              var personinhousehold = $("#personinhousehold").val();
+              var arrivalreason = $('#ArrivalReason').children(":selected").attr("id");
+              var fromwhat = $('#fromwhat').val();
+              var r_coming = $('#r_coming').children(":selected").attr("value");
+              if (r_coming == "Other"){
+                 r_coming = $('#otherReason').val();
+              }
+              var p_startdate = $('#p_startdate').val();
+              var p_enddate = $('#p_enddate').val();
+
+              var houseno = $('#houseno').val();
+              var hstreet = $('#hstreet').val();
+              var hphase = $('#hphase').val();
+              var hbuilding = $('#hbuilding').val();
+              var hunitno = $('#hunitno').val();
+              var hsubdivision = $('#hsubdivision').val();
+
+              
+              
+              var pschool = $('#pschool').val();
+              var religion = $('#religion').val();
+              var ethnicity = $('#ethnicity');
+              var lotownership = $('#lotownership').val();
+              var sdtraining = $('#sdtraining').val();
+
+              if(arrivalreason == 2) {
+                typeofdocument = $('#mdocument').val();
+                // wctcissued = $('#mwhenissued').val();
+                wherectcissued = $('#mwhereissued').val();
+              }
+              else if(arrivalreason == 3) {
+                typeofdocument = $('#mdocument').val();
+                // wctcissued = $('#mwhenissued').val();
+                wherectcissued = $('#mwhereissued').val();
+              }
+              else{
+                typeofdocument = "";
+                // wctcissued = "";
+                wherectcissued = "";
+              }
+
+
+              if ($("#cssCheckbox1Toilet").is(":checked")){ var toilet = 1; } else if ($("#cssCheckbox1Toilet").is(":not(:checked)")) { var toilet = 0; }
+
+              if ($("#cssCheckbox2Playarea").is(":checked")){ var playarea = 1; } else if ($("#cssCheckbox2Playarea").is(":not(:checked)")) { var playarea = 0; }
+
+              if ($("#cssCheckbox3Bedroom").is(":checked")){ var bedroom = 1; } else if ($("#cssCheckbox3Bedroom").is(":not(:checked)")) { var bedroom = 0; }
+
+              if ($("#cssCheckbox4diningroom").is(":checked")){ var dining = 1; } else if ($("#cssCheckbox4diningroom").is(":not(:checked)")) { var dining = 0; }
+
+              if ($("#cssCheckbox5sala").is(":checked")){ var sala = 1; } else if ($("#cssCheckbox5sala").is(":not(:checked)")) { var sala = 0; }
 
-    if ($("#cssCheckboxRunningwater").is(":checked")){ var runningwater = 1; } else if ($("#cssCheckboxRunningwater").is(":not(:checked)")) { var runningwater = 0; }
+              if ($("#cssCheckbox6kitchen").is(":checked")){ var kitchen = 1; } else if ($("#cssCheckbox6kitchen").is(":not(:checked)")) { var kitchen = 0; }
+                //
 
-    if ($("#cssCheckboxElectricity").is(":checked")){ var electricity = 1; } else if ($("#cssCheckboxElectricity").is(":not(:checked)")) { var electricity = 0; }
+                if ($("#cssCheckboxRunningwater").is(":checked")){ var runningwater = 1; } else if ($("#cssCheckboxRunningwater").is(":not(:checked)")) { var runningwater = 0; }
 
-    if ($("#cssCheckboxaircon").is(":checked")){ var aircon = 1; } else if ($("#cssCheckboxaircon").is(":not(:checked)")) { var aircon = 0; }
+                if ($("#cssCheckboxElectricity").is(":checked")){ var electricity = 1; } else if ($("#cssCheckboxElectricity").is(":not(:checked)")) { var electricity = 0; }
 
+                if ($("#cssCheckboxaircon").is(":checked")){ var aircon = 1; } else if ($("#cssCheckboxaircon").is(":not(:checked)")) { var aircon = 0; }
 
 
-    if ($("#cssCheckboxmobilephone").is(":checked")){ var mobile = 1; } else if ($("#cssCheckboxmobilephone").is(":not(:checked)")) { var mobile = 0; }
 
-    if ($("#cssCheckboxcomputer ").is(":checked")){ var computer = 1; } else if ($("#cssCheckboxcomputer ").is(":not(:checked)")) { var computer = 0; }
+                if ($("#cssCheckboxmobilephone").is(":checked")){ var mobile = 1; } else if ($("#cssCheckboxmobilephone").is(":not(:checked)")) { var mobile = 0; }
 
-    if ($("#cssCheckboxinternet").is(":checked")){ var internet = 1; } else if ($("#cssCheckboxinternet").is(":not(:checked)")) { var internet = 0; }
+                if ($("#cssCheckboxcomputer ").is(":checked")){ var computer = 1; } else if ($("#cssCheckboxcomputer ").is(":not(:checked)")) { var computer = 0; }
 
-    if ($("#cssCheckboxtv").is(":checked")){ var boxtv = 1; } else if ($("#cssCheckboxtv").is(":not(:checked)")) { var boxtv = 0; }
+                if ($("#cssCheckboxinternet").is(":checked")){ var internet = 1; } else if ($("#cssCheckboxinternet").is(":not(:checked)")) { var internet = 0; }
 
-    if ($("#cssCheckboxcdplayer").is(":checked")){ var cdplayer = 1; } else if ($("#cssCheckboxcdplayer").is(":not(:checked)")) { var cdplayer = 0; }
+                if ($("#cssCheckboxtv").is(":checked")){ var boxtv = 1; } else if ($("#cssCheckboxtv").is(":not(:checked)")) { var boxtv = 0; }
 
-    if ($("#cssCheckboxradio").is(":checked")){ var boxradio = 1; } else if ($("#cssCheckboxradio").is(":not(:checked)")) { var boxradio = 0; }
+                if ($("#cssCheckboxcdplayer").is(":checked")){ var cdplayer = 1; } else if ($("#cssCheckboxcdplayer").is(":not(:checked)")) { var cdplayer = 0; }
 
-    if ($("#cssCheckboxcomics").is(":checked")){ var comics = 1; } else if ($("#cssCheckboxcomics").is(":not(:checked)")) { var comics = 0; }
+                if ($("#cssCheckboxradio").is(":checked")){ var boxradio = 1; } else if ($("#cssCheckboxradio").is(":not(:checked)")) { var boxradio = 0; }
 
-    if ($("#cssCheckboxNewspaper").is(":checked")){ var newspaper = 1; } else if ($("#cssCheckboxNewspaper").is(":not(:checked)")) { var newspaper = 0; }
+                if ($("#cssCheckboxcomics").is(":checked")){ var comics = 1; } else if ($("#cssCheckboxcomics").is(":not(:checked)")) { var comics = 0; }
 
-    if ($("#cssCheckboxPets").is(":checked")){ var pets = 1; } else if ($("#cssCheckboxPets").is(":not(:checked)")) { var pets = 0; }
+                if ($("#cssCheckboxNewspaper").is(":checked")){ var newspaper = 1; } else if ($("#cssCheckboxNewspaper").is(":not(:checked)")) { var newspaper = 0; }
 
-    if ($("#cssCheckboxbooks").is(":checked")){ var books = 1; } else if ($("#cssCheckboxbooks").is(":not(:checked)")) { var books = 0; }
+                if ($("#cssCheckboxPets").is(":checked")){ var pets = 1; } else if ($("#cssCheckboxPets").is(":not(:checked)")) { var pets = 0; }
 
-    if ($("#cssCheckboxstorybooks").is(":checked")){ var storybooks = 1; } else if ($("#cssCheckboxstorybooks").is(":not(:checked)")) { var storybooks = 0; }
+                if ($("#cssCheckboxbooks").is(":checked")){ var books = 1; } else if ($("#cssCheckboxbooks").is(":not(:checked)")) { var books = 0; }
 
-    if ($("#cssCheckboxToys").is(":checked")){ var toys = 1; } else if ($("#cssCheckboxToys").is(":not(:checked)")) { var toys = 0; }
+                if ($("#cssCheckboxstorybooks").is(":checked")){ var storybooks = 1; } else if ($("#cssCheckboxstorybooks").is(":not(:checked)")) { var storybooks = 0; }
 
-    if ($("#cssCheckboxboardgames").is(":checked")){ var boardgames = 1; } else if ($("#cssCheckboxboardgames").is(":not(:checked)")) { var boardgames = 0; }
+                if ($("#cssCheckboxToys").is(":checked")){ var toys = 1; } else if ($("#cssCheckboxToys").is(":not(:checked)")) { var toys = 0; }
 
-    if ($("#cssCheckboxpuzzles").is(":checked")){ var puzzles = 1; } else if ($("#cssCheckboxpuzzles").is(":not(:checked)")) { var puzzles = 0; }
+                if ($("#cssCheckboxboardgames").is(":checked")){ var boardgames = 1; } else if ($("#cssCheckboxboardgames").is(":not(:checked)")) { var boardgames = 0; }
 
+                if ($("#cssCheckboxpuzzles").is(":checked")){ var puzzles = 1; } else if ($("#cssCheckboxpuzzles").is(":not(:checked)")) { var puzzles = 0; }
 
 
-    // start multiple textbox
-    var multi_fname = [];
-    var multi_mname = [];
-    var multi_lname = [];
-    var multi_qualifier = [];
-    var multi_poba = [];
-    var multi_doba = [];
-    var multi_doar = [];
-    var multi_ctizi = [];
-    var multi_cvstat = [];
-    var multi_religion = [];
-    var multi_sex = [];
 
-    var multi_educatt = [];
-    var multi_enstat = [];
-    var multi_pschool = [];
-    var multi_school_type = [];
-    // var multi_is_ofw = [];
-    var multi_occupation = [];
-    var multi_monthlyIncome = [];
-    var multi_incomeStatus = [];
-    var multi_employmentStatus = [];
-    var multi_workplace = [];
-    // var multi_work_status = [];
-    var multi_pdelivery = [];
-    var multi_birthAttendant = [];
-    var multi_immunization = [];
-    var multi_healthFacilityVisited = [];
-    var multi_reasonForVisit = [];
-    var multi_disability = [];
-    var multi_soloParent = [];
-    var multi_isRegisteredSeniorCitizen = [];
-    var multi_irv = [];
-    var multi_votingPrecinct = [];
-    var multi_previousResidence = [];
-    var multi_dsw = [];
-    var multi_reltohead = [];
-    var multi_contactc = [];
-    var multi_typer = [];
-    var multim = [];
-    var multirc = [];
+                    // start multiple textbox
+                    var multi_fname = [];
+                    var multi_mname = [];
+                    var multi_lname = [];
+                    var multi_qualifier = [];
+                    var multi_poba = [];
+                    var multi_doba = [];
+                    var multi_doar = [];
+                    var multi_ctizi = [];
+                    var multi_cvstat = [];
+                    var multi_religion = [];
+                    var multi_sex = [];
 
-    var multi_p_startdate = [];
-    var multi_p_enddate = [];
+                    var multi_educatt = [];
+                    var multi_enstat = [];
+                    var multi_pschool = [];
+                    var multi_school_type = [];
+                    // var multi_is_ofw = [];
+                    var multi_occupation = [];
+                    var multi_monthlyIncome = [];
+                    var multi_incomeStatus = [];
+                    var multi_employmentStatus = [];
+                    var multi_workplace = [];
+                    // var multi_work_status = [];
+                    var multi_pdelivery = [];
+                    var multi_birthAttendant = [];
+                    var multi_immunization = [];
+                    var multi_healthFacilityVisited = [];
+                    var multi_reasonForVisit = [];
+                    var multi_disability = [];
+                    var multi_soloParent = [];
+                    var multi_isRegisteredSeniorCitizen = [];
+                    var multi_irv = [];
+                    var multi_votingPrecinct = [];
+                    var multi_previousResidence = [];
+                    var multi_dsw = [];
+                    var multi_reltohead = [];
+                    var multi_contactc = [];
+                    var multi_typer = [];
+                    var multim=[];
+                    var multirc = [];
+                    
+                    var multi_p_startdate = [];
+                    var multi_p_enddate = [];
 
-    var multi_migrants = [];
-    var multi_fromwhat = [];
-    var multi_res = [];
+                    var multi_migrants = [];
+                    var multi_fromwhat = [];
+                    var multi_res = [];
 
 
+                    // if (document.getElementById("childrendiv").style.display == "none") {
+                    //      ifshow = "true";
+                    // }
 
-    $(".multifname").each(function(){
-        multi_fname.push($(this).val());
-    });
+                    // swal("Please insert atleast one member!", {
+                    //     icon: "error",
+                    // });
 
-    $(".multimname").each(function(){
-        multi_mname.push($(this).val());
-    });
+                     $(".multifname").each(function(){
+                        multi_fname.push($(this).val());
+                    });
 
-    $(".multilname").each(function(){
-        multi_lname.push($(this).val());
-    });
+                    $(".multimname").each(function(){
+                        multi_mname.push($(this).val());
+                    });
 
-    $(".multiqualifier").each(function(){
-        multi_qualifier.push($(this).val());
-    });
+                    $(".multilname").each(function(){
+                        multi_lname.push($(this).val());
+                    });
 
+                    $(".multiqualifier").each(function(){
+                        multi_qualifier.push($(this).val());
+                    });
 
-    $(".multipoba").each(function(){
-        multi_poba.push($(this).val());
-    });
+                    console.log(multi_lname)
+                    $(".multipoba").each(function(){
+                        multi_poba.push($(this).val());
+                    });
 
 
-    $(".multidoar").each(function(){
-        multi_doar.push($(this).val());
-    });
+                    $(".multidoar").each(function(){
+                        multi_doar.push($(this).val());
+                    });
 
-    $(".multicvstat option:selected").each(function(){
-        multi_cvstat.push($(this).val());
-    });
+                    $(".multicvstat option:selected").each(function(){
+                        multi_cvstat.push($(this).val());
+                    });
 
-    $(".multireligion").each(function(){
-        multi_religion.push($(this).val());
-    });
+                    $(".multireligion").each(function(){
+                        multi_religion.push($(this).val());
+                    });
 
-    $(".multisex:checked").each(function(){
-        multi_sex.push($(this).val());
-    });
+                    $(".multisex:checked").each(function(){
+                        multi_sex.push($(this).val());
+                    });
 
-    $(".multictizi").each(function(){
-        multi_ctizi.push($(this).val());
-    });
+                    $(".multictizi").each(function(){
+                        multi_ctizi.push($(this).val());
+                    });
 
-    $(".multieducatt option:selected").each(function(){
-        multi_educatt.push($(this).val());
-    });
+                    $(".multieducatt option:selected").each(function(){
+                        multi_educatt.push($(this).val());
+                    });
 
-    $(".multienstat option:selected").each(function(){
-        multi_enstat.push($(this).val());
-    });
+                    $(".multienstat option:selected").each(function(){
+                        multi_enstat.push($(this).val());
+                    });
 
-    $(".multi_school_type option:selected").each(function(){
-        multi_school_type.push($(this).val());
-    });
+                    $(".multi_school_type option:selected").each(function(){
+                        multi_school_type.push($(this).val());
+                    });
 
-    $(".multipschool option:selected").each(function(){
-        multi_pschool.push($(this).val());
-    });
+                    $(".multipschool option:selected").each(function(){
+                        multi_pschool.push($(this).val());
+                    });
 
-    $(".multioccupation").each(function(){
-        multi_occupation.push($(this).val());
-    });
+                    $(".multioccupation").each(function(){
+                        multi_occupation.push($(this).val());
+                    });
 
-    $(".multiMonthlyIncome").each(function(){
-        multi_monthlyIncome.push($(this).val());
-    });
+                    $(".multiMonthlyIncome").each(function(){
+                        multi_monthlyIncome.push($(this).val());
+                    });
 
-    $(".multiIncomeStatus option:selected").each(function(){
-        multi_incomeStatus.push($(this).val());
-    });
+                    $(".multiIncomeStatus option:selected").each(function(){
+                        multi_incomeStatus.push($(this).val());
+                    });
 
-    $(".multiEmploymentStatus option:selected").each(function(){
-        multi_employmentStatus.push($(this).val());
-    });
+                    $(".multiEmploymentStatus option:selected").each(function(){
+                        multi_employmentStatus.push($(this).val());
+                    });
 
-    $(".multiWorkplace").each(function(){
-        multi_workplace.push($(this).val());
-    });
+                    $(".multiWorkplace").each(function(){
+                        multi_workplace.push($(this).val());
+                    });
 
-    $(".multipdelivery").each(function(){
-        var pdelivery = $(this).val();
-        if (pdelivery =! "Other"){
-            multi_pdelivery.push(pdelivery);
-        }   
-    });
+                    $(".multipdelivery").each(function(){
+                        var pdelivery = $(this).val();
+                        if (pdelivery =! "Other"){
+                            multi_pdelivery.push(pdelivery);
+                        }   
+                    });
 
-    $(".multipdeliveryOther").each(function(){
-        var pdelivery = $(this).val();
-        if (pdelivery =! ""){
-            multi_pdelivery.push(pdelivery);
-        }   
-    });
+                    $(".multipdeliveryOther").each(function(){
+                        var pdelivery = $(this).val();
+                        if (pdelivery =! ""){
+                            multi_pdelivery.push(pdelivery);
+                        }   
+                    });
 
-    $(".multibattendant").each(function(){
-        var attendant = $(this).val();
-        if (attendant =! "Other"){
-            multi_birthAttendant.push(attendant);
-        }   
-    });
+                    $(".multibattendant").each(function(){
+                        var attendant = $(this).val();
+                        if (attendant =! "Other"){
+                            multi_birthAttendant.push(attendant);
+                        }   
+                    });
 
-    $(".multibattendantOther").each(function(){
-        var attendant = $(this).val();
-        if (attendant =! ""){
-            multi_birthAttendant.push(attendant);
-        }   
-    });
+                    $(".multibattendantOther").each(function(){
+                        var attendant = $(this).val();
+                        if (attendant =! ""){
+                            multi_birthAttendant.push(attendant);
+                        }   
+                    });
 
-    $(".multibimmunization").each(function(){
-        multi_immunization.push($(this).val());
-    });
+                    $(".multibimmunization").each(function(){
+                        multi_immunization.push($(this).val());
+                    });
 
-    $(".multifvisited option:selected").each(function(){
-        multi_healthFacilityVisited.push($(this).val());
-    });
+                    $(".multifvisited option:selected").each(function(){
+                        multi_healthFacilityVisited.push($(this).val());
+                    });
 
-    $(".multirvisit option:selected").each(function(){
-        multi_reasonForVisit.push($(this).val());
-    });
+                    $(".multirvisit option:selected").each(function(){
+                        multi_reasonForVisit.push($(this).val());
+                    });
 
-    $(".multidisability option:selected").each(function(){
-        multi_disability.push($(this).val());
-    });
+                    $(".multidisability option:selected").each(function(){
+                        multi_disability.push($(this).val());
+                    });
 
-    $(".multiSoloParent option:selected").each(function(){
-        multi_soloParent.push($(this).val());
-    });
+                    $(".multiSoloParent option:selected").each(function(){
+                        multi_soloParent.push($(this).val());
+                    });
 
-    $(".multiIsRegisteredSeniorCitizen:checked").each(function(){
-        multi_isRegisteredSeniorCitizen.push($(this).val());
-    });
+                    $(".multiIsRegisteredSeniorCitizen:checked").each(function(){
+                        multi_isRegisteredSeniorCitizen.push($(this).val());
+                    });
 
-    $(".multiirv:checked").each(function(){
-        multi_irv.push($(this).val());
-    });
+                    $(".multiirv:checked").each(function(){
+                        multi_irv.push($(this).val());
+                    });
 
-    $(".multiVotingPrecinct").each(function(){
-        multi_votingPrecinct.push($(this).val());
-    });
+                    $(".multiVotingPrecinct").each(function(){
+                        multi_votingPrecinct.push($(this).val());
+                    });
 
-    $(".multiPreviousResidence").each(function(){
-        multi_previousResidence.push($(this).val());
-    });
+                    $(".multiPreviousResidence").each(function(){
+                        multi_previousResidence.push($(this).val());
+                    });
 
+                    
 
+                    // $(".multisofw:checked").each(function(){
+                    //     multi_is_ofw.push($(this).val());
+                    // });
+                    // $(".multiws option:selected").each(function(){
+                    //     multi_work_status.push($(this).val());
+                    // });
 
-    $(".multisofw:checked").each(function(){
-        multi_is_ofw.push($(this).val());
-    });
-    $(".multiws option:selected").each(function(){
-        multi_work_status.push($(this).val());
-    });
+                    $(".multidsw").each(function(){
+                        multi_dsw.push($(this).val());
+                    });
 
-    $(".multidsw").each(function(){
-        multi_dsw.push($(this).val());
-    });
+                    $(".multireltohead option:selected").each(function(){
+                        multi_reltohead.push($(this).val());
+                    });
 
-    $(".multireltohead option:selected").each(function(){
-        multi_reltohead.push($(this).val());
-    });
+                    $(".multicontactc").each(function(){
+                        multi_contactc.push($(this).val());
+                    });
 
-    $(".multicontactc").each(function(){
-        multi_contactc.push($(this).val());
-    });
 
+                    $(".multityper option:selected").each(function(){
+                        multi_typer.push($(this).val());
+                    });
 
-    $(".multityper option:selected").each(function(){
-        multi_typer.push($(this).val());
-    });
+                    $(".multim option:selected").each(function(){
+                        multim.push($(this).val());
+                    });
 
-    $(".multim option:selected").each(function(){
-        multim.push($(this).val());
-    });
 
+                    $(".multirc option:selected").each(function(){
+                        var reasonForComing = $(this).val();
+                        if (reasonForComing =! "Other"){
+                            multirc.push(reasonForComing);
+                        }   
+                    });
 
-    $(".multirc option:selected").each(function(){
-        var reasonForComing = $(this).val();
-        if (reasonForComing =! "Other"){
-            multirc.push(reasonForComing);
-        }   
-    });
+                    $(".multircOther").each(function(){
+                        var reasonForComing = $(this).val();
+                        if (reasonForComing =! ""){
+                            multirc.push(reasonForComing);
+                        }   
+                    });
 
-    $(".multircOther").each(function(){
-        var reasonForComing = $(this).val();
-        if (reasonForComing =! ""){
-            multirc.push(reasonForComing);
-        }   
-    });
+                    $(".multipstartdate").each(function(){
+                        multi_p_startdate.push($(this).val());
+                    });
 
-    $(".multipstartdate").each(function(){
-        multi_p_startdate.push($(this).val());
-    });
+                    $(".multipenddate").each(function(){
+                        multi_p_enddate.push($(this).val());
+                    });
 
-    $(".multipenddate").each(function(){
-        multi_p_enddate.push($(this).val());
-    });
 
+                    $(".multifromwhat").each(function(){
+                        multi_fromwhat.push($(this).val());
+                    });
 
-    $(".multifromwhat").each(function(){
-        multi_fromwhat.push($(this).val());
-    });
+                    $(".multires option:selected").each(function(){
+                        multi_res.push($(this).val());
+                    });
 
-    $(".multires option:selected").each(function(){
-        multi_res.push($(this).val());
-    });
 
-
-    $(".multidoba").each(function() {
-        multi_doba.push($(this).val())
-    });
-
-    var multistatus = [];
-
-    for(var i=0; i< multi_doba.length; i++)
-    {
-        age[i] = getYears(multi_doba[i]);
-        days[i] = getDays(multi_doba[i]);
-        multistatus[i] = getStatus(age[i],days[i]);
-    }
                
-    get_data = {
+                $(".multidoba").each(function() {
+                    multi_doba.push($(this).val())
+                });
 
+                var multistatus = [];
 
-        firstname: fname,
-        middlename: mname,
-        lastname: lname,
-        multi_qualifier,
-        qualifier: qualifier,
-        sex_gender: selectedsex,
-        dateofbirth: dateofbirth,
+                for(var i=0; i<multi_doba.length; i++)
+                {
+                        cdate.push(new Date(Date.now()));
+                        rgdate.push(new Date(multi_doba[i]));
+                        ryear[i] = parseInt(rgdate[i].getFullYear());
+                        rmont[i] = parseInt(String(rgdate[i].getMonth() + 1).padStart(2, '0'));
+                        rday[i] = parseInt(String(rgdate[i].getDate()).padStart(2, '0'));
+                        cyear[i] = parseInt(cdate[i].getFullYear());
+                        cmon[i] = parseInt(cdate[i].getMonth() + 1);
+                        cday[i] = parseInt(String(cdate[i].getDate()).padStart(2, '0'));
+                        age[i] = cyear[i] - ryear[i];
 
-        civilstatus: civilstatus,
-        placeofbirth: placeofbirth,
-        // is_ofw: is_ofw,
+                        if (rday[i] >= 32) { rday[i] = 1; }
+                        if (rmont[i] >= 13) { rmont[i] = 1; }
 
-        citizenship: citizenship,
-        occupation: occupation,
-        monthlyIncome : monthlyIncome,
-        incomeStatus : incomeStatus,
-        employmentStatus : employmentStatus,
-        workplace : workplace,
-        // workstatus: workstatus,
-        dateofstartwork: dateofstartwork,
-        relationtohead: relationtohead,
-        dateofarrive: dateofarrive,
+                        current_year[i] = new Date(cyear[i],cmon[i],cday[i]);
+                        dob_year[i] = new Date(ryear[i],rmont[i],rday[i]);
+                        const oneDay = 1000 * 60 * 60 * 24;
+                        //days[i] = DaysBetween(dob_year,current_year); Date.UTC(current_year[i].getFullYear(), current_year[i].getMonth(), current_year[i].getDate());  Date.UTC(dob_year[i].getFullYear(), dob_year[i].getMonth(), dob_year[i].getDate());
+                        start[i] = new Date(cyear[i],cmon[i],cday[i]);
+                        end[i] =  new Date(ryear[i],rmont[i],rday[i]);
+                        days[i] = DaysBetween(dob_year[i],current_year[i]);
 
-        // is_indegenous: is_indegenous,
-        firstname: fname,
-        contactnumber: contactnumber,
-        arrivalreason: arrivalreason,
-        fromwhat: fromwhat,
-        r_coming: r_coming,
-        p_startdate: p_startdate,
-        p_enddate: p_enddate,
+                        if (age[i]==0 || age[i]<0) {
 
-        houseno: houseno,
-        hstreet: hstreet,
-        hphase: hphase,
-        hbuilding: hbuilding,
-        hunitno: hunitno,
-        hsubdivision: hsubdivision,
-
-        homeownership: homeownership,
-        buildmaterial: buildmaterial,
-        numberofrooms:numberofrooms,
-        barangayaddress_id:barangayzone_id,
-        streetno:streetno,
-        barangayzone_id:barangayzone_id,
-
-        toilet: toilet,
-        playarea: playarea,
-        bedroom: bedroom,
-        dining: dining,
-        sala: sala,
-        kitchen: kitchen,
-        runningwater: runningwater,
-        electricity: electricity,
-        aircon: aircon,
-        mobile: mobile,
-        computer: computer,
-        internet: internet,
-        boxtv: boxtv,
-        cdplayer: cdplayer,
-        boxradio: boxradio,
-        comics: comics,
-        newspaper: newspaper,
-        pets: pets,
-        books: books,
-        storybooks: storybooks,
-        toys: toys,
-        boardgames: boardgames,
-        puzzles: puzzles,
-        personinhousehold:personinhousehold,
-        educationatt:educationatt,
-        enrollment_status:enrollment_status,
-        school_type:school_type,
-
-        pdelivery:pdelivery,
-        battendant:battendant,
-        bimmunization:bimmunization,
-        fvisited:fvisited,
-        rvisit:rvisit,
-        disability:disability,
-        soloParent : soloParent,
-        isRegisteredSeniorCitizen : isRegisteredSeniorCitizen,
-        is_registered_voter: is_registered_voter,
-        votingPrecinct : votingPrecinct,
-        previousResidence : previousResidence,
-        pschool:pschool,
-        religion:religion,
-        ethnicity:ethnicity,
-        lotownership:lotownership,
-        typeofdocument:typeofdocument,
-        wherectcissued:wherectcissued,
-        sdtraining:sdtraining,
-        mar_status: mar_status,
-
-        multi_fname :  multi_fname,
-        multi_mname :multi_mname,
-        multi_lname:multi_lname,
-        multi_poba:multi_poba,
-
-        multi_doar:multi_doar,
-        multi_ctizi:multi_ctizi,
-        multi_cvstat:multi_cvstat,
-        multi_religion:multi_religion,
-        multi_sex:multi_sex,
-        multi_educatt:multi_educatt,
-        multi_enstat:multi_enstat,
-        multi_school_type:multi_school_type,
-        multi_pschool:multi_pschool,
-        multi_occupation:multi_occupation,
-        multi_monthlyIncome : multi_monthlyIncome,
-        multi_incomeStatus : multi_incomeStatus,
-        multi_employmentStatus : multi_employmentStatus,
-        multi_workplace : multi_workplace,
-        // multi_work_status:multi_work_status,
-        multi_pdelivery : multi_pdelivery,
-        multi_birthAttendant : multi_birthAttendant,
-        multi_immunization : multi_immunization,
-        multi_healthFacilityVisited : multi_healthFacilityVisited,
-        multi_reasonForVisit, multi_reasonForVisit,
-        multi_disability : multi_disability,
-        multi_soloParent : multi_soloParent,
-        multi_isRegisteredSeniorCitizen : multi_isRegisteredSeniorCitizen,
-        multi_irv:multi_irv,
-        multi_votingPrecinct : multi_votingPrecinct,
-        multi_previousResidence : multi_previousResidence,
-        multi_dsw:multi_dsw,
-        // multi_is_ofw:multi_is_ofw,
-        
-        multi_reltohead:multi_reltohead,
-        multi_contactc:multi_contactc,
-        multi_typer:multi_typer,
-        multim:multim,
-        multirc:multirc,
-        multi_p_startdate:multi_p_startdate,
-        multi_p_enddate:multi_p_enddate,
-        multi_migrants:multi_migrants,
-        multi_fromwhat:multi_fromwhat,
-        multi_res:multi_res,
-        multistatus:multistatus,
-        multi_doba : multi_doba,
-        status: status,
-        _token: "{{ csrf_token() }}"
-    };
-
-    let result;
-            
-    
-    Add(get_data);
+                            if (days[i] <= 28 && days[i] >= 0) {
+                                 //fcolors[i]="#ffcdcc";
+                               //multistatus[i] = "newborn";
+                               multistatus.push("newborn");
+                            }
+                            if (days[i] >= 29) {
+                               // multistatus[i] = "infant";
+                               multistatus.push("infant");
+                            }
+                        }
+                        if (age[i] >= 1 && age[i] <= 10) {
+                                // multistatus[i] = "child";
+                                multistatus.push("child");
+                        }
+                        if (age[i] >= 11 && age[i] <= 19) {
+                                // multistatus[i] = "adolescent";
+                                multistatus.push("adolescent");
+                        }
+                        if (age[i] >= 60) {
+                                // multistatus[i] = "elderly";
+                                multistatus.push("elderly");
+                        }
+                    }
                
+                get_data = {
+
+
+                    firstname: fname,
+                    middlename: mname,
+                    lastname: lname,
+                    multi_qualifier,
+                    qualifier: qualifier,
+                    sex_gender: selectedsex,
+                    dateofbirth: dateofbirth,
+
+                    civilstatus: civilstatus,
+                    placeofbirth: placeofbirth,
+                    // is_ofw: is_ofw,
+
+                    citizenship: citizenship,
+                    occupation: occupation,
+                    monthlyIncome : monthlyIncome,
+                    incomeStatus : incomeStatus,
+                    employmentStatus : employmentStatus,
+                    workplace : workplace,
+                    // workstatus: workstatus,
+                    dateofstartwork: dateofstartwork,
+                    relationtohead: relationtohead,
+                    dateofarrive: dateofarrive,
+
+                    // is_indegenous: is_indegenous,
+                    firstname: fname,
+                    contactnumber: contactnumber,
+                    arrivalreason: arrivalreason,
+                    fromwhat: fromwhat,
+                    r_coming: r_coming,
+                    p_startdate: p_startdate,
+                    p_enddate: p_enddate,
+
+                    houseno: houseno,
+                    hstreet: hstreet,
+                    hphase: hphase,
+                    hbuilding: hbuilding,
+                    hunitno: hunitno,
+                    hsubdivision: hsubdivision,
+
+                    homeownership: homeownership,
+                    buildmaterial: buildmaterial,
+                    numberofrooms:numberofrooms,
+                    barangayaddress_id:barangayzone_id,
+                    streetno:streetno,
+                    barangayzone_id:barangayzone_id,
+
+                    toilet: toilet,
+                    playarea: playarea,
+                    bedroom: bedroom,
+                    dining: dining,
+                    sala: sala,
+                    kitchen: kitchen,
+                    runningwater: runningwater,
+                    electricity: electricity,
+                    aircon: aircon,
+                    mobile: mobile,
+                    computer: computer,
+                    internet: internet,
+                    boxtv: boxtv,
+                    cdplayer: cdplayer,
+                    boxradio: boxradio,
+                    comics: comics,
+                    newspaper: newspaper,
+                    pets: pets,
+                    books: books,
+                    storybooks: storybooks,
+                    toys: toys,
+                    boardgames: boardgames,
+                    puzzles: puzzles,
+                    personinhousehold:personinhousehold,
+                    educationatt:educationatt,
+                    enrollment_status:enrollment_status,
+                    school_type:school_type,
+
+                    pdelivery:pdelivery,
+                    battendant:battendant,
+                    bimmunization:bimmunization,
+                    fvisited:fvisited,
+                    rvisit:rvisit,
+                    disability:disability,
+                    soloParent : soloParent,
+                    isRegisteredSeniorCitizen : isRegisteredSeniorCitizen,
+                    is_registered_voter: is_registered_voter,
+                    votingPrecinct : votingPrecinct,
+                    previousResidence : previousResidence,
+                    pschool:pschool,
+                    religion:religion,
+                    ethnicity:ethnicity,
+                    lotownership:lotownership,
+                    typeofdocument:typeofdocument,
+                    wherectcissued:wherectcissued,
+                    sdtraining:sdtraining,
+                    mar_status: mar_status,
+
+                    multi_fname :  multi_fname,
+                    multi_mname :multi_mname,
+                    multi_lname:multi_lname,
+                    multi_poba:multi_poba,
+
+                    multi_doar:multi_doar,
+                    multi_ctizi:multi_ctizi,
+                    multi_cvstat:multi_cvstat,
+                    multi_religion:multi_religion,
+                    multi_sex:multi_sex,
+                    multi_educatt:multi_educatt,
+                    multi_enstat:multi_enstat,
+                    multi_school_type:multi_school_type,
+                    multi_pschool:multi_pschool,
+                    multi_occupation:multi_occupation,
+                    multi_monthlyIncome : multi_monthlyIncome,
+                    multi_incomeStatus : multi_incomeStatus,
+                    multi_employmentStatus : multi_employmentStatus,
+                    multi_workplace : multi_workplace,
+                    // multi_work_status:multi_work_status,
+                    multi_pdelivery : multi_pdelivery,
+                    multi_birthAttendant : multi_birthAttendant,
+                    multi_immunization : multi_immunization,
+                    multi_healthFacilityVisited : multi_healthFacilityVisited,
+                    multi_reasonForVisit, multi_reasonForVisit,
+                    multi_disability : multi_disability,
+                    multi_soloParent : multi_soloParent,
+                    multi_isRegisteredSeniorCitizen : multi_isRegisteredSeniorCitizen,
+                    multi_irv:multi_irv,
+                    multi_votingPrecinct : multi_votingPrecinct,
+                    multi_previousResidence : multi_previousResidence,
+                    multi_dsw:multi_dsw,
+                    // multi_is_ofw:multi_is_ofw,
+                    
+                    multi_reltohead:multi_reltohead,
+                    multi_contactc:multi_contactc,
+                    multi_typer:multi_typer,
+                    multim:multim,
+                    multirc:multirc,
+                    multi_p_startdate:multi_p_startdate,
+                    multi_p_enddate:multi_p_enddate,
+                    multi_migrants:multi_migrants,
+                    multi_fromwhat:multi_fromwhat,
+                    multi_res:multi_res,
+                    multistatus:multistatus,
+                    multi_doba : multi_doba,
+                    status: status,
+                    _token: "{{ csrf_token() }}"
+                };
+
+                let result;
+
+               Add(get_data);
+
+
     // end main household
+
+
+
 
 });
 
@@ -2905,26 +3247,43 @@ $("#register-btn").click(function(e){
     
     
 
-    $(document).on('change','.multidoba', function()
-    {
+    $(document).on('change','.multidoba', function(){
         
-        var age = getYears($(this).val());
-        var days = getDays($(this).val());
 
-        if ( age >= 1 ) 
-        {
-            age == 1 ? $("#multiage"+$(this).attr('target')).val(age + " year old") : $("#multiage"+$(this).attr('target')).val(age + " year's old")
-        }
-        else if ( age < 1 )
-        {
-            days <= 1 ? $("#multiage"+$(this).attr('target')).val(days + " day old") : $("#multiage"+$(this).attr('target')).val(days + " day's old")
-        }
+            // get_age =check_multi_age($(this).val());
+            // var cdate = new Date(Date.now());
+            // var rgdate = new Date($(this).val());
+            // var ryear = parseInt(rgdate.getFullYear());
+            // var rmont = parseInt(String(rgdate.getMonth() + 1).padStart(2, '0')) ;
+            // var rday = parseInt(String(rgdate.getDate()).padStart(2, '0') ) ;
+            // var cyear = parseInt(cdate.getFullYear());
+            // var cmon = parseInt(cdate.getMonth() + 1);
+            // var cday = parseInt(String(cdate.getDate()).padStart(2, '0'));
+
+            // var age = cyear - ryear;
+
+            // if (rday >= 32){
+            //     rday = 1;
+            // }
+            // if (rmont >= 13){
+            //     rmont = 1;
+            // }
+            // var current_year = new Date(cyear,cmon,cday);
+            // var dob_year = new Date(ryear,rmont,rday);
+            // var days = DaysBetween(dob_year,current_year);
+
+            // if (age >= 1 ) {
+
+            //     age == 1 ? $("#multiage"+$(this).attr('target')).val(age + " year old") :$("#multiage"+$(this).attr('target')).val(age + " year's old")
+            // }
+            // else if ( age < 1 ){
+            //     days <= 1 ? $("#multiage"+$(this).attr('target')).val(days + " day old") :$("#multiage"+$(this).attr('target')).val(days + " day's old")
+            // }
 
     });
 
 
-    $(document).on('click','.sw-btn-next',function()
-    {
+    $(document).on('click','.sw-btn-next',function(){
         $multi_rbi_first_name = [];
         $multi_rbi_middle_name = [];
         $multi_rbi_last_name = [];
@@ -3097,7 +3456,7 @@ $("#register-btn").click(function(e){
         $(".rbi-firstname").each(function(){
             multi_rbi_first_name.push($(this).val().toUpperCase());
         });
-        
+        console.log(multi_rbi_first_name)
         $(".rbi-middlename").each(function(){
             multi_rbi_middle_name.push($(this).val().toUpperCase());
         });
@@ -3126,7 +3485,49 @@ $("#register-btn").click(function(e){
         var age = getYears(multi_rbi_date_of_birth[0]);
         var days = getDays(multi_rbi_date_of_birth[0]);
 
-        multi_rbi_status.push(getStatus(age,days));
+        if ( (age==0 || age<0) ) 
+        {
+            if ( days <= 28 && days >= 0 ) 
+            {
+
+                var status = "newborn";
+                multi_rbi_status.push(status);
+
+            }
+            else if ( days >= 29 ) {
+
+                var status = "infant";
+                multi_rbi_status.push(status);
+            }
+        }
+        else if (age >= 1 && age <= 10) 
+        {
+            console.log('this is for children');
+        
+            var status = "child";
+            multi_rbi_status.push(status);
+        }
+        else if (age >= 11 && age <= 19) 
+        {
+            console.log('adolescent');
+        
+            var status = "adolescent";
+            multi_rbi_status.push(status);
+        }
+        else if (age >= 20 && age <= 59) 
+        {
+            console.log('child');
+            var status = "";
+            multi_rbi_status.push(status);
+        }
+        else if ( age >= 60 ) {
+
+            console.log('elderly');
+            var status = "elderly";
+            multi_rbi_status.push(status);
+        }
+        
+        });
 
         $(".rbi-age").each(function(){
             multi_rbi_age.push($(this).val());
@@ -4331,13 +4732,9 @@ label.error {
                                 <div class="panel panel-inverse">
                                 <div class="panel-heading">
                                     <div class="panel-heading-btn">
-                                        <button class="btn btn-m btn-success add-data" >Add data</button>
-                                        
                                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-
                                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-
                                     </div>
                                     <h4 class="panel-title">MIC Form</h4>
                                 </div>

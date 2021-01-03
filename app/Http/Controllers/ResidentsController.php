@@ -303,7 +303,7 @@ class ResidentsController extends Controller
             $multi_disability = request('multi_disability');
             $multi_soloParent = request('multi_soloParent');
             $multi_isRegisteredSeniorCitizen = request('multi_isRegisteredSeniorCitizen');
-            $multi_irv  = request('multi_irv') == null ? 0 : 1;
+            $multi_irv  = request('multi_irv');
             $multi_votingPrecinct = request('multi_votingPrecinct');
             $multi_previousResidence = request('multi_previousResidence');
             $multi_dsw       = request('multi_dsw');
@@ -470,6 +470,7 @@ class ResidentsController extends Controller
 
 
                 //INSERT FOR RESIDENTS-HOUSEHOLD MEMBERS
+                
                 for($i=0; $i < count($multi_doba); $i++)
                 {
 
@@ -517,15 +518,18 @@ class ResidentsController extends Controller
                                         // 'DATE_STARTED_WORKING'          => $multi_dsw[$i],
                                         'CITIZENSHIP'                   => $multi_ctizi[$i],
                                         'RELATION_TO_HOUSEHOLD_HEAD'    => $multi_reltohead[$i],
-                                        'DATE_OF_ARRIVAL'               => $multi_doar[$i],
-                                        'ARRIVAL_STATUS'                => $multirc[$i],
+                                        'DATE_OF_ARRIVAL'               => $multi_doar[$i]."-00",
+                                        'ARRIVAL_STATUS'                => $multirc[$i] == true ? 0 : $multirc[$i],
                                         // 'IS_INDIGENOUS'                 => request ('is_indegenous'),
                                         'ETHNICITY'                     => request('ethnicity'),
                                         'CONTACT_NUMBER'                => $multi_contactc[$i],
                                         'EDUCATIONAL_ATTAINMENT'        => $multi_educatt[$i],
                                         'ENROLLMENT_STATUS'             => $multi_enstat[$i],
                                         'SCHOOL_TYPE'                   => $multi_school_type[$i],
-                                        'PLACE_OF_SCHOOL'               => $multi_pschool[$i],
+                                        // 'PLACE_OF_SCHOOL'               => $multi_pschool[$i] == null ? "" : $multi_pschool[$i],
+
+                                        'PLACE_OF_SCHOOL'               => "",
+                                        
                                         'CREATED_AT'                    => DB::RAW('CURRENT_TIMESTAMP'),
                                         'ACTIVE_FLAG'                   => 1
                                     ]               

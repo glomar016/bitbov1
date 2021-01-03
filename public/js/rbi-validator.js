@@ -12,6 +12,7 @@ $(function () {
 
         init: function () {
 
+            // $(".sw-btn-next").attr("disabled", true);
             this.setDOMElements();
             this.setElementEvents();
 
@@ -21,8 +22,8 @@ $(function () {
 
             // input elements
             // input elements
-            $(".sw-btn-next").attr("disabled", true);
-            //$(".add-rbi-btn").attr("disabled", true);
+            
+            
 
             
 
@@ -38,7 +39,8 @@ $(function () {
             this.inputHouseno = $('#rbi-houseno');
             this.inputStreetno = $('#rbi-hstreet_no');
             this.inputStreet = $('#rbi-hstreet');
-            
+            this.inputDateofbirth = $('#rbi-dateofbirth');
+
             // label elements
 
             //button elements
@@ -111,8 +113,52 @@ $(function () {
                 oAdminManager.validateAddress($('#rbi-hstreet'),$('#rbi-hstreet-lbl'));
                 oAdminManager.validateAll();
             });
+
+
+            this.inputDateofbirth.on('input click', function () {
+                oAdminManager.validateAge($('#rbi-dateofbirth'),$('#rbi-dateofbirth-lbl'));
+                oAdminManager.validateAll();
+            });
+
         },
 
+        validateAge: function(input,label) {
+
+        var dateofBirth = input.val();
+        var inputDate = dateofBirth == '' ? '' : moment(dateofBirth).format('YYYY-MM-DD')
+        var today = dateofBirth == '' ? '' : moment(new Date()).format('YYYY-MM-DD')
+        var years = dateofBirth == '' ? '' : moment().diff(dateofBirth, 'years')
+        var display;
+
+        if( moment(inputDate).isSame(today) || inputDate > today  || !input.val() ) {
+
+            oAdminManager.addDesign(label,input,'Invalid birthdate.','red');
+
+        } else if (years == 0) {
+
+            var days = moment().diff(dateofBirth, 'days')
+
+            if(days != 0) {
+
+                days == 1? display = days + " day old" : display = days + " days old";
+                oAdminManager.addDesign(label,input,display,'green');
+                label.addClass('is-valid').removeClass('error');
+                label.css("color","green")
+
+            } else {
+
+                oAdminManager.addDesign(label,input,'Invalid birthdate.','red');
+            }
+
+        } else {
+            
+            years == 1? display = years + " year old" : display = years + " years old";
+            oAdminManager.addDesign(label,input,display,'green');
+            label.addClass('is-valid').removeClass('error');
+            label.css("color","green")
+        }
+        
+        },
 
         validateName: function (input,label) {
             let charRegex = new RegExp(/^[a-zA-Z\s]*$/),
@@ -181,6 +227,7 @@ $(function () {
 
                 (label.is(':empty')) ? input.addClass('is-valid') : input.removeClass('is-valid');
         },
+
         addDesign: function (label,input,message,color) {
             label.text(message);
             input.css("border-color",color);
@@ -192,11 +239,13 @@ $(function () {
             var len = $(document).find('.is-valid').length;
             console.log(len)
             if(len===11) {
+
                  $(".sw-btn-next").attr("disabled", false);
-                 $(".add-rbi-btn").attr("disabled", false);
+                 
             } else {
-                 $(".sw-btn-next").attr("disabled", true);
-                 $(".add-rbi-btn").attr("disabled", true);
+
+                 //$(".sw-btn-next").attr("disabled", true);
+                 
             }
         },
     };
