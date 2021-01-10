@@ -84,7 +84,7 @@
 								<td>{{$row->FORM_DATE}}</td>
 								<td>{{$row->REQUESTED_PAPER_TYPE}}</td>{{-- 5 --}}
 								<td>
-									<button type="button" class="btn btn-yellow" id="btnPrintClearance"  data-toggle="modal">
+									<button type="button" class="btn btn-yellow form-control" id="btnPrintClearance"  data-toggle="modal">
 										<i class="fa fa-file-alt">&nbsp</i> Print {{$row->REQUESTED_PAPER_TYPE}}
 									</button>
 								</td> {{-- 6 --}}
@@ -193,7 +193,7 @@
 </div>
 
 <div class="fillers" id="fillers" hidden>
-	
+		
 	@include('certificateandforms.FM-BC-001F')
 
 	@include('certificateandforms.fm_bbp_001_printable')
@@ -210,6 +210,8 @@
 	@include('certificateandforms.fm_bcert_001d_printable')
 	@include('certificateandforms.fm_bcert_001e_printable')
 	@include('certificateandforms.fm_bcert_001f_printable')
+
+	@include('certificateandforms.fm_bcfi_printable')
 </div>
 
 @endsection
@@ -257,8 +259,10 @@
 			data : data,
 			success : function(response) {
 				var request_paper = response["requested_paper_type"];
+				
 				// alert(request_paper);
-				if(request_paper == "Barangay Business Permit"){
+				if(request_paper == "Barangay Business Permit")
+				{
 					// alert(response)
 					var company_name, address, nature_business, tax_year, quarter, or_no, or_date, or_amount, barangay_permit, business_tax, garbage_fee, signboard, ctc;
 					$.each(response["business_permit"], function(){
@@ -311,7 +315,8 @@
 						 	copyTagClasses: false    	        
 						 });
 			   	}
-			   	else if (request_paper == "Barangay Clearance Building"){
+			   	else if (request_paper == "Barangay Clearance Building")
+			   	{
 			   		var owner, address, project_name, project_location, or_no, or_date, or_amount, control_no;
 
 			   		$.each(response["barangay_clearance"], function(){
@@ -337,7 +342,6 @@
 				   		$("#lbl_construction_location_a").text(project_location);
 				   		// $("#").text(); 	
 				   		
-
 						 //print here
 						 $("#fmbc001a").printThis({
 						 	debug: false,              
@@ -358,19 +362,25 @@
 						 	copyTagClasses: false    	        
 						 });
 				}
-				else if (request_paper == "Barangay Clearance Business"){
+				else if (request_paper == "Barangay Clearance Business")
+				{
 					var company_name, address, nature_business, or_no, or_date, or_amount, control_no;
 
 					$.each(response["barangay_clearance"], function(){
-						company_name = this["BUSINESS_NAME"];
-						address = this["BUSINESS_ADDRESS"];
-						nature_business = this["LINE_OF_BUSINESS_NAME"];
+						
 						or_no = this["OR_NO"];
 						or_date = this["OR_DATE"];
 						or_amount = this["OR_AMOUNT"];
 						control_no = this["CONTROL_NO"];
 
 					});
+
+					$.each(response["business_info"], function(){
+						company_name = this["BUSINESS_NAME"];
+						address = this["BUSINESS_ADDRESS"];
+						nature_business = this["BUSINESS_NATURE_NAME"];
+					});
+
 					//set value here
 			   		// $("#").text();
 			   		$("#lbl_control_no_b").text(control_no);
@@ -380,7 +390,6 @@
 			   		$("#lbl_company_name_b").text(company_name);
 			   		$("#lbl_address_b").text(address);
 			   		$("#lbl_nature_of_business_b").text(nature_business);
-			   		
 
 					 //print here
 					 $("#fmbc001b").printThis({
@@ -507,7 +516,8 @@
 					 	copyTagClasses: false    	        
 					});
 				}
-				else if (request_paper == "Barangay Clearance General Purposes"){
+				else if (request_paper == "Barangay Clearance General Purposes")
+				{
 					// alert('General Purposes!');
 					var activity, company_name, address, or_no, or_date, or_amount, control_no;
 
@@ -551,6 +561,13 @@
 					 	copyTagClasses: false    	        
 					});
 				}
+
+				else if (request_paper == "Barangay Clearance For Individual")
+				{
+					
+				}
+
+				
 			},
 			error : function(error){
 				console.log("error: " + error);
@@ -580,20 +597,19 @@
 		$('#txt_approved_form_id').val(form_id);
 		$('#txt_clearance_id').val(certificate_id);
 
-
 		let data = {
 			'_token' : " {{ csrf_token() }}"
 			,'FORM_ID' : form_id
 			,'REQUESTED_PAPER_TYPE' : requested_paper_type
 		};
-		//console.log(data);
+		
 		$.ajax({
 			url : "{{ route('SpecificResident') }}",
 			method : 'POST',
 			data : data,
 			success : function(response) {
-				console.log(response)
-				var request_paper = response["requested_paper_type"];
+				
+					var request_paper = response["requested_paper_type"];
 				
 					// 	A
 					if(request_paper == "Barangay Certificate Residency"){
@@ -717,7 +733,8 @@
 							if(control_no[3] <= 9){
 								control_no[3] = '0' + control_no[3]
 							}
-barangayName = '{{session('session_barangay_name')}}'
+
+							barangayName = '{{session('session_barangay_name')}}'
 							barangayName = barangayName.charAt(0).toUpperCase() + barangayName.slice(1).toLowerCase()
 							municipalName = '{{session('session_municipal_name')}}'
 							municipalName = municipalName.charAt(0).toUpperCase() + municipalName.slice(1).toLowerCase()
@@ -1097,8 +1114,7 @@ barangayName = '{{session('session_barangay_name')}}'
 							date_return = this["return_date"];
 							purpose = this["PURPOSE"];
 						});
-							console.log(travel_date)
-							console.log(date_return)
+
 							var d = new Date();
 							var date = d.getDate();
 							var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
@@ -1156,9 +1172,131 @@ barangayName = '{{session('session_barangay_name')}}'
 							 	copyTagClasses: false    	        
 							 });
 					}
+					else if (request_paper == "Barangay Clearance For Individual")
+					{
 
-			
+						var family_name, first_name, middle_name, husbands_surname;
 
+						$.each(response["barangay_certificate"], function()
+						{
+							var str = this["RESIDENT_NAME"];
+							var res = str.split(" ");
+							fname = res[0];
+							mname = res[1];
+							lname = res[2];
+							control_no = this['CONTROL_NO'];
+							valid_until = this['VALID_UNTIL'];
+							family_name = this['MAIDEN_NAME'] == null ? family_name = '' : family_name = this['MAIDEN_NAME'];
+							gender = this['SEX'];
+							civil_status = this['CIVIL_STATUS'];
+							address = this['ADDRESS'];
+							date_of_birth = this['DATE_OF_BIRTH'];
+							place_of_birth = this['PLACE_OF_BIRTH'];
+							citizenship = this['CITIZENSHIP'];
+							civil_status = this['CIVIL_STATUS'];
+							purpose = this['PURPOSE'];
+							date_issued = this['ISSUED_DATE'];
+							or_no = this['OR_NO'];
+							
+							amount = this['OR_AMOUNT'];
+							remarks = this['REMARKS'];
+							or_date = this['OR_DATE'];
+						});
+
+						$('#lbl_control_no').css('text-transform','uppercase');
+						$('#lbl_family_name').css('text-transform','uppercase');
+						$('#lbl_address').css('text-transform','uppercase');
+						$('#lbl_place_of_birth').css('text-transform','uppercase');
+						$('#lbl_citizenship').css('text-transform','uppercase');
+						$('#lbl_civil_status').css('text-transform','uppercase');
+						$('#lbl_gender').css('text-transform','uppercase');
+						$('#lbl_purpose').css('text-transform','uppercase');
+						$('#lbl_remarks').css('text-transform','uppercase');
+
+						control_no = control_no.split("-")
+						if(control_no[4] <= 99) 
+							control_no[4] = '000' + control_no[4]
+						else if(control_no[4] <= 999) 
+							control_no[4] = '00' + control_no[4]
+						
+						else if(control_no[4] <= 9999) 
+							control_no[4] = '0' + control_no[4]
+						
+						if(control_no[3] <= 9) 
+							control_no[3] = '0' + control_no[3]
+						
+						control_no = control_no[0] + '-' + control_no[1] + '-' + control_no[2] 
+												   + '-' + control_no[3] + '-' + control_no[4];
+						barangayName = '{{session('session_barangay_name')}}'
+						barangayName = barangayName.charAt(0).toUpperCase() 
+									 + barangayName.slice(1).toLowerCase()
+						municipalName = '{{session('session_municipal_name')}}'
+						municipalName = municipalName.charAt(0).toUpperCase() 
+									  + municipalName.slice(1).toLowerCase()
+						provinceName = '{{session('session_province_name')}}'
+						provinceName = provinceName.charAt(0).toUpperCase() 
+									 + provinceName.slice(1).toLowerCase()
+						address += ' Barangay ' + barangayName + ' ' + municipalName  + ', ' + provinceName 
+
+						$('#lbl_control_no').text(control_no);
+						$('#lbl_valid_until').text(valid_until);
+						$('#lbl_address').text(address);
+						$('#lbl_date_of_birth').text(date_of_birth);
+						$('#lbl_place_of_birth').text(place_of_birth);
+						$('#lbl_citizenship').text(citizenship);
+						$('#lbl_civil_status').text(civil_status);
+						$('#lbl_gender').text(gender);
+						$('#lbl_purpose').text(purpose);
+						$('#lbl_issued_date').text(date_issued);
+						$('#lbl_or_no').text(or_no);
+						$('#lbl_or_dates').text(or_date);
+						$('#lbl_amount').text(amount);
+						$('#lbl_remarks').text(remarks);
+						
+						
+						
+						if( gender == "Female"  && civil_status == "Married" )
+						{
+							$('#lbl_family_name').text(family_name);
+							$('#lbl_firstname').text(fname);
+							$('#lbl_middle_name').text(mname);
+							$('#lbl_husbands_name').text(lname);
+						}
+						else
+						if( gender == "Male" && civil_status == "Married" )
+						{
+							$('#lbl_family_name').text(lname);
+							$('#lbl_firstname').text(fname);
+							$('#lbl_middle_name').text(mname);
+							$('#lbl_husbands_name').text(lname);
+						}
+						else
+						{
+							$('#lbl_family_name').text(family_name);
+							$('#lbl_firstname').text(fname);
+							$('#lbl_middle_name').text(mname);
+							$('#lbl_husbands_name').text('');
+						}
+
+						$("#fmbcfi").printThis({
+							 	debug: false,              
+							 	         
+							 	importCSS: true,         
+							 	importStyle:true,    
+							 	loadCSS: "",                           
+							 	removeInline: false,       
+							 	printDelay: 1000,       
+							 	header: null,              
+							 	footer: "",              
+							 	base: false ,               
+							 	formValues: true,           
+							 	canvas: false,              
+							 	doctypeString: null,       
+							 	removeScripts: false,     
+							 	copyTagClasses: false    	        
+							 });
+						
+					}
 				},
 				error : function(error){
 					console.log("error: " + error);
@@ -1274,47 +1412,4 @@ lbl_purposeF_r	PURPOSE
 
 
  --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -19,14 +19,22 @@ class RequestController extends Controller
         $approved_application_form = DB::table('v_approved_application_form')->get();
         $declined_application_form = DB::table('v_declined_application_form')->get();
 
-        if($typeofview == "RequestPermit")
-        	return view('permit_certification_clearance.permit', compact('approved_business', 'business_nature'));
-        else if ($typeofview == "RequestCertification")
-        	return view('permit_certification_clearance.certificate', compact('resident','child'));
-        else if ($typeofview == "RequestClearance")
-        	return view('permit_certification_clearance.clearance', compact('approved_business', 'business_nature'));
-        	
+        if($typeofview == "RequestPermit") {
 
+        	return view('permit_certification_clearance.permit'
+                , compact('approved_business', 'business_nature'));
+
+        } else if ($typeofview == "RequestCertification") {
+
+            //dd($resident);
+        	return view('permit_certification_clearance.certificate', compact('resident','child'));
+
+        }
+        else if ($typeofview == "RequestClearance") {
+        	
+            return view('permit_certification_clearance.clearance'
+                , compact('approved_business', 'business_nature'));
+        }
    }
 
    public function getAllRelative(Request $request){
@@ -317,6 +325,8 @@ class RequestController extends Controller
         $T_TRAVEL_DATE = $request->TRAVEL_DATE;
         $T_RETURN_DATE =$request->RETURN_DATE;
         $T_PURPOSE = $request->PURPOSE;
+        $MAIDEN_NAME = $request->MAIDEN_NAME;
+        $VALID_UNTIL = $request->VALID_UNTIL;
 
         $certificate_type_id = DB::table('r_paper_type')
             ->where('PAPER_TYPE_NAME', $CERTIFICATE_TYPE)
@@ -334,7 +344,34 @@ class RequestController extends Controller
 
         $form_number = $control->PAPER_TYPE_CODE . "-" . $YEAR_MONTH . "-" . $control->SERIES;
 
-        if($CERTIFICATE_TYPE == "Barangay Certificate Residency"){
+        if($CERTIFICATE_TYPE == "Barangay Clearance For Individual") 
+        {
+            $application_form = DB::Table('t_application_form')
+                ->insert(array(
+                    'FORM_NUMBER' => $form_number
+                    ,'PAPER_TYPE_ID' => $form_type_id->PAPER_TYPE_ID
+                    ,'STATUS' => 'Pending'
+                    ,'RESIDENT_ID' => $RESIDENT_ID
+                    ,'RECEIVED_BY' => session('session_full_name')
+                    ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
+                    ,'APPLICANT_NAME' => $APPLICANT_NAME
+                ));
+
+            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+
+            $barangay_certificate = DB::table('t_bf_barangay_certification')
+                ->insert(array(
+                    'PURPOSE' => $F_PURPOSE
+                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'MAIDEN_NAME' => $MAIDEN_NAME
+                    ,'VALID_UNTIL' => $VALID_UNTIL 
+                ));
+
+            return response()->json(['message' => "success" ]);
+
+        }
+        else if($CERTIFICATE_TYPE == "Barangay Certificate Residency")
+        {
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => $form_number
@@ -625,12 +662,14 @@ class RequestController extends Controller
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Business"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Business")
+        {
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
                     ,'PAPER_TYPE_ID' => $form_type_id->PAPER_TYPE_ID
                     ,'STATUS' => 'Pending'
+
                     ,'BUSINESS_ID' => $BUSINESS_ID
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID

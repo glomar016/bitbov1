@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class IssuanceController extends Controller
 {
-    public function index(){
+    public function index()
+    {
     	$approved_application_form = DB::table('v_approved_application_form')
             ->orderBy('FORM_DATE', 'desc')
             ->get();
@@ -33,7 +34,8 @@ class IssuanceController extends Controller
             return response()->json(['business_permit' => $business_permit, 'requested_paper_type' => 'Barangay Business Permit']);    
         }
 
-        else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Building")       {
+        else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Building")       
+        {
             $barangay_clearance = DB::table('v_barangay_clearance')
             ->where('FORM_ID', $FORM_ID)
                 ->get();
@@ -42,11 +44,22 @@ class IssuanceController extends Controller
 
         }
 
-        else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Business")       {
+        else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Business")       
+        {
             $barangay_clearance = DB::table('v_barangay_clearance')
                 ->where('FORM_ID', $FORM_ID)
                 ->get();
-            return response()->json(['barangay_clearance' => $barangay_clearance, 'requested_paper_type' => 'Barangay Clearance Business']);    
+            
+            $business_info = DB::table('v_business_information')
+                ->where('BUSINESS_ID', $barangay_clearance[0]->BUSINESS_ID)
+                ->get();
+            
+            return response()->json(
+                [
+                    'barangay_clearance' => $barangay_clearance, 
+                    'business_info' => $business_info,
+                    'requested_paper_type' => 'Barangay Clearance Business'
+                ]);   
 
         }
 
@@ -79,7 +92,15 @@ class IssuanceController extends Controller
         $FORM_ID = $request->FORM_ID;
         $REQUESTED_PAPER_TYPE = $request->REQUESTED_PAPER_TYPE;
 
-        if ($REQUESTED_PAPER_TYPE == "Barangay Certificate Residency"){
+        if ($REQUESTED_PAPER_TYPE == "Barangay Clearance For Individual")
+        {
+            $barangay_certificate = DB::table('v_barangay_certificate')
+                ->where('FORM_ID', $FORM_ID)
+                ->get();
+            return response()->json(['requested_paper_type' => 'Barangay Clearance For Individual', 'barangay_certificate' => $barangay_certificate]);
+        }
+
+        else if ($REQUESTED_PAPER_TYPE == "Barangay Certificate Residency"){
             $barangay_certificate = DB::table('v_barangay_certificate')
                 ->where('FORM_ID', $FORM_ID)
                 ->get();

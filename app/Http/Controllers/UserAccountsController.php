@@ -618,7 +618,6 @@ class UserAccountsController extends Controller
                             foreach ($getbrgychair as $value)
                             {
                                  session(['session_brgychairman_name' => $value->FULLNAME]);
-                                 
                             }
                             
                             Session::save(); 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2020 at 07:07 PM
+-- Generation Time: Jan 07, 2021 at 07:14 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -554,7 +554,6 @@ CREATE TABLE `r_paper_type` (
 --
 
 INSERT INTO `r_paper_type` (`PAPER_TYPE_ID`, `PAPER_TYPE_NAME`, `PAPER_TYPE_CATEGORY`, `PAPER_TYPE_DECRIPTION`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`, `PAPER_TYPE_CODE`, `SERIES`) VALUES
-(0, 'Patient Record Form', 'Form', '', '2019-10-13 19:10:01', '0000-00-00 00:00:00', 1, 'BF07', NULL),
 (1, 'Application Barangay Business Permit Form', 'Form', 'Business', '2019-10-13 19:10:01', '0000-00-00 00:00:00', 1, 'BF01', NULL),
 (2, 'Application Barangay Clearance Form', 'Form', 'Business', '2019-10-13 19:10:01', '0000-00-00 00:00:00', 1, 'BF02', NULL),
 (3, 'Request Barangay Certification Form', 'Form', 'Resident', '2019-10-13 19:10:01', '0000-00-00 00:00:00', 1, 'BF03', NULL),
@@ -584,7 +583,10 @@ INSERT INTO `r_paper_type` (`PAPER_TYPE_ID`, `PAPER_TYPE_NAME`, `PAPER_TYPE_CATE
 (28, 'Permit Use Of Barangay Property Facility', 'Unknown', NULL, '2019-10-13 19:26:37', NULL, 1, 'FM-BPermit', NULL),
 (29, 'Barangay Clearance Weights and Measure', 'Clearance', 'Business', '2020-08-02 20:11:57', '2020-08-02 20:11:57', 1, 'FM-BC-001G', NULL),
 (30, 'Barangay Clearance Fishery Rental and Privellege', 'Clearance', 'Business', '2020-08-02 20:12:35', '2020-08-02 20:12:35', 1, 'FM-BC-001H', NULL),
-(31, 'Barangay Certificate Travel', 'Certification', 'Resident', '2020-08-17 11:04:24', '2020-09-01 20:37:30', 1, 'FM-QTP-001', NULL);
+(31, 'Barangay Certificate Travel', 'Certification', 'Resident', '2020-08-17 11:04:24', '2020-09-01 20:37:30', 1, 'FM-QTP-001', NULL),
+(32, 'Patient Record Form', 'Form', '', '2019-10-13 19:10:01', '2021-01-05 12:16:57', 1, 'BF07', NULL),
+(33, 'Barangay Clearance For Individual', 'Clearance', 'Resident', '2021-01-05 12:17:31', '2021-01-05 12:18:30', 1, 'FM-BCI', NULL),
+(34, 'Barangay Clearance Building (Individual)', 'Clearance', 'Resident', '2021-01-05 12:19:28', '2021-01-05 12:19:28', 1, 'FM-BCBI', NULL);
 
 -- --------------------------------------------------------
 
@@ -670,7 +672,10 @@ CREATE TABLE `t_application_form` (
 INSERT INTO `t_application_form` (`FORM_ID`, `FORM_DATE`, `FORM_TIME`, `TIME_RECEIVED`, `RECEIVED_BY`, `FORM_NUMBER`, `PAPER_TYPE_ID`, `REQUESTED_PAPER_TYPE_ID`, `STATUS`, `BUSINESS_ID`, `RESIDENT_ID`, `APPLICANT_NAME`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
 (1, '2020-11-05 17:12:47', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'BF03--', 3, 22, 'Approved', NULL, 2, 'MHYLEN CASAMINA REYTA', '2020-11-05 17:12:47', '2020-11-05 00:00:00', 1),
 (2, '2020-11-10 16:00:35', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'BF03--', 3, 22, 'Approved', NULL, 1, 'GILBERT LLOSALA CATAMBAY', '2020-11-10 16:00:35', '2020-11-10 00:00:00', 1),
-(3, '2020-11-10 16:21:34', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'BF03--', 3, 22, 'Approved', NULL, 1, 'GILBERT LLOSALA CATAMBAY', '2020-11-10 16:21:34', '2020-11-10 00:00:00', 1);
+(3, '2020-11-10 16:21:34', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'BF03--', 3, 22, 'Approved', NULL, 1, 'GILBERT LLOSALA CATAMBAY', '2020-11-10 16:21:34', '2020-11-10 00:00:00', 1),
+(4, '2021-01-05 12:09:03', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'BF03--', 3, 22, 'Approved', NULL, 2, 'MHYLEN CASAMINA REYTA', '2021-01-05 12:09:03', '2021-01-05 00:00:00', 1),
+(6, '2021-01-05 15:40:29', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'BF03--', 3, 33, 'Approved', NULL, 3, 'ARTURO MENGORIO VIRAY', '2021-01-05 15:40:29', '2021-01-05 00:00:00', 1),
+(7, '2021-01-07 11:25:38', NULL, NULL, 'GILBERT LLOSALA CATAMBAY', 'SSS-SSS', 1, 14, 'Pending', 1, NULL, 'Patrick  Viray', '2021-01-07 11:25:38', '2021-01-07 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -697,7 +702,10 @@ CREATE TABLE `t_application_form_evaluation` (
 INSERT INTO `t_application_form_evaluation` (`AF_EVALUATION_ID`, `FORM_ID`, `EVALUATED_BY`, `DATE_EVALUATED`, `EVALUATION_STATUS`, `REMARKS`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
 (1, 1, 'GILBERT LLOSALA CATAMBAY', '2020-11-05 00:00:00', 'Approved', NULL, '2020-11-05 17:13:50', NULL, 1),
 (2, 2, 'GILBERT LLOSALA CATAMBAY', '2020-11-10 00:00:00', 'Approved', NULL, '2020-11-10 16:02:35', NULL, 1),
-(3, 3, 'GILBERT LLOSALA CATAMBAY', '2020-11-10 00:00:00', 'Approved', NULL, '2020-11-10 16:23:13', NULL, 1);
+(3, 3, 'GILBERT LLOSALA CATAMBAY', '2020-11-10 00:00:00', 'Approved', NULL, '2020-11-10 16:23:13', NULL, 1),
+(4, 4, 'GILBERT LLOSALA CATAMBAY', '2021-01-05 00:00:00', 'Approved', 'Okay', '2021-01-05 12:10:03', NULL, 1),
+(5, 6, 'GILBERT LLOSALA CATAMBAY', '2021-01-05 00:00:00', 'Approved', 'Sample Remarks', '2021-01-05 16:09:53', NULL, 1),
+(6, 7, 'GILBERT LLOSALA CATAMBAY', '2021-01-07 00:00:00', 'Pending', 'None', '2021-01-07 11:26:11', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -750,17 +758,20 @@ CREATE TABLE `t_bf_barangay_certification` (
   `FORM_ID` int(11) DEFAULT NULL,
   `CREATED_AT` datetime DEFAULT current_timestamp(),
   `UPDATE_AT` datetime DEFAULT current_timestamp(),
-  `ACTIVE_FLAG` tinyint(4) DEFAULT 1
+  `ACTIVE_FLAG` tinyint(4) DEFAULT 1,
+  `HUSBAND_NAME` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `t_bf_barangay_certification`
 --
 
-INSERT INTO `t_bf_barangay_certification` (`BARANGAY_CERTIFICATION_ID`, `REQUESTOR_NAME`, `SSS_NO`, `CALAMITY_NAME`, `CALAMITY_DATE`, `COUNTRY`, `CATEGORY_SINGLE_PARENT`, `PURPOSE`, `PLACE_DESTINATION`, `DESTINATION_ADDRESS`, `TRAVEL_DATE`, `RETURN_DATE`, `FORM_ID`, `CREATED_AT`, `UPDATE_AT`, `ACTIVE_FLAG`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, 'ASA Multipurpose Loan Application', NULL, NULL, NULL, NULL, 1, '2020-11-05 17:12:47', '2020-11-05 17:12:47', 1),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, 'test', NULL, NULL, NULL, NULL, 2, '2020-11-10 16:00:35', '2020-11-10 16:00:35', 1),
-(3, NULL, NULL, NULL, NULL, NULL, NULL, 'Meralco Electric Application', NULL, NULL, NULL, NULL, 3, '2020-11-10 16:21:34', '2020-11-10 16:21:34', 1);
+INSERT INTO `t_bf_barangay_certification` (`BARANGAY_CERTIFICATION_ID`, `REQUESTOR_NAME`, `SSS_NO`, `CALAMITY_NAME`, `CALAMITY_DATE`, `COUNTRY`, `CATEGORY_SINGLE_PARENT`, `PURPOSE`, `PLACE_DESTINATION`, `DESTINATION_ADDRESS`, `TRAVEL_DATE`, `RETURN_DATE`, `FORM_ID`, `CREATED_AT`, `UPDATE_AT`, `ACTIVE_FLAG`, `HUSBAND_NAME`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, 'ASA Multipurpose Loan Application', NULL, NULL, NULL, NULL, 1, '2020-11-05 17:12:47', '2020-11-05 17:12:47', 1, NULL),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, 'test', NULL, NULL, NULL, NULL, 2, '2020-11-10 16:00:35', '2020-11-10 16:00:35', 1, NULL),
+(3, NULL, NULL, NULL, NULL, NULL, NULL, 'Meralco Electric Application', NULL, NULL, NULL, NULL, 3, '2020-11-10 16:21:34', '2020-11-10 16:21:34', 1, NULL),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, 'For Proof', NULL, NULL, NULL, NULL, 4, '2021-01-05 12:09:04', '2021-01-05 12:09:04', 1, NULL),
+(6, NULL, NULL, NULL, NULL, NULL, NULL, 'proof', NULL, NULL, NULL, NULL, 6, '2021-01-05 15:40:29', '2021-01-05 15:40:29', 1, 'viray patrick');
 
 -- --------------------------------------------------------
 
@@ -842,6 +853,13 @@ CREATE TABLE `t_bf_business_permit` (
   `ACTIVE_FLAG` tinyint(4) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `t_bf_business_permit`
+--
+
+INSERT INTO `t_bf_business_permit` (`BUSINESS_PERMIT_ID`, `AMENDMENT_FROM`, `AMENDMENT_TO`, `IS_ENJOYING_TAZ_INCENTIVE`, `SPECIFY_REASON`, `TAX_YEAR`, `QUARTER`, `BARANGAY_PERMIT`, `BUSINESS_TAX`, `GARBAGE_FEE`, `SIGNBOARD`, `CTC`, `FORM_ID`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
+(1, NULL, NULL, NULL, NULL, '2021', '1st', '100', '150', '100', '100', '200', 7, '2021-01-07 11:25:38', NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -907,6 +925,13 @@ CREATE TABLE `t_business_approval` (
   `DATE_APPROVED` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `t_business_approval`
+--
+
+INSERT INTO `t_business_approval` (`APPROVAL_ID`, `BUSINESS_ID`, `STATUS`, `APPROVED_BY`, `DATE_APPROVED`) VALUES
+(1, 1, 'Evaluated', 'Gilbert', '2021-01-05 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -969,6 +994,13 @@ CREATE TABLE `t_business_information` (
   `STATUS` varchar(50) DEFAULT NULL,
   `NEW_RENEW_STATUS` varchar(50) DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `t_business_information`
+--
+
+INSERT INTO `t_business_information` (`BUSINESS_ID`, `BUSINESS_NAME`, `TRADE_NAME`, `BUSINESS_NATURE_ID`, `BUSINESS_OWNER_FIRSTNAME`, `BUSINESS_OWNER_MIDDLENAME`, `BUSINESS_OWNER_LASTNAME`, `BUSINESS_ADDRESS`, `BUILDING_NUMBER`, `BUILDING_NAME`, `UNIT_NO`, `STREET`, `SITIO`, `SUBDIVISION`, `BUSINESS_OR_NUMBER`, `BUSINESS_OR_ACQUIRED_DATE`, `BARANGAY_ZONE_ID`, `TIN_NO`, `DTI_REGISTRATION_NO`, `DTI_NO_DATE`, `TYPE_OF_BUSINESS`, `BUSINESS_POSTAL_CODE`, `BUSINESS_EMAIL_ADD`, `BUSINESS_TELEPHONE_NO`, `BUSINESS_MOBILE_NO`, `OWNER_ADDRESS`, `OWNER_POSTAL_CODE`, `OWNER_EMAIL_ADD`, `OWNER_TELEPHONE_NO`, `OWNER_MOBILE_NO`, `EMERGENCY_CONTACT_PERSON`, `EMERGENCY_PERSON_CONTACT_NO`, `EMERGENCY_PERSON_EMAIL_ADD`, `BUSINESS_AREA`, `NO_EMPLOYEE_ESTABLISHMENT`, `NO_EMPLOYEE_LGU`, `NO_FEMALE_EMPLOYEE`, `NO_MALE_EMPLOYEE`, `NO_FEMALE_LGU`, `NO_MALE_LGU`, `LESSOR_NAME`, `LESSOR_ADDRESS`, `LESSOR_POSTAL`, `LESSOR_CONTACT_NO`, `LESSOR_TELEPHONE`, `LESSOR_MOBILE_NO`, `LESSOR_EMAIL_ADD`, `MONTHLY_RENTAL`, `REFERENCED_BUSINESS_ID`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`, `STATUS`, `NEW_RENEW_STATUS`) VALUES
+(1, 'Ukay-Ukay', 'Tindahan ni Aling Nena', 11, 'Patrick', NULL, 'Viray', NULL, '231', 'Dangan', '2', 'Bembol', NULL, NULL, '1202', NULL, NULL, '21-2212', 'REG-12', NULL, 'Single', '1119', 'virayp@gmail.com', '212-1123', '0933-123-1111', '231 Dagupan City', '1112', 'virayp@gmail.com', '123-1131', '0933-112-3123', 'Viray Gerald', '0933311231', 'gerald@gmail.com', '23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-01-05 00:00:00', NULL, NULL, 'Approved', 'New');
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1096,9 @@ CREATE TABLE `t_clearance_certification` (
 INSERT INTO `t_clearance_certification` (`CLEARANCE_CERTIFICATION_ID`, `CONTROL_NO`, `ISSUED_DATE`, `OR_NO`, `OR_DATE`, `OR_AMOUNT`, `FORM_ID`, `PAPER_TYPE_ID`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
 (1, 'FM-BCC--0', '2020-11-05 00:00:00', NULL, '2020-11-05 00:00:00', '0.00', 1, 22, '2020-11-05 17:13:50', NULL, 1),
 (2, 'FM-BCC--1', '2020-11-10 00:00:00', '123456', '2020-11-10 00:00:00', '123.00', 2, 22, '2020-11-10 16:02:35', NULL, 1),
-(3, 'FM-BCC-2020-11-2', '2020-11-10 00:00:00', NULL, '2020-11-10 00:00:00', NULL, 3, 22, '2020-11-10 16:23:13', NULL, 1);
+(3, 'FM-BCC-2020-11-2', '2020-11-10 00:00:00', NULL, '2020-11-10 00:00:00', NULL, 3, 22, '2020-11-10 16:23:13', NULL, 1),
+(4, 'FM-BCC-2021-1-3', '2021-01-05 00:00:00', '111-231', '2021-01-05 00:00:00', '50', 4, 22, '2021-01-05 12:10:03', NULL, 1),
+(5, 'FM-BCC-2021-1-4', '2021-01-05 00:00:00', '22-123-2', '2021-01-05 00:00:00', '100', 6, 33, '2021-01-05 16:09:53', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1148,7 +1182,27 @@ CREATE TABLE `t_household_batch` (
 
 INSERT INTO `t_household_batch` (`FAMILY_HEADER_ID`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
 (1, '2020-11-05 07:34:40', '2020-11-05 07:34:40', 1),
-(2, '2020-11-10 07:50:27', '2020-11-10 07:50:27', 1);
+(2, '2020-11-10 07:50:27', '2020-11-10 07:50:27', 1),
+(3, '2020-12-28 00:04:44', '2020-12-28 00:04:44', 1),
+(4, '2020-12-28 00:18:30', '2020-12-28 00:18:30', 1),
+(5, '2020-12-28 00:21:10', '2020-12-28 00:21:10', 1),
+(6, '2020-12-28 00:21:18', '2020-12-28 00:21:18', 1),
+(7, '2020-12-28 00:35:24', '2020-12-28 00:35:24', 1),
+(8, '2020-12-28 00:37:06', '2020-12-28 00:37:06', 1),
+(9, '2020-12-28 00:37:46', '2020-12-28 00:37:46', 1),
+(10, '2020-12-28 00:40:03', '2020-12-28 00:40:03', 1),
+(11, '2020-12-28 00:41:43', '2020-12-28 00:41:43', 1),
+(12, '2020-12-28 00:43:12', '2020-12-28 00:43:12', 1),
+(13, '2020-12-28 00:45:27', '2020-12-28 00:45:27', 1),
+(14, '2020-12-28 00:46:41', '2020-12-28 00:46:41', 1),
+(15, '2020-12-28 00:49:25', '2020-12-28 00:49:25', 1),
+(16, '2020-12-28 00:50:46', '2020-12-28 00:50:46', 1),
+(17, '2020-12-28 00:51:26', '2020-12-28 00:51:26', 1),
+(18, '2020-12-28 00:55:20', '2020-12-28 00:55:20', 1),
+(19, '2020-12-28 00:57:46', '2020-12-28 00:57:46', 1),
+(20, '2020-12-28 01:09:24', '2020-12-28 01:09:24', 1),
+(21, '2020-12-28 01:28:41', '2020-12-28 01:28:41', 1),
+(22, '2020-12-28 02:29:38', '2020-12-28 02:29:38', 1);
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1256,23 @@ INSERT INTO `t_household_information` (`HOUSEHOLD_ID`, `HOME_OWNERSHIP`, `LOT_OW
 (1, 'Owned', NULL, 'Parents', 'Concrete', NULL, NULL, NULL, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, '2020-11-05 15:34:40', '2020-11-05 17:27:57', 1),
 (2, 'Owned', 'Owned', 'Parents', 'Concrete', NULL, NULL, NULL, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-11-05 17:09:01', '2020-11-10 17:34:37', 1),
 (3, 'Owned', 'Owned', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-10 15:50:27', NULL, 1),
-(4, 'Owned', 'Owned', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-10 17:31:30', NULL, 1);
+(4, 'Owned', 'Owned', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-10 17:31:30', NULL, 1),
+(6, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-28 00:04:43', NULL, 1),
+(7, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, '2020-12-28 00:18:30', NULL, 1),
+(8, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, '2020-12-28 00:21:10', NULL, 1),
+(9, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, '2020-12-28 00:21:18', NULL, 1),
+(10, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:35:24', NULL, 1),
+(11, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:37:06', NULL, 1),
+(12, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:37:46', NULL, 1),
+(13, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:40:03', NULL, 1),
+(14, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:41:42', NULL, 1),
+(15, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:43:11', NULL, 1),
+(16, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:45:27', NULL, 1),
+(17, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:46:40', NULL, 1),
+(18, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:49:25', NULL, 1),
+(19, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:50:46', NULL, 1),
+(20, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, '2020-12-28 00:51:26', NULL, 1),
+(25, 'Owned', NULL, '2', 'Concrete', NULL, NULL, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-28 02:29:38', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1226,7 +1296,28 @@ CREATE TABLE `t_household_members` (
 INSERT INTO `t_household_members` (`FAMILY_INFORMATION_ID`, `FAMILY_HEADER_ID`, `RESIDENT_ID`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
 (1, 1, 1, '2020-11-05 07:34:40', NULL, 1),
 (2, 2, 3, '2020-11-10 07:50:27', NULL, 1),
-(3, 0, 4, NULL, NULL, 1);
+(3, 0, 4, NULL, NULL, 1),
+(4, 3, 5, '2020-12-28 00:04:44', NULL, 1),
+(5, 4, 6, '2020-12-28 00:18:30', NULL, 1),
+(6, 5, 7, '2020-12-28 00:21:10', NULL, 1),
+(7, 6, 8, '2020-12-28 00:21:18', NULL, 1),
+(8, 7, 9, '2020-12-28 00:35:24', NULL, 1),
+(9, 8, 10, '2020-12-28 00:37:06', NULL, 1),
+(10, 9, 11, '2020-12-28 00:37:46', NULL, 1),
+(11, 10, 12, '2020-12-28 00:40:03', NULL, 1),
+(12, 11, 13, '2020-12-28 00:41:43', NULL, 1),
+(13, 12, 14, '2020-12-28 00:43:12', NULL, 1),
+(14, 13, 15, '2020-12-28 00:45:27', NULL, 1),
+(15, 14, 16, '2020-12-28 00:46:41', NULL, 1),
+(16, 15, 17, '2020-12-28 00:49:25', NULL, 1),
+(17, 16, 18, '2020-12-28 00:50:47', NULL, 1),
+(18, 17, 19, '2020-12-28 00:51:26', NULL, 1),
+(19, 18, 20, '2020-12-28 00:55:20', NULL, 1),
+(20, 19, 21, '2020-12-28 00:57:46', NULL, 1),
+(21, 20, 22, '2020-12-28 01:09:24', NULL, 1),
+(22, 21, 24, '2020-12-28 01:28:41', NULL, 1),
+(23, 22, 26, '2020-12-28 02:29:38', NULL, 1),
+(24, 22, 27, '2020-12-28 02:29:39', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1255,7 +1346,9 @@ CREATE TABLE `t_hs_adolescent` (
 --
 
 INSERT INTO `t_hs_adolescent` (`ADOLESCENT_ID`, `RESIDENT_ID`, `MMRTD_DATE`, `IS_REFERRED`, `DATE_OF_VISIT`, `REMARKS`, `CS_DIABETIC`, `CS_MATAAS_PRESYON`, `CS_CANCER`, `CS_BUKOL`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
-(1, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-10 17:31:30', NULL, 1);
+(1, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-10 17:31:30', NULL, 1),
+(2, 26, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-28 02:29:38', NULL, 1),
+(3, 27, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-28 02:29:39', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1718,7 +1811,7 @@ CREATE TABLE `t_resident_basic_info` (
   `DATE_STARTED_WORKING` date DEFAULT NULL,
   `CITIZENSHIP` varchar(25) DEFAULT NULL,
   `RELATION_TO_HOUSEHOLD_HEAD` varchar(50) DEFAULT NULL,
-  `DATE_OF_ARRIVAL` date DEFAULT NULL,
+  `DATE_OF_ARRIVAL` varchar(50) DEFAULT NULL,
   `ARRIVAL_STATUS` int(11) DEFAULT NULL,
   `IS_INDIGENOUS` int(11) DEFAULT NULL,
   `CONTACT_NUMBER` varchar(25) DEFAULT NULL,
@@ -1726,7 +1819,7 @@ CREATE TABLE `t_resident_basic_info` (
   `SSS_NO` varchar(255) DEFAULT NULL,
   `GSIS_NO` int(11) DEFAULT NULL,
   `EMAIL_ADDRESS` varchar(255) DEFAULT NULL,
-  `IS_REGISTERED_VOTER` int(11) DEFAULT NULL,
+  `IS_REGISTERED_VOTER` varchar(50) DEFAULT NULL,
   `VOTING_PRECINCT` varchar(100) DEFAULT NULL,
   `PREVIOUS_RESIDENCE` varchar(100) DEFAULT NULL,
   `EDUCATIONAL_ATTAINMENT` varchar(255) DEFAULT NULL,
@@ -1754,18 +1847,44 @@ CREATE TABLE `t_resident_basic_info` (
   `PROFILE_PICTURE` varchar(255) DEFAULT NULL,
   `CREATED_AT` datetime DEFAULT current_timestamp(),
   `UPDATED_AT` datetime DEFAULT current_timestamp(),
-  `ACTIVE_FLAG` int(11) UNSIGNED DEFAULT 1
+  `ACTIVE_FLAG` int(11) UNSIGNED DEFAULT 1,
+  `BLK_LOT_PHASE` varchar(255) DEFAULT NULL,
+  `NATIONAL_ID` varchar(255) DEFAULT NULL,
+  `LOT_OWNERSHIP` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `t_resident_basic_info`
 --
 
-INSERT INTO `t_resident_basic_info` (`RESIDENT_ID`, `HOUSEHOLD_ID`, `LASTNAME`, `MIDDLENAME`, `FIRSTNAME`, `ADDRESS_UNIT_NO`, `ADDRESS_PHASE`, `ADDRESS_BLOCK_NO`, `ADDRESS_HOUSE_NO`, `ADDRESS_STREET_NO`, `ADDRESS_STREET`, `ADDRESS_SUBDIVISION`, `ADDRESS_BUILDING`, `QUALIFIER`, `DATE_OF_BIRTH`, `PLACE_OF_BIRTH`, `SEX`, `CIVIL_STATUS`, `IS_OFW`, `OCCUPATION`, `MONTHLY_INCOME`, `INCOME_STATUS`, `EMPLOYMENT_STATUS`, `PLACE_OF_WORK`, `DATE_STARTED_WORKING`, `CITIZENSHIP`, `RELATION_TO_HOUSEHOLD_HEAD`, `DATE_OF_ARRIVAL`, `ARRIVAL_STATUS`, `IS_INDIGENOUS`, `CONTACT_NUMBER`, `TIN_NO`, `SSS_NO`, `GSIS_NO`, `EMAIL_ADDRESS`, `IS_REGISTERED_VOTER`, `VOTING_PRECINCT`, `PREVIOUS_RESIDENCE`, `EDUCATIONAL_ATTAINMENT`, `ENROLLMENT_STATUS`, `SCHOOL_TYPE`, `PERSONS STAYING IN THE HOUSHOLD`, `FROM_WHAT_COUNTRY`, `PLACE_OF_DELIVERY`, `BIRTH_ATTENDANT`, `IMMUNIZATION`, `HEALTH_FACILITY_VISITED_LAST_SIX_MONTHS`, `REASONFOR_VISIT`, `DISABILITY`, `SOLO_PARENT`, `IS_REGISTERED_SENIOR_CITIZEN`, `PLACE_OF_SCHOOL`, `RELIGION`, `ETHNICITY`, `TYPE_OF_DOCUMENT`, `ISSUED_DATE`, `WHERE_DOCUMENT_ISSUED`, `SKILLS_DEVELOPMENT_TRAINING`, `IS_RBI_COMPLETE`, `IS_MIC_COMPLETE`, `PROFILE_PICTURE`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`) VALUES
-(1, 1, 'CATAMBAY', 'LLOSALA', 'GILBERT', NULL, NULL, NULL, '187', 'Manuel Peñaranda Street', 'NA', NULL, NULL, NULL, '1974-11-10', 'Tanay Rizal', 'Male', 'Single', NULL, 'Barangay Secretary', NULL, NULL, NULL, NULL, NULL, 'Filipino', 'Head', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-05 15:34:40', '2020-11-05 15:34:40', 1),
-(2, 2, 'REYTA', 'CASAMINA', 'MHYLEN', NULL, NULL, NULL, '0', 'DOLORES  STREET', 'NA', NULL, NULL, NULL, '1983-01-17', 'tanay rizal', 'Female', 'Single', NULL, 'Barangay Staff', NULL, NULL, NULL, NULL, NULL, 'Filipino', 'Head', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-05 17:09:01', '2020-11-05 17:57:17', 1),
-(3, 3, 'VIRAY', 'MENGORIO', 'ARTURO', NULL, NULL, NULL, '0', 'Manuel Peñaranda', 'sitio Kabilang Ibayo', NULL, NULL, NULL, '1966-10-14', 'tANAY RIZAL', 'Male', 'Married', NULL, 'Punong Barangay', NULL, NULL, NULL, NULL, NULL, 'Filipino', 'Head', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-10 15:50:27', '2020-11-10 15:51:36', 1),
-(4, 4, 'ALTOVEROS', 'REYTA', 'MATT GEIVRIEL', NULL, NULL, NULL, NULL, 'DOLORES STREET', NULL, NULL, NULL, 'NA', '2009-09-13', 'MORONG RIZAL', 'Male', 'Single', NULL, 'NA', NULL, NULL, NULL, NULL, NULL, 'FILIPINO', 'Daughter', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-10 17:31:30', '2020-11-10 17:31:30', 1);
+INSERT INTO `t_resident_basic_info` (`RESIDENT_ID`, `HOUSEHOLD_ID`, `LASTNAME`, `MIDDLENAME`, `FIRSTNAME`, `ADDRESS_UNIT_NO`, `ADDRESS_PHASE`, `ADDRESS_BLOCK_NO`, `ADDRESS_HOUSE_NO`, `ADDRESS_STREET_NO`, `ADDRESS_STREET`, `ADDRESS_SUBDIVISION`, `ADDRESS_BUILDING`, `QUALIFIER`, `DATE_OF_BIRTH`, `PLACE_OF_BIRTH`, `SEX`, `CIVIL_STATUS`, `IS_OFW`, `OCCUPATION`, `MONTHLY_INCOME`, `INCOME_STATUS`, `EMPLOYMENT_STATUS`, `PLACE_OF_WORK`, `DATE_STARTED_WORKING`, `CITIZENSHIP`, `RELATION_TO_HOUSEHOLD_HEAD`, `DATE_OF_ARRIVAL`, `ARRIVAL_STATUS`, `IS_INDIGENOUS`, `CONTACT_NUMBER`, `TIN_NO`, `SSS_NO`, `GSIS_NO`, `EMAIL_ADDRESS`, `IS_REGISTERED_VOTER`, `VOTING_PRECINCT`, `PREVIOUS_RESIDENCE`, `EDUCATIONAL_ATTAINMENT`, `ENROLLMENT_STATUS`, `SCHOOL_TYPE`, `PERSONS STAYING IN THE HOUSHOLD`, `FROM_WHAT_COUNTRY`, `PLACE_OF_DELIVERY`, `BIRTH_ATTENDANT`, `IMMUNIZATION`, `HEALTH_FACILITY_VISITED_LAST_SIX_MONTHS`, `REASONFOR_VISIT`, `DISABILITY`, `SOLO_PARENT`, `IS_REGISTERED_SENIOR_CITIZEN`, `PLACE_OF_SCHOOL`, `RELIGION`, `ETHNICITY`, `TYPE_OF_DOCUMENT`, `ISSUED_DATE`, `WHERE_DOCUMENT_ISSUED`, `SKILLS_DEVELOPMENT_TRAINING`, `IS_RBI_COMPLETE`, `IS_MIC_COMPLETE`, `PROFILE_PICTURE`, `CREATED_AT`, `UPDATED_AT`, `ACTIVE_FLAG`, `BLK_LOT_PHASE`, `NATIONAL_ID`, `LOT_OWNERSHIP`) VALUES
+(1, 1, 'CATAMBAY', 'LLOSALA', 'GILBERT', NULL, NULL, NULL, '187', 'Manuel Peñaranda Street', 'NA', NULL, NULL, NULL, '1974-11-10', 'Tanay Rizal', 'Male', 'Single', NULL, 'Barangay Secretary', NULL, NULL, NULL, NULL, NULL, 'Filipino', 'Head', '2020-12-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-05 15:34:40', '2020-11-05 15:34:40', 1, NULL, NULL, NULL),
+(2, 2, 'REYTA', 'CASAMINA', 'MHYLEN', NULL, NULL, NULL, '0', 'DOLORES  STREET', 'NA', NULL, NULL, NULL, '1983-01-17', 'tanay rizal', 'Female', 'Single', NULL, 'Barangay Staff', NULL, NULL, NULL, NULL, NULL, 'Filipino', 'Head', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-05 17:09:01', '2020-11-05 17:57:17', 1, NULL, NULL, NULL),
+(3, 3, 'VIRAY', 'MENGORIO', 'ARTURO', NULL, NULL, NULL, '0', 'Manuel Peñaranda', 'sitio Kabilang Ibayo', NULL, NULL, NULL, '1966-10-14', 'tANAY RIZAL', 'Male', 'Married', NULL, 'Punong Barangay', NULL, NULL, NULL, NULL, NULL, 'Filipino', 'Head', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-10 15:50:27', '2020-11-10 15:51:36', 1, NULL, NULL, NULL),
+(4, 4, 'ALTOVEROS', 'REYTA', 'MATT GEIVRIEL', NULL, NULL, NULL, NULL, 'DOLORES STREET', NULL, NULL, NULL, 'NA', '2009-09-13', 'MORONG RIZAL', 'Male', 'Single', NULL, 'NA', NULL, NULL, NULL, NULL, NULL, 'FILIPINO', 'Daughter', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-11-10 17:31:30', '2020-11-10 17:31:30', 1, NULL, NULL, NULL),
+(5, 6, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1988-02-19', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '0', NULL, 'None', 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:04:43', '2020-12-28 00:04:43', 1, NULL, NULL, 'Owned'),
+(6, 7, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1995-02-08', 'Cebu', 'Male', 'Single', NULL, 'programmer', '10000.00', NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '0', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:18:30', '2020-12-28 00:18:30', 1, NULL, NULL, 'Owned'),
+(7, 8, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1995-02-08', 'Cebu', 'Male', 'Single', NULL, 'programmer', '10000.00', NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:21:10', '2020-12-28 00:21:10', 1, NULL, NULL, 'Owned'),
+(8, 9, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1995-02-08', 'Cebu', 'Male', 'Single', NULL, 'programmer', '10000.00', NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:21:18', '2020-12-28 00:21:18', 1, NULL, NULL, 'Owned'),
+(9, 10, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:35:24', '2020-12-28 00:35:24', 1, NULL, NULL, 'Owned'),
+(10, 11, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:37:06', '2020-12-28 00:37:06', 1, NULL, NULL, 'Owned'),
+(11, 12, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:37:46', '2020-12-28 00:37:46', 1, NULL, NULL, 'Owned'),
+(12, 13, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:40:03', '2020-12-28 00:40:03', 1, NULL, NULL, 'Owned'),
+(13, 14, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:41:43', '2020-12-28 00:41:43', 1, NULL, NULL, 'Owned'),
+(14, 15, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:43:12', '2020-12-28 00:43:12', 1, NULL, NULL, 'Owned'),
+(15, 16, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:45:27', '2020-12-28 00:45:27', 1, NULL, NULL, 'Owned'),
+(16, 17, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:46:41', '2020-12-28 00:46:41', 1, NULL, NULL, 'Owned'),
+(17, 18, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:49:25', '2020-12-28 00:49:25', 1, NULL, NULL, 'Owned'),
+(18, 19, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'College graduate', 'Pre-school', 'Enrolled, public', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:50:46', '2020-12-28 00:50:46', 1, NULL, NULL, 'Owned'),
+(19, 20, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'College graduate', 'Pre-school', 'Enrolled, public', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:51:26', '2020-12-28 00:51:26', 1, NULL, NULL, 'Owned'),
+(20, 21, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'College graduate', 'Pre-school', 'Enrolled, public', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:55:20', '2020-12-28 00:55:20', 1, NULL, NULL, 'Owned'),
+(21, 22, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'College graduate', 'Pre-school', 'Enrolled, public', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 00:57:45', '2020-12-28 00:57:45', 1, NULL, NULL, 'Owned'),
+(22, 23, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1990-02-06', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 3, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'College graduate', 'Pre-school', 'Enrolled, public', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 01:09:24', '2020-12-28 01:09:24', 1, NULL, NULL, 'Owned'),
+(23, 23, 'GAMING', 'D', 'ELGIN', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1995-02-01', NULL, 'Male', 'Single', NULL, 'none', NULL, 'Not Applicable', 'Not Applicable', NULL, NULL, NULL, 'Spouse', '2020-01-00', 0, NULL, '09231231234', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'Pre-school', 'Enrolled, public', 'Pre-school', NULL, NULL, 'true', 'true', NULL, 'None', 'Not Applicable', 'None', 'Not applicable', 0, '', 'flipino', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 01:09:25', '2020-12-28 01:09:25', 1, NULL, NULL, NULL),
+(24, 24, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1984-03-07', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '1', NULL, NULL, 'Junior HS level', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 01:28:41', '2020-12-28 01:28:41', 1, NULL, NULL, 'Owned'),
+(25, 24, 'GAMING', 'G', 'JDOAN', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1987-03-11', NULL, 'Male', 'Single', NULL, NULL, NULL, 'Not Applicable', 'Not Applicable', NULL, NULL, NULL, 'Spouse', '2020-02-00', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, 'No education', 'Not Enrolled', 'Pre-school', NULL, NULL, 'true', 'true', NULL, 'None', 'Not Applicable', 'None', 'Not applicable', 0, '', NULL, 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 01:28:41', '2020-12-28 01:28:41', 1, NULL, NULL, NULL),
+(26, 25, 'PAPA', '', 'JONNY', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1996-02-04', 'Cebu', 'Male', 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Head', NULL, 1, NULL, '09223441122', NULL, NULL, NULL, NULL, '0', NULL, NULL, 'No education', 'Pre-school', 'Not Enrolled', NULL, NULL, 'Public hospital', 'Doctor', 'None', 'None', 'Not applicable', 'None', 'Not applicable', 0, NULL, 'Catholic', 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 02:29:38', '2020-12-28 02:29:38', 1, NULL, NULL, 'Owned'),
+(27, 25, 'GARCIA', 'A', 'JEAN', NULL, 'Sitio Bakal', NULL, '146', NULL, 'Burnigol Street', NULL, NULL, 'Jr', '1994-06-15', NULL, 'Male', 'Single', NULL, NULL, NULL, 'Not Applicable', 'Not Applicable', NULL, NULL, NULL, 'Spouse', '-00', 0, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, 'No education', 'Not Enrolled', 'Pre-school', NULL, NULL, 'true', 'true', NULL, 'None', 'Not Applicable', 'None', 'Not applicable', 0, '', NULL, 'Catholic', NULL, NULL, NULL, NULL, 0, 0, NULL, '2020-12-28 02:29:38', '2020-12-28 02:29:38', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2055,6 +2174,7 @@ CREATE TABLE `v_barangay_clearance` (
 ,`CHILD_NAME_2` varchar(250)
 ,`CHILD_AGE_2` varchar(50)
 ,`IS_PWD_2` varchar(4)
+,`BUSINESS_ID` int(11)
 );
 
 -- --------------------------------------------------------
@@ -2114,7 +2234,7 @@ CREATE TABLE `v_business_information` (
 ,`CAPITALIZATION` varchar(50)
 ,`GROSS_RECEIPTS_ESSENTIAL` varchar(50)
 ,`GROSS_RECEIPTS_NON_ESSENTIAL` varchar(50)
-,`LINE_OF_BUSINESS_NAME` varchar(50)
+,`BUSINESS_NATURE_NAME` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -2255,7 +2375,7 @@ CREATE TABLE `v_filter_residents` (
 ,`DATE_STARTED_WORKING` varchar(10)
 ,`CITIZENSHIP` varchar(25)
 ,`RELATION_TO_HOUSEHOLD_HEAD` varchar(50)
-,`DATE_OF_ARRIVAL` varchar(10)
+,`DATE_OF_ARRIVAL` varchar(50)
 ,`TYPE_NAME` varchar(50)
 ,`IS_INDIGENOUS` varchar(1)
 ,`CONTACT_NUMBER` varchar(25)
@@ -2589,7 +2709,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_barangay_clearance`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_barangay_clearance`  AS  select `tafe`.`REMARKS` AS `remarks`,`r`.`CITIZENSHIP` AS `citizenship`,`r`.`PLACE_OF_BIRTH` AS `place_of_birth`,`r`.`RESIDENT_ID` AS `RESIDENT_ID`,ifnull(`r`.`FIRSTNAME`,'') AS `fname`,' ' AS `Name_exp_6`,ifnull(`r`.`MIDDLENAME`,'') AS `mname`,' ' AS `Name_exp_8`,ifnull(`r`.`LASTNAME`,'') AS `lname`,`r`.`SEX` AS `SEX`,if(`r`.`SEX` = 'Female','her','his') AS `SEX_ADDRESS`,`r`.`CIVIL_STATUS` AS `CIVIL_STATUS`,timestampdiff(YEAR,`r`.`DATE_OF_BIRTH`,curdate()) AS `AGE`,`r`.`DATE_OF_BIRTH` AS `DATE_OF_BIRTH`,concat(convert(if(`r`.`ADDRESS_UNIT_NO` is null,'','Unit ') using latin1),ifnull(`r`.`ADDRESS_UNIT_NO`,''),' ',ifnull(`r`.`ADDRESS_BUILDING`,''),' ',ifnull(`r`.`ADDRESS_PHASE`,''),' ',ifnull(`r`.`ADDRESS_BLOCK_NO`,''),' ',ifnull(`r`.`ADDRESS_STREET`,''),' ',ifnull(`r`.`ADDRESS_SUBDIVISION`,'')) AS `ADDRESS`,`cc`.`CONTROL_NO` AS `CONTROL_NO`,`cc`.`ISSUED_DATE` AS `ISSUED_DATE`,`cc`.`OR_NO` AS `OR_NO`,`cc`.`OR_DATE` AS `OR_DATE`,`cc`.`OR_AMOUNT` AS `OR_AMOUNT`,`paper`.`PAPER_TYPE_NAME` AS `PAPER_TYPE_NAME`,`af`.`FORM_ID` AS `FORM_ID`,`bc`.`REQUESTOR_NAME` AS `REQUESTOR_NAME`,`bc`.`SSS_NO` AS `SSS_NO`,`bc`.`CALAMITY_NAME` AS `CALAMITY_NAME`,`bc`.`CALAMITY_DATE` AS `CALAMITY_DATE`,`bc`.`COUNTRY` AS `COUNTRY`,`bc`.`CATEGORY_SINGLE_PARENT` AS `CATEGORY_SINGLE_PARENT`,`bc`.`PURPOSE` AS `PURPOSE`,`solo`.`CHILD_NAME` AS `CHILD_NAME`,`solo`.`CHILD_AGE` AS `CHILD_AGE`,`solo`.`IS_PWD` AS `IS_PWD`,`solo`.`CHILD_NAME_2` AS `CHILD_NAME_2`,`solo`.`CHILD_AGE_2` AS `CHILD_AGE_2`,`solo`.`IS_PWD_2` AS `IS_PWD_2` from ((((((`t_resident_basic_info` `r` join `t_application_form` `af` on(`af`.`RESIDENT_ID` = `r`.`RESIDENT_ID`)) join `r_paper_type` `paper` on(`paper`.`PAPER_TYPE_ID` = `af`.`REQUESTED_PAPER_TYPE_ID`)) join `t_bf_barangay_certification` `bc` on(`bc`.`FORM_ID` = `af`.`FORM_ID`)) join `t_clearance_certification` `cc` on(`cc`.`FORM_ID` = `af`.`FORM_ID`)) left join `t_solo_parent_children` `solo` on(`solo`.`BARANGAY_CERTIFICATION_ID` = `bc`.`BARANGAY_CERTIFICATION_ID`)) join `t_application_form_evaluation` `tafe` on(`af`.`FORM_ID` = `tafe`.`FORM_ID`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_barangay_clearance`  AS  select `tafe`.`REMARKS` AS `remarks`,`r`.`CITIZENSHIP` AS `citizenship`,`r`.`PLACE_OF_BIRTH` AS `place_of_birth`,`r`.`RESIDENT_ID` AS `RESIDENT_ID`,ifnull(`r`.`FIRSTNAME`,'') AS `fname`,' ' AS `Name_exp_6`,ifnull(`r`.`MIDDLENAME`,'') AS `mname`,' ' AS `Name_exp_8`,ifnull(`r`.`LASTNAME`,'') AS `lname`,`r`.`SEX` AS `SEX`,if(`r`.`SEX` = 'Female','her','his') AS `SEX_ADDRESS`,`r`.`CIVIL_STATUS` AS `CIVIL_STATUS`,timestampdiff(YEAR,`r`.`DATE_OF_BIRTH`,curdate()) AS `AGE`,`r`.`DATE_OF_BIRTH` AS `DATE_OF_BIRTH`,concat(convert(if(`r`.`ADDRESS_UNIT_NO` is null,'','Unit ') using latin1),ifnull(`r`.`ADDRESS_UNIT_NO`,''),' ',ifnull(`r`.`ADDRESS_BUILDING`,''),' ',ifnull(`r`.`ADDRESS_PHASE`,''),' ',ifnull(`r`.`ADDRESS_BLOCK_NO`,''),' ',ifnull(`r`.`ADDRESS_STREET`,''),' ',ifnull(`r`.`ADDRESS_SUBDIVISION`,'')) AS `ADDRESS`,`cc`.`CONTROL_NO` AS `CONTROL_NO`,`cc`.`ISSUED_DATE` AS `ISSUED_DATE`,`cc`.`OR_NO` AS `OR_NO`,`cc`.`OR_DATE` AS `OR_DATE`,`cc`.`OR_AMOUNT` AS `OR_AMOUNT`,`paper`.`PAPER_TYPE_NAME` AS `PAPER_TYPE_NAME`,`af`.`FORM_ID` AS `FORM_ID`,`bc`.`REQUESTOR_NAME` AS `REQUESTOR_NAME`,`bc`.`SSS_NO` AS `SSS_NO`,`bc`.`CALAMITY_NAME` AS `CALAMITY_NAME`,`bc`.`CALAMITY_DATE` AS `CALAMITY_DATE`,`bc`.`COUNTRY` AS `COUNTRY`,`bc`.`CATEGORY_SINGLE_PARENT` AS `CATEGORY_SINGLE_PARENT`,`bc`.`PURPOSE` AS `PURPOSE`,`solo`.`CHILD_NAME` AS `CHILD_NAME`,`solo`.`CHILD_AGE` AS `CHILD_AGE`,`solo`.`IS_PWD` AS `IS_PWD`,`solo`.`CHILD_NAME_2` AS `CHILD_NAME_2`,`solo`.`CHILD_AGE_2` AS `CHILD_AGE_2`,`solo`.`IS_PWD_2` AS `IS_PWD_2`,`af`.`BUSINESS_ID` AS `BUSINESS_ID` from ((((((`t_resident_basic_info` `r` left join `t_application_form` `af` on(`af`.`RESIDENT_ID` = `r`.`RESIDENT_ID`)) join `r_paper_type` `paper` on(`paper`.`PAPER_TYPE_ID` = `af`.`REQUESTED_PAPER_TYPE_ID`)) join `t_bf_barangay_certification` `bc` on(`bc`.`FORM_ID` = `af`.`FORM_ID`)) join `t_clearance_certification` `cc` on(`cc`.`FORM_ID` = `af`.`FORM_ID`)) left join `t_solo_parent_children` `solo` on(`solo`.`BARANGAY_CERTIFICATION_ID` = `bc`.`BARANGAY_CERTIFICATION_ID`)) join `t_application_form_evaluation` `tafe` on(`af`.`FORM_ID` = `tafe`.`FORM_ID`)) ;
 
 -- --------------------------------------------------------
 
@@ -2598,7 +2718,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_business_information`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_business_information`  AS  select `business`.`BUSINESS_ID` AS `BUSINESS_ID`,`business`.`BUSINESS_NAME` AS `BUSINESS_NAME`,`business`.`TRADE_NAME` AS `TRADE_NAME`,concat(`business`.`BUSINESS_OWNER_FIRSTNAME`,' ',ifnull(`business`.`BUSINESS_OWNER_MIDDLENAME`,''),' ',`business`.`BUSINESS_OWNER_LASTNAME`) AS `BUSINESS_OWNER`,`business`.`BUSINESS_OWNER_FIRSTNAME` AS `BUSINESS_OWNER_FIRSTNAME`,`business`.`BUSINESS_OWNER_MIDDLENAME` AS `BUSINESS_OWNER_MIDDLENAME`,`business`.`BUSINESS_OWNER_LASTNAME` AS `BUSINESS_OWNER_LASTNAME`,concat(ifnull(`business`.`BUILDING_NAME`,''),' ',ifnull(`business`.`BUILDING_NUMBER`,''),convert(if(`business`.`UNIT_NO` is null,'',' Unit ') using latin1),ifnull(`business`.`UNIT_NO`,''),' ',ifnull(`business`.`STREET`,''),' ',ifnull(`business`.`SITIO`,''),' ',ifnull(`business`.`SUBDIVISION`,'')) AS `BUSINESS_ADDRESS`,`business`.`BUILDING_NAME` AS `BUILDING_NAME`,`business`.`BUILDING_NUMBER` AS `BUILDING_NUMBER`,`business`.`UNIT_NO` AS `UNIT_NO`,`business`.`STREET` AS `STREET`,`business`.`SITIO` AS `SITIO`,`business`.`SUBDIVISION` AS `SUBDIVISION`,`business`.`BUSINESS_OR_NUMBER` AS `BUSINESS_OR_NUMBER`,`business`.`BUSINESS_OR_ACQUIRED_DATE` AS `BUSINESS_OR_ACQUIRED_DATE`,`business`.`BARANGAY_ZONE_ID` AS `BARANGAY_ZONE_ID`,`business`.`TIN_NO` AS `TIN_NO`,`business`.`DTI_REGISTRATION_NO` AS `DTI_REGISTRATION_NO`,`business`.`TYPE_OF_BUSINESS` AS `TYPE_OF_BUSINESS`,`business`.`BUSINESS_POSTAL_CODE` AS `BUSINESS_POSTAL_CODE`,`business`.`BUSINESS_EMAIL_ADD` AS `BUSINESS_EMAIL_ADD`,`business`.`BUSINESS_TELEPHONE_NO` AS `BUSINESS_TELEPHONE_NO`,`business`.`BUSINESS_MOBILE_NO` AS `BUSINESS_MOBILE_NO`,`business`.`OWNER_ADDRESS` AS `OWNER_ADDRESS`,`business`.`OWNER_POSTAL_CODE` AS `OWNER_POSTAL_CODE`,`business`.`OWNER_EMAIL_ADD` AS `OWNER_EMAIL_ADD`,`business`.`OWNER_TELEPHONE_NO` AS `OWNER_TELEPHONE_NO`,`business`.`OWNER_MOBILE_NO` AS `OWNER_MOBILE_NO`,`business`.`EMERGENCY_CONTACT_PERSON` AS `EMERGENCY_CONTACT_PERSON`,`business`.`EMERGENCY_PERSON_CONTACT_NO` AS `EMERGENCY_PERSON_CONTACT_NO`,`business`.`EMERGENCY_PERSON_EMAIL_ADD` AS `EMERGENCY_PERSON_EMAIL_ADD`,`business`.`BUSINESS_AREA` AS `BUSINESS_AREA`,`business`.`NO_EMPLOYEE_ESTABLISHMENT` AS `NO_EMPLOYEE_ESTABLISHMENT`,`business`.`NO_EMPLOYEE_LGU` AS `NO_EMPLOYEE_LGU`,`business`.`LESSOR_NAME` AS `LESSOR_NAME`,`business`.`LESSOR_ADDRESS` AS `LESSOR_ADDRESS`,`business`.`LESSOR_POSTAL` AS `LESSOR_POSTAL`,`business`.`LESSOR_CONTACT_NO` AS `LESSOR_CONTACT_NO`,`business`.`LESSOR_TELEPHONE` AS `LESSOR_TELEPHONE`,`business`.`LESSOR_MOBILE_NO` AS `LESSOR_MOBILE_NO`,`business`.`LESSOR_EMAIL_ADD` AS `LESSOR_EMAIL_ADD`,`business`.`MONTHLY_RENTAL` AS `MONTHLY_RENTAL`,`business`.`REFERENCED_BUSINESS_ID` AS `REFERENCED_BUSINESS_ID`,`activity`.`NO_OF_UNITS` AS `NO_OF_UNITS`,`business`.`STATUS` AS `STATUS`,`business`.`NEW_RENEW_STATUS` AS `NEW_RENEW_STATUS`,`activity`.`CAPITALIZATION` AS `CAPITALIZATION`,`activity`.`GROSS_RECEIPTS_ESSENTIAL` AS `GROSS_RECEIPTS_ESSENTIAL`,`activity`.`GROSS_RECEIPTS_NON_ESSENTIAL` AS `GROSS_RECEIPTS_NON_ESSENTIAL`,`lob`.`LINE_OF_BUSINESS_NAME` AS `LINE_OF_BUSINESS_NAME` from ((`t_business_information` `business` left join `t_bf_business_activity` `activity` on(`activity`.`BUSINESS_ID` = `business`.`BUSINESS_ID`)) left join `r_bf_line_of_business` `lob` on(`lob`.`LINE_OF_BUSINESS_ID` = `activity`.`LINE_OF_BUSINESS_ID`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_business_information`  AS  select `business`.`BUSINESS_ID` AS `BUSINESS_ID`,`business`.`BUSINESS_NAME` AS `BUSINESS_NAME`,`business`.`TRADE_NAME` AS `TRADE_NAME`,concat(`business`.`BUSINESS_OWNER_FIRSTNAME`,' ',ifnull(`business`.`BUSINESS_OWNER_MIDDLENAME`,''),' ',`business`.`BUSINESS_OWNER_LASTNAME`) AS `BUSINESS_OWNER`,`business`.`BUSINESS_OWNER_FIRSTNAME` AS `BUSINESS_OWNER_FIRSTNAME`,`business`.`BUSINESS_OWNER_MIDDLENAME` AS `BUSINESS_OWNER_MIDDLENAME`,`business`.`BUSINESS_OWNER_LASTNAME` AS `BUSINESS_OWNER_LASTNAME`,concat(ifnull(`business`.`BUILDING_NAME`,''),' ',ifnull(`business`.`BUILDING_NUMBER`,''),convert(if(`business`.`UNIT_NO` is null,'',' Unit ') using latin1),ifnull(`business`.`UNIT_NO`,''),' ',ifnull(`business`.`STREET`,''),' ',ifnull(`business`.`SITIO`,''),' ',ifnull(`business`.`SUBDIVISION`,'')) AS `BUSINESS_ADDRESS`,`business`.`BUILDING_NAME` AS `BUILDING_NAME`,`business`.`BUILDING_NUMBER` AS `BUILDING_NUMBER`,`business`.`UNIT_NO` AS `UNIT_NO`,`business`.`STREET` AS `STREET`,`business`.`SITIO` AS `SITIO`,`business`.`SUBDIVISION` AS `SUBDIVISION`,`business`.`BUSINESS_OR_NUMBER` AS `BUSINESS_OR_NUMBER`,`business`.`BUSINESS_OR_ACQUIRED_DATE` AS `BUSINESS_OR_ACQUIRED_DATE`,`business`.`BARANGAY_ZONE_ID` AS `BARANGAY_ZONE_ID`,`business`.`TIN_NO` AS `TIN_NO`,`business`.`DTI_REGISTRATION_NO` AS `DTI_REGISTRATION_NO`,`business`.`TYPE_OF_BUSINESS` AS `TYPE_OF_BUSINESS`,`business`.`BUSINESS_POSTAL_CODE` AS `BUSINESS_POSTAL_CODE`,`business`.`BUSINESS_EMAIL_ADD` AS `BUSINESS_EMAIL_ADD`,`business`.`BUSINESS_TELEPHONE_NO` AS `BUSINESS_TELEPHONE_NO`,`business`.`BUSINESS_MOBILE_NO` AS `BUSINESS_MOBILE_NO`,`business`.`OWNER_ADDRESS` AS `OWNER_ADDRESS`,`business`.`OWNER_POSTAL_CODE` AS `OWNER_POSTAL_CODE`,`business`.`OWNER_EMAIL_ADD` AS `OWNER_EMAIL_ADD`,`business`.`OWNER_TELEPHONE_NO` AS `OWNER_TELEPHONE_NO`,`business`.`OWNER_MOBILE_NO` AS `OWNER_MOBILE_NO`,`business`.`EMERGENCY_CONTACT_PERSON` AS `EMERGENCY_CONTACT_PERSON`,`business`.`EMERGENCY_PERSON_CONTACT_NO` AS `EMERGENCY_PERSON_CONTACT_NO`,`business`.`EMERGENCY_PERSON_EMAIL_ADD` AS `EMERGENCY_PERSON_EMAIL_ADD`,`business`.`BUSINESS_AREA` AS `BUSINESS_AREA`,`business`.`NO_EMPLOYEE_ESTABLISHMENT` AS `NO_EMPLOYEE_ESTABLISHMENT`,`business`.`NO_EMPLOYEE_LGU` AS `NO_EMPLOYEE_LGU`,`business`.`LESSOR_NAME` AS `LESSOR_NAME`,`business`.`LESSOR_ADDRESS` AS `LESSOR_ADDRESS`,`business`.`LESSOR_POSTAL` AS `LESSOR_POSTAL`,`business`.`LESSOR_CONTACT_NO` AS `LESSOR_CONTACT_NO`,`business`.`LESSOR_TELEPHONE` AS `LESSOR_TELEPHONE`,`business`.`LESSOR_MOBILE_NO` AS `LESSOR_MOBILE_NO`,`business`.`LESSOR_EMAIL_ADD` AS `LESSOR_EMAIL_ADD`,`business`.`MONTHLY_RENTAL` AS `MONTHLY_RENTAL`,`business`.`REFERENCED_BUSINESS_ID` AS `REFERENCED_BUSINESS_ID`,`activity`.`NO_OF_UNITS` AS `NO_OF_UNITS`,`business`.`STATUS` AS `STATUS`,`business`.`NEW_RENEW_STATUS` AS `NEW_RENEW_STATUS`,`activity`.`CAPITALIZATION` AS `CAPITALIZATION`,`activity`.`GROSS_RECEIPTS_ESSENTIAL` AS `GROSS_RECEIPTS_ESSENTIAL`,`activity`.`GROSS_RECEIPTS_NON_ESSENTIAL` AS `GROSS_RECEIPTS_NON_ESSENTIAL`,`nature`.`BUSINESS_NATURE_NAME` AS `BUSINESS_NATURE_NAME` from ((`t_business_information` `business` left join `t_bf_business_activity` `activity` on(`activity`.`BUSINESS_ID` = `business`.`BUSINESS_ID`)) left join `r_business_nature` `nature` on(`business`.`BUSINESS_NATURE_ID` = `nature`.`BUSINESS_NATURE_ID`)) ;
 
 -- --------------------------------------------------------
 
@@ -3185,7 +3305,7 @@ ALTER TABLE `r_ordinance_category`
 -- AUTO_INCREMENT for table `r_paper_type`
 --
 ALTER TABLE `r_paper_type`
-  MODIFY `PAPER_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `PAPER_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `r_position`
@@ -3203,13 +3323,13 @@ ALTER TABLE `r_resident_type`
 -- AUTO_INCREMENT for table `t_application_form`
 --
 ALTER TABLE `t_application_form`
-  MODIFY `FORM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `FORM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `t_application_form_evaluation`
 --
 ALTER TABLE `t_application_form_evaluation`
-  MODIFY `AF_EVALUATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `AF_EVALUATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `t_barangay_official`
@@ -3221,7 +3341,7 @@ ALTER TABLE `t_barangay_official`
 -- AUTO_INCREMENT for table `t_bf_barangay_certification`
 --
 ALTER TABLE `t_bf_barangay_certification`
-  MODIFY `BARANGAY_CERTIFICATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `BARANGAY_CERTIFICATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `t_bf_barangay_clearance`
@@ -3239,7 +3359,7 @@ ALTER TABLE `t_bf_business_activity`
 -- AUTO_INCREMENT for table `t_bf_business_permit`
 --
 ALTER TABLE `t_bf_business_permit`
-  MODIFY `BUSINESS_PERMIT_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `BUSINESS_PERMIT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_bf_scope_of_work`
@@ -3257,13 +3377,13 @@ ALTER TABLE `t_blotter`
 -- AUTO_INCREMENT for table `t_business_approval`
 --
 ALTER TABLE `t_business_approval`
-  MODIFY `APPROVAL_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `APPROVAL_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_business_information`
 --
 ALTER TABLE `t_business_information`
-  MODIFY `BUSINESS_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `BUSINESS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_children_profile`
@@ -3275,7 +3395,7 @@ ALTER TABLE `t_children_profile`
 -- AUTO_INCREMENT for table `t_clearance_certification`
 --
 ALTER TABLE `t_clearance_certification`
-  MODIFY `CLEARANCE_CERTIFICATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `CLEARANCE_CERTIFICATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `t_fathers_profile`
@@ -3293,25 +3413,25 @@ ALTER TABLE `t_food_eaten`
 -- AUTO_INCREMENT for table `t_household_batch`
 --
 ALTER TABLE `t_household_batch`
-  MODIFY `FAMILY_HEADER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `FAMILY_HEADER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `t_household_information`
 --
 ALTER TABLE `t_household_information`
-  MODIFY `HOUSEHOLD_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `HOUSEHOLD_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `t_household_members`
 --
 ALTER TABLE `t_household_members`
-  MODIFY `FAMILY_INFORMATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `FAMILY_INFORMATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `t_hs_adolescent`
 --
 ALTER TABLE `t_hs_adolescent`
-  MODIFY `ADOLESCENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ADOLESCENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `t_hs_child`
@@ -3419,7 +3539,7 @@ ALTER TABLE `t_patient_records`
 -- AUTO_INCREMENT for table `t_resident_basic_info`
 --
 ALTER TABLE `t_resident_basic_info`
-  MODIFY `RESIDENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `RESIDENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `t_users`

@@ -92,6 +92,8 @@
 								<option value="BCSP">Barangay Certificate Solo Parent</option>
 								<option value="">Barangay Certificate Indigency</option>
 								<option value="">Barangay Certificate Travel</option>
+								<option value="">Barangay Clearance For Individual</option>
+								<option value="">Barangay Clearance Building (Non-Business)</option>
 							</select>
 						</div>
 				
@@ -101,7 +103,7 @@
 							<h5 id="divFilloutInstruction">Fill out the following information:</h5>
 
 							<label>Purpose</label> 
-							<input name="txt_purpose" list="txt_purpose" class="form-control txt_purpose">
+							<input style="text-transform: capitalize;" name="txt_purpose" list="txt_purpose" class="form-control txt_purpose">
 							<datalist  id="txt_purpose"> 
 								<option>Funeral of immediate family</option>
 								<option>Purchase of supplies for business under essential stores</option>
@@ -131,7 +133,7 @@
 							<h5 id="divFilloutInstruction">Fill out the following information:</h5>
 
 							<label>Purpose</label> 
-							<textarea class="form-control" id="txtarea_purpose_residency"></textarea>
+							<textarea style="text-transform: capitalize;" class="form-control" id="txtarea_purpose_residency"></textarea>
 						</div>
 						{{-- Loan SSS-GSIS --}}
 						<div class="col-md-10" id="divLoanSSSGSIS">
@@ -239,15 +241,66 @@
 							</div>
 
 						</div>
+
 						{{-- Indigency --}}
 						<div class="col-md-10" id="divIndigency">
 							<legend class="m-t-10"></legend>
 							<h5 id="divFilloutInstruction">Fill out the following information:</h5>
 
 							<label>Purpose</label> 
-							<textarea class="form-control" id="txtarea_purpose_indigency"></textarea>
+							<textarea style="text-transform: capitalize;" class="form-control" id="txtarea_purpose_indigency"></textarea>
+
+							
+						</div>
+						
+						{{-- Clearance Individual --}}
+
+						<div class="col-md-10" id="divMaiden">
+							<div class="form-group m-b-10"></div>
+							<div class="form-group m-b-10">
+								<label>Maiden Name</label> 
+								
+								<input style="text-transform: capitalize;" type="text" class="form-control" name="txt_maiden_name"></input>
+							</div>
+							
+						</div>
+						<div class="col-md-10" id="divValidUntil">
+							<div class="form-group m-b-10" >
+								<label>Valid Until</label> 
+								
+								<input  type="date"  class="form-control" name="txt_valid_until"></input>
+							</div>
 						</div>
 
+						{{-- Clearance Building Non Business --}}
+						<div class="col-md-10" id="divIndividualNonBusiness">
+							<legend class="m-t-10"></legend>
+
+							<div class="form-group m-b-10">
+								<label>Scope of Work</label>
+								<select class="form-control" id="sel_scope_of_work_a">
+									<option disabled=""></option>
+									<option>Construction</option>
+									<option>Addition</option>
+									<option>Repair</option>
+									<option>Renovation</option>
+									<option>Demolition</option>
+									<option>Installation</option>
+									<option>Attachment</option>
+									<option>Painting</option>
+								</select>
+							</div>
+							<div class="form-group m-b-10">
+								<label>Details</label> 
+								<textarea style="text-transform: capitalize;" class="form-control" id="txtarea_details"></textarea>
+							</div>
+							<div class="form-group m-b-10">
+								<label>Location</label> 
+								<textarea style="text-transform: capitalize;" class="form-control" id="txtarea_location"></textarea>
+							</div>
+
+							
+						</div>
 						<div id="divApplicantName">
 								<br><legend class="m-t-10"></legend>
 								<div class="col-md-10" id="divBusinessPermit">
@@ -260,6 +313,9 @@
 							<a onclick="hideModal()" class="btn btn-white m-r-5" >Close</a>
 							<button  id="btnRequest" class="btn btn-inverse m-r-9" style="background: #000">Request</button>
 						</div>				
+
+						
+		
 					</div>
 				</div>
 			</div>
@@ -297,6 +353,9 @@
 		$('#divSoloParent').hide()
 		$('#divIndigency').hide();
 		$('#divChildCustody_2').hide();
+		$('#divIndividualNonBusiness').hide();
+		$('#divValidUntil').hide();
+		$('#divMaiden').hide();
 	});
 
 
@@ -312,15 +371,22 @@
 		$("#radiobtn_yes_2").prop("checked", false);
 		$("#radiobtn_no_2").prop("checked", false);
 	});
+	var civil_status, gender;
 	//VIEW CERTIFICATE
-	$('#tbl_resident_lst').on('click', '#btnViewForms', function(){
+	$('#tbl_resident_lst').on('click', '#btnViewForms', function()
+	{
+
 		let row = $(this).closest("tr")
 		,name = $(row.find("td")[1]).text();
 		resident_id = $(row.find("td")[0]).text();
-	
+		gender = $(row.find("td")[4]).text();
+		civil_status = $(row.find("td")[5]).text();
+		
+
 		$("input[id='txt_resid']").val(row.attr("id"));
 		$('#lbl_resname').text(name);
 		$('#txt_applicant_name').val(name);
+
 		$.ajax({
 			url : "{{ route('getAllRelative') }}",
 			method : 'POST',
@@ -362,62 +428,78 @@
 	});
 	//SELECT CERTIFICATE
 	$('#sel_certificate_type').on('change', function(){
+
 			var certificate_type = $('#sel_certificate_type option:selected').text();
-			if(certificate_type == "Barangay Certificate Residency"){
+
+
+			if(certificate_type == "Barangay Certificate Residency")
+			{
 				//show
 				$('#divResidency').show();
 				//hide
+				$('#divValidUntil').hide();
 				$('#divLoanSSSGSIS').hide();
 				$('#divLoanOFW').hide();
 				$('#divSoloParent').hide()
 				$('#divIndigency').hide();
 				$('#divTravel').hide();
+				$('#divMaiden').hide();
 			}
 
 			else if(certificate_type == "Barangay Certificate Travel"){
 				//show
 				$('#divTravel').show();
 				//hide
+				$('#divValidUntil').hide();
 				$('#divLoanSSSGSIS').hide();
 				$('#divLoanOFW').hide();
 				$('#divSoloParent').hide()
 				$('#divIndigency').hide();
 				$('#divResidency').hide();
+				$('#divMaiden').hide();
 			}
 
 			else if(certificate_type == "Barangay Certificate Calamity Loan SSS-GSIS"){
 				//show
 				$('#divLoanSSSGSIS').show();
 				// hide
+				$('#divValidUntil').hide();
 				$('#divResidency').hide();
 				$('#divLoanOFW').hide();
 				$('#divSoloParent').hide()
 				$('#divIndigency').hide();
 				$('#divTravel').hide();
+				$('#divMaiden').hide();
 			}
 
 			else if(certificate_type == "Barangay Certificate Calamity Loan OFW"){
 				//show
 				$('#divLoanOFW').show();
 				//hide
+				$('#divValidUntil').hide();
 				$('#divResidency').hide();
 				$('#divLoanSSSGSIS').hide();
 				$('#divSoloParent').hide()
 				$('#divIndigency').hide();
 				$('#divTravel').hide();
+				$('#divMaiden').hide();
 			}
 			else if(certificate_type == "Barangay Certificate SPES"){
 				//show
+				$('#divValidUntil').hide();
 				$('#divResidency').hide();
 				$('#divLoanSSSGSIS').hide();
 				$('#divLoanOFW').hide();
 				$('#divSoloParent').hide()
 				$('#divIndigency').hide();
 				$('#divTravel').hide();
+				$('#divMaiden').hide();
 				//hide
 			}
 			else if(certificate_type == "Barangay Certificate Solo Parent"){
 				//hide
+				$('#divMaiden').hide();
+				$('#divValidUntil').hide();
 				$('#divResidency').hide();
 				$('#divLoanSSSGSIS').hide();
 				$('#divLoanOFW').hide();
@@ -426,10 +508,50 @@
 				//show
 				$('#divSoloParent').show()
 			}
-			else if(certificate_type == "Barangay Certificate Indigency"){
+			else if(certificate_type == "Barangay Certificate Indigency") 
+			{
 				//show
 				$('#divIndigency').show();
 				//hide
+				$('#divMaiden').hide();
+				$('#divResidency').hide();
+				$('#divLoanSSSGSIS').hide();
+				$('#divLoanOFW').hide();
+				$('#divSoloParent').hide()
+				$('#divTravel').hide();
+				$('#divValidUntil').hide();
+			}
+			else if(certificate_type == "Barangay Clearance For Individual") 
+			{
+
+				
+				if( (civil_status == "Married") && gender == "Male" ||  gender == "Male")
+				{
+					$('#divMaiden').show();
+				}
+				else
+				{
+					$('#divMaiden').hide();	
+				}
+				//show
+				$('#divValidUntil').show();
+				$('#divIndigency').show();
+				$('#divIndividualNonBusiness').hide();
+				$('#divResidency').hide();
+				$('#divLoanSSSGSIS').hide();
+				$('#divLoanOFW').hide();
+				$('#divSoloParent').hide()
+				$('#divTravel').hide();
+			}
+			else if(certificate_type == "Barangay Clearance Building (Non-Business)") 
+			{
+
+				//show
+				$('#divIndividualNonBusiness').show();
+
+				$('#divMaiden').hide();	
+				$('#divValidUntil').hide();
+				$('#divIndigency').hide();
 				$('#divResidency').hide();
 				$('#divLoanSSSGSIS').hide();
 				$('#divLoanOFW').hide();
@@ -450,45 +572,42 @@
 		 var isCheckedNo2 = $('#radiobtn_no_2:checked').val()?true:false;
 		 var is_pwd_1, is_pwd_2;
 
-		 // if(isCheckedYes1 == true)
-		 // 	is_pwd_1 = "Yes";
-		 // else if (isCheckedNo1 == true)
-		 // 	is_pwd_1 = "No";
-		 // else
-		 // 	is_pwd_1="";
 
-		 //  if(isCheckedYes2 == true)
-			//  is_pwd_2 = "Yes";
-		 // else if (isCheckedNo2 == true)
-		 // 	is_pwd_2 = "No";
-		 // else
-		 // 	is_pwd_2 = "";
-		if(certificate_type == 'Barangay Certificate Solo Parent'){
-		solo_parent = $('#lbl_child_name_1').find(":selected").val().split('.')
-		solo_id_1 = solo_parent[0]
-		solo_pwd_1 = solo_parent[1]
-		solo_parent = $('#lbl_child_name_2').find(":selected").val().split('.')
-		solo_id_2 = solo_parent[0]
-		solo_pwd_2 = solo_parent[1]
-		if(solo_pwd_2 == 'null' ){
-			solo_pwd_2 = 'No'
+		if(certificate_type == 'Barangay Certificate Solo Parent')
+		{
+			solo_parent = $('#lbl_child_name_1').find(":selected").val().split('.')
+			solo_id_1 = solo_parent[0]
+			solo_pwd_1 = solo_parent[1]
+			solo_parent = $('#lbl_child_name_2').find(":selected").val().split('.')
+			solo_id_2 = solo_parent[0]
+			solo_pwd_2 = solo_parent[1]
+
+			if(solo_pwd_2 == 'null' ) {
+				
+				solo_pwd_2 = 'No'
+
+			} else if(solo_pwd_1 == 'null' ) {
+				
+				solo_pwd_1 = 'No'
+			}
+			else if(solo_id_2 == '') {
+
+				solo_pwd_2 = ''
+
+			}
+			else {
+
+				solo_pwd_1 = 'Yes'
+				solo_pwd_2 = 'Yes'
+			}
 		}
-		else if(solo_pwd_1 == 'null' ){
-			solo_pwd_1 = 'No'
-		}
-		else if(solo_id_2 == ''){
-			solo_pwd_2 = ''
-		}
-		else{
-			solo_pwd_1 = 'Yes'
-			solo_pwd_2 = 'Yes'
-		}
-		}
-		else{
+		else
+		{
 			solo_pwd_1 = ''
 			solo_pwd_2 = ''
 			solo_id_1 = ''
 			solo_id_2 = ''
+
 		}
 		// alert(form_type+' '+certificate_type);
 
@@ -526,6 +645,9 @@
 			,'TRAVEL_DATE' : $("input[id='txt_travel_date']").val()
 			,'RETURN_DATE' : $("input[id='txt_return_date']").val()
 			,'PURPOSE' : $("input[name='txt_purpose']").val()
+
+			,'MAIDEN_NAME' : $("input[name='txt_maiden_name']").val()
+			,'VALID_UNTIL' : $("input[name='txt_valid_until']").val()
 		};
 
 		
@@ -541,7 +663,7 @@
 					icon: 'success',
 				});
 				window.location.reload();
-				console.log(response["message"]);
+				//console.log(response["message"]);
 			},
 			error : function(error){
 				console.log("error: " + error);

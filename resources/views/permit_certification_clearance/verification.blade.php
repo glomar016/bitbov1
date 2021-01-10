@@ -402,15 +402,15 @@
 								<label class="col-sm-3 col-form-label">OR Amount</label>
 								<div class="col-sm-9">
 									<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text">₱</span>
-  </div>
-									<input type="text" class="form-control"  id="txt_or_amount">
-  
-  <div class="input-group-append">
-    <span class="input-group-text">.00</span>
-  </div>
-</div>
+									  <div class="input-group-prepend">
+									    <span class="input-group-text">₱</span>
+									  </div>
+										<input type="text" class="form-control"  id="txt_or_amount">
+									  
+									  <div class="input-group-append">
+									    <span class="input-group-text">.00</span>
+									  </div>
+									</div>
 								</div>
 							</div>
 							<div class="form-group row m-b-10">
@@ -546,6 +546,7 @@
 	});
 
 	$('#btnEvaluateIssuance').on('click', function(){
+		
 		
 		var or_number = $('#txt_or_number').val()
 		, or_amount = $('#txt_or_amount').val()

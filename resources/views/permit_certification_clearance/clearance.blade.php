@@ -469,6 +469,7 @@
 @section('page-js')
 
 <script>
+	var resident_id;
 	$(document).ready(function() {
 		App.init();
 		TableManageDefault.init();
@@ -491,6 +492,7 @@
 
 	$('#tbl_business_lst').on('click', '#btnChooseApplication',function (){
 		let row = $(this).closest("tr")
+		,resident_id =  $(row.find("td")[0]).text()
 		,business_name =  $(row.find("td")[1]).text()
 		,business_address = $(row.find("td")[3]).text()
 		, business_owner = $(row.find("td")[4]).text()

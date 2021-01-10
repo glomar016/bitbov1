@@ -94,10 +94,10 @@ div.WordSection1
 </head>
 
 <body lang=EN-PH style='tab-interval:.5in'>
+<div class=WordSection1 id="fmbcert001a" style=' margin-left: 1.0in; margin-right: 1.0in;'>
 
-{{-- <div class=WordSection1 id="print_form" style='margin-top:1.0in; margin-left: 1.0in; margin-right: 1.0in;'> --}}
-<div class=WordSection1 id="fmbcert001a" style='margin-top:1.25in; margin-left: 1.0in; margin-right: 1.0in;'>
-<img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="120px" height="120px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
+<img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
+<img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal;background:white'><span style='font-size:
@@ -144,7 +144,7 @@ text-align:center;line-height:normal;background:white'><span style='font-size:
     <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
       <td width=355 valign=top style='width:316.45pt;padding:0in 5.4pt 0in 5.4pt'>
         <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-        justify;line-height:normal'><span style='font-size:15.0pt;mso-fareast-font-family:
+        justify;line-height:normal'><span style='font-size:30.0pt;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
         color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>Control No.:&nbsp<o:p id="lbl_control_no_a_r"> </o:p></span></p>
       </td>

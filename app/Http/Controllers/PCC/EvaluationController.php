@@ -59,7 +59,7 @@ class EvaluationController extends Controller
             ->select('PAPER_TYPE_CODE','SERIES')
             ->first();
 
-	$approved = DB::table('t_application_form_evaluation')
+	   $approved = DB::table('t_application_form_evaluation')
             ->where('EVALUATION_STATUS','=','Approved')
             ->get();
        
@@ -80,8 +80,9 @@ class EvaluationController extends Controller
             ->where('FORM_ID', $FORM_ID)
             ->update(array(
                 'STATUS' => $EVALUATION_STATUS
-		,'UPDATED_AT' => date('Y-m-d')
+		      , 'UPDATED_AT' => date('Y-m-d')
             ));
+            
         if($EVALUATION_STATUS == "Approved"){
             $clearance_certification = DB::table('t_clearance_certification')
                 ->insert(array(

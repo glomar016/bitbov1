@@ -607,9 +607,7 @@ Route::group(['prefix' => '/HealthServices'], function(){
              Route::post('/Permit/Add', 'PCC\RequestController@BusinessIssuanceRequest')
                 ->name('BusinessIssuanceRequest');
 
-
                 
-
             Route::get('/Certification', 'PCC\RequestController@index')
                 ->defaults('typeofview', 'RequestCertification')
                 ->name('RequestCertification');
