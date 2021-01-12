@@ -289,7 +289,7 @@
                                         <th style="text-align: left">Birthdate </th>
                                         <th style="text-align: left">Civil Status </th>
                                         <th style="text-align: left">Occupation</th>
-                                        <th style="text-align: left">Work Status</th>
+                                        <th style="text-align: left"></th>
                                         
                                         
                                     </tr>
@@ -304,7 +304,7 @@
                                         <td style="text-align: left;">{{$basicinfo->DATE_OF_BIRTH}}</td>
                                         <td style="text-align: left;">{{$basicinfo->CIVIL_STATUS}}</td>
                                         <td style="text-align: left;">{{$basicinfo->OCCUPATION}}</td>
-                                        <td style="text-align: left;">{{$basicinfo->WORK_STATUS}}</td>
+                                        <td style="text-align: left;"></td>
                                      
                                     </tr>
                                     @endforeach

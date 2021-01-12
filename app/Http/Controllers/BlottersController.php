@@ -18,7 +18,7 @@ class BlottersController extends Controller
 
     public function index(request $request)
     {
-       // $blottersub = DB::table('blottersubjects')->pluck('blotter_subject_name', 'blotter_subject_id');
+       $blottersub = DB::table('blottersubjects')->pluck('blotter_subject_name', 'blotter_subject_id');
         $getBlotterID =  $request->input('EditBlotterIDH');
 
         $blottersub = DB::table('r_blotter_subjects')
@@ -87,8 +87,9 @@ class BlottersController extends Controller
 
        
         return view('cases.blotter', compact('dispblotter', 'blottersub', 'resident', 'resolvedBlotter'));
-        // dd($blottersub); 
-        
+        // $string = DB::table('t_blotter')->select('RESPONDENT')->get();
+        // $respondents = explode (",", $string[0]->RESPONDENT);
+        // return $respondents;
     }
 
     /**

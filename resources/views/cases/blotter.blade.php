@@ -827,7 +827,7 @@
                                 <th hidden>Resolution</th>
                                 <th hidden>Status</th>
                                 <th>Number of Patawag</th>
-                                <th style="width: 26%">Actions </th>
+                                <th style="width: 20%">Actions </th>
                             </tr>
                             </thead>
 
@@ -858,21 +858,21 @@
                                 <td >{{$blotter->NO_OF_PATAWAG}}</td>
                                 @endif
                                 <td>
-                                    <button type='button' class='btn btn-warning viewCategory' data-toggle='modal' data-target='#ViewModal' >
-                                        <i class='fa fa-eye'></i> View
+                                    <button type='button' class='btn btn-warning viewCategory form-control' data-toggle='modal' data-target='#ViewModal' >
+                                        <i class='fa fa-eye'></i> &nbsp;&nbsp;&nbsp;View&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </button>
 
                                     
-                                    <button type='button' id="HearingBTN" class='btn btn-yellow addHearing' data-toggle='modal' data-target='#HearingModal'>
+                                    <button type='button' id="HearingBTN" class='btn btn-yellow addHearing form-control' data-toggle='modal' data-target='#HearingModal'>
                                         <i class='fa fa-bell'></i> Patawag
                                     </button>
 
-                                    <button type='button'  class='btn btn-lime viewResolve' data-toggle='modal' data-target='#ResolveModal'>
+                                    <button type='button'  class='btn btn-lime viewResolve form-control' data-toggle='modal' data-target='#ResolveModal'>
                                         <i class='fa fa-check'></i> Close Case
                                     </button>
 
-                                    <button type='button'  class='btn btn-danger remove-btn' >
-                                        <i class='fa fa-times'></i> Remove
+                                    <button type='button'  class='btn btn-danger remove-btn form-control' >
+                                        <i class='fa fa-times'></i> Remove&nbsp;&nbsp;
                                     </button>
                                 </td>
                             </tr>
@@ -1179,26 +1179,26 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Incident Area</label> <span id='reqIncidentAreaAdd'></span>
-                                                    <input id="add_incident_area" name="add_incident_area" class="form-control" required="true" placeholder="Where the case happened" >
+                                                    <input style="text-transform: capitalize;" id="add_incident_area" name="add_incident_area" class="form-control" required="true" placeholder="Where the case happened" >
                                                 </div>
                                             </div>                                            
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Complainant</label> <span id='reqComplainantNameAdd'></span>
-                                                    <input id="add_complainant_name" name="Aadd_complainant_nameddCatDesc" class="form-control" required="true" placeholder="Name of the complainant eg. complainant1 (Alias),complainant2 (Alias)," >
+                                                    <input style="text-transform: capitalize;" id="add_complainant_name" name="Aadd_complainant_nameddCatDesc" class="form-control" required="true" placeholder="Name of the complainant eg. complainant1 (Alias),complainant2 (Alias)," >
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Respondent</label> 
-                                                    <input  id="add_resident_id" name="add_resident_id" class="form-control" placeholder="Respondent Name">
+                                                    <input  style="text-transform: capitalize;" id="add_resident_id" name="add_resident_id" class="form-control" placeholder="Respondent Name">
                                                                                                          
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Blotter Subject</label> <span id='reqBlotterSubjectAdd'></span>
-                                                    <input id="add_blotter_subject_id" name="add_blotter_subject_id" class="form-control" placeholder="Blotter subject">
+                                                    <input style="text-transform: capitalize;" id="add_blotter_subject_id" name="add_blotter_subject_id" class="form-control" placeholder="Blotter subject">
                                                         
                                                 
                                                     
@@ -1207,7 +1207,7 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Complaint Statement</label> <span id='reqComplainStatementAdd'></span>
-                                                    <textarea id="add_complain_statement" name="add_complain_statement" class="form-control" rows="2"></textarea>
+                                                    <textarea style="text-transform: capitalize;" id="add_complain_statement" name="add_complain_statement" class="form-control" rows="2"></textarea>
                                                 </div>                                            
                                             </div>
                                             {{--modal body end--}}

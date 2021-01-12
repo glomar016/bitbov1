@@ -93,14 +93,15 @@ div.WordSection2
 <body lang=EN-US style='tab-interval:.5in;word-wrap:break-word'>
 
 <div class=WordSection2 id=fmbcfi>
-
+<img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
+<img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/>
 <p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
 normal'><span lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt;
 line-height:107%'>BARANGAY CLEARANCE<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
 normal'><span lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt;
-line-height:107%'><o:p>&nbsp;</o:p></span></b></p>
+line-height:107%'><o:p>&nbsp;</o:p></span></b></p><br><br><br><br><br>
 
 <p class=MsoNormal><span lang=EN-PH style='font-size:14.0pt;mso-bidi-font-size:
 11.0pt;line-height:107%'>TO WHOM IT MAY CONCERN:<o:p></o:p></span></p>

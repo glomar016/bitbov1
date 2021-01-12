@@ -103,7 +103,7 @@
 							<h5 id="divFilloutInstruction">Fill out the following information:</h5>
 
 							<label>Purpose</label> 
-							<input style="text-transform: capitalize;" name="txt_purpose" list="txt_purpose" class="form-control txt_purpose">
+							<input style="text-transform: uppercase;" name="txt_purpose" list="txt_purpose" class="form-control txt_purpose">
 							<datalist  id="txt_purpose"> 
 								<option>Funeral of immediate family</option>
 								<option>Purchase of supplies for business under essential stores</option>

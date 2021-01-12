@@ -586,6 +586,13 @@
 		return age;
 	}
 
+	moment.addRealMonth = function addRealMonth(d) {
+
+		  var fm = moment(d).add(1, 'M');
+		  var fmEnd = moment(fm).endOf('month');
+		  return d.date() != fm.date() && fm.isSame(fmEnd.format('YYYY-MM-DD')) ? fm.add(1, 'd') : fm;  
+	}
+
 	$('#tbl_approved_issuance_resident').on('click', '#btnPrintCertificate', function(){
 		let row = $(this).closest("tr")
 		, resident_name =  $(row.find("td")[0]).text()
@@ -1237,9 +1244,9 @@
 						provinceName = provinceName.charAt(0).toUpperCase() 
 									 + provinceName.slice(1).toLowerCase()
 						address += ' Barangay ' + barangayName + ' ' + municipalName  + ', ' + provinceName 
-
+						var nextMonth = moment.addRealMonth(moment(date_issued)).format('YYYY-MM-DD');
 						$('#lbl_control_no').text(control_no);
-						$('#lbl_valid_until').text(valid_until);
+						$('#lbl_valid_until').text(nextMonth);
 						$('#lbl_address').text(address);
 						$('#lbl_date_of_birth').text(date_of_birth);
 						$('#lbl_place_of_birth').text(place_of_birth);
@@ -1278,6 +1285,9 @@
 							$('#lbl_husbands_name').text('');
 						}
 
+
+						
+						
 						$("#fmbcfi").printThis({
 							 	debug: false,              
 							 	         
