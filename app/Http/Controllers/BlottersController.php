@@ -18,7 +18,7 @@ class BlottersController extends Controller
 
     public function index(request $request)
     {
-       $blottersub = DB::table('blottersubjects')->pluck('blotter_subject_name', 'blotter_subject_id');
+       $blottersub = DB::table('t_blotter')->pluck('blotter_subject', 'blotter_subject_id');
         $getBlotterID =  $request->input('EditBlotterIDH');
 
         $blottersub = DB::table('r_blotter_subjects')

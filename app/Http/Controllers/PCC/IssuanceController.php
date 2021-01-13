@@ -20,7 +20,7 @@ class IssuanceController extends Controller
             orderBy('updated_at', 'desc')
             ->get();
        
-       
+       //dd($approved_application_form);
         return view('permit_certification_clearance.issuance', compact('approved_application_form', 'business_nature', 'application_form_resident'));
             
     }

@@ -96,6 +96,8 @@ class RequestController extends Controller
             $D_MUDGUARD_NO = $request->D_MUDGUARD_NO;
             $D_CR_NO = $request->D_CR_NO;
             $D_OR_NO = $request->D_OR_NO;
+            $D_MAKE = $request->D_MAKE;
+            $D_PLATE = $request->D_PLATE;
         //Clearance General Purpose - E
             $E_PURPOSE = $request->E_PURPOSE;
             $E_REGISTERED_NAME = $request->E_REGISTERED_NAME;
@@ -118,7 +120,7 @@ class RequestController extends Controller
         empty(DB::table('t_application_form')->max('FORM_ID')) ? $latest_form_id = 1 
             : $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
-        if($PAPER_TYPE_CLEARANCE == "Barangay Business Permit"){
+        if($PAPER_TYPE_CLEARANCE == "Barangay Business permit"){
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'SSSS-SSSS'
@@ -265,6 +267,8 @@ class RequestController extends Controller
                     ,'D_CR_NO' => $D_CR_NO
                     ,'D_OR_NO' => $D_OR_NO
                     ,'FORM_ID' => $latest_form_id
+                    ,'MAKE' => $D_MAKE
+                    ,'PLATE_NO' => $D_PLATE
                 ));
 
             return response()->json(['message' => $latest_form_id] );
@@ -292,6 +296,7 @@ class RequestController extends Controller
                     ,'REGISTERED_NAME' => $E_REGISTERED_NAME
                     ,'CONSTRUCTION_ADDRESS' => $E_CONSTRUCTION_ADDRESS
                     ,'FORM_ID' => $latest_form_id
+                    ,
                 ));
 
             return response()->json(['message' => $latest_form_id] );
@@ -613,6 +618,9 @@ class RequestController extends Controller
             $D_MUDGUARD_NO = $request->D_MUDGUARD_NO;
             $D_CR_NO = $request->D_CR_NO;
             $D_OR_NO = $request->D_OR_NO;
+            $D_MAKE = $request->D_MAKE;
+            $D_PLATE = $request->D_PLATE;
+
         //Clearance General Purpose - E
             $E_PURPOSE = $request->E_PURPOSE;
             $E_REGISTERED_NAME = $request->E_REGISTERED_NAME;
@@ -622,6 +630,7 @@ class RequestController extends Controller
             $PAPER_TYPE_FORM = $request->PAPER_TYPE_FORM;
             $BUSINESS_ID = $request->BUSINESS_ID;
             $APPLICANT_NAME = $request->APPLICANT_NAME;
+
 
 
         $clearance_type_id = DB::table('r_paper_type')
@@ -774,6 +783,9 @@ class RequestController extends Controller
                     ,'D_CR_NO' => $D_CR_NO
                     ,'D_OR_NO' => $D_OR_NO
                     ,'FORM_ID' => $latest_form_id
+                    ,'MAKE' => $D_MAKE
+                    ,'PLATE_NO' => $D_PLATE
+                    
                 ));
 
             return response()->json(['message' => $latest_form_id] );

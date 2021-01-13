@@ -82,7 +82,7 @@
 								@if($row->REQUESTED_PAPER_TYPE == 'Barangay Clearance Tricycle')
 									<td style="text-transform: uppercase;">{{$row->OPERATOR_NAME}}</td> {{-- 2 --}}
 								@else
-									<td style="text-transform: uppercase;">{{$row->APPLICANT_NAME}}</td> {{-- 2 --}}
+									<td style="text-transform: uppercase;>"{{$row->APPLICANT_NAME}}</td> {{-- 2 --}}
 								@endif
 								<td>{{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}} {{$row->BUSINESS_OWNER_LASTNAME}} </td> {{-- 3 --}}
 								<td>{{$row->FORM_DATE}}</td>
@@ -271,7 +271,8 @@
 				{
 					// alert(response)
 					var company_name, address, nature_business, tax_year, quarter, or_no, or_date, or_amount, barangay_permit, business_tax, garbage_fee, signboard, ctc;
-					$.each(response["business_permit"], function(){
+					$.each(response["business_permit"], function() {
+
 						company_name = this["BUSINESS_NAME"];
 						address = this["BUSINESS_ADDRESS"];
 						nature_business = this["BUSINESS_NATURE_NAME"];
@@ -285,7 +286,26 @@
 						garbage_fee = this["GARBAGE_FEE"];
 						signboard = this["SIGNBOARD"];
 						ctc = this["CTC"];
+						control_no = this["CONTROL_NO"];
 					});
+
+						control_no = control_no.split("-")
+						if(control_no[4] <= 99) {
+							control_no[4] = '0000' + control_no[4]
+						}
+						else if(control_no[4] <= 999) {
+							control_no[4] = '000' + control_no[4]
+						}
+						else if(control_no[4] <= 9999) {
+							control_no[4] = '00' + control_no[4]
+						}
+						if(control_no[3] <= 9) {
+							control_no[3] = '00' + control_no[3]
+						}
+
+						control_no = control_no[0] + '-' + control_no[1] + '-' + control_no[3] + '-' + control_no[2] + '-' + control_no[4] 
+						//set value here
+						$("#lbl_control_no_b_r").text(control_no);
 						//set value here
 						$("#lbl_company_name").text(company_name);
 						$("#lbl_business_address").text(address);
@@ -512,6 +532,8 @@
 						or_date = this["OR_DATE"];
 						or_amount = this["OR_AMOUNT"];
 						control_no = this["CONTROL_NO"];
+						make = this['MAKE'];
+						plate_no = this['PLATE_NO'];
 					});
 					//set value here
 					barangayName = '{{session('session_barangay_name')}}'
@@ -537,8 +559,9 @@
 					$("#lbl_mudguard_no_d").text(mudguard_no);
 					$("#lbl_cr_no_d").text(cr_no);
 					$("#lbl_or_no_driver_d").text(or_no_driver);
+					$('#lbl_plate_no').val(plate_no);
 
-
+					console.log(response)
 
 				 	//print here
 					$("#fmbc001d").printThis({

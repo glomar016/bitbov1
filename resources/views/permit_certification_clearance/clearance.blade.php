@@ -349,6 +349,19 @@
 										<input type="text"  class="form-control" id="txt_or_d">
 									</div>
 								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Make</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_make">
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Plate No</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_plate">
+									</div>
+								</div>
+
 							</div>
 
 							{{-- E - Clearance General Purpose --}}
@@ -718,8 +731,8 @@
 		, ctc = $('#txt_ctc').val()
 		, business_tax = $('#txt_business_tax').val()
 		, applicant_name = $('#txt_applicant_name').val()
-		;
-		
+		, make = $('#txt_make').val()
+		, plate_no = $('#txt_plate').val()
 		
 		let data = {
 			'_token' : " {{ csrf_token() }}"
@@ -760,6 +773,8 @@
 			,'D_MUDGUARD_NO' : $("#txt_mudguard_d").val()//mudguard no
 			,'D_CR_NO' : $("#txt_cr_d").val()//cr no
 			,'D_OR_NO' : $("#txt_or_d").val()//or no
+			,'D_MAKE' : make
+			,'D_PLATE' : plate_no
 
 			// General Purpose - E
 			,'E_PURPOSE' : $("input[id='txt_activity_e']").val()
@@ -786,6 +801,8 @@
 
 
 		};
+		
+		
 		
 		$.ajax({
 			url : "{{ route('CRUDRequestClearance') }}",

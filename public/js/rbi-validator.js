@@ -74,10 +74,10 @@ $(function () {
                 oAdminManager.validateAll();
             });
 
-            this.inputQualifier.on('input click', function () {
-                oAdminManager.validateName($('#rbi-qualifier'),$('#rbi-qualifier-lbl'));
-                oAdminManager.validateAll();
-            });
+            // this.inputQualifier.on('input click', function () {
+            //     oAdminManager.validateName($('#rbi-qualifier'),$('#rbi-qualifier-lbl'));
+            //     oAdminManager.validateAll();
+            // });
 
             this.inputPlaceofbirth.on('input click', function () {
                 oAdminManager.validateName($('#rbi-placeofbirth'),$('#rbi-placeofbirth-lbl'));
@@ -238,13 +238,13 @@ $(function () {
             
             var len = $(document).find('.is-valid').length;
             console.log(len)
-            if(len===11) {
+            if(len>=7) {
 
                  $(".sw-btn-next").attr("disabled", false);
                  
             } else {
 
-                 //$(".sw-btn-next").attr("disabled", true);
+                 $(".sw-btn-next").attr("disabled", true);
                  
             }
         },

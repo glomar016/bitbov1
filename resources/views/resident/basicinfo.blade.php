@@ -100,6 +100,17 @@
 {{--For ADD FORM--}}
 
 <script>
+
+    function getDays(dob) {
+
+        return moment().diff(dob, 'days');
+    }
+
+    function getYears(dob) {
+
+        return moment().diff(dob, 'years');
+    }
+    
     function getAge (){
         var dateOfBirth = $('#dateofbirth').val();
         var years = moment().diff(dateOfBirth, 'years');
@@ -2299,6 +2310,16 @@ function getStatus(age,days)
     }
 }
 
+function getDays(dob) {
+
+    return moment().diff(dob, 'days');
+}
+
+function getYears(dob) {
+
+    return moment().diff(dob, 'years');
+}
+
 $("#register-btn").click(function(e){
     e.preventDefault();
     
@@ -2893,16 +2914,7 @@ $("#register-btn").click(function(e){
     });
     
     
-    function getDays(dob) {
 
-        return moment().diff(dob, 'days');
-    }
-
-    function getYears(dob) {
-
-        return moment().diff(dob, 'years');
-    }
-    
     
 
     $(document).on('change','.multidoba', function()
@@ -3213,55 +3225,56 @@ $("#register-btn").click(function(e){
 
                     };
 
-            // swal({
-            //     title: "Wait!",
-            //     text: "Are you sure you want to add this residents?",
-            //     icon: "warning",
-            //     buttons: true,
-            //     dangerMode: true,
-            // })
-            // .then((willDelete) => {
-            //     if (willDelete) {
-            //         $.ajax({
-            //             type    :'post',
-            //             url     :"{{route('RBIAdd')}}",
-            //             data    : get_data,
-            //             success : function(data)
-            //                     {
+            swal({
+                title: "Wait!",
+                text: "Are you sure you want to add this residents?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type    :'post',
+                        url     :"{{route('RBIAdd')}}",
+                        data    : get_data,
+                        success : function(data)
+                                {
                                     
-            //                         if(data == "Existing"){
-            //                              swal("Data already exist!", {
-            //                              icon: "warning",
+                                    if(data == "Existing"){
+                                         swal("Data already exist!", {
+                                         icon: "warning",
 
-            //                             });
-            //                         }
-            //                         else{
-            //                             // location.reload();
-            //                              swal("Data have been successfully added!", {
-            //                              icon: "success",
+                                        });
+                                    }
+                                    else{
+                                        // location.reload();
+                                         swal("Data have been successfully added!", {
+                                         icon: "success",
 
-            //                             });
+                                        });
 
-            //                         }
+                                    }
                                     
-            //                     },
-            //             error   : function()
-            //                     {
-            //                     // alert(error);
-            //                     }
-            //         });
+                                },
+                        error   : function()
+                                {
+                                // alert(error);
+                                }
+                    });
                    
-            //         // location.reload();
+                    // location.reload();
 
-            //     } else {
-            //         swal("Operation Cancelled.", {
-            //             icon: "error",
-            //         });
-            //     }
-            // });
+                } else {
+                    swal("Operation Cancelled.", {
+                        icon: "error",
+                    });
+                }
+            });
 
     });
 
+});
     // END RBI FORM
 
 

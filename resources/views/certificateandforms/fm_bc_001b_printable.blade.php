@@ -383,7 +383,7 @@ justify;line-height:normal;background:white'><span style='font-size:15.0pt;
 mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
 mso-bidi-theme-font:minor-latin;color:black;letter-spacing:.75pt;mso-fareast-language:
 EN-PH'><o:p>&nbsp;</o:p></span></p>
-{{--footer --}}
+{{--footer--}}
 <h5><p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal;background:white'><b><span
 style='font-size:18.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
@@ -398,6 +398,7 @@ EN-PH'>Punong Barangay</span><span style='font-size:15.0pt;mso-fareast-font-fami
 "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
 color:black;mso-fareast-language:EN-PH'><o:p></o:p></span></p>
 
+{{--end footer--}}
 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
 justify;line-height:normal;background:white'><span style='font-size:15.0pt;
 mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;

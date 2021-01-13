@@ -19,7 +19,7 @@ class EvaluationController extends Controller
         $approved_application_form = DB::table('v_approved_application_form')->get();
         $declined_application_form = DB::table('v_declined_application_form')->get();
         
-        
+
         return view('permit_certification_clearance.verification', compact('businessNotApproved', 'pending_application_form', 'application_form_resident'));
         
 
@@ -72,8 +72,9 @@ class EvaluationController extends Controller
             ->where('EVALUATION_STATUS','=','Approved')
             ->where('REQUESTED_PAPER_TYPE_ID',$PAPER_TYPE_ID)
             ->get();
+            
         $count = $approved->count()+1;
-        $form_number = "FM-BCC" . "-" . $YEAR_MONTH . "-" .$count ;
+        $form_number = "FM-BBP" . "-0" . $YEAR_MONTH . "-" .$count ;
         
         
         $ap_evaluation = DB::table('t_application_form_evaluation')
