@@ -501,6 +501,7 @@
 		, gross_essential = $(row.find("td")[8]).text()
 		, gross_nonessential = $(row.find("td")[9]).text()
 		;
+		
 		$('#txt_applicant_name').val(business_owner);
 		// alert(business_nature);
 		$('#txt_business_nature').val(business_nature);
@@ -719,6 +720,7 @@
 		, applicant_name = $('#txt_applicant_name').val()
 		;
 		
+		
 		let data = {
 			'_token' : " {{ csrf_token() }}"
 			,'TAX_YEAR' : tax_year
@@ -751,13 +753,13 @@
 			,'C_CONSTRUCTION_ADDRESS' : $('#txt_address_c').val() // address
 			
 			//Tricycle - D
-			,'D_APPLICANT_NAME' : $("input[id='txt_tricycle_operator_d']").val() //tricycle operator
-			,'D_REGISTERED_NAME' : $("input[id='txt_company_name_d']").val() // company
-			,'D_CONSTRUCTION_ADDRESS' : $('#txt_address_d').val() // address
-			,'D_DRIVER_LICENSE_NO' : $("input[id='txt_driver_license_d']").val()//driver's license
-			,'D_MUDGUARD_NO' : $("input[id='txt_mudguard_d']").val()//mudguard no
-			,'D_CR_NO' : $("input[id='txt_cr_d']").val()//cr no
-			,'D_OR_NO' : $("input[id='txt_or_d']").val()//or no
+			,'D_APPLICANT_NAME' : $("#txt_tricycle_operator_d").val() //tricycle operator
+			,'D_REGISTERED_NAME' : $("#txt_company_name_d").val() // company
+			,'D_CONSTRUCTION_ADDRESS' : $("#txt_address_d").val() // address
+			,'D_DRIVER_LICENSE_NO' : $("#txt_driver_license_d").val()//driver's license
+			,'D_MUDGUARD_NO' : $("#txt_mudguard_d").val()//mudguard no
+			,'D_CR_NO' : $("#txt_cr_d").val()//cr no
+			,'D_OR_NO' : $("#txt_or_d").val()//or no
 
 			// General Purpose - E
 			,'E_PURPOSE' : $("input[id='txt_activity_e']").val()
@@ -784,7 +786,7 @@
 
 
 		};
-		console.log(data);
+		
 		$.ajax({
 			url : "{{ route('CRUDRequestClearance') }}",
 			method : 'POST',
@@ -795,9 +797,9 @@
 					text: 'Request Done!',
 					icon: 'success',
 				});
-				// window.location.reload();
-				console.log(response["message"]);
-				location.reload();
+
+				window.location.reload();
+				
 			},
 			error : function(error){
 				console.log("error: " + error);

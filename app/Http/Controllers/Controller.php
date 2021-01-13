@@ -22,17 +22,19 @@ class Controller extends BaseController
 		}   
 		else
 		{
-            
-        try {
-            //DB::table('t_users')->where('username','GILBERT.CATAMBAY')->update(['password'=>bcrypt('secretary')]);
-            DB::connection()->getPdo();
-            $test_connection = db::table('t_users')->get();
-            return view('login.login');
-            } catch (\Exception $e) {
+            try 
+            {
+                //DB::table('t_users')->where('username','GILBERT.CATAMBAY')->update(['password'=>bcrypt('secretary')]);
+                DB::connection()->getPdo();
+                $test_connection = db::table('t_users')->get();
+                
+                return view('login.login');
+
+            } 
+            catch (\Exception $e) 
+            {
                 return redirect()->route('InstallationV2');
             }
-
-
 
 		}
 		

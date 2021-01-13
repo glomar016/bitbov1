@@ -101,7 +101,7 @@ line-height:107%'>BARANGAY CLEARANCE<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
 normal'><span lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt;
-line-height:107%'><o:p>&nbsp;</o:p></span></b></p><br><br><br><br><br>
+line-height:107%'><o:p>&nbsp;</o:p></span></b></p><br><br><br>
 
 <p class=MsoNormal><span lang=EN-PH style='font-size:14.0pt;mso-bidi-font-size:
 11.0pt;line-height:107%'>TO WHOM IT MAY CONCERN:<o:p></o:p></span></p>

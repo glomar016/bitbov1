@@ -264,13 +264,7 @@
 							</div>
 							
 						</div>
-						<div class="col-md-10" id="divValidUntil">
-							<div class="form-group m-b-10" >
-								<label>Valid Until</label> 
-								
-								<input  type="date"  class="form-control" name="txt_valid_until"></input>
-							</div>
-						</div>
+						
 
 						{{-- Clearance Building Non Business --}}
 						<div class="col-md-10" id="divIndividualNonBusiness">
@@ -647,7 +641,7 @@
 			,'PURPOSE' : $("input[name='txt_purpose']").val()
 
 			,'MAIDEN_NAME' : $("input[name='txt_maiden_name']").val()
-			,'VALID_UNTIL' : $("input[name='txt_valid_until']").val()
+			
 		};
 
 		

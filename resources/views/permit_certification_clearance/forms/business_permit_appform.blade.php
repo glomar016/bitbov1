@@ -83,7 +83,7 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Transaction Type</label>
-												{{-- <input type="text" id="" class="form-control"> --}}
+												{{-- <input type="text"  class="form-control"> --}}
 												<select class="form-control">
 													<option selected disabled value=""></option>
 													<option>New</option>
@@ -95,19 +95,19 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>TIN No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text"  class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>DTI/ SEC/CDA Registration No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text"  class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label> Date Registered</label>
-												<input type="text" id="" class="form-control">
+												<input type="text"  class="form-control">
 											</div>
 										</div>
 									</div>
@@ -177,7 +177,7 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>If yes, please specify the entity</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -196,19 +196,19 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Last Name</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>First Name</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label> Middle Name</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -221,13 +221,13 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Business Name</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Trade Name/Franchise</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -243,13 +243,13 @@
 										<div class="col-lg-9 col-md-18">
 											<div class="stats-content">
 												<label>Business Address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Postal Code</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -262,19 +262,19 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Business' Telephone No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Business' Mobile No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Business' Email Address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -287,13 +287,13 @@
 										<div class="col-lg-9 col-md-18">
 											<div class="stats-content">
 												<label>Owner's Address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Postal Code</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -306,19 +306,19 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Owner's Telephone No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Owner's Mobile No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Owner's Email Address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -331,19 +331,19 @@
 										<div class="col-lg-6 col-md-9">
 											<div class="stats-content">
 												<label>In case of emergency, provide name of the contact person </label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Telephone/Mobile No</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Email address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -356,23 +356,23 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Business Area </label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Total number of employees in establishment</label>
-												<input type="number" id="" class="form-control" placeholder="Female">
+												<input type="number" class="form-control" placeholder="Female">
 												<br>
-												<input type="number" id="" class="form-control" placeholder="Male">
+												<input type="number" class="form-control" placeholder="Male">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Number of employees residing within LGU</label>
-												<input type="number" id="" class="form-control" placeholder="Female">
+												<input type="number" class="form-control" placeholder="Female">
 												<br>
-												<input type="number" id="" class="form-control" placeholder="Male">
+												<input type="number" class="form-control" placeholder="Male">
 											</div>
 										</div>
 									</div>
@@ -389,13 +389,13 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="stats-content">
 												<label>Lessor’s Fullname</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="stats-content">
 												<label>Lessor’s Full address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -408,20 +408,20 @@
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Lessor's Full telephone/mobile no.</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Lessor’s email address</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-3 col-md-6">
 
 											<div class="stats-content">
 												<label>Monthly Rental</label>
-												<input type="text" id="" class="form-control">
+												<input type="text" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -447,10 +447,10 @@
 										<tbody>
 
 											{{-- <tr>
-												<td><input type="text" id="" name="lineofbusiness" class="form-control"></td>
-												<td><input type="text" id="" name="noofunit" class="form-control"></td>
-												<td><input type="text" id="" name="capitalization" class="form-control"></td>
-												<td><input type="text" id="" name="grossreceipt" class="form-control"></td>
+												<td><input type="text" name="lineofbusiness" class="form-control"></td>
+												<td><input type="text" name="noofunit" class="form-control"></td>
+												<td><input type="text" name="capitalization" class="form-control"></td>
+												<td><input type="text" name="grossreceipt" class="form-control"></td>
 												<td></td>
 											</tr> --}}
 
@@ -487,7 +487,7 @@
 									<tbody>
 										<tr>
 											<td>Occupancy Permit (new)</td>
-											<td><input type="text" id="" class="form-control"></td>
+											<td><input type="text" class="form-control"></td>
 											<td>
 												<select id="sel_" class="form-control">
 													<option></option>
@@ -498,7 +498,7 @@
 										</tr>
 										<tr>
 											<td>Business Registration</td>
-											<td><input type="text" id="" class="form-control"></td>
+											<td><input type="text" class="form-control"></td>
 											<td>
 												<select id="sel_" class="form-control">
 													<option></option>
@@ -509,7 +509,7 @@
 										</tr>
 										<tr>
 											<td>Valid Fire Safety Inspection Certificate</td>
-											<td><input type="text" id="" class="form-control"></td>
+											<td><input type="text" class="form-control"></td>
 											<td>
 												<select id="sel_" class="form-control">
 													<option></option>
@@ -520,7 +520,7 @@
 										</tr>
 										<tr>
 											<td>Contract of Lease</td>
-											<td><input type="text" id="" class="form-control"></td>
+											<td><input type="text" class="form-control"></td>
 											<td>
 												<select id="sel_" class="form-control">
 													<option></option>
@@ -531,7 +531,7 @@
 										</tr>
 										<tr>
 											<td>Sworn Statement of Gross Receipt</td>
-											<td><input type="text" id="" class="form-control"></td>
+											<td><input type="text" class="form-control"></td>
 											<td>
 												<select id="sel_" class="form-control">
 													<option></option>
@@ -542,7 +542,7 @@
 										</tr>
 										<tr>
 											<td>Proof of RPT payment</td>
-											<td><input type="text" id="" class="form-control"></td>
+											<td><input type="text" class="form-control"></td>
 											<td>
 												<select id="sel_" class="form-control">
 													<option></option>

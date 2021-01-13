@@ -92,8 +92,8 @@ div.WordSection1
 
 <body lang=EN-PH style='tab-interval:.5in'>
 
-{{-- <div class=WordSection1 id="print_form" style='margin-top:1.0in; margin-left: 1.0in; margin-right: 1.0in;'> --}}
-	<div class=WordSection1 id="fmbbp001" style='margin-top:1.0in; margin-left: 1.0in; margin-right: 1.0in;'>
+
+<div class=WordSection1 id="fmbbp001" style=' margin-left: 0.50in; margin-right: 1.0in;'>
  <img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
   <img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/>
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
@@ -109,8 +109,10 @@ text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-fon
 Calibri;mso-bidi-theme-font:minor-latin'>Municipality of <span class=SpellE>Tanay</span><o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'>BARANGAY {{ session('session_barangay_name')}}<o:p></o:p></span></p>
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:20.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:red;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>BARANGAY {{ session('session_barangay_name')}}<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
@@ -121,8 +123,9 @@ text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-fon
 Calibri;mso-bidi-theme-font:minor-latin'>PAHINTULOT SA PANGANGALAKAL<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'>(BUSINESS PERMIT)<o:p></o:p></span></p>
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:22.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;mso-fareast-language:EN-PH'>BUSINESS PERMIT<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
@@ -166,8 +169,8 @@ Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span class=SpellE><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>na</span></span><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>na</span></span><span
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
 <span class=SpellE>matatagpuan</span> at may <span class=SpellE>pahatirang</span>
 <span class=SpellE>sulat</span> <span class=SpellE>sa</span><o:p></o:p></span></p>
 
@@ -185,8 +188,8 @@ mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p id="lbl_busin
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span class=SpellE><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>na</span></span><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>na</span></span><span
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
 <span class=SpellE>itinatag</span> <span class=SpellE>nang</span> may <span
 class=SpellE>buong</span> Karapatan at <span class=SpellE>umiiral</span> <span
 class=SpellE>sa</span> <span class=SpellE>ilalim</span> ng <span class=SpellE>mga</span>
@@ -199,8 +202,8 @@ the law of the)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span class=SpellE><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Republika</span></span><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Republika</span></span><span
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
 ng <span class=SpellE>Pilipinas</span>, ay <span class=SpellE>pinagkalooban</span>
 ng <span class=SpellE>pahintulot</span> <span class=SpellE>na</span> <span
 class=SpellE>mangalakal</span> <span class=SpellE>bilang</span><o:p></o:p></span></p>
@@ -225,8 +228,8 @@ Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span class=SpellE><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Ngayong</span></span><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Ngayong</span></span><span
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
 <span class=SpellE>ika</span> - <u>(<span class=SpellE><?php echo date('d') ?></span>)</u> ng <u>(<span
 class=SpellE> <?php 
 	if (date('m') == 01)
@@ -274,7 +277,7 @@ text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-fon
 Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
+text-align:center;line-height:normal'><span style='font-size:17.0pt;mso-bidi-font-family:
 Calibri;mso-bidi-theme-font:minor-latin'>Ang <span class=SpellE>pahintulot</span>
 <span class=SpellE>na</span> <span class=SpellE>ito</span> ay <span
 class=SpellE>matatapos</span> <span class=SpellE>sa</span> <span class=SpellE>ika</span>
@@ -290,8 +293,8 @@ Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span class=SpellE><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Malibang</span></span><span
-style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Malibang</span></span><span
+style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
 <span class=SpellE>ito’y</span> <span class=SpellE>maagang</span> <span
 class=SpellE>bawiin</span> at <span class=SpellE>pawalang</span> bias.<o:p></o:p></span></p>
 
@@ -307,21 +310,30 @@ Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
 Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'><o:p>{{session('session_brgychairman_name')}}</o:p></span></p>
+{{--footer--}}
+<h5><p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:18.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>{{session('session_brgychairman_name')}}<o:p></o:p></span></b></p></h5>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'>Punong Barangay<o:p></o:p></span></p>
+text-align:center;line-height:normal;background:white'><span style='font-size:
+17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'>Punong Barangay</span><span style='font-size:15.0pt;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+color:black;mso-fareast-language:EN-PH'><o:p></o:p></span></p>
+
+{{--end footer--}}
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
 Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="900" 
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=1  
  style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt; align-self: center;
- mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt; width: 100%'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:13.7pt'>
   <td width=78 valign=top style='width:58.4pt;border:solid windowtext 1.0pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:13.7pt'>

@@ -375,10 +375,10 @@
 	$('#btnAddBusinessActivity').on('click', function(){
 		$('#tbl_business_acitivity').find('tbody').append(
 			'<tr class="classTrBusinessActivity">\n'
-			+ '<td><input type="text" id="" name="lineofbusiness" class="form-control"></td> \n'
-			+ '<td><input type="text" id="" name="noofunit" class="form-control"></td> \n'
-			+ '<td><input type="text" id="" name="capitalization" class="form-control"></td> \n'
-			+ '<td><input type="text" id="" name="grossreceipt" class="form-control"></td> \n'
+			+ '<td><input type="text" name="lineofbusiness" class="form-control"></td> \n'
+			+ '<td><input type="text" name="noofunit" class="form-control"></td> \n'
+			+ '<td><input type="text" name="capitalization" class="form-control"></td> \n'
+			+ '<td><input type="text" name="grossreceipt" class="form-control"></td> \n'
 			+ '<td><a class="btn btn-danger" onclick="if($(\'#tbl_business_acitivity tbody tr\').length>1)$(this).closest(\'tr\').remove()"><i class="fa fa-minus text-white"></i></a></td>\n' 
 			+ '</tr> \n'
 			);

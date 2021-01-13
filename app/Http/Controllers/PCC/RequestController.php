@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class RequestController extends Controller
 {
-   public function index($typeofview){
+   public function index($typeofview)
+   {
+
     	$approved_business = DB::table('v_official_business_list')->where('STATUS','Approved')->get();
     	$business_nature = DB::table('v_business_nature')->get();
         $resident = DB::table('v_resident')->get();
@@ -113,6 +115,9 @@ class RequestController extends Controller
             ->select('PAPER_TYPE_ID')
             ->first();
 
+        empty(DB::table('t_application_form')->max('FORM_ID')) ? $latest_form_id = 1 
+            : $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
+
         if($PAPER_TYPE_CLEARANCE == "Barangay Business Permit"){
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
@@ -123,9 +128,8 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
-
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
             $business_permit = DB::table('t_bf_business_permit')
                 ->insert(array(
@@ -136,12 +140,13 @@ class RequestController extends Controller
                     ,'SIGNBOARD' => $SIGNBOARD
                     ,'CTC' => $CTC
                     ,'BUSINESS_TAX' => $BUSINESS_TAX
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if ($PAPER_TYPE_CLEARANCE == "Barangay Clearance Building"){
+        else if ($PAPER_TYPE_CLEARANCE == "Barangay Clearance Building") {
+
          $application_form = DB::Table('t_application_form')
             ->insert(array(
                 'FORM_NUMBER' => 'XXXX-XXX'
@@ -151,16 +156,17 @@ class RequestController extends Controller
                 ,'RECEIVED_BY' => session('session_full_name')
                 ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
                 ,'APPLICANT_NAME' => $APPLICANT_NAME
+                ,'FORM_ID' => $latest_form_id
 
             ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
             $scope_of_work = DB::table('t_bf_scope_of_work')
                 ->insert(array(
                     'SCOPE_OF_WORK_NAME' => $A_SCOPE_OF_WORK_NAME
                     ,'SCOPE_OF_WORK_SPECIFY' =>$A_SCOPE_OF_WORK_SPECIFY
                 ));
+
             $latest_scope_of_work_id = DB::table('t_bf_scope_of_work')->select('SCOPE_OF_WORK_ID')->latest('SCOPE_OF_WORK_ID')->first();
 
             $barangay_clearance = DB::table('t_bf_barangay_clearance')
@@ -169,12 +175,15 @@ class RequestController extends Controller
                     ,'CONSTRUCTION_ADDRESS' => $A_CONSTRUCTION_ADDRESS
                     ,'PROJECT_LOCATION' => $A_PROJECT_LOCATION
                     ,'SCOPE_OF_WORK_ID' => $latest_scope_of_work_id->SCOPE_OF_WORK_ID
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Business"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Business") {
+
+            
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
@@ -184,21 +193,23 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
 
                 ));
-
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
            $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'REGISTERED_NAME' => $B_REGISTERED_NAME
                     ,'CONSTRUCTION_ADDRESS' => $B_CONSTRUCTION_ADDRESS
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Zonal"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Zonal") {
+
+            
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
@@ -208,10 +219,9 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
 
                 ));
-
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
            $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
@@ -223,12 +233,15 @@ class RequestController extends Controller
                     ,'APPLICANT_NAME' => $C_APPLICANT_NAME
                     ,'CONSTRUCTION_ADDRESS' => $C_CONSTRUCTION_ADDRESS
                     ,'PROJECT_LOCATION' => $C_PROJECT_LOCATION
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Tricycle"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Tricycle") {
+
+
+            
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
@@ -237,9 +250,10 @@ class RequestController extends Controller
                     ,'BUSINESS_ID' => $BUSINESS_ID
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            
 
             $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
@@ -250,12 +264,14 @@ class RequestController extends Controller
                     ,'D_MUDGUARD_NO' => $D_MUDGUARD_NO
                     ,'D_CR_NO' => $D_CR_NO
                     ,'D_OR_NO' => $D_OR_NO
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance General Purposes"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance General Purposes") {
+
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
@@ -265,17 +281,17 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                     
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
-           $barangay_clearance = DB::table('t_bf_barangay_clearance')
+            $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'PURPOSE' => $E_PURPOSE
                     ,'REGISTERED_NAME' => $E_REGISTERED_NAME
                     ,'CONSTRUCTION_ADDRESS' => $E_CONSTRUCTION_ADDRESS
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
@@ -343,9 +359,14 @@ class RequestController extends Controller
        
 
         $form_number = $control->PAPER_TYPE_CODE . "-" . $YEAR_MONTH . "-" . $control->SERIES;
+        empty(DB::table('t_application_form')->max('FORM_ID')) ? $latest_form_id = 1 
+            : $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
         if($CERTIFICATE_TYPE == "Barangay Clearance For Individual") 
         {
+
+           
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => $form_number
@@ -355,14 +376,14 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array(
                     'PURPOSE' => $F_PURPOSE
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                     ,'MAIDEN_NAME' => $MAIDEN_NAME
                     ,'VALID_UNTIL' => $VALID_UNTIL 
                 ));
@@ -372,6 +393,7 @@ class RequestController extends Controller
         }
         else if($CERTIFICATE_TYPE == "Barangay Certificate Residency")
         {
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => $form_number
@@ -381,14 +403,15 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array(
                     'PURPOSE' => $A_PURPOSE
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
             return response()->json(['message' => $certificate_type_id->PAPER_TYPE_ID.' '.$form_type_id->PAPER_TYPE_ID] );
         }
@@ -403,9 +426,10 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array(
@@ -414,7 +438,7 @@ class RequestController extends Controller
                     ,'DESTINATION_ADDRESS'   =>    $T_DESTINATION_ADDRESS
                     ,'TRAVEL_DATE'           =>    $T_TRAVEL_DATE
                     ,'RETURN_DATE'           =>    $T_RETURN_DATE
-                    ,'FORM_ID'               =>    $latest_form_id->FORM_ID
+                    ,'FORM_ID'               =>    $latest_form_id
                 ));
             return response()->json(['message' => $certificate_type_id->PAPER_TYPE_ID.' '.$form_type_id->PAPER_TYPE_ID] );
         }
@@ -429,13 +453,14 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array( 
-                    'FORM_ID' => $latest_form_id->FORM_ID
+                    'FORM_ID' => $latest_form_id
                     ,'SSS_NO' => $B_SSS_NO
                     ,'CALAMITY_NAME' => $B_CALAMITY_NAME
                     ,'CALAMITY_DATE' => $B_CALAMITY_DATE
@@ -452,13 +477,14 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array( 
-                    'FORM_ID' => $latest_form_id->FORM_ID
+                    'FORM_ID' => $latest_form_id
                     ,'SSS_NO' => $C_SSS_NO
                     ,'CALAMITY_NAME' => $C_CALAMITY_NAME
                     ,'CALAMITY_DATE' => $C_CALAMITY_DATE
@@ -466,7 +492,7 @@ class RequestController extends Controller
                 ));
             return response()->json(['message' => $certificate_type_id->PAPER_TYPE_ID.' '.$form_type_id->PAPER_TYPE_ID] );
         }
-        else if($CERTIFICATE_TYPE == "Barangay Certificate SPES"){
+        else if($CERTIFICATE_TYPE == "Barangay Certificate SPES") {
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => $form_number
@@ -476,13 +502,14 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array( 
-                    'FORM_ID' => $latest_form_id->FORM_ID
+                    'FORM_ID' => $latest_form_id
                 ));
             return response()->json(['message' => $certificate_type_id->PAPER_TYPE_ID.' '.$form_type_id->PAPER_TYPE_ID] );
         }
@@ -496,13 +523,14 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array( 
-                    'FORM_ID' => $latest_form_id->FORM_ID
+                    'FORM_ID' => $latest_form_id
                     ,'CATEGORY_SINGLE_PARENT' => $E_CATEGORY_SINGLE_PARENT
                     ,'REQUESTOR_NAME' => $E_REQUESTOR_NAME
                    
@@ -533,19 +561,23 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $certificate_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;;
 
             $barangay_certificate = DB::table('t_bf_barangay_certification')
                 ->insert(array( 
-                    'FORM_ID' => $latest_form_id->FORM_ID
+                    'FORM_ID' => $latest_form_id
                     ,'PURPOSE' => $F_PURPOSE
                 ));
             return response()->json(['message' => $certificate_type_id->PAPER_TYPE_ID.' '.$form_type_id->PAPER_TYPE_ID] );
         }
     }
+    public function lrtrim($string) {
 
+        return rtrim(ltrim($string));
+    }
     public function BusinessIssuanceRequest(Request $request){
         // Business Permit
             $TAX_YEAR = $request->TAX_YEAR;
@@ -601,6 +633,9 @@ class RequestController extends Controller
             ->select('PAPER_TYPE_ID')
             ->first();
 
+        empty(DB::table('t_application_form')->max('FORM_ID')) ? $latest_form_id = 1 
+            : $latest_form_id = DB::table('t_application_form')->max('FORM_ID') + 1;
+
         if($PAPER_TYPE_CLEARANCE == "Barangay Business Permit"){
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
@@ -611,10 +646,10 @@ class RequestController extends Controller
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
                     ,'APPLICANT_NAME' => $APPLICANT_NAME
-
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            //$latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
             $business_permit = DB::table('t_bf_business_permit')
                 ->insert(array(
@@ -625,13 +660,14 @@ class RequestController extends Controller
                     ,'SIGNBOARD' => $SIGNBOARD
                     ,'CTC' => $CTC
                     ,'BUSINESS_TAX' => $BUSINESS_TAX
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
 
                 ));
 
             return response()->json(['message' => $latest_form_id, 'applicant_name' => $APPLICANT_NAME] );
         }
-        else if ($PAPER_TYPE_CLEARANCE == "Barangay Clearance Building"){
+        else if ($PAPER_TYPE_CLEARANCE == "Barangay Clearance Building") {
+
          $application_form = DB::Table('t_application_form')
             ->insert(array(
                 'FORM_NUMBER' => 'XXXX-XXX'
@@ -640,9 +676,9 @@ class RequestController extends Controller
                 ,'BUSINESS_ID' => $BUSINESS_ID
                 ,'RECEIVED_BY' => session('session_full_name')
                 ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
+                ,'FORM_ID' => $latest_form_id
             ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
             $scope_of_work = DB::table('t_bf_scope_of_work')
                 ->insert(array(
@@ -657,7 +693,7 @@ class RequestController extends Controller
                     ,'CONSTRUCTION_ADDRESS' => $A_CONSTRUCTION_ADDRESS
                     ,'PROJECT_LOCATION' => $A_PROJECT_LOCATION
                     ,'SCOPE_OF_WORK_ID' => $latest_scope_of_work_id->SCOPE_OF_WORK_ID
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
@@ -673,15 +709,14 @@ class RequestController extends Controller
                     ,'BUSINESS_ID' => $BUSINESS_ID
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
-
-           $barangay_clearance = DB::table('t_bf_barangay_clearance')
+            $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'REGISTERED_NAME' => $B_REGISTERED_NAME
                     ,'CONSTRUCTION_ADDRESS' => $B_CONSTRUCTION_ADDRESS
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
@@ -695,11 +730,12 @@ class RequestController extends Controller
                     ,'BUSINESS_ID' => $BUSINESS_ID
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
+            
 
-           $barangay_clearance = DB::table('t_bf_barangay_clearance')
+            $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'OCT_TCT_NUMBER' => $C_OCT_TCT_NUMBER
                     ,'TAX_DECLARATION' => $C_TAX_DECLARATION
@@ -709,12 +745,13 @@ class RequestController extends Controller
                     ,'APPLICANT_NAME' => $C_APPLICANT_NAME
                     ,'CONSTRUCTION_ADDRESS' => $C_CONSTRUCTION_ADDRESS
                     ,'PROJECT_LOCATION' => $C_PROJECT_LOCATION
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Tricycle"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance Tricycle") {
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
@@ -723,25 +760,26 @@ class RequestController extends Controller
                     ,'BUSINESS_ID' => $BUSINESS_ID
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
             $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'APPLICANT_NAME' => $D_APPLICANT_NAME
                     ,'REGISTERED_NAME' => $D_REGISTERED_NAME
-                    ,'CONSTRUCTION_ADDRESS' => $D_CONSTRUCTION_ADDRESS
+                    ,'CONSTRUCTION_ADDRESS' => $this->lrtrim($D_CONSTRUCTION_ADDRESS)
                     ,'D_DRIVER_LICENSE_NO' => $D_DRIVER_LICENSE_NO
                     ,'D_MUDGUARD_NO' => $D_MUDGUARD_NO
                     ,'D_CR_NO' => $D_CR_NO
                     ,'D_OR_NO' => $D_OR_NO
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );
         }
-        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance General Purposes"){
+        else if($PAPER_TYPE_CLEARANCE == "Barangay Clearance General Purposes") {
+
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
                     'FORM_NUMBER' => 'XXXX-XXX'
@@ -750,16 +788,16 @@ class RequestController extends Controller
                     ,'BUSINESS_ID' => $BUSINESS_ID
                     ,'RECEIVED_BY' => session('session_full_name')
                     ,'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
-            $latest_form_id = DB::table('t_application_form')->select('FORM_ID')->latest('FORM_ID')->first();
 
-           $barangay_clearance = DB::table('t_bf_barangay_clearance')
+            $barangay_clearance = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'PURPOSE' => $E_PURPOSE
                     ,'REGISTERED_NAME' => $E_REGISTERED_NAME
                     ,'CONSTRUCTION_ADDRESS' => $E_CONSTRUCTION_ADDRESS
-                    ,'FORM_ID' => $latest_form_id->FORM_ID
+                    ,'FORM_ID' => $latest_form_id
                 ));
 
             return response()->json(['message' => $latest_form_id] );

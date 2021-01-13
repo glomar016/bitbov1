@@ -20,8 +20,9 @@ class IssuanceController extends Controller
             orderBy('updated_at', 'desc')
             ->get();
        
-       // return $application_form_resident;
+       
         return view('permit_certification_clearance.issuance', compact('approved_application_form', 'business_nature', 'application_form_resident'));
+            
     }
 
 
@@ -38,24 +39,31 @@ class IssuanceController extends Controller
 
         else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Building")       
         {
-            $barangay_clearance = DB::table('v_barangay_clearance')
+            $business_info = '';
+            $barangay_clearance = DB::table('v_for_business_clearances')
             ->where('FORM_ID', $FORM_ID)
                 ->get();
 
-            return response()->json(['barangay_clearance' => $barangay_clearance, 'requested_paper_type' => 'Barangay Clearance Building']);    
+            return response()->json(['barangay_clearance' => $barangay_clearance
+                , 'requested_paper_type' => 'Barangay Clearance Building']);    
 
         }
 
         else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Business")       
         {
+            $business_info = '';
             $barangay_clearance = DB::table('v_barangay_clearance')
                 ->where('FORM_ID', $FORM_ID)
                 ->get();
-            
-            $business_info = DB::table('v_business_information')
+
+            if (count($barangay_clearance)>0) {
+
+                $business_info = DB::table('v_for_business_clearances')
                 ->where('BUSINESS_ID', $barangay_clearance[0]->BUSINESS_ID)
                 ->get();
-            
+
+            } 
+
             return response()->json(
                 [
                     'barangay_clearance' => $barangay_clearance, 
@@ -74,7 +82,7 @@ class IssuanceController extends Controller
         }
 
         else if($REQUESTED_PAPER_TYPE == "Barangay Clearance Tricycle")       {
-            $barangay_clearance = DB::table('v_barangay_clearance')
+            $barangay_clearance = DB::table('v_for_business_clearances')
                 ->where('FORM_ID', $FORM_ID)
                 ->get();
             return response()->json(['barangay_clearance' => $barangay_clearance, 'requested_paper_type' => 'Barangay Clearance Tricycle']);    

@@ -144,6 +144,7 @@
 								<th hidden >FORM_ID</th>
 								<th hidden >REQUESTED_PAPER_TYPE</th>
 								<th>FORM date</th>
+								<th hidden>Business ID</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -166,6 +167,7 @@
 								<td hidden>{{$row->FORM_ID}}</td> {{-- 10 --}}
 								<td hidden>{{$row->REQUESTED_PAPER_TYPE_ID}}</td> {{-- 11 --}}
 								<td>{{$row->FORM_DATE}}</td>
+								<td hidden>{{$row->BUSINESS_ID}}</td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -500,7 +502,8 @@
 		, form_id = $(row.find("td")[10]).text()
 		, requested_paper_type_id =  $(row.find("td")[11]).text()
 		;
-		// alert(business_name);
+		
+		
 		$("#txt_business_id_issuance").val(row.attr("id"));
 		$('#txt_requested_paper_id').val(requested_paper_type_id);
 		$('#txt_form_id').val(form_id);
@@ -529,7 +532,7 @@
 		, resident_form_id = $(row.find("td")[9]).text()
 		, resident_requested_paper_id = $(row.find("td")[10]).text()
 		;
-
+		
 		$("#txt_resident_id").val(row.attr("id"));
 		$('#txt_requested_paper_id').val(resident_requested_paper_id);
 		$('#txt_form_id').val(resident_form_id);
@@ -561,6 +564,7 @@
 
 		var year_month = <?php echo date("Y"); ?> + '-' + <?php echo date("m"); ?>
 
+		
 		let data = {
 			'_token' : " {{ csrf_token() }}"
 			,'OR_NO' : or_number

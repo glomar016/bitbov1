@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class EvaluationController extends Controller
 {
-    public function index(){
+    public function index() {
+
         $businessNotApproved = DB::table('v_official_business_list')->where('STATUS', 'Pending')->get();
         $application_form_resident = DB::table('v_application_form_resident')->where('STATUS', 'Pending')->get();
           $pending_application_form = DB::table('v_pending_application_form')
@@ -17,7 +18,10 @@ class EvaluationController extends Controller
             ->get();
         $approved_application_form = DB::table('v_approved_application_form')->get();
         $declined_application_form = DB::table('v_declined_application_form')->get();
+        
+        
         return view('permit_certification_clearance.verification', compact('businessNotApproved', 'pending_application_form', 'application_form_resident'));
+        
 
     }
     // BUSINESS
@@ -59,12 +63,17 @@ class EvaluationController extends Controller
             ->select('PAPER_TYPE_CODE','SERIES')
             ->first();
 
-	   $approved = DB::table('t_application_form_evaluation')
-            ->where('EVALUATION_STATUS','=','Approved')
-            ->get();
+	   // $approved = DB::table('t_application_form_evaluation')
+       //      ->where('EVALUATION_STATUS','=','Approved')
+       //      ->get();
        
-
-        $form_number = "FM-BCC" . "-" . $YEAR_MONTH . "-" . $approved->count();
+        $approved = DB::table('t_application_form_evaluation as ev')
+            ->join('t_application_form as af','ev.FORM_ID','af.FORM_ID')
+            ->where('EVALUATION_STATUS','=','Approved')
+            ->where('REQUESTED_PAPER_TYPE_ID',$PAPER_TYPE_ID)
+            ->get();
+        $count = $approved->count()+1;
+        $form_number = "FM-BCC" . "-" . $YEAR_MONTH . "-" .$count ;
         
         
         $ap_evaluation = DB::table('t_application_form_evaluation')
