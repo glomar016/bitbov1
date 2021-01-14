@@ -287,6 +287,7 @@
 						signboard = this["SIGNBOARD"];
 						ctc = this["CTC"];
 						control_no = this["CONTROL_NO"];
+						issued_date = this['ISSUED_DATE'];
 					});
 
 						control_no = control_no.split("-")
@@ -320,6 +321,7 @@
 						$("#lbl_ctc").text(ctc);
 						$("#lbl_tax_year").text(tax_year);
 						$("#lbl_qtr").text(quarter);
+						$('#lbl_issued_date').text(issued_date);
 
 						 //print here
 						 $("#fmbbp001").printThis({

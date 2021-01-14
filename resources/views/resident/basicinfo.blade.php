@@ -3247,10 +3247,11 @@ $("#register-btn").click(function(e){
 
                                         });
                                     }
-                                    else{
-                                        // location.reload();
-                                         swal("Data have been successfully added!", {
-                                         icon: "success",
+                                    else
+                                    {
+                                        location.reload();
+                                        swal("Data have been successfully added!", {
+                                        icon: "success",
 
                                         });
 

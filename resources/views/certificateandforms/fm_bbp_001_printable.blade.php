@@ -230,7 +230,7 @@ div.WordSection1
 
 <body lang=EN-US style='tab-interval:.5in;word-wrap:break-word'>
 
-<div class=WordSection1 id="fmbbp001" style=' margin-left: 0.50in; margin-right: 1.0in;'>
+<div class=WordSection1 id="fmbbp001" style='margin-left: 0.50in; margin-right: 1.0in;'>
 
 <img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
   <img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/>
@@ -274,7 +274,7 @@ style='mso-tab-count:7'>                            
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
 normal'><span lang=EN-PH style='font-size:10.0pt'>(KNOW ALL MEN BY THERE
 PRESENTS)<span style='mso-tab-count:5'>                                                                           </span>Issued
-Date:<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+Date:<span style='mso-spacerun:yes'>  </span><o:p id=lbl_issued_date></o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
 normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
@@ -296,8 +296,8 @@ style='font-size:10.0pt'><o:p id=lbl_company_name></o:p></span></u></b></p>
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:10.0pt'>na</span></span><span
-lang=EN-PH style='font-size:10.0pt'> <span class=SpellE>matatagpuan</span> at
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>na</span></span><span
+lang=EN-PH style='font-size:12.0pt'> <span class=SpellE>matatagpuan</span> at
 may <span class=SpellE>pahatirang</span> <span class=SpellE>sulat</span> <span
 class=SpellE>sa</span><o:p></o:p></span></p>
 
@@ -311,10 +311,10 @@ line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p><
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span lang=EN-PH
 style='font-size:10.0pt'><o:p id=lbl_business_address></o:p></span></u></b></p>
-
+<br>
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:10.0pt'>na</span></span><span
-lang=EN-PH style='font-size:10.0pt'> <span class=SpellE>itinatag</span> <span
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>na</span></span><span
+lang=EN-PH style='font-size:12.0pt'> <span class=SpellE>itinatag</span> <span
 class=SpellE>nang</span> may <span class=SpellE>buong</span> Karapatan at <span
 class=SpellE>umiiral</span> <span class=SpellE>sa</span> <span class=SpellE>ilalim</span>
 ng <span class=SpellE>mga</span> <span class=SpellE>batas</span> ng<o:p></o:p></span></p>
@@ -324,8 +324,8 @@ line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(duly recognized
 and existing under the law of the)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:10.0pt'>Republika</span></span><span
-lang=EN-PH style='font-size:10.0pt'> ng <span class=SpellE>Pilipinas</span>, ay
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>Republika</span></span><span
+lang=EN-PH style='font-size:12.0pt'> ng <span class=SpellE>Pilipinas</span>, ay
 <span class=SpellE>pinagkalooban</span> ng <span class=SpellE>pahintulot</span>
 <span class=SpellE>na</span> <span class=SpellE>mangalakal</span> <span
 class=SpellE>bilang</span><o:p></o:p></span></p>
@@ -392,7 +392,7 @@ line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p><
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>Ang <span
+line-height:normal'><span lang=EN-PH style='font-size:12.0pt'>Ang <span
 class=SpellE>pahintulot</span> <span class=SpellE>na</span> <span class=SpellE>ito</span>
 ay <span class=SpellE>matatapos</span> <span class=SpellE>sa</span> <span
 class=SpellE>ika</span> – 31 of December (YYYY)<o:p></o:p></span></p>
@@ -405,8 +405,8 @@ expires on)<o:p></o:p></span></p>
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:10.0pt'>Malibang</span></span><span
-lang=EN-PH style='font-size:10.0pt'> <span class=SpellE>ito’y</span> <span
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>Malibang</span></span><span
+lang=EN-PH style='font-size:12.0pt'> <span class=SpellE>ito’y</span> <span
 class=SpellE>maagang</span> <span class=SpellE>bawiin</span> at <span
 class=SpellE>pawalang</span> bias.<o:p></o:p></span></p>
 
