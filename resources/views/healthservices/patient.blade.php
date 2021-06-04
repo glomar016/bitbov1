@@ -5,6 +5,7 @@
 {{-- For table --}}
 <link href="{{ asset('assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/lightbox/css/lightbox.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -25,22 +26,22 @@
 	</div>
 
 	<div class="clear_search">
-		<ul class="result-list">
-			<br><br>
-			
-			
-
-
-
-
-
-		</ul>
+		
 
 	</div>
+	<div style="background-color: white">
+		<div class="result-list" style="padding: 20px; ">
+			{{--<br><br>--}}
+		
+
+
+		</div>
+	</div>
+	
 
 	<!-- end result-list -->
 	<!-- begin pagination -->
-	<div class="clearfix m-t-20">
+	{{--<div class="clearfix m-t-20">
 		<ul class="pagination pull-right">
 			<li class="disabled"><a href="javascript:;" class="page-link">«</a></li>
 			<li class="active"><a href="javascript:;" class="page-link">1</a></li>
@@ -52,7 +53,7 @@
 			<li class="page-item"><a href="javascript:;" class="page-link">7</a></li>
 			<li class="page-item"><a href="javascript:;" class="page-link">»</a></li>
 		</ul>
-	</div>
+	</div>--}}
 	<!-- end pagination -->
 
 
@@ -83,29 +84,27 @@
 								</div>
 							</div>
 							<div class="row">
-									<div class="col-lg-12 col-md-6">
-										<div class="stats-content">
+								<div class="col-lg-4 col-md-6">
+									<div class="stats-content">
 										<label style="display: block; text-align: left">Patient Name</label>
 										<input type="text" id="patient_name_txt" name="patient_name_txt" style="display: block; text-align: left; color:black; background-color:white; "  placeholder='' class="form-control" readonly >
 									</div>
 								</div>
-							</div> 
-							
-							<br>
-							<div class="row">
 								<div class="col-lg-4 col-md-6">
 									<div class="stats-content">
 										<label style="display: block; text-align: left">Gender</label>
 										<input type="text" id="patient_gender_txt" name="patient_gender_txt" style="display: block; text-align: left; color:black; background-color:white; "  placeholder='' class="form-control" readonly >
 									</div>
 								</div>
+
 								<div class="col-lg-2 col-md-6">
 									<div class="stats-content">
 										<label style="display: block; text-align: left">Age</label>
 										<input type="text" id="patient_age_txt" name="patient_age_txt" style="display: block; text-align: left; color:black; background-color:white; "  placeholder='' class="form-control" readonly >
 									</div>
 									
-								</div>	
+								</div>
+
 								<div class="col-lg-2 col-md-6">
 									<div class="stats-content">
 										<label style="display: block; text-align: left">&nbsp;</label>
@@ -116,23 +115,22 @@
 									</div>
 									
 								</div>	
-								
-															
-								
-							</div>
+							</div> 
+							
+							
 							<br>
 							{{-- mother info --}}
-							<div class="mother_info_panel " style="display:none" >
+							<div class="mother_info_panel" style="display:none" >
 							<div class="note note-lime">
-								<div class="note-icon"><i class="fas fa-female"></i></div>
+								<div class="note-icon"><i class="fas fa-hospital"></i></div>
 								<div class="note-content">
 								  <h4><b>For Pregnant Mother</b></h4>
 							
 								</div>
 							  </div>
-							  <br>
+							  
 							  <div class="row">
-								<div class="col-lg-2 col-md-4">
+								<div class="col-lg-4 col-md-4">
 									<div class="stats-content">
 										<label style="display: block; text-align: left">Last Menstrual Period</label>
 										<div class="input-group date" id="datetimepicker1">
@@ -140,7 +138,7 @@
                                         </div>
 									</div>
 								</div>
-								<div class="col-lg-2 col-md-4">
+								<div class="col-lg-4 col-md-4">
 									<div class="stats-content">
 										<label style="display: block; text-align: left">Estimated Date of Conception</label>
 										<div class="input-group date" id="datetimepicker1">
@@ -148,7 +146,7 @@
                                         </div>
 									</div>
 								</div>								
-								<div class="col-lg-2 col-md-4">
+								<div class="col-lg-4 col-md-4">
 									<div class="stats-content">
 										<label style="display: block; text-align: left">Estimated Date of Delivery</label>
 										<div class="input-group date" id="datetimepicker1">
@@ -168,7 +166,7 @@
 							
 								</div>
 							  </div>
-							<br>
+							
 							<div class="row">
 								<div class="col-lg-2 col-md-4">
 									<div class="stats-content">
@@ -224,6 +222,18 @@
 
 
 @section('page-js')
+{{-- Tables --}}
+	<script src="{{asset('assets/plugins/DataTables/media/js/jquery.dataTables.js')}}"></script>
+	<script src="{{asset('assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js') }}"></script>
+	<script src="{{asset('assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js') }}"></script>
+	<script src="{{asset('assets/js/demo/table-manage-default.demo.min.js')}}"></script>
+	{{--Modals--}}
+	<script src="{{asset('assets/plugins/gritter/js/jquery.gritter.js')}}"></script>
+	<script src="{{asset('assets/plugins/bootstrap-sweetalert/sweetalert.min.js')}}"></script>
+	<script src="{{asset('assets/js/demo/ui-modal-notification.demo.min.js')}}"></script>
+	<script src="{{ asset('assets/plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
+
+	<script src="{{ asset('assets/plugins/lightbox/js/lightbox.min.js') }}"></script>
 
 <script>
 	$(document).ready(function() {
@@ -249,6 +259,7 @@
 	});
 
 	$(document).on('click','.show_modal_btn',function(){
+
 		$("#PatientID").val($(this).closest('div').find('#resident_id').text());
 		$("#patient_name_txt").val($(this).closest('div').find('h4').text());
 		$("#patient_age_txt").val($(this).closest('div').find('#age').text());
@@ -262,11 +273,15 @@
 		}
 
 	});
+	$('#stext').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            AppendResident();
+        }
+    });
 
-	// search btn
-	$(document).on('click','.search_btn',function() {
-        
-        $('.list-of-residents').remove();
+    function AppendResident() {
+    	        $('.list-of-residents').remove();
         var searchval = $('#stext').val();
         var faddress = "";
         var profilepic = "";
@@ -280,50 +295,60 @@
             {
 
                
-                if(data.length > 0) {
+                if(data.length > 0) 
+                {
 					
-                    data.map( value => {
+                    data.map( value => 
+                    {
 						console.warn(value['listofresidents'])
-						if(value['listofresidents'].length != 0){
+						if(value['listofresidents'].length != 0)
+						{
                         value['listofresidents'].map( residents => {
                             fullname = residents['FULLNAME'];
                             profilepic = residents['PROFILE_PICTURE'];
                             image = 'background-image:url("{{asset("upload/residentspics/")}}/'+profilepic+'")';
+                            profile_image = "{{asset('upload/residentspics/')}}/"+profilepic;
                             resident_id = residents['RESIDENT_ID'];
                             residents['FULL_ADDRESS'] == null ? faddress = "" : faddress = residents['FULL_ADDRESS']
 							
                            $('.result-list').append(
                             '<li class="list-of-residents">\n'
 
-                            +'<a href="#" class="result-image"></a>\n'
+                            +'<a class="result-image" data-lightbox="gallery">\n'
+                            	+'<img id="profile-image" src="" alt="" />&nbsp;</a>\n'
 
                             +'<div class="result-info">\n'
                                 +'<h4 class="title "><a href="javascript:;">'+residents['FULLNAME']+'</a></h4>\n'                                
 								+'<h3 id="age" hidden>'+residents['AGE']+'</a></h4>\n'                                
 								+'<h3 id="gender" hidden>'+residents['SEX']+'</a></h4>\n'                                
 								+'<h3 id="resident_id" hidden>'+residents['RESIDENT_ID']+'</a></h4>\n'                                
-                                 +'<button data-toggle="modal" data-target="#show_patient_modal" class="btn btn-success btn-block show_modal_btn " id="ab_btn"> <i class="fa fa-user-circle "></i> Add Patient</button>\n'
+                                 +'<br><button data-toggle="modal" data-target="#show_patient_modal" class="btn btn-success btn-block show_modal_btn " id="ab_btn"> <i class="fa fa-user-circle "></i> Add Patient</button>\n'
                             +'</div>\n'
 
-                            // +'<div class="result-price" >Resident\n'
                            
-                            // +'</div>\n'
                             +'</li>'
                             );
 
                        })
-					}else{
+					}
+					else
+					{
 						swal({
 								title: "Information",
-								text: "Resident name doesn't exist!",
-								icon: 'info',
+								text: "Resident doesn't exist!",
+								icon: 'error',
+								button: false,
+								timer: 1000
 							});
 
 					}
                     });
                 }
+
                 
-                
+                $('.result-image').attr('href',profile_image);
+                $('#profile-image').attr('src',profile_image);
+                $('#profile-image').attr('style',"width:240px; height:auto;");
                 
             }
             ,
@@ -333,55 +358,54 @@
             }
 
         });	
+    }
+	// search btn
+	$(document).on('click','.search_btn',function() {
         
-		//add patient button
-		$("#AddBtn").click(function(){
-					
-					
-			var my_function =  function()
-			{
-				body_temp=$("#patient_body_temp_txt").val()
-				blood_pressure=$("#patient_blood_pressure_txt").val()
-				pulse_rate=$("#patient_pulse_rate_txt").val()
-				respiratory_rate=$("#patient_respiratory_rate_txt").val()
-				weight=$("#patient_weight_txt").val()
-				height=$("#patient_height_txt").val()
-				resident_id=$("#PatientID").val()
-				is_pregnant=$(".pregnant_chk").is(':checked');
-				lmp=$("#lmp_txt").val()
-				edc=$("#edc_txt").val()
-				edd=$("#edd_txt").val()
-				
+		AppendResident();
 
+    });
 
-				$.ajax({
+    $("#AddBtn").click(function()
+	{		
+		var my_function =  function()
+		{
+			body_temp=$("#patient_body_temp_txt").val()
+			blood_pressure=$("#patient_blood_pressure_txt").val()
+			pulse_rate=$("#patient_pulse_rate_txt").val()
+			respiratory_rate=$("#patient_respiratory_rate_txt").val()
+			weight=$("#patient_weight_txt").val()
+			height=$("#patient_height_txt").val()
+			resident_id=$("#PatientID").val()
+			is_pregnant=$(".pregnant_chk").is(':checked');
+			lmp=$("#lmp_txt").val()
+			edc=$("#edc_txt").val()
+			edd=$("#edd_txt").val()
+
+			$.ajax({
 				url: "{{route('AddPatient')}}",
 				type: "post",	
-				data: { 
-						body_temp: body_temp,
-						blood_pressure: blood_pressure,
-						pulse_rate: pulse_rate,
-						respiratory_rate: respiratory_rate,
-						weight: weight,
-						height: height,
-						resident_id: resident_id,
-						is_pregnant : is_pregnant == true ? 1 : 0,
-						lmp:lmp,
-						edc:edc,
-						edd:edd,
-						_token: "{{csrf_token()}}" },			
-				success:function(data)
-				{
-
+				data: 
+				{ 
+					body_temp: body_temp,
+					blood_pressure: blood_pressure,
+					pulse_rate: pulse_rate,
+					respiratory_rate: respiratory_rate,
+					weight: weight,
+					height: height,
+					resident_id: resident_id,
+					is_pregnant : is_pregnant == true ? 1 : 0,
+					lmp:lmp,
+					edc:edc,
+					edd:edd,
+					_token: "{{csrf_token()}}" 
+				},		
+				success:function(data) {
 					show_message('Success','Adding patient successfull!','success');
-					location.reload();
-							
-							
-							
+					location.reload();	
 				}
 				,
-				error:function(error)
-				{
+				error:function(error) {
 					alert(error)
 				}
 
@@ -390,22 +414,8 @@
 
 		show_confirmation('Do you want to add this patient?',my_function);
 
-		});
+	});
 
-
-
-        $('.result-image').attr('style',image);
-
-    });
 </script>
-	{{-- Tables --}}
-	<script src="{{asset('assets/plugins/DataTables/media/js/jquery.dataTables.js')}}"></script>
-	<script src="{{asset('assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js') }}"></script>
-	<script src="{{asset('assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js') }}"></script>
-	<script src="{{asset('assets/js/demo/table-manage-default.demo.min.js')}}"></script>
-	{{--Modals--}}
-	<script src="{{asset('assets/plugins/gritter/js/jquery.gritter.js')}}"></script>
-	<script src="{{asset('assets/plugins/bootstrap-sweetalert/sweetalert.min.js')}}"></script>
-	<script src="{{asset('assets/js/demo/ui-modal-notification.demo.min.js')}}"></script>
-	<script src="{{ asset('assets/plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
+
 	@endsection

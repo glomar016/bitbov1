@@ -47,32 +47,42 @@
 					<table id="tbl_business_lst" class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Business Number</th>
-								<th>Business Name</th>
-								<th>Address</th>
-								<th>Owner's Name</th>
-								<th>Status</th>
+								<th><center>Business Number</center></th>
+								<th><center>Business Name</center></th>
+								<th><center>Trade Name/Franchise</center></th>
+								<th><center>Address</center></th>
+								<th><center>Owner's Name</center></th>
+								<th><center>Status</center></th>
 								{{-- <th>Period</th> --}}
-								<th>Action</th>
+								<th><center>Action</center></th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($businessNotApproved as $row)
 							<tr class="gradeC" id="{{$row->BUSINESS_ID}}">
 								<td>{{$row->BUSINESS_OR_NUMBER}}</td>
-								<td>{{$row->BUSINESS_NAME}} <br> ( {{$row->BUSINESS_NATURE_NAME}})</td>
+								<td style="text-transform: uppercase;"> {{$row->BUSINESS_NAME}}</td>
+								<td style="text-transform: uppercase;">{{$row->TRADE_NAME}}</td>
 								<td>{{$row->BUSINESS_ADDRESS}}</td>
-								<td>{{$row->BUSINESS_OWNER_LASTNAME}}, {{$row->BUSINESS_OWNER_FIRSTNAME}}, {{$row->BUSINESS_OWNER_MIDDLENAME}}</td>
+								<td>{{$row->BUSINESS_OWNER_LASTNAME}}, {{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}}
+								</td>
+								@php
+									$gross = DB::table('v_get_gross')
+											->where('BUSINESS_ID',$row->BUSINESS_ID)
+											->get();
+								@endphp
 								{{-- <td>{{$row->BUSINESS_OR_ACQUIRED_DATE}}</td> --}}
 								@if($row->NEW_RENEW_STATUS == "New")
-						<td><h5><span class="label label-success">New Business</span></h5>
-						</td>		
-						@else
-						<td>
-							<h5><span class="label label-purple">For Renewal</span></h5>
-						</td>
-
-						@endif
+									<td>
+										<h5><span class="label label-success">New Business</span></h5>
+										<h6>Gross Receipt: ₱{{$gross[0]->GROSS_TOTAL}}</h6>
+									</td>		
+								@else
+									<td>
+										<h5><span class="label label-purple">For Renewal</span></h5>
+										<h6>Gross Receipt: ₱{{$gross[0]->GROSS_TOTAL}}</h6>
+									</td>
+								@endif
 								<td>
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal-Approval" id="btnEvaluateBusinessRequest">
 										<i class="fa fa-eye"></i> Evaluate
@@ -102,26 +112,44 @@
 						
 						<form>
 							{{-- <div id="divBusiness"> --}}
-								<h3><b><label id="lbl_business_name" >Business:</label></b></h3>
+								<h3><b><label id="lbl_business_name" ></label></b></h3>
 								<input class="form-control" type="text" placeholder="Readonly input here…" readonly="" id="txt_business_id" hidden>
-								<div class="form-group row m-b-10">
-									<label class="col-sm-3 col-form-label">Business No.</label>
-									<div class="col-sm-9">
-										<input class="form-control" type="text" placeholder="Readonly input here…" readonly="" id="txt_business_or_no">
-									</div>
-								</div>
-								<div class="form-group row m-b-10">
-									<label class="col-sm-3 col-form-label">Address</label>
-									<div class="col-sm-9">
-										<input class="form-control" type="text" readonly="" id="txt_trade_name">
-									</div>
-								</div>
 								<div class="form-group row m-b-10">
 									<label class="col-sm-3 col-form-label">Owner</label>
 									<div class="col-sm-9">
-										<input class="form-control" type="text" readonly="" id="txt_line_of_business">
+										<input  style="background-color: white;font-weight: bold; color: black;" class="form-control" type="text" readonly="" id="txt_owners_name">
 									</div>
 								</div>
+								
+								<div class="form-group row m-b-10">
+									<label class="col-sm-3 col-form-label">Address</label>
+									<div class="col-sm-9">
+										<textarea  style="background-color: white;font-weight: bold; color: black;" class="form-control" type="text" readonly="" id="txt_owners_address"></textarea>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-sm-3 col-form-label">Line of Business</label>
+									<div class="col-sm-9">
+										<textarea  style="background-color: white;font-weight: bold; color: black;" class="form-control" type="text" readonly="" id="txt_l_of_business"></textarea>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Gross Receipt</label>
+									<div class="col-sm-9">
+										<div class="input-group mb-3">
+										  <div class="input-group-prepend">
+										    <span class="input-group-text">₱</span>
+										  </div>
+											<input  style="background-color: white;font-weight: bold; color: black;"  type="text" class="form-control"  id="txt_gross_receipt" readonly="">
+										  
+										  <div class="input-group-append">
+										    <span class="input-group-text">.00</span>
+										  </div>
+										</div>
+									</div>
+								</div>
+
+								
 							{{-- </div> --}}
 							
 
@@ -139,7 +167,7 @@
 							<div class="form-group row m-b-10">
 								<label class="col-sm-3 col-form-label">Approved By</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" placeholder="Full Name" id="txt_evaluate_by">
+									<input type="text" class="form-control" placeholder="Full Name" id="txt_evaluate_by" value="{{session('session_full_name')}}"  style="background-color: white;font-weight: bold; color: black;" readonly>
 								</div>
 							</div>
 						</form>
@@ -224,17 +252,79 @@
 		
 	});
 
-	$('#tbl_business_lst').on('click', '#btnEvaluateBusinessRequest', function(){
+	$('#tbl_business_lst').on('click', '#btnEvaluateBusinessRequest', function()
+	{
+		
+		
+		let j = 0;
 		let row = $(this).closest("tr")
 		,business_no =  $(row.find("td")[0]).text()
 		,business_name =  $(row.find("td")[1]).text()
 		,trade_name =  $(row.find("td")[2]).text()
-		,line_of_business =  $(row.find("td")[3]).text();
+		,owners_address =  $(row.find("td")[3]).text()
+		,owners_name =  $(row.find("td")[4]).text()
+		//,line_of_business =  $(row.find("td")[3]).text()
+		,business_id = row.attr("id");
 
+		$.ajax({
+			url:"{{route('getGross')}}",
+			method:'post',
+			data:{business_id:business_id,"_token":"{{csrf_token()}}"}
+			,success:function(response) {
+				$.each(response['gross'],function() {
+
+					if(this['GROSS_RECEIPTS_ESSENTIAL'] != null) {
+						j += parseInt(this['GROSS_RECEIPTS_ESSENTIAL']);
+					}
+					if(this['GROSS_RECEIPTS_NON_ESSENTIAL'] != null) {
+						j += parseInt(this['GROSS_RECEIPTS_NON_ESSENTIAL']);
+					}
+					
+				});
+
+				$('#txt_gross_receipt').val(j)
+			}
+			,error:function(response) {
+				console.log(response)
+			},
+		});
+
+		var line_of_business_name_clear = '', line_of_business_name = [];
+		$.ajax({
+			url:"{{route('getNature')}}",
+			method:'post',
+			data:{business_id:business_id,"_token":"{{csrf_token()}}"}
+			,success:function(response) {
+				
+				var i = 0;
+				$.each(response["line_of_business"], function() {
+					line_of_business_name[i] =  this["LINE_OF_BUSINESS_NAME"];
+					i++;							
+				});
+						
+				for (var j=0; j<line_of_business_name.length; j++) {
+
+					if((j + 1) == (line_of_business_name.length))  {	
+						line_of_business_name_clear += line_of_business_name[j];
+					}
+					else {	
+						line_of_business_name_clear += line_of_business_name[j] +', ';
+					}
+				}
+				
+				$('#txt_l_of_business').val(line_of_business_name_clear);
+			}
+			,error:function(response) {
+				console.log(response)
+			},
+		});
+		
+		
 		$("#lbl_business_name").text(business_name);
 		$("#txt_business_or_no").val(business_no);
-		$("#txt_trade_name").val(trade_name);
-		$("#txt_line_of_business").val(line_of_business);
+		//$("#txt_trade_name").val(trade_name);
+		$("#txt_owners_name").val(owners_name);
+		$("#txt_owners_address").val(owners_address);
 		$("#txt_business_id").val(row.attr("id"));
 
 		$('#modal-Approval').modal('show');
@@ -253,6 +343,8 @@
 			,'STATUS' : Status
 			,'APPROVED_BY' : ApprovedBy
 			,'BUSINESS_ID' : BusinessId
+			,'TYPE' : 'business'
+			,'BUILDING_ID' : ''
 		};
 
 		$.ajax({

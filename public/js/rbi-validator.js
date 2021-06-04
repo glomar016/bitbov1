@@ -161,13 +161,14 @@ $(function () {
         },
 
         validateName: function (input,label) {
-            let charRegex = new RegExp(/^[a-zA-Z\s]*$/),
+            let charRegex = new RegExp(/^(\w+ ?)*$/),
                 validateNull = input.val().length <= 0,
                 validateMin = input.val().length < 2,
                 validateMax = input.val().length > 25,
                 validateFormat = input.val().search(charRegex) !== 0;
 
                 if (validateNull) {
+                    
                     oAdminManager.addDesign(label,input,'This field is required.','red');
                     
                 } else if (validateFormat) {
@@ -237,7 +238,7 @@ $(function () {
         validateAll: function () {
             
             var len = $(document).find('.is-valid').length;
-            console.log(len)
+            // console.log(len)
             if(len>=7) {
 
                  $(".sw-btn-next").attr("disabled", false);

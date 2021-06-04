@@ -125,7 +125,7 @@ justify;line-height:normal;background:white'><span style='font-size:17.0pt;
 font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
 mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></p>
   
-  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
 center;line-height:normal;background:white'><span style='font-size:25.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
 "Times New Roman";color:red;mso-color-alt:windowtext;mso-fareast-language:
 EN-PH'>TANGGAPAN NG PUNONG BARANGAY</span></p>

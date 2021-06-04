@@ -503,7 +503,7 @@ $(document).ready(function()
 
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: #90ca4b">
-                                            <h4 class="modal-title" style="color: white; display: block; text-align: center;">Add Ordinance</h4>
+                                            <h4 class="modal-title" style="color: white; display: block; text-align: center;">Add Resolution</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
                                         </div>
                                         <div class="modal-body">

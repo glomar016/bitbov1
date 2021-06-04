@@ -62,17 +62,17 @@
 					<table id="tbl_business_lst" class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Business Number</th>
-								<th>Business Name</th>
-								<th>Business Nature</th>
-								<th>Address</th>
-								<th>Owner's Name</th>
-								<th>Status</th>
+								<th style="width: 12%"><center>Business Number</center></th>
+								<th><center>Business Name</center></th>
+								<th><center>Business Nature</center></th>
+								<th><center>Address</center></th>
+								<th><center>Owner's Name</center></th>
+								<th><center>Status</center></th>
 								{{-- <th>Period</th> --}}
-								<th>Action</th>
+								<th><center>Action</center></th>
 								<th hidden>Area</th>
-								<th hidden>gross ess</th>
-								<th hidden>gross noness</th>
+								
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -84,13 +84,21 @@
 								<td>{{$row->BUSINESS_ADDRESS}}</td>
 								<td>{{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}} {{$row->BUSINESS_OWNER_LASTNAME}} </td>
 								{{-- <td>{{$row->NEW_RENEW_STATUS}}</td> --}}
+								@php
+									$gross = DB::table('v_get_gross')
+											->where('BUSINESS_ID',$row->BUSINESS_ID)
+											->get();
+								@endphp
 								@if($row->NEW_RENEW_STATUS == "New")
 								<td><h5><span class="label label-success">New Business</span></h5>
+									
+									<h6>Gross Receipt: ₱{{$gross[0]->GROSS_TOTAL}}</h6>
+									
 								</td>		
 								@else
 								<td>
 									<h5><span class="label label-purple">Renewed Business</span></h5>
-									<h6>Gross Receipt: ₱{{$row->GROSS_RECEIPT_TOTAL}}</h6>
+									<h6>Gross Receipt: ₱{{$gross[0]->GROSS_TOTAL}}</h6>
 								</td>
 
 								@endif
@@ -100,8 +108,8 @@
 									</button>
 																	</td>
 								<td hidden> {{$row->BUSINESS_AREA}}</td>
-								<td hidden>{{$row->GROSS_RECEIPTS_ESSENTIAL}}</td>
-								<td hidden>{{$row->GROSS_RECEIPTS_NON_ESSENTIAL}}</td>
+								
+								
 							</tr>
 							@endforeach
 						</tbody>
@@ -142,7 +150,7 @@
 
 
 
-	<div class="modal fade" id="modal-ChooseApplication" data-backdrop="static">
+	<div class="modal fade" id="modal-ChooseApplication"  >
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header"  style="background: #2A72B5" >
@@ -179,7 +187,7 @@
 							</div>
 
 							{{-- Business Permit --}}
-							<div class="col-md-10" id="divBusinessPermit">
+							<div class="col-md-12" id="divBusinessPermit">
 								<legend class="m-t-10"></legend>
 								<h5 id="divFilloutInstruction">Fill out the following information:</h5>
 
@@ -201,30 +209,43 @@
 											</select>
 
 										</div>
-
 										<div class="form-group m-b-10 p-t-5">
-											<label>Barangay Permit Fee</label>
-											{{-- <input type="number" id="txt_barangay_permit" class="form-control"> --}}
-											<div class="input-group mb-3 ">
+											<label>Business Permit Plate No. </label>
+											<div class="input-group mb-3">
 												<div class="input-group-prepend">
-													<span class="input-group-text">₱</span>
+													<span class="input-group-text">&nbsp;</span>
 												</div>
-												<input type="number" id="txt_barangay_permit" class="form-control">
+												<input type="text" id="txt_business_plate" class="form-control">
+												
 												
 											</div>
 										</div>
+										
 										<div class="form-group m-b-10 p-t-5">
 											<label>Business Tax Fee</label>
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
 													<span class="input-group-text">₱</span>
 												</div>
-												<input type="number" id="txt_business_tax" class="form-control">
+												<input type="number" id="txt_business_tax" class="form-control class_total">
+												
+												
+											</div>
+										</div>
+										
+										<div class="form-group m-b-10 p-t-5">
+											<label>Business Permit Plate Fee</label>
+											<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">₱</span>
+												</div>
+												<input type="text" id="txt_business_fee" class="form-control class_total">
 												
 												
 											</div>
 										</div>
 									</div>
+
 									<div class="col-md-6">
 										<div class="form-group m-b-10 p-t-5">
 											<label>Garbage Fee</label>
@@ -232,7 +253,7 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text">₱</span>
 												</div>
-												<input type="number" id="txt_garbage_fee" class="form-control">
+												<input type="number" id="txt_garbage_fee" class="form-control class_total">
 												
 											</div>
 										</div>
@@ -242,22 +263,51 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text">₱</span>
 												</div>
-												<input type="number" id="txt_signboard" class="form-control">
+												<input type="number" id="txt_signboard" class="form-control class_total">
 												
 											</div>
 										</div>
-										<div class="form-group m-b-10 p-t-5">
-											<label>CTC Fee</label>
+										<div class="form-group m-b-10 p-t-5" style="margin-top: -6px">
+											<label>Ctc Fee</label>
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
 													<span class="input-group-text">₱</span>
 												</div>
-												<input type="number" id="txt_ctc" class="form-control">
-												
-												
+												<input type="number" id="txt_ctc" class="form-control class_total">
+											</div>
+										</div>
+										<div class="form-group m-b-10 p-t-5">
+											<label>Barangay Permit Fee</label>
+											{{-- <input type="number" id="txt_barangay_permit" class="form-control"> --}}
+											<div class="input-group mb-3 ">
+												<div class="input-group-prepend">
+													<span class="input-group-text">₱</span>
+												</div>
+												<input type="number" id="txt_barangay_permit" class="form-control class_total">
 												
 											</div>
 										</div>
+										<div class="form-group m-b-10 p-t-5">
+											<label>Business Permit Sticker Fee</label>
+											<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text">₱</span>
+												</div>
+												<input type="number" id="txt_business_sticker" class="form-control class_total">
+											
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group m-b-10 p-t-5">
+									<label>Total</label>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">₱</span>
+										</div>
+										<input type="number" id="txt_total" class="form-control">
+									
 									</div>
 								</div>
 							</div>
@@ -324,7 +374,15 @@
 		$('#divBusinessClearance').hide()
 	});
 
+	$(document).on("keyup", ".class_total", function() {
+	    var sum = 0;
+	    $(".class_total").each(function(){
+	        sum += +$(this).val();
+	    });
+	    $('#txt_total').val(sum);
+	});
 
+	
 
 	$('#radioBusinessPermit').change(function(ev){
 		// alert('radioBusinessPermit');
@@ -431,9 +489,11 @@
 		, ctc = $('#txt_ctc').val()
 		, business_tax = $('#txt_business_tax').val()
 		, applicant_name = $('#txt_applicant_name').val()
+		, b_plate_no = $('#txt_business_plate').val()
+		, sticker = $('#txt_business_sticker').val()
+		, b_plate_fee = $('#txt_business_fee').val()
 		;
-		// console.log(quarter);
-		//alert(applicant_name);
+
 		
 		let data = {
 			'_token' : " {{ csrf_token() }}"
@@ -444,7 +504,9 @@
 			,'SIGNBOARD' : signboard
 			,'CTC' : ctc
 			,'BUSINESS_TAX' : business_tax
-			
+			,'PLATE_NO' : b_plate_no
+			,'STICKER' : sticker
+			,'PLATE_FEE' : b_plate_fee
 			//General
 			,'BUSINESS_ID' : business_id
 			,'PAPER_TYPE_CLEARANCE' : clearance_type
@@ -453,7 +515,7 @@
 			// , ''
 		};
 
-		console.log(data);
+		
 
 		$.ajax({
 			url : "{{ route('BusinessIssuanceRequest') }}",

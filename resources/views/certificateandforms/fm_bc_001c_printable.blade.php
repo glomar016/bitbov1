@@ -11,7 +11,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <meta name=Originator content="Microsoft Word 15">
 <link rel=File-List href="FM-BC-001C-BarangayClearanceZonal_files/filelist.xml">
 
-href="FM-BC-001C-BarangayClearanceZonal_files/themedata.thmx">
+<link href="FM-BC-001C-BarangayClearanceZonal_files/themedata.thmx">
 <link rel=colorSchemeMapping
 href="FM-BC-001C-BarangayClearanceZonal_files/colorschememapping.xml">
 

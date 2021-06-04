@@ -81,7 +81,7 @@
                   <th colspan="3"> Occupation </th>
 
                   <th colspan="3"> Citizenship </th>
-                  <th colspan="3"> Contact Number </th>
+                  
                   
               </tr>
           </thead>
@@ -99,7 +99,7 @@
                 <td colspan="3" style=" text-align: center; width:13%">{{ $row->CIVIL_STATUS }}</td>
                 <td colspan="3" style=" text-align: center; width:13%">{{ $row->OCCUPATION }}</td>
                 <td colspan="3" style=" text-align: center; width:13%">{{ $row->CITIZENSHIP }}</td>
-                <td colspan="3" style=" text-align: center; width:13%">{{ $row->CITIZENSHIP }}</td>
+                
 
 
             </tr>

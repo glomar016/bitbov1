@@ -670,39 +670,37 @@ class UserAccountsController extends Controller
            echo '0';
         }
     }
- // $val->POSITION_NAME == 'Barangay Chairman' ||  $val->POSITION_NAME == 'Secretary' || 
- //                        $val->POSITION_NAME == 'Chief Tanod' ||  $val->POSITION_NAME == 'Census Officer' || $val->POSITION_NAME == 'Kagawad' || $val->POSITION_NAME == 'Committee'
+
     public function checkoldpass(Request $request)
     {
-        $username = session('session_username');
-        $password = $request->GET('OldPasswordTxt');
+        $user_id = session('session_user_id');
+        $password = $request->get('OldPasswordTxt');
        
-        $checkuser = TUser::SELECTRAW("COUNT(*) AS TOTAL")->WHERE('USERNAME','=', $username)->FIRST();
+        $checkuser = TUser::selectraw("COUNT(*) AS TOTAL")->where('USER_ID','=', $user_id)->first();
 
-         if(intval($checkuser->TOTAL) > 0) 
-         {  
-            $getpassword = TUser::SELECT("PASSWORD")->WHERE('USERNAME','=', $username)->FIRST();
-            if(password_verify($password, $getpassword->PASSWORD)) {
+        if(intval($checkuser->TOTAL) > 0) 
+        {  
+            $getpassword = TUser::select("PASSWORD")->where('USER_ID','=', $user_id)->first();
+            if(password_verify($password, $getpassword->PASSWORD)) 
+            {
                 echo '1';
             }
-            else {
+            else 
+            {
                 echo '0';
             }
-         }
-         else
-         {
+        }
+        else
+        {
             echo '0';
-         }
+        }
         
     }
 
 
     public function change_password()
     {
-        $change_password = new TUser();
-        $change_password = TUser::where('USER_ID',request('UserID'))->first(); 
-        $change_password->PASSWORD = bcrypt(request('NewPasswordTxt'));
-        $change_password->save();
+        TUser::where('USER_ID',session('session_user_id'))->update(['PASSWORD' => bcrypt(request('NewPasswordTxt'))]);
     }
 
 

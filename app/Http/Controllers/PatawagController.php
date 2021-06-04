@@ -25,10 +25,10 @@ class PatawagController extends Controller
                                 , 'P.status'
                                 , 'B.blotter_id'
                                 , 'B.blotter_code')
-                            ->where(['P.status' => 'Pending'])
+                            ->where('P.status','Pending')
                             ->orderBy('P.patawag_sched_datetime', 'desc')
                             ->get();
-
+        
         return view('cases.pendingSummon', compact('disppatawag'));
         
     }

@@ -172,6 +172,7 @@
     <div >
         <form method="POST" action="{{route('ResidentFilterPrint')}}">
             {{ csrf_field() }}
+            
             <div class="row">
                 <div class="col-lg-2 col-md-6">
                     <div class="stats-content">

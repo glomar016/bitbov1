@@ -16,7 +16,7 @@ class BusinessCategController extends Controller
     public function index()
     {
         
-        $displaydata = \DB::TABLE('r_business_nature')->WHERE('ACTIVE_FLAG',1)->GET();
+        $displaydata = \DB::TABLE('v_business_nature')->GET();
         return view('administration.businesscat', compact('displaydata'));
     }
 

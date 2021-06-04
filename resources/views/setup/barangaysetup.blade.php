@@ -376,7 +376,7 @@
                                             <div class="modal-body">
                                                 {{--modal body start--}}
                                                 <label class="form-label hide">Barangay ID</label>
-                                                <input id="EditBarangayID" name="EditBarangayID" type="text" class="form-control hide" name="CategoryID"/>
+                                                <input id="" name="EditBarangayID" type="text" class="form-control hide" name="CategoryID"/>
 
                                                 <div class="col-lg-12">
                                                     <div class="form-group">

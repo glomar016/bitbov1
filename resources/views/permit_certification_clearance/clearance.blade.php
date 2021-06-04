@@ -49,17 +49,18 @@
 			<table id="tbl_business_lst" class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th>Business Number</th>
-						<th>Business Name</th>
-						<th>Business Nature</th>
-						<th>Address</th>
-						<th>Owner's Name</th>
-						<th>Status</th>
-						{{-- <th>Period</th> --}}
-						<th>Action</th>
+						<th><center>Business Number</center></th>
+						<th><center>Business Name</center></th>
+						<th><center>Business Nature</center></th>
+						<th><center>Address</center></th>
+						<th><center>Owner's Name</center></th>
+						<th><center>Status</center></th>
+						
+						<th><center>Action</center></th>
 						<th hidden>Area</th>
-						<th hidden>gross ess</th>
-						<th hidden>gross noness</th>
+						
+						
+						<th hidden>DTI Reg no.</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -71,25 +72,37 @@
 						<td>{{$row->BUSINESS_ADDRESS}}</td>
 						<td>{{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}} {{$row->BUSINESS_OWNER_LASTNAME}} </td>
 						{{-- <td>{{$row->NEW_RENEW_STATUS}}</td> --}}
+						@php
+							$gross = DB::table('v_get_gross')
+									->where('BUSINESS_ID',$row->BUSINESS_ID)
+									->get();
+						@endphp
+									
 						@if($row->NEW_RENEW_STATUS == "New")
 						<td><h5><span class="label label-success">New Business</span></h5>
-						</td>		
+							<h6>Gross Receipt: ₱{{$gross[0]->GROSS_TOTAL}}</h6>
+						</td>
 						@else
+						
+						
 						<td>
 							<h5><span class="label label-purple">Renewed Business</span></h5>
-							<h6>Gross Receipt: ₱{{$row->GROSS_RECEIPT_TOTAL}}</h6>
+							<h6>Gross Receipt: ₱{{$gross[0]->GROSS_TOTAL}}</h6>
 							{{-- <label ></label> --}}
 						</td>
 
 						@endif
 						<td>
-							<button type="button" class="btn btn-primary" id="btnChooseApplication"  data-toggle="modal">
+							<button type="button" class="btn btn-primary form-control" id="btnChooseApplication"  data-toggle="modal">
 								<i class="fa fa-file-alt">&nbsp</i> Request Business Clearance
 							</button>
 						</td>
 						<td hidden> {{$row->BUSINESS_AREA}}</td>
+						{{--
 						<td hidden>{{$row->GROSS_RECEIPTS_ESSENTIAL}}</td>
 						<td hidden>{{$row->GROSS_RECEIPTS_NON_ESSENTIAL}}</td>
+						--}}
+						<td hidden>{{$row->DTI_REGISTRATION_NO}}</td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -337,7 +350,7 @@
 										<input type="text"  class="form-control" id="txt_mudguard_d">
 									</div>
 								</div>
-								<div class="form-group row m-b-10">
+								<div class="form-group row m-b-10" hidden>
 									<label class="col-md-4 col-form-label text-md-right">CR No</label>
 									<div class="col-md-8">
 										<input type="text"  class="form-control" id="txt_cr_d">
@@ -347,6 +360,12 @@
 									<label class="col-md-4 col-form-label text-md-right">OR No</label>
 									<div class="col-md-8">
 										<input type="text"  class="form-control" id="txt_or_d">
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">OR Date</label>
+									<div class="col-md-8">
+										<input type="date"  class="form-control" id="txt_or_date_d">
 									</div>
 								</div>
 								<div class="form-group row m-b-10">
@@ -403,19 +422,39 @@
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Address</label>
 									<div class="col-md-8">
-										<input type="text"  class="form-control" id="txt_address_f">
+										<textarea type="text" class="form-control" id="txt_address_f"></textarea>
 									</div>
 								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Registration No.</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_reg_no_f">
+									</div>
+								</div>
+								
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">License No.</label>
 									<div class="col-md-8">
 										<input type="text"  class="form-control" id="txt_license_no_f">
 									</div>
 								</div>
+
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Device Type</label>
 									<div class="col-md-8">
-										<textarea class="form-control" id="txt_device_type_f"></textarea>
+										<input class="form-control" id="txt_device_type_f"/>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Device Brand</label>
+									<div class="col-md-8">
+										<input class="form-control" id="txt_device_brand_f"/>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Device Model</label>
+									<div class="col-md-8">
+										<input class="form-control" id="txt_device_model_f"/>
 									</div>
 								</div>
 								<div class="form-group row m-b-10">
@@ -456,7 +495,7 @@
 								<br><legend class="m-t-10"></legend>
 								<div class="col-md-10" id="divBusinessPermit">
 									<label>Applicant's Name</label>
-									<input type="text" id="txt_applicant_name" class="form-control">
+									<input type="text" id="txt_applicant_name" class="form-control" style="background-color: white;font-weight: bold; color: black;">
 								</div>
 							</div>
 
@@ -513,10 +552,11 @@
 		, business_area = $(row.find("td")[7]).text()
 		, gross_essential = $(row.find("td")[8]).text()
 		, gross_nonessential = $(row.find("td")[9]).text()
+		, dti_reg = $(row.find("td")[10]).text()
 		;
 		
-		$('#txt_applicant_name').val(business_owner);
-		// alert(business_nature);
+		
+		$('#txt_applicant_name').val(business_owner);		
 		$('#txt_business_nature').val(business_nature);
 		$('#txt_gross_essential').val(gross_essential);
 		$('#txt_gross_nonessential').val(gross_nonessential);
@@ -543,7 +583,8 @@
 		//Clearance Tricycle
 		$('#txt_company_name_d').val(business_name);
 		$('#txt_address_d').val(business_address);
-
+		$('#txt_tricycle_operator_d').val(business_owner);
+		$('#txt_cr_d').val(dti_reg)
 		//Clearance General Purpose
 		$('#txt_company_name_e').val(business_name);
 		$('#txt_address_e').val(business_address);
@@ -688,7 +729,6 @@
 			$('#txt_form_type').val('Application Barangay Clearance Form');
 			//show
 			$('#divClearanceWeightsAndMeasure').show();
-			
 			//hide
 			$('#divClearanceGeneralPurpose').hide();
 			$('#divBusinessPermit').hide();
@@ -734,6 +774,7 @@
 		, make = $('#txt_make').val()
 		, plate_no = $('#txt_plate').val()
 		
+
 		let data = {
 			'_token' : " {{ csrf_token() }}"
 			,'TAX_YEAR' : tax_year
@@ -773,6 +814,7 @@
 			,'D_MUDGUARD_NO' : $("#txt_mudguard_d").val()//mudguard no
 			,'D_CR_NO' : $("#txt_cr_d").val()//cr no
 			,'D_OR_NO' : $("#txt_or_d").val()//or no
+			,'D_OR_DATE' : $('#txt_or_date_d').val() // or date
 			,'D_MAKE' : make
 			,'D_PLATE' : plate_no
 
@@ -782,12 +824,16 @@
 			,'E_CONSTRUCTION_ADDRESS' : $('#txt_address_e').val() // address
 
 			// Weights and Measure - F
-			,'F_REGISTERED_NAME' : $("input[id='txt_company_name_f']").val()
+			,'F_REGISTRATION_NUMBER' : $("#txt_reg_no_f").val()
+			,'F_REGISTERED_NAME' : $("#txt_company_name_f").val()
 			,'F_CONSTRUCTION_ADDRESS' : $('#txt_address_f').val() // address
-			,'F_LICENSE_NO' : $("input[id='txt_license_no_f']").val() // license no
-			,'F_DEVICE_TYPE' : $("input[id='txt_device_type_f']").val() // device type
-			,'F_CAPACITY' : $("input[id='txt_capacity_f']").val() // capacity
-			,'F_SERIAL_NO' : $("input[id='txt_serial_no_f']").val() // serial no 
+			,'F_LICENSE_NO' : $("#txt_license_no_f").val() // license no
+			,'F_DEVICE_TYPE' : $("#txt_device_type_f").val() // device type
+			,'F_CAPACITY' : $("#txt_capacity_f").val() // capacity
+			,'F_SERIAL_NO' : $("#txt_serial_no_f").val() // serial no 
+			,'F_BRAND' : $("#txt_device_brand_f").val() // serial no 
+			,'F_MODEL' : $("#txt_device_model_f").val() // serial no 
+
 
 			// Fishery Rental and Privellege
 			,'G_REGISTERED_NAME' : $("input[id='txt_company_name_g']").val() // company name

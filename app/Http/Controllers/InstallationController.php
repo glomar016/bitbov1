@@ -18,7 +18,8 @@ class InstallationController extends Controller
             $test_connection = db::table('t_users')->get();
             return  redirect()->route('Login');
             } catch (\Exception $e) {
-                return view('installation.installationv2');
+                return $e;
+                //return view('installation.installationv2');
             }              
     }
     

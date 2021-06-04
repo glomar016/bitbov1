@@ -96,7 +96,7 @@ div.WordSection1
 {{-- <div class=WordSection1 id="print_form" style='margin-top:1.0in; margin-left: 1.0in; margin-right: 1.0in;'> --}}
   <div class=WordSection1 id="fmbcert001d" style='margin-top:1.0in; margin-left: 1.0in; margin-right: 1.0in;'>
 <img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="120px" height="120px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
- <img src="{{asset('upload/barangay/white.png')}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/> 
+ <img src="" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/> 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal;background:white'><span style='font-size:
 17.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";

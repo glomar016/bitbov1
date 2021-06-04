@@ -766,7 +766,8 @@ label.error {
                     <div class="col-md-6" >
                         <div class="form-group">
                             <label>Employee Number</label> <span id='aLblEmpNum'></span>
-                            <input type="text" name="aEmpNum" id="aEmpNum" class="form-control form-control-lg"/>
+                            <input type="text" name="aEmpNum" id="aEmpNum" class="form-control form-control-lg"
+                            placeholder="XX-XXXXXXX / 27-1544126"/>
                         </div>
                     </div>
                 </div>

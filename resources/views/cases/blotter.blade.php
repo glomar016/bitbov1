@@ -264,9 +264,13 @@
                         contentType:false,
                         cache:false,
                         data:fd,
-                        success:function()
+                        success:function(response)
                         {
-                            location.reload();
+                            window.location.reload();
+                        }
+                        ,error:function()
+                        {
+                            console.log(response)
                         }
 
                     })
@@ -468,8 +472,10 @@
             }
            
           
+            });
         });
-    });
+
+        
         </script>
 
     {{--For ADD FORM--}}
@@ -485,14 +491,18 @@
             var complainStatement = $('#add_complain_statement').val()
 
             var fd = new FormData();
+            var today = new Date();
+            var count = "{{DB::table('t_blotter')->max('BLOTTER_ID') + 1}}"
+            var blot_code = "BLOT-" + today.getFullYear() + "-" + today.getMonth() + "-" + count ;
+
             fd.append('add_incident_date', incidentDate);
             fd.append('add_incident_area', incidentArea);
             fd.append('add_complainant_name', complainantName);
             fd.append('add_resident_id', accusedResident);
             fd.append('add_blotter_subject_id', blotterSubject);
             fd.append('add_complain_statement', complainStatement);
+            fd.append('blot_code', formatCtrlNo(blot_code));
             fd.append('_token',"{{csrf_token()}}");
-
 
             if(incidentDate == "" || incidentArea == "" || complainantName == "" || blotterSubject == "" || complainStatement == ""){
                 $('#reqIncidentDateAdd').html('Required field!').css('color', 'red');
@@ -516,13 +526,14 @@
             }
             else {
 
-                 swal({
-                    title: 'Success!',
-                    text: 'Blotter successfully added.',
-                    icon: 'success',
+                    swal({
+                        title: 'Success!',
+                        text: 'Blotter successfully added.',
+                        icon: 'success',
 
-                } );
-
+                    });
+                    
+                    
                     $.ajax({
                         url:'AddBlotter',
                         type:'POST',
@@ -535,10 +546,36 @@
                             location.reload();
                         }
 
-                    })
+                    });
+
 
                 }
         });
+
+        function formatCtrlNo(control_no) {
+
+            if(control_no != null) 
+            {
+                control_no = control_no.split("-")
+                if(control_no[3] <= 99) {
+                    control_no[3] = '0000' + control_no[3]
+                }
+                else if(control_no[3] <= 999) {
+                    control_no[3] = '000' + control_no[3]
+                }
+                else if(control_no[3] <= 9999) {
+                    control_no[3] = '00' + control_no[3]
+                }
+                if(control_no[2] <= 9) {
+                    control_no[2] = '0' + control_no[2]
+                }
+
+                return control_no[0] + '-' + control_no[1] + '-' + control_no[2] + '-' + control_no[3];
+            }
+            else
+                return '';
+        
+        }
     </script>
 
     {{--For Modal VIEW Form--}}
@@ -748,8 +785,7 @@
                 
                 no_of_patawag = $(this).closest("tbody tr").find("td:eq(11)").html();
              
-                if(no_of_patawag == 3)
-                {      alert(no_of_patawag);
+                if(no_of_patawag == 3){      
                     $("#ScheduleBTN").prop('disabled',true);
                 }else{
                     $("#ScheduleBTN").prop('disabled',false);
@@ -816,18 +852,19 @@
                             <thead>
                             <tr>
                                 <th hidden>Blotter ID </th>
-                                <th>Blotter Code</th>
-                                <th>Complain Date </th>
-                                <th>Complainant Name </th>
-                                <th>Respondent</th>
-                                <th>Blotter Subject </th>
-                                <th>Incident Date</th>
-                                <th hidden>Incident Area </th>
+                                <th style="width: 20%"><center>Blotter Code</center></th>
+                                <th hidden><center>Complain Date</center></th>
+                                <th style="width: 20%; "><center>Complainant Name</center></th>
+                                <th style="width: 20%"><center>Respondent</center></th>
+                                <th style="width: 14%"><center>Blotter Subject </center></th>
+                                
+                                <th hidden>Incident Area</center></th>
+                                <th hidden>Incident Date</center></th>
                                 <th hidden>Complain Statement </th>
                                 <th hidden>Resolution</th>
                                 <th hidden>Status</th>
-                                <th>Number of Patawag</th>
-                                <th style="width: 20%">Actions </th>
+                                <th><center>No Patawag</center></th>
+                                <th><center>Actions </center></th>
                             </tr>
                             </thead>
 
@@ -836,44 +873,43 @@
 
                             <tr >
                                 <td hidden>{{$blotter->blotter_id}}</td>
-                                <td>{{$blotter->blotter_code}}</td>
-                                <td>{{$blotter->complaint_date}}</td>
-                                <td>{{$blotter->complaint_name}}</td>
+                                <td style="text-align: center;">{{$blotter->blotter_code}}</td>
+                                <td hidden>{{$blotter->complaint_date}}</td>
+                                <td style="text-align: center; text-transform: uppercase;">{{$blotter->complaint_name}}</td>
                                 @if ($blotter->respondent == "")
-                                <td>Unidentified</td>
+                                <td style="text-align: center;">Unidentified</td>
                                 @else
-                                <td>{{$blotter->respondent}}</td>
+                                <td style="text-align: center;">{{$blotter->respondent}}</td>
                                 @endif
-                                <td>{{$blotter->blotter_subject}}</td>
-                                <td>{{$blotter->incident_date}}</td>
+                                <td style="text-align: center;">{{$blotter->blotter_subject}}</td>
+                                
+                                
+                                <td hidden>{{$blotter->incident_date}}</td>
                                 <td hidden>{{$blotter->incident_area}}</td>
                                 <td hidden>{{$blotter->complaint_statement}}</td>
                                 <td hidden>{{$blotter->resolution}}</td>
                                 <td hidden>{{$blotter->status}}</td>
                                 @if($blotter->NO_OF_PATAWAG == 2)
-                                <td style="background-color: #fff4b2">{{$blotter->NO_OF_PATAWAG}}</td>
+                                <td style="background-color: #fff4b2; text-align: center;">{{$blotter->NO_OF_PATAWAG}}</td>
                                 @elseif($blotter->NO_OF_PATAWAG == 3)
-                                <td style="background-color: #ffcdcb" class="alert-danger">{{$blotter->NO_OF_PATAWAG}}</td>
+                                <td style="background-color: #ffcdcb; text-align: center;" class="alert-danger">{{$blotter->NO_OF_PATAWAG}}</td>
                                 @else
-                                <td >{{$blotter->NO_OF_PATAWAG}}</td>
+                                <td style="background-color: #ddefc9; text-align: center;">{{$blotter->NO_OF_PATAWAG}}</td>
                                 @endif
                                 <td>
-                                    <button type='button' class='btn btn-warning viewCategory form-control' data-toggle='modal' data-target='#ViewModal' >
-                                        <i class='fa fa-eye'></i> &nbsp;&nbsp;&nbsp;View&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </button>
+                                    <div class="btn-group m-r-5 m-b-5">
+                                        <a href="javascript:;" class="btn btn-info">Action</a>
+                                        <a href="javascript:;" data-toggle="dropdown" class="btn btn-info dropdown-toggle"></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-toggle='modal' data-target='#ViewModal' class="viewCategory" style="cursor: pointer;">View Blotter</a></li>
+                                            <li><a data-toggle='modal' data-target='#HearingModal' class="addHearing" style="cursor: pointer;">Patawag</a></li>
+                                            <li><a data-toggle='modal' data-target='#ResolveModal' class="viewResolve" style="cursor: pointer;">Case Close</a></li>
+                                            <li class="divider"></li>
+                                            <li><a class="remove-btn" style="cursor: pointer;">Remove</a></li>
+                                        </ul>
+                                    </div>
 
-                                    
-                                    <button type='button' id="HearingBTN" class='btn btn-yellow addHearing form-control' data-toggle='modal' data-target='#HearingModal'>
-                                        <i class='fa fa-bell'></i> Patawag
-                                    </button>
 
-                                    <button type='button'  class='btn btn-lime viewResolve form-control' data-toggle='modal' data-target='#ResolveModal'>
-                                        <i class='fa fa-check'></i> Close Case
-                                    </button>
-
-                                    <button type='button'  class='btn btn-danger remove-btn form-control' >
-                                        <i class='fa fa-times'></i> Remove&nbsp;&nbsp;
-                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -911,18 +947,18 @@
                             <thead>
                             <tr>
                                 <th hidden>Blotter ID </th>
-                                <th>Blotter ID</th>
-                                <th hidden="">Complain Date </th>
-                                <th>Complainant Name </th>
-                                <th>Respondent </th>
-                                <th>Blotter Subject </th>
-                                <th>Incident Date</th>
-                                <th>Closed Date</th>
+                                <th><center>Blotter ID</center></th>
+                                <th hidden=""><center>Complain Date </center></th>
+                                <th><center>Complainant Name </center></th>
+                                <th><center>Respondent</center></th>
+                                <th><center>Blotter Subject </center></th>
+                                <th hidden><center>Incident Date</center></th>
+                                <th hidden><center>Closed Date</center></th>
                                 <th hidden>Incident Area </th>
                                 <th hidden>Complain Statement </th>
-                                <th style="width: 20%">Resolution</th>
+                                <th ><center>Resolution</center></th>
                                 <th hidden="">Status</th>
-                                <th style="width: 19%">Actions </th>
+                                <th ><center>Actions </center></th>
                             </tr>
                             </thead>
 
@@ -931,29 +967,35 @@
 
                             <tr >
                                 <td hidden>{{$rblotter->blotter_id}}</td>
-                                <td>{{$rblotter->blotter_code}}</td>
+                                <td style="text-align: center; width: 20%">{{$rblotter->blotter_code}}</td>
                                 <td hidden>{{$rblotter->complaint_date}}</td>
-                                <td>{{$rblotter->complaint_name}}</td>
-                                @if ($blotter->respondent == "")
-                                <td>Unidentified</td>                                
+                                <td style="text-align: center;">{{$rblotter->complaint_name}}</td>
+                                @if ($rblotter->respondent == "")
+                                <td style="text-align: center;">Unidentified</td>                                
                                 @else
-                                <td>{{$blotter->respondent}} </td>
+                                <td style="text-align: center;">{{$rblotter->respondent}} </td>
                                 @endif
-                                <td>{{$rblotter->blotter_subject}}</td>
-                                <td>{{$rblotter->incident_date}}</td>
-                                <td>{{$rblotter->closed_date}}</td>
+                                <td style="text-align: center;">{{$rblotter->blotter_subject}}</td>
+                                <td hidden>{{$rblotter->incident_date}}</td>
+                                <td hidden>{{$rblotter->closed_date}}</td>
                                 <td hidden>{{$rblotter->incident_area}}</td>
                                 <td hidden>{{$rblotter->complaint_statement}}</td>
-                                <td>{{$rblotter->resolution}}</td>
+                                <td style="text-align: center;">{{$rblotter->resolution}}</td>
                                 <td hidden>{{$rblotter->status}}</td>
                                 <td>
-                                    <button type='button' class='btn btn-warning viewClosedBlot' data-toggle='modal' data-target='#ViewClosedModal' >
-                                        <i class='fa fa-eye'></i> View
-                                    </button>
-                                    <button type='button' id="ViewHearingBTN" class='btn btn-yellow addHearing' data-toggle='modal' data-target='#ViewHearingModal'>
-                                        <i class='fa fa-bell'></i> Patawag
-                                    </button>  
+                                    <div class="btn-group m-r-5 m-b-5">
+                                        <a href="javascript:;" class="btn btn-warning">Action</a>
+                                        <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle"></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-toggle='modal' data-target='#ViewClosedModal' class="viewClosedBlot" style="cursor: pointer;">View Blotter</a></li>
+                                            <li><a id="ViewHearingBTN" data-toggle='modal' data-toggle='modal' data-target='#ViewHearingModal' class="addHearing" style="cursor: pointer;">Patawag</a>
+                                            </li>
+                                           
+                                        </ul>
+                                    </div>
+
                                 </td>
+
                             </tr>
                         @endforeach
 
@@ -988,19 +1030,19 @@
                                             <h4 id="ViewResolveComplainDate"></h4>
                                         <br>
                                             <label>Complainant Name</label>
-                                            <h4 id="ViewResolveComplainantName"></h4>
+                                            <h4 id="ViewResolveComplainantName" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Respondent Resident</label>
-                                            <h4 id="ViewResolveAccusedResident"></h4>
+                                            <h4 id="ViewResolveAccusedResident" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Incident Date</label>
-                                            <h4 id="ViewResolveIncidentnDate"></h4>
+                                            <h4 id="ViewResolveIncidentnDate" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Incident Area</label>
-                                            <h4 id="ViewResolveIncidentArea"></h4>
+                                            <h4 id="ViewResolveIncidentArea" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Complain Statement</label>
-                                            <h4 id="ViewResolveComplainStatement"></h4>
+                                            <h4 id="ViewResolveComplainStatement" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Patawag History</label>
                                             <table id="view-hearing-table" class="table table-striped table-bordered view-hearing-table">
@@ -1068,19 +1110,19 @@
                                             <h4 id="ViewComplainDate"></h4>
                                         <br>
                                             <label>Complainant Name</label>
-                                            <h4 id="ViewComplainantName"></h4>
+                                            <h4 id="ViewComplainantName" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Respondent Resident</label>
-                                            <h4 id="ViewAccusedResident"></h4>
+                                            <h4 id="ViewAccusedResident" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Incident Date</label>
-                                            <h4 id="ViewIncidentnDate"></h4>
+                                            <h4 id="ViewIncidentnDate" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Incident Area</label>
-                                            <h4 id="ViewIncidentArea"></h4>
+                                            <h4 id="ViewIncidentArea" style="text-transform: uppercase;"> </h4>
                                         <br>
                                             <label>Complain Statement</label>
-                                            <h4 id="ViewComplainStatement"></h4>
+                                            <h4 id="ViewComplainStatement" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Patawag History</label>
                                             <table id="view-hearing-table" class="table table-striped table-bordered view-hearing-table">
@@ -1130,19 +1172,19 @@
                                             <h4 id="ViewClosedDate"></h4>
                                         <br>
                                             <label>Complainant Name</label>
-                                            <h4 id="ViewClosedComplainantName"></h4>
+                                            <h4 id="ViewClosedComplainantName" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Accused Resident</label>
-                                            <h4 id="ViewClosedAccusedResident"></h4>
+                                            <h4 id="ViewClosedAccusedResident" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Incident Date</label>
                                             <h4 id="ViewClosedIncidentnDate"></h4>
                                         <br>
                                             <label>Incident Area</label>
-                                            <h4 id="ViewClosedIncidentArea"></h4>
+                                            <h4 id="ViewClosedIncidentArea" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Complain Statement</label>
-                                            <h4 id="ViewClosedComplainStatement"></h4>
+                                            <h4 id="ViewClosedComplainStatement" style="text-transform: uppercase;"></h4>
                                         <br>
                                             <label>Resolution</label>
                                             <h4 id="ViewClosedResolution"></h4>

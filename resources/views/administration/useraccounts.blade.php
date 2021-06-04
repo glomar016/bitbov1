@@ -127,7 +127,7 @@
 
                 });
                 setTimeout(function(){
-                   $.ajax({
+                 $.ajax({
                     url: "{{route('AddUser')}}",
                     type:'POST',
                     processData:false,
@@ -147,7 +147,7 @@
                                 console.error(error);
                             }  
                         })
-               });
+             });
             } 
             else 
             {
@@ -228,7 +228,7 @@
 
                 });
                 setTimeout(function(){
-                   $.ajax({
+                 $.ajax({
                     url: "{{route('AddUser')}}",
                     type:'POST',
                     processData:false,
@@ -247,7 +247,7 @@
                                 console.error(error);
                             }  
                         })
-               });
+             });
             } 
             else 
             {
@@ -259,19 +259,29 @@
         
 
 
-    
+
     }
     
-    $(document).on('click','#close_modal',function() {
-            
-            location.reload();
-        }); 
+    $(document).on('click','#close_modal',function() {        
+        location.reload();
+    }); 
 });
 
     var fullname = "", resident_id = "";
     
     $(document).on('click','.search_btn',function() {
-        
+        AppendResident();
+    });
+
+    $('#stext').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            AppendResident();
+        }
+    });
+
+    function AppendResident()
+    {
         $('.list-of-residents').remove();
         var searchval = $('#stext').val();
         var faddress = "";
@@ -285,39 +295,31 @@
             success:function(data)
             {
 
-               
                 if(data.length > 0) {
-                    data.map( value => {
-                        value['listofresidents'].map( residents => {
+                    data.map( value => 
+                    {
+                        value['listofresidents'].map( residents => 
+                        {
                             fullname = residents['FULLNAME'];
                             profilepic = residents['PROFILE_PICTURE'];
                             image = 'background-image:url("{{asset("upload/residentspics/")}}/'+profilepic+'")';
                             resident_id = residents['RESIDENT_ID'];
                             residents['FULL_ADDRESS'] == null ? faddress = "" : faddress = residents['FULL_ADDRESS']
-                           $('.result-list').append(
-                            '<li class="list-of-residents">\n'
-
-                            +'<a href="#" class="result-image"></a>\n'
-
-                            +'<div class="result-info">\n'
+                            $('.result-list').append(
+                                '<li class="list-of-residents">\n'
+                                +'<a href="#" class="result-image"></a>\n'
+                                +'<div class="result-info">\n'
                                 +'<h4 class="title"><a href="javascript:;">'+residents['FULLNAME']+'</a></h4>\n'
                                 +'<p class="location" style="font-size: 20px; color: black;">Birth details: <h>'+residents['PLACE_OF_BIRTH']+', '+residents['DATE_OF_BIRTH']+'</h></p>\n'
                                 +'<p class="desc" style="font-size: 20pxpx">'+faddress+'</p>\n'
-                                 +'<button data-toggle="modal" data-target="#show_assigning" class="btn btn-yellow btn-block" id="ab_btn">Assign as Barangay Official</button>\n'
-                            +'</div>\n'
+                                +'<button data-toggle="modal" data-target="#show_assigning" class="btn btn-yellow btn-block" id="ab_btn">Assign as Barangay Official</button>\n'
+                                +'</div>\n'
 
-                            // +'<div class="result-price" >Resident\n'
-                           
-                            // +'</div>\n'
-                            +'</li>'
-                            );
-
-                       })
+                                +'</li>'
+                                );
+                        })
                     });
                 }
-                
-                
-                
             }
             ,
             error:function(error)
@@ -328,8 +330,7 @@
         });
         
         $('.result-image').attr('style',image);
-
-    });
+    }
 
     $(document).on('click','#ab_btn',function() {
         $('#afullname').text(fullname);
@@ -602,7 +603,7 @@
                     @csrf
                     <div class="panel-body ">
                         <div class="row ">
-                           <div class="col-md-6">
+                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Resident's Name</label> <span id='ReqBarangayPosTxt'></span>
 
@@ -643,11 +644,11 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                   <div class="form-group " >
-                                       <label >Start Term</label>
-                                       <span id='ReqStartTermTxt'></span>
+                                 <div class="form-group " >
+                                     <label >Start Term</label>
+                                     <span id='ReqStartTermTxt'></span>
 
-                                       <div class="input-group date" id="datetimepicker1">
+                                     <div class="input-group date" id="datetimepicker1">
                                         <input type="text" class="form-control form-control-lg" id="StartTermTxt" name="StartTermTxt" />
                                         <div class="input-group-addon" id="StartTermIcon">
 
@@ -808,8 +809,6 @@
                 </table>
 
 
-
-
             </div>
             <!-- end panel-body -->
         </div>--}}
@@ -839,156 +838,156 @@
                       <div class="note-content text-center">
                         <h4><b>&nbsp&nbsp&nbsp&nbsp&nbspNote!</b></h4>
                         <p>&nbsp&nbspADD NEW REGISTRY OF BARANGAY IHABITANT RECORD. </p>
-                      </div>
                     </div>
-                    
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-content">
-                                <label for="bfirstname">&nbspResident Name<span class="text-danger">*</span></label> <span id="lblfirstname"></span>
-                                <input class="form-control" id="alname" name="alname" placeholder="Lastname" style="text-transform: uppercase;" />
+                </div>
 
-                            </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-content">
+                            <label for="bfirstname">&nbspResident Name<span class="text-danger">*</span></label> <span id="lblfirstname"></span>
+                            <input class="form-control" id="alname" name="alname" placeholder="Lastname" style="text-transform: uppercase;" />
+
                         </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-content">
-                                <label for="middlename">&nbsp</label><span id="lblmiddlename"></span>
-
-                                <input class="form-control" id="afname" name="afname" placeholder="FirstName" style="text-transform: uppercase;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="stats-content">
-                                <label for="lastname">&nbsp</label><span id="lbllastname"></span>
-
-                                <input class="form-control" id="amname" name="amname" placeholder="MiddleName" style="text-transform: uppercase;"/>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <label style="display: block; text-align: left">&nbsp</label>
-                            <input type="text" id="aqname" placeholder="Qualifier" name="aqname" style="display: block; text-align: left; color:black; background-color:white; text-transform: uppercase;" class="form-control">
-                        </div>
-
-                    </div> <br>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <label >&nbspGender </label><br>
-                            <div class="radio radio-css radio-inline">
-                                <input type="radio" name="agender" id="radiogenderm" value="Male" checked />
-                                <label for="radiogenderm">Male</label>
-                            </div> <br>
-
-                            <div class="radio radio-css radio-inline">
-                                <input type="radio" name="agender" id="radiogenderf" />
-                                <label for="radiogenderf" value="Female">Female</label>
-                            </div>
-                        </div>
-
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-content">
-                                <label class=" col-form-label text-md-left">&nbspAddress<span class="text-danger">*</span></label>
-                                <input type="number" name="ahouseno" id="ahouseno" placeholder="House No.*" class="form-control" style="text-transform: capitalize;"/>
-                            </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-content">
+                            <label for="middlename">&nbsp</label><span id="lblmiddlename"></span>
+
+                            <input class="form-control" id="afname" name="afname" placeholder="FirstName" style="text-transform: uppercase;" />
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-content">
-                                <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
-                                <input type="text" name="astreet_no" id="astreet_no" placeholder="Street No" class="form-control"  style="text-transform: capitalize;"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="stats-content">
-                                <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
-                                <input type="text" name="astreet" id="astreet" placeholder="Street" class="form-control"  style="text-transform: capitalize;"/>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="row">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="stats-content">
-                                                <label class="col-form-label text-md-right">&nbspOptional</label>
-                                                <input type="text" name="abuilding" id="ahbuilding" placeholder="Building" class="form-control" style="text-transform: capitalize;"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="stats-content">
-                                                <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
-                                                <input type="text" name="ahunitno" id="ahunitno" placeholder="Unit No." class="form-control" style="text-transform: capitalize;"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="stats-content">
-                                                <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
-
-                                                <input type="text" name="ahsubdivision" id="ahsubdivision" placeholder="Subdivision" class="form-control" style="text-transform: capitalize;"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-
-                                    <div class="row">
-                                       <div class="col-lg-4 col-md-6">
-                                        <label style="display: block; text-align: left">&nbspBirth Date</label>
-                                        <input type="date" id="abdate" name="abdate" class="form-control" data-parsley-required="true" />
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6">
-                                        <label style="display: block; text-align: left">&nbspPlace of Birth</label>
-                                        <input type="text" id="apbirth" name="apbirth" class="form-control" data-parsley-required="true" style="text-transform: capitalize;" />
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <label style="display: block; text-align: left">&nbspCivil Status</label>
-
-                                        <select class="form-control" data-style="btn-lime" id="editcstatus" name="editcstatus">
-                                            <option value="Single" selected>Single</option>
-                                            <option value="Married">Married</option>
-                                            <option value="Separated">Separated</option>
-                                            <option value="Widow">Widow</option>
-                                            <option value="Divorced">Divorced</option>
-                                            <option value="Annulled">Annulled</option>
-                                            <option value="Widower">Widower</option>
-                                            <option value="Single Parent">Single Parent</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <br>
-                                <div class="row">
-
-                                 <div class="col-lg-4 col-md-6">
-                                    <label style="display: block; text-align: left">&nbspOccupation</label>
-                                    <input type="text" id="aoccu" name="aoccu" style="display: block; text-align: left; color:black; background-color:white; text-transform: capitalize;" class="form-control">
-                                </div>
-                                 <div class="col-lg-4 col-md-6">
-                                <label style="display: block; text-align: left">&nbspCitizenship</label>
-                                <input type="text" id="acitiz" name="acitiz" class="form-control" required style="text-transform: capitalize;" />
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <label style="display: block; text-align: left">&nbspRelation to HouseHold Head</label>
-                                <input type="text" id="ahead" name="ahead" class="form-control" required style="text-transform: capitalize;"/>
-                            </div>
-                            </div><br>
-                           
-
-
-
-
-                    <div class="modal-footer" align="center">
-                        <a href="javascript:;" class="btn btn-lime" style="background-color: #6c9738" data-dismiss="modal" id="anewbtn" name="anewbtn">Assign</a>
-                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal" id="close_modal" name="close_modal">Close</a>
-
                     </div>
-                </form>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-content">
+                            <label for="lastname">&nbsp</label><span id="lbllastname"></span>
+
+                            <input class="form-control" id="amname" name="amname" placeholder="MiddleName" style="text-transform: uppercase;"/>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <label style="display: block; text-align: left">&nbsp</label>
+                        <input type="text" id="aqname" placeholder="Qualifier" name="aqname" style="display: block; text-align: left; color:black; background-color:white; text-transform: uppercase;" class="form-control">
+                    </div>
+
+                </div> <br>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <label >&nbspGender </label><br>
+                        <div class="radio radio-css radio-inline">
+                            <input type="radio" name="agender" id="radiogenderm" value="Male" checked />
+                            <label for="radiogenderm">Male</label>
+                        </div> <br>
+
+                        <div class="radio radio-css radio-inline">
+                            <input type="radio" name="agender" id="radiogenderf" />
+                            <label for="radiogenderf" value="Female">Female</label>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="stats-content">
+                            <label class=" col-form-label text-md-left">&nbspAddress<span class="text-danger">*</span></label>
+                            <input type="number" name="ahouseno" id="ahouseno" placeholder="House No.*" class="form-control" style="text-transform: capitalize;"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="stats-content">
+                            <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
+                            <input type="text" name="astreet_no" id="astreet_no" placeholder="Street No" class="form-control"  style="text-transform: capitalize;"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="stats-content">
+                            <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
+                            <input type="text" name="astreet" id="astreet" placeholder="Street" class="form-control"  style="text-transform: capitalize;"/>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="stats-content">
+                            <label class="col-form-label text-md-right">&nbspOptional</label>
+                            <input type="text" name="abuilding" id="ahbuilding" placeholder="Building" class="form-control" style="text-transform: capitalize;"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="stats-content">
+                            <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
+                            <input type="text" name="ahunitno" id="ahunitno" placeholder="Unit No." class="form-control" style="text-transform: capitalize;"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="stats-content">
+                            <label class="col-md-3 col-form-label text-md-right">&nbsp</label>
+
+                            <input type="text" name="ahsubdivision" id="ahsubdivision" placeholder="Subdivision" class="form-control" style="text-transform: capitalize;"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                 <div class="col-lg-4 col-md-6">
+                    <label style="display: block; text-align: left">&nbspBirth Date</label>
+                    <input type="date" id="abdate" name="abdate" class="form-control" data-parsley-required="true" />
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <label style="display: block; text-align: left">&nbspPlace of Birth</label>
+                    <input type="text" id="apbirth" name="apbirth" class="form-control" data-parsley-required="true" style="text-transform: capitalize;" />
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <label style="display: block; text-align: left">&nbspCivil Status</label>
+
+                    <select class="form-control" data-style="btn-lime" id="editcstatus" name="editcstatus">
+                        <option value="Single" selected>Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Widow">Widow</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Annulled">Annulled</option>
+                        <option value="Widower">Widower</option>
+                        <option value="Single Parent">Single Parent</option>
+                    </select>
+                </div>
+
             </div>
+            <br>
+            <div class="row">
+
+               <div class="col-lg-4 col-md-6">
+                <label style="display: block; text-align: left">&nbspOccupation</label>
+                <input type="text" id="aoccu" name="aoccu" style="display: block; text-align: left; color:black; background-color:white; text-transform: capitalize;" class="form-control">
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label style="display: block; text-align: left">&nbspCitizenship</label>
+                <input type="text" id="acitiz" name="acitiz" class="form-control" required style="text-transform: capitalize;" />
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label style="display: block; text-align: left">&nbspRelation to HouseHold Head</label>
+                <input type="text" id="ahead" name="ahead" class="form-control" required style="text-transform: capitalize;"/>
+            </div>
+        </div><br>
+
+
+
+
+
+        <div class="modal-footer" align="center">
+            <a href="javascript:;" class="btn btn-lime" style="background-color: #6c9738" data-dismiss="modal" id="anewbtn" name="anewbtn">Assign</a>
+            <a href="javascript:;" class="btn btn-white" data-dismiss="modal" id="close_modal" name="close_modal">Close</a>
 
         </div>
-    </div>
-    <!-- end tab-pane -->
+    </form>
+</div>
+
+</div>
+</div>
+<!-- end tab-pane -->
 </div>
 
 <div class="modal fade" id="show_default" data-backdrop="static">
@@ -1007,39 +1006,39 @@
                       <div class="note-content text-center">
                         <h4><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNOTE!</b></h4>
                         <p>&nbsp&nbspPLEASE NOTE YOUR DEFAULT USERNAME AND PASSWORD </p>
-                      </div>
                     </div>
-                    
-                    <br>
-                    {{ csrf_field() }}
-                    <h4><label style="display: block; text-align: center">Notice</label></h4>
-                    <h3><b><label style="text-transform: capitalize; display: block; text-align: center;" ></label></b></h3>
-                    <br>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <h><label style="display: block; text-align: center">&nbspUsername</label></h>
-                            <input style="display: block; text-align: center; background-color: white;color: black;font-size: 20px" type='text' class='form-control' id="defusername" readonly/>
-                        </div>
+                </div>
+
+                <br>
+                {{ csrf_field() }}
+                <h4><label style="display: block; text-align: center">Notice</label></h4>
+                <h3><b><label style="text-transform: capitalize; display: block; text-align: center;" ></label></b></h3>
+                <br>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <h><label style="display: block; text-align: center">&nbspUsername</label></h>
+                        <input style="display: block; text-align: center; background-color: white;color: black;font-size: 20px" type='text' class='form-control' id="defusername" readonly/>
                     </div>
+                </div>
 
 
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <h><label style="display: block; text-align: center">&nbspPassword</label></h>
-                            <input style="display: block; text-align: center; background-color: white;color: black;font-size: 20px" type="text" class='form-control' id="defpassword" readonly />
-                        </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <h><label style="display: block; text-align: center">&nbspPassword</label></h>
+                        <input style="display: block; text-align: center; background-color: white;color: black;font-size: 20px" type="text" class='form-control' id="defpassword" readonly />
                     </div>
+                </div>
 
-                    <div class="modal-footer" align="center">
-                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal" id="close_modal" name="close_modal">Close</a>
+                <div class="modal-footer" align="center">
+                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal" id="close_modal" name="close_modal">Close</a>
 
-                    </div>
-                </form>
-            </div>
-
+                </div>
+            </form>
         </div>
+
     </div>
-    <!-- end tab-pane -->
+</div>
+<!-- end tab-pane -->
 </div>
 <div class="modal fade" id="show_assigning" data-backdrop="static">
     <div class="modal-dialog" style="max-width: 50%">
@@ -1083,11 +1082,11 @@
 
                         <div class="row ">
                             <div class="col-md-6">
-                               <div class="form-group " >
-                                   <label >Start Term</label>
-                                   <span id='aReqStartTermTxt'></span>
+                             <div class="form-group " >
+                                 <label >Start Term</label>
+                                 <span id='aReqStartTermTxt'></span>
 
-                                   <div class="input-group date" id="datetimepicker">
+                                 <div class="input-group date" id="datetimepicker">
                                     <input type="text" class="form-control form-control-lg" id="aStartTermTxt" name="aStartTermTxt" />
                                     <div class="input-group-addon" id="aStartTermIcon" >
 
@@ -1113,24 +1112,24 @@
                             </div>
                         </div>
                         <div class="col-md-6" >
-                                <div class="form-group">
-                                    <label>Employee Number</label> <span id='aLblEmpNum'></span>
-                                    <input type="text" name="aEmpNum" id="aEmpNum" class="form-control form-control-lg"/>
-                                </div>
+                            <div class="form-group">
+                                <label>Employee Number</label> <span id='aLblEmpNum'></span>
+                                <input type="text" name="aEmpNum" id="aEmpNum" class="form-control form-control-lg" placeholder="XX-XXXXXXX / 27-1544126"/>
                             </div>
+                        </div>
                     </div>
 
                     <div class="modal-footer" align="center">
-                       <a href="javascript:;" class="btn btn-yellow" style="color: black" data-dismiss="modal" id="assignbtn" name="assignbtn">Assign</a>
-                       <a href="javascript:;" class="btn btn-white aclose_modal" data-dismiss="modal" >Close</a>
+                     <a href="javascript:;" class="btn btn-yellow" style="color: black" data-dismiss="modal" id="assignbtn" name="assignbtn">Assign</a>
+                     <a href="javascript:;" class="btn btn-white aclose_modal" data-dismiss="modal" >Close</a>
 
-                   </div>
-               </form>
-           </div>
+                 </div>
+             </form>
+         </div>
 
-       </div>
-   </div>
-   <!-- end tab-pane -->
+     </div>
+ </div>
+ <!-- end tab-pane -->
 </div>
 <!-- end 
     <!-- panel-user-accounts-end -->
@@ -1173,8 +1172,8 @@
                     <!-- begin panel-body -->
                     <div class="panel-body "  style="overflow-x:auto;">
 
-                       <!-- PERMISSION TABLE -->
-                       <table id="permision" class="table table-striped" cellspacing="0" width="100%" >
+                     <!-- PERMISSION TABLE -->
+                     <table id="permision" class="table table-striped" cellspacing="0" width="100%" >
 
                         <thead>
                             <tr>
@@ -1195,7 +1194,7 @@
                                 <th align="center">Patawag </th>
                                 <th align="center">System Reports </th>
                                 <th align="center">Health Services </th>
-                               
+
                                 <th align="center">Data Migration</th>
                                 
                                 
@@ -1208,15 +1207,16 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($DisplayPermission as $Value)
+
+
                             @foreach ($DisplayData as $Item)
 
-                            @if($Value->POSITION_NAME == $Item->POSITION_NAME)
+                            
 
                             <tr>
                                 <th id="PermisBarangayOfficialID"  hidden >{{$Item->BARANGAY_OFFICIAL_ID}} </th>
 
-                                <td >{{$Value->FULLNAME }} {{$Value->POSITION_NAME}}</td> 
+                                <td >{{$Item->FULLNAME }} {{$Item->POSITION_NAME}}</td> 
 
                                 <td >
                                     <div class="checkbox checkbox-css">
@@ -1338,9 +1338,9 @@
 
                             </tr>
 
-                            @endif
+                            
                             @endforeach
-                            @endforeach
+                            
 
                         </tbody>
                     </table>

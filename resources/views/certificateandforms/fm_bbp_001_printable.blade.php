@@ -215,6 +215,14 @@ span.GramE
 	margin-bottom:8.0pt;
 	line-height:107%;}
 @page WordSection1
+  {size:8.5in 11.0in;10
+  margin:1.0in 1.0in 1.0in 1.0in;
+  mso-header-margin:35.4pt;
+  mso-footer-margin:35.4pt;
+  mso-paper-source:0;}
+div.WordSection1
+  {page:WordSection1;}
+/*@page WordSection1
 	{size:595.3pt 841.9pt;
 	margin:1.0in 42.45pt 1.0in 42.45pt;
 	mso-header-margin:0in;
@@ -222,7 +230,7 @@ span.GramE
 	mso-page-numbers:1;
 	mso-paper-source:0;}
 div.WordSection1
-	{page:WordSection1;}
+	{page:WordSection1;}*/
 -->
 </style>
 
@@ -246,109 +254,120 @@ Calibri;mso-bidi-theme-font:minor-latin'>Province of Rizal<o:p></o:p></span></p>
 text-align:center;line-height:normal'><span style='font-size:15.0pt;mso-bidi-font-family:
 Calibri;mso-bidi-theme-font:minor-latin'>Municipality of <span class=SpellE>Tanay</span><o:p></o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+<p class=MsoNormal align=center style='
 text-align:center;line-height:normal;background:white'><b><span
 style='font-size:20.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
 Calibri;mso-bidi-theme-font:minor-latin;color:red;letter-spacing:-.75pt;
-mso-fareast-language:EN-PH'>BARANGAY {{ session('session_barangay_name')}}<o:p></o:p></span></b></p>
+mso-fareast-language:EN-PH'>BARANGAY {{ session('session_barangay_name')}}<o:p></o:p></span>
+</b></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+center;line-height:normal;background:white'><span style='font-size:29px;font-family:"Arial",sans-serif;mso-fareast-font-family:
+"Times New Roman";color:red;mso-color-alt:windowtext;mso-fareast-language:
+EN-PH'>TANGGAPAN NG PUNONG BARANGAY</span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><b style='mso-bidi-font-weight:normal'><span lang=EN-PH
-style='font-size:12.0pt'>PAHINTULOT SA PANGANGALAKAL<o:p></o:p></span></b></p>
+style='font-size:17.0pt'>PAHINTULOT SA PANGANGALAKAL<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(BUSINESS PERMIT)<o:p></o:p></span></p>
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(BUSINESS PERMIT)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-normal'><span lang=EN-PH style='font-size:10.0pt'>MATALASTAS NG LAHAT:<span
-style='mso-tab-count:7'>                                                                                                   </span>Control
-<span class=GramE>No :</span><span style='mso-spacerun:yes'> 
+normal'><span lang=EN-PH style='font-size:15.0pt'>MATALASTAS NG LAHAT:    <span
+style='mso-tab-count:7'>                                                                           </span>Control
+<span class=GramE style="font-size: 15.0pt;">No :</span><span style='mso-spacerun:yes'> 
 </span><o:p id=lbl_control_no_b_r></o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-normal'><span lang=EN-PH style='font-size:10.0pt'>(KNOW ALL MEN BY THERE
-PRESENTS)<span style='mso-tab-count:5'>                                                                           </span>Issued
-Date:<span style='mso-spacerun:yes'>  </span><o:p id=lbl_issued_date></o:p></span></p>
+normal'><span lang=EN-PH style='font-size:15.0pt'><span
+style='mso-tab-count:7'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Business Plate
+<span class=GramE>No :</span><span style='mso-spacerun:yes'> 
+</span><o:p id=lbl_plate_no_b_r></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
+normal'><span lang=EN-PH style='font-size:15.0pt'>(KNOW ALL MEN BY THERE
+PRESENTS);<span style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Issued
+Date:<span style='mso-spacerun:yes'> </span><o:p id=lbl_issued_date></o:p></span></p>
+
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
 normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-normal'><span lang=EN-PH style='font-size:10.0pt'>NA/SI/ANG:<o:p></o:p></span></p>
+normal'><span lang=EN-PH style='font-size:15.0pt'>NA/SI/ANG:<o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-normal'><span lang=EN-PH style='font-size:10.0pt'>(THAT)<o:p></o:p></span></p>
+normal'><span lang=EN-PH style='font-size:15.0pt'>(THAT)<o:p></o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span lang=EN-PH
-style='font-size:10.0pt'><o:p id=lbl_company_name></o:p></span></u></b></p>
+style='font-size:17.0pt'><o:p id=lbl_company_name></o:p></span></u></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span lang=EN-PH
+style='font-size:17.0pt'><o:p id=lbl_account_no_p></o:p></span></u></b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>na</span></span><span
-lang=EN-PH style='font-size:12.0pt'> <span class=SpellE>matatagpuan</span> at
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:17.0pt'>na</span></span><span
+lang=EN-PH style='font-size:15.0pt'> <span class=SpellE>matatagpuan</span> at
 may <span class=SpellE>pahatirang</span> <span class=SpellE>sulat</span> <span
 class=SpellE>sa</span><o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(with postal
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(with postal
 address at)<o:p></o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span lang=EN-PH
-style='font-size:10.0pt'><o:p id=lbl_business_address></o:p></span></u></b></p>
+style='font-size:15.0pt'><o:p id=lbl_business_address></o:p></span></u></b></p>
 <br>
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>na</span></span><span
-lang=EN-PH style='font-size:12.0pt'> <span class=SpellE>itinatag</span> <span
-class=SpellE>nang</span> may <span class=SpellE>buong</span> Karapatan at <span
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:15.0pt'>na</span></span><span
+lang=EN-PH style='font-size:15.0pt'> <span class=SpellE>itinatag</span> <span
+class=SpellE>nang</span> may <span class=SpellE>buong</span> karapatan at <span
 class=SpellE>umiiral</span> <span class=SpellE>sa</span> <span class=SpellE>ilalim</span>
 ng <span class=SpellE>mga</span> <span class=SpellE>batas</span> ng<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(duly recognized
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(duly recognized
 and existing under the law of the)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>Republika</span></span><span
-lang=EN-PH style='font-size:12.0pt'> ng <span class=SpellE>Pilipinas</span>, ay
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:15.0pt'>Republika</span></span><span
+lang=EN-PH style='font-size:15.0pt'> ng <span class=SpellE>Pilipinas</span>, ay
 <span class=SpellE>pinagkalooban</span> ng <span class=SpellE>pahintulot</span>
 <span class=SpellE>na</span> <span class=SpellE>mangalakal</span> <span
 class=SpellE>bilang</span><o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(Republic of the
-Philippines, is hereby granted the permit to operate as)<o:p></o:p></span></p>
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(Republic of the Philippines, is hereby granted the permit to operate as)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span lang=EN-PH
-style='font-size:10.0pt'><o:p id=lbl_line_business></o:p></span></u></b></p>
+style='font-size:17.0pt'><o:p id=lbl_line_business></o:p></span></u></b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><span class=SpellE><span
-style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Ngayong</span></span><span
-style='font-size:17.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
-<span class=SpellE>ika</span> - <u>(<span class=SpellE><?php echo date('d') ?></span>)</u> ng <u>(<span
+style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Ngayong</span></span><span
+style='font-size:15.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
+<span class=SpellE style="font-size: 15.0pt">ika</span> - <u> <span class=SpellE><?php echo date('d') ?></span> </u> ng <u>
+	<span
 class=SpellE> <?php 
 	if (date('m') == 01)
 		echo 'Enero';
@@ -377,87 +396,90 @@ class=SpellE> <?php
 	
 
 		
-
-?></span> at <span class=SpellE><?php echo date('Y') ?></span>)<o:p></o:p></u></span></p>
+?></span> at <span class=SpellE style="font-size: 15.0pt"><?php echo date('Y') ?></span><o:p></o:p></u></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(on <span
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(on <span
 class=GramE>this)<span style='mso-spacerun:yes'>   </span></span><span
 style='mso-spacerun:yes'>                 </span>(day of)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:12.0pt'>Ang <span
+line-height:normal'><span lang=EN-PH style='font-size:17.0pt'>Ang <span
 class=SpellE>pahintulot</span> <span class=SpellE>na</span> <span class=SpellE>ito</span>
 ay <span class=SpellE>matatapos</span> <span class=SpellE>sa</span> <span
-class=SpellE>ika</span> – 31 of December (YYYY)<o:p></o:p></span></p>
+class=SpellE>ika</span> – 31 of December 
+<?php 
+//$date = strtotime(date('Y')); 
+//$new_date = strtotime('+ 1 year', $date); , $new_date
+echo date('Y');
+?><o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(This permit
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(This permit
 expires on)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:12.0pt'>Malibang</span></span><span
-lang=EN-PH style='font-size:12.0pt'> <span class=SpellE>ito’y</span> <span
+line-height:normal'><span class=SpellE><span lang=EN-PH style='font-size:17.0pt'>Malibang</span></span><span
+lang=EN-PH style='font-size:15.0pt'> <span class=SpellE>ito’y</span> <span
 class=SpellE>maagang</span> <span class=SpellE>bawiin</span> at <span
 class=SpellE>pawalang</span> bias.<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(unless sooner
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>(unless sooner
 revoked)<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(PUNONG BARANGAY)<o:p></o:p></span></p>
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>{{session('session_brgychairman_name')}}<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>Punong Barangay<o:p></o:p></span></p>
+line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>Punong Barangay<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
 line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <div align=center>
 
-<table class=a border=1 cellspacing=0 cellpadding=0 width=683 style='border-collapse:
+<table class=a border=1 cellspacing=0 cellpadding=0 width=100% style='border-collapse:
  collapse;mso-table-layout-alt:fixed;border:none;mso-border-alt:solid #00000A .5pt;
  mso-padding-alt:0in 5.4pt 0in 5.15pt;mso-border-insideh:.5pt solid #00000A;
  mso-border-insidev:.5pt solid #00000A'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:13.7pt'>
   <td width=74 valign=top style='width:55.5pt;border:solid #00000A 1.0pt;
-  mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:13.7pt'>
+  mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:13.7pt;'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>TAX YEAR<o:p></o:p></span></p>
+  line-height:normal;'><span lang=EN-PH style='font-size:15.0pt'>TAX YEAR<o:p></o:p></span></p>
   </td>
   <td width=78 valign=top style='width:58.5pt;border:solid #00000A 1.0pt;
   border-left:none;mso-border-left-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.7pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_tax_year></o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_tax_year></o:p></span></p>
   </td>
   <td width=134 valign=top style='width:100.5pt;border:solid #00000A 1.0pt;
   border-left:none;mso-border-left-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.7pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>QUARTER<o:p></o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>QUARTER<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border:solid #00000A 1.0pt;
   border-left:none;mso-border-left-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.7pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_qtr></o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_qtr></o:p></span></p>
   </td>
   <td width=266 rowspan=9 style='width:199.5pt;border:solid #00000A 1.0pt;
   border-left:none;mso-border-left-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
@@ -466,7 +488,7 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   normal'><b style='mso-bidi-font-weight:normal'><span lang=EN-PH
   style='font-size:10.0pt'>IMPORTANT<o:p ></o:p></span></b></p>
   <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-  normal'><span lang=EN-PH style='font-size:10.0pt'>Failure to renew this
+  normal'><span lang=EN-PH style='font-size:15.0pt'>Failure to renew this
   Business Permit within the prescribed period shall subject the taxpayer to a
   twenty-five percent (25%) surcharge and two percent (2%) penalty per
   month.<span style='mso-spacerun:yes'>  </span>Upon closure of business,
@@ -480,28 +502,28 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:10.3pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>OR No.<o:p></o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>OR No.<o:p></o:p></span></p>
   </td>
   <td width=78 valign=top style='width:58.5pt;border-top:none;border-left:none;
   border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:10.3pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_or_number>&nbsp;</o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_or_number>&nbsp;</o:p></span></p>
   </td>
   <td width=134 valign=top style='width:100.5pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:10.3pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>OR Date<o:p></o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>OR Date<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:10.3pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_or_date>&nbsp;</o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_or_date>&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;height:14.85pt'>
@@ -509,14 +531,14 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:14.85pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>Particulars<o:p></o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'>Particulars<o:p></o:p></span></p>
   </td>
   <td width=131 style='width:98.25pt;border-top:none;border-left:none;
   border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:14.85pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
-  lang=EN-PH style='font-size:9.0pt;line-height:107%'>Amount<o:p></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;line-height:107%'>Amount<o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:3;height:18.4pt'>
@@ -524,14 +546,14 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:18.4pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:10.0pt'>Barangay Business Tax<o:p></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt'>Barangay Business Tax<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:18.4pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_business_tax>&nbsp;</o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_business_tax>&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:4;height:13.7pt'>
@@ -539,7 +561,7 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.7pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:9.0pt'>Fees and Charges on billboards,
+  lang=EN-PH style='font-size:15.0pt; '>Fees and Charges on billboards,
   signboards, neon signs and outdoor advertisements<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
@@ -547,7 +569,7 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:13.7pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_signboard>&nbsp;</o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_signboard>&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:5;height:13.95pt'>
@@ -555,14 +577,14 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.95pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:10.0pt'>Garbage Fee<o:p></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt'>Garbage Fee<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:13.95pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p id=lbl_garbage_fee>&nbsp;</o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id=lbl_garbage_fee>&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:6;height:13.4pt'>
@@ -570,14 +592,14 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.4pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:10.0pt'>Barangay Business Permit Plate<o:p></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt'>Barangay Business Permit Plate<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:13.4pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt'><o:p id="lbl_b_plate_no">&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:7;height:14.65pt'>
@@ -585,13 +607,14 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:14.65pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:10.0pt'>Barangay Business Permit Sticker<o:p></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt'>Barangay Business Permit Sticker<o:p></o:p></span></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:14.65pt'>
-  <p class=MsoNormal><span lang=EN-PH><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt;'><o:p id="lbl_sticker">&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:8;height:13.5pt'>
@@ -599,14 +622,15 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b
-  style='mso-bidi-font-weight:normal'><span lang=EN-PH style='font-size:9.0pt'>Total
+  style='mso-bidi-font-weight:normal'><span lang=EN-PH style='font-size:15.0pt'>Total
   Amount Paid<o:p></o:p></span></b></p>
   </td>
   <td width=131 valign=top style='width:98.25pt;border-top:none;border-left:
   none;border-bottom:solid #00000A 1.0pt;border-right:solid #00000A 1.0pt;
   mso-border-top-alt:solid #00000A .5pt;mso-border-left-alt:solid #00000A .5pt;
   mso-border-alt:solid #00000A .5pt;padding:0in 5.4pt 0in 5.15pt;height:13.5pt'>
-  <p class=MsoNormal style='margin-bottom:0in'><span lang=EN-PH><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span lang=EN-PH style='font-size:15.0pt;'><o:p id="lbl_total_amount_p"></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes;height:11.5pt'>
@@ -614,11 +638,11 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
   border-top:none;mso-border-top-alt:solid #00000A .5pt;mso-border-alt:solid #00000A .5pt;
   padding:0in 5.4pt 0in 5.15pt;height:11.5pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:8.0pt'>ITO AY DAPAT
+  line-height:normal'><span lang=EN-PH style='font-size:9.0pt'>ITO AY DAPAT
   IPASKIL SA HAYAG NA POOK NG KALAKALAN AT DAPAT IPAKITA SA SANDALING HINGIN NG
   MGA KINAUUKULANG MAYKAPANGYARIHAN.<o:p></o:p></span></p>
   <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:10.0pt'>(THIS MUST BE
+  line-height:normal'><span lang=EN-PH style='font-size:9.0pt'>(THIS MUST BE
   POSTED ON CONSPICUOUS PLACE AND BE PRESENTED UPON DEMAND BY PROPER
   AUTHORITIES.)<o:p></o:p></span></p>
   </td>
@@ -627,7 +651,6 @@ line-height:normal'><span lang=EN-PH style='font-size:6.0pt'><o:p>&nbsp;</o:p></
 
 </div>
 
-<p class=MsoNormal><span lang=EN-PH><o:p>&nbsp;</o:p></span></p>
 
 </div>
 

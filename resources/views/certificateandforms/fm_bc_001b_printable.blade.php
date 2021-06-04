@@ -93,10 +93,11 @@ div.WordSection1
 
 {{-- <div class=WordSection1 id="print_form" style=' margin-left: 1.0in; margin-right: 1.0in;'> --}}
 <div class=WordSection1 id="fmbc001b" style=' margin-left: 1.0in; margin-right: 1.4in;'>
-  <br><br><br><br><br><br>
+  <br><br><br><br>
 {{--header--}}
   <img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/> 
   <img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/>
+
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal;background:white'><b><span
@@ -292,7 +293,25 @@ solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
     justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
     "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
-    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'>Company Name:<o:p></o:p></span></p>
+    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'>Account No<o:p></o:p></span></p>
+    </td>
+    <td width=340 valign=top style='width:375pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+    justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
+    "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'><o:p id="lbl_account_no_b"> &nbsp;ACCOUNT NO.</o:p></span></p>
+    </td>
+  </tr>
+
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+    <td width=161 valign=top style='width:200pt;border:solid windowtext 1.0pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+    justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
+    "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'>Company Name<o:p></o:p></span></p>
     </td>
     <td width=340 valign=top style='width:375pt;border:solid windowtext 1.0pt;
     border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
@@ -329,8 +348,8 @@ solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
     justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
     "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
-    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'>Nature of
-    Business:<o:p></o:p></span></p>
+    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'>Line of
+    Business<o:p></o:p></span></p>
     </td>
     <td width=340 valign=top style='width:375pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -340,6 +359,25 @@ solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;
     justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
     "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
     color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'><o:p id = "lbl_nature_of_business_b">&nbsp;ADDRESS</o:p></span></p>
+    </td>
+  </tr>
+  <tr style='mso-yfti-irow:1'>
+    <td width=161 valign=top style='width:200pt;border:solid windowtext 1.0pt;
+    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+    justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
+    "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'>Total Gross Receipt<o:p></o:p></span></p>
+    </td>
+    <td width=340 valign=top style='width:375pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+    <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+    justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
+    "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+    color:black;letter-spacing:.75pt;mso-fareast-language:EN-PH'><o:p id = "lbl_gross_total_b"></o:p></span></p>
     </td>
   </tr>
   <tr style='mso-yfti-irow:1'>

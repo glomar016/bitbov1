@@ -95,48 +95,55 @@ div.WordSection1
 
 <body lang=EN-PH style='tab-interval:.5in'>
 <div class=WordSection1 id="fmbcert001a" style=' margin-left: .50in; margin-right: 1.0in;'>
-
-<img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
-<img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/>
-
-<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal;background:white'><span style='font-size:
-17.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-color:black;mso-color-alt:windowtext;mso-fareast-language:EN-PH'>Republic of
-the Philippines</span><span style='font-size:17.0pt;font-family:"Arial",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-fareast-language:EN-PH'><o:p></o:p></span></p>
+  
+<img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/> 
+<img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal;background:white'><span style='font-size:
-17.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-color:black;mso-color-alt:windowtext;mso-fareast-language:EN-PH'>Province of
-Rizal</span><span style='font-size:17.0pt;font-family:"Arial",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-fareast-language:EN-PH'><o:p></o:p></span></p>
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>REPUBLIC OF THE PHILIPPINES<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal;background:white'><span style='font-size:
-17.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-color-alt:windowtext;mso-fareast-language:EN-PH'>Municipality
-  of <span class=SpellE>Tanay</span></span><span style='font-size:17.0pt;
-  font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  mso-fareast-language:EN-PH'><o:p></o:p></span></p>
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>Province of Rizal<o:p></o:p></span></b></p>
 
-  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center;line-height:normal;background:white'><span style='font-size:
-  17.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-color-alt:windowtext;mso-fareast-language:EN-PH'>BARANGAY
-  <o:p>{{ session('session_barangay_name')}}</o:p></span><span style='font-size:17.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:EN-PH'><o:p></o:p></span></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>Municipality of <span class=SpellE>Tanay</span><o:p></o:p></span></b></p>
 
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-  justify;line-height:normal;background:white'><span style='font-size:17.0pt;
-  font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:20.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:red;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>BARANGAY {{ session('session_barangay_name')}}<o:p></o:p></span></b></p>
 
-  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-  justify;line-height:normal;background:white'><span style='font-size:17.0pt;
-  font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><span style='font-size:17.0pt;
+font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></p>
+  
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+center;line-height:normal;background:white'><span style='font-size:25.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+"Times New Roman";color:red;mso-color-alt:windowtext;mso-fareast-language:
+EN-PH'>TANGGAPAN NG PUNONG BARANGAY</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
 
   <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
     style='border-collapse:collapse;border:none;mso-yfti-tbllook:1184;mso-padding-alt:
@@ -144,14 +151,14 @@ text-align:center;line-height:normal;background:white'><span style='font-size:
     <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
       <td width=355 valign=top style='width:316.45pt;padding:0in 5.4pt 0in 5.4pt'>
         <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-        justify;line-height:normal'><span style='font-size:17.0pt;mso-fareast-font-family:
+        justify;line-height:normal'><span style='font-size:15.0pt;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
         color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>Control No.:&nbsp<o:p id="lbl_control_no_a_r"> </o:p></span></p>
       </td>
       
       <td width=100 valign=top style='width:316.3pt;'>
         <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-        justify;line-height:normal;margin-left: 60%'><span style='font-size:15.0pt;mso-fareast-font-family:
+        justify;line-height:normal;margin-left: 48%'><span style='font-size:15.0pt;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
         color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>OR No.:&nbsp<o:p id="lbl_or_no_a_r" > OR NO</o:p></span></p>
       </td>
@@ -175,7 +182,7 @@ text-align:center;line-height:normal;background:white'><span style='font-size:
      
       <td width=74 valign=top style='width:416.3pt;'>
         <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-        justify;line-height:normal;margin-left: 60%'><span style='font-size:15.0pt;mso-fareast-font-family:
+        justify;line-height:normal;margin-left: 48%'><span style='font-size:15.0pt;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
         color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>OR Date:&nbsp<o:p id="lbl_or_date_a_r" ></o:p></span></p>
       </td>
@@ -203,7 +210,7 @@ text-align:center;line-height:normal;background:white'><span style='font-size:
 
       <td width=74 valign=top style='width:416.3pt;'>
         <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
-        justify;line-height:normal;margin-left: 61.5%'><span style='font-size:15.0pt;mso-fareast-font-family:
+        justify;line-height:normal;margin-left: 50%'><span style='font-size:15.0pt;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
         color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>Amount:&nbspPhp<o:p id="lbl_amount_a_r"></o:p></span></p>
       </td>

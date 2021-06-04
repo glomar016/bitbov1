@@ -165,7 +165,7 @@
 
 		{{-- Child modal --}}
 		<div class="modal fade" id="modal-Child" data-backdrop="static">
-			<div class="modal-dialog">
+			<div class="modal-dialog" style="max-width: 50%">
 				<div class="modal-content">
 					<div class="modal-header"  style="background: #90CA4B" id="modalHeader">
 						<h4 class="modal-title" style="color: #fff">Child</h4>
@@ -176,69 +176,81 @@
 						<input type="text" id="txt_resid" hidden>
 						<input type="text" id="txt_child_id" hidden>
 						<div id="divNonResident">
-						<div class="col-md-10">
-							<h6>First Name</h6>
-							<input class="form-control" type="text" id="txt_nonresident_fname">
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Middle Name</h6>
-							<input class="form-control" type="text" id="txt_nonresident_mname" >
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Last Name</h6>
-							<input class="form-control" type="text" id="txt_nonresident_lname" >
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Sex</h6>
-							<select class="form-control" id="sel_nonresident_sex" style="color: black;" >
-								<option selected disabled value=""></option>
-								<option>Female</option>
-								<option>Male</option>
-							</select>
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Birthdate</h6>
-							<input type="date" class="form-control"  id="txt_nonresident_birthdate" name="txt_nonresident_birthdate" placeholder="dd-mm-yy" />
-						</div>
-						<br>
-					</div>	
-						<div class="col-md-10">
-							<label>Type of Home Record:</label>
-							<select class="form-control" id="sel_home_record" style="color: black;">
-								<option selected disabled value=""></option>
-								<option value="Mother and Child Book (MCB)">Mother and Child Book (MCB)</option>
-								<option value="Immunization Card (ECCD)">Immunization Card (ECCD)</option>
-							</select>
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Operation Timbang (OPT)</h6>
 							<div class="row">
-								<div class="col-md-4">
-									<label>OPT Date</label>
-									<input type="date" class="form-control" style="width: 150px;" id="txt_OPTdate" />
+								<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">First Name</label>
+								<input class="form-control" type="text" id="txt_nonresident_fname">
 								</div>
-
-								<div class="col-md-4" style="margin-left: 50px" >
-									<label>OPT Weight</label>
-									<div class="row">
-										<input type="text" class="form-control" style="width: 70px;"  id="txt_OPTweight"/>
-										<span class="input-group-text">kg</span>
-									</div>
+								
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">Middle Name</label>
+									<input class="form-control" type="text" id="txt_nonresident_mname" >
 								</div>
-								<br>
-								<div class="col-md-4" style="margin-left: 10px" >
-									<label>OPT Height</label>
-									<div class="row">
-										<input type="text" class="form-control" style="width: 70px; "   id="txt_OPTheight"/>
-										<span class="input-group-text">cm</span>
-									</div>
+								
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">Last Name</label>
+									<input class="form-control" type="text" id="txt_nonresident_lname" >
 								</div>
 							</div>
+							<br>
+							<div class="row">
+								<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">Sex</label>
+								<select class="form-control" id="sel_nonresident_sex" style="color: black;" >
+									<option selected disabled value=""></option>
+									<option>Female</option>
+									<option>Male</option>
+								</select>
+								</div>
+								
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">Birthdate</label>
+									<input type="date" class="form-control"  id="txt_nonresident_birthdate" name="txt_nonresident_birthdate" placeholder="dd-mm-yy" />
+								</div>
+								
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">Type of Home Record</label>
+									<select class="form-control" id="sel_home_record" style="color: black;">
+									<option selected disabled value=""></option>
+									<option value="Mother and Child Book (MCB)">Mother and Child Book (MCB)</option>
+									<option value="Immunization Card (ECCD)">Immunization Card (ECCD)</option>
+								</select>
+								</div>
+							</div>
+						
+						</div>	
+						
+						<br>
+						<h6>Operation Timbang (OPT)</h6>
+						<div class="row">
+							
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">OPT Date</label>
+									<input type="date" class="form-control" id="txt_OPTdate" />
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">OPT Weight</label>
+									<div class="input-group mb-3">
+										  
+											<input type="text" class="form-control"   id="txt_OPTweight"/>
+										  
+										  <div class="input-group-append">
+										    <span class="input-group-text">kg</span>
+										  </div>
+										</div>
+								</div>
+								<div class="col-lg-4 col-md-6">
+									<label style="display: block; text-align: left">OPT Height</label>
+									<div class="input-group mb-3">
+										  
+											<input type="text" class="form-control"  id="txt_OPTheight"/>
+										  
+										  <div class="input-group-append">
+										    <span class="input-group-text">cm</span>
+										  </div>
+										</div>
+									
+								</div>
 						</div>
 						<br>
 						<div class="col-md-10">

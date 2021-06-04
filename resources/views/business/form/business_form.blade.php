@@ -29,10 +29,19 @@
 									<div class="row">
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
-												<label>Business Number</label>
-												<input type="text" id="txt_business_number" class="form-control">
+												<label>Business Category</label>
+												<select class="form-control" id="sel_business_nature" data-parsley-required="true" >
+													<option>-- Business Category --</option>
+													@foreach($line_of_business as $row)
+
+													<option id="{{$row->LINE_OF_BUSINESS_ID}}">{{$row->LINE_OF_BUSINESS_NAME}}</option>
+													@endforeach
+
+												</select>
 											</div>
 										</div>
+										
+										
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
 												<label>Business Name</label>
@@ -45,21 +54,13 @@
 												<input type="text" id="txt_tradename" class="form-control">
 											</div>
 										</div>
+										
 										<div class="col-lg-3 col-md-6">
 											<div class="stats-content">
-												<label>Business Category</label>
-												<select class="form-control" id="sel_business_nature" data-parsley-required="true" >
-													<option>-- Business Category --</option>
-													@foreach($business_nature as $row)
-
-													<option id="{{$row->BUSINESS_NATURE_ID}}">{{$row->BUSINESS_NATURE_NAME}}</option>
-													@endforeach
-
-												</select>
+												<label>Business Number</label>
+												<input type="text" id="txt_business_number" class="form-control">
 											</div>
 										</div>
-										
-										
 
 									</div>
 								</td>
@@ -142,42 +143,17 @@
 							<tr>
 								<td>
 									<div class="row">
-										<div class="col-lg-2 col-md-4">
-											<div class="stats-content">
-												<br>
-												<label>Business' Address</label>
-												{{-- <input type="text" id="txt_" class="form-control"> --}}
+										<div class="col-lg-9 col-md-18">
+												<div class="stats-content">
+													<label>Business Address</label>
+													<input type="text" id="txt_business_address" class="form-control">
+												</div>
 											</div>
-										</div>
-										<div class="col-lg-2 col-md-4">
-											<div class="stats-content">
-												<label>Building Number</label>
-												<input type="text" id="txt_building_no" class="form-control">
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-4">
-											<div class="stats-content">
-												<label>Building Name</label>
-												<input type="text" id="txt_building_name" class="form-control">
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-4">
-											<div class="stats-content">
-												<label>Unit No</label>
-												<input type="number" id="txt_unit_no" class="form-control">
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-4">
-											<div class="stats-content">
-												<label>Street</label>
-												<input type="text" id="txt_street" class="form-control">
-											</div>
-										</div>
-
-										<div class="col-lg-2 col-md-4">
-											<div class="stats-content">
-												<label>Postal Code</label>
-												<input type="text" id="txt_business_postal" class="form-control" placeholder="9999">
+											<div class="col-lg-3 col-md-6">
+												<div class="stats-content">
+													<label>Postal Code</label>
+													<input type="text" id="txt_business_postal" class="form-control" placeholder="9999">
+												</div>
 											</div>
 										</div>
 									</div>
@@ -305,6 +281,18 @@
 												<input type="number" id="txt_male_lgu" class="form-control" placeholder="Male">
 											</div>
 										</div>
+										<div class="col-lg-3 col-md-6">
+											<div class="stats-content">
+												<div class="form-check">
+													<input type="radio" class="form-check-input" name="radiorequired" value="foo" id="radioBusinessWeight" data-parsley-required="true" data-parsley-multiple="radiorequired">
+													<label class="form-check-label" for="radioBusinessWeight">Weight</label>
+												</div>
+												<div class="form-check">
+													<input type="radio" class="form-check-input" name="radiorequired" id="radioPropertyBRelated" value="bar" data-parsley-multiple="radiorequired">
+													<label class="form-check-label" for="radioPropertyBRelated">Building Related</label>
+												</div>
+											</div>
+										</div>
 									</div>
 								</td>
 							</tr>
@@ -361,11 +349,60 @@
 									</div>
 								</td>
 							</tr>
-							{{-- <tr>
+							
+							<tr style="background: #DCDCDC">
+								<td style="font-weight: bolder; color: #000000; font-size: small;"> &nbsp; 3 BUSINESS ACTIVITY</td>
+							</tr>
+							{{-- bUSINES ACTIVIYT --}}
+							<tr>
 								<td>
-									
+									<table class="table table-striped table-bordered" id="tbl_business_acitivity">
+										
+										<thead>
+											<tr>
+												<th style="text-align: center;">Line of Business</th>
+												<th style="text-align: center;" width="10%">No of units</th>
+												<th style="text-align: center;">Capitalization (for new business) </th>
+												<th style="text-align: center;" colspan="2">Gross/Sales Receipts</th>
+												<th style="text-align: center;">Action</th>
+												
+											</tr>
+											<tr>
+
+												<th></th>
+												<th></th>
+												<th></th>
+												<th style="text-align: center;">ESSENTIAL</th>
+												<th style="text-align: center;">NON-ESSENTIAL</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+
+											{{-- <tr>
+												<td><input type="text" name="lineofbusiness" class="form-control"></td>
+												<td><input type="text" name="noofunit" class="form-control"></td>
+												<td><input type="text" name="capitalization" class="form-control"></td>
+												<td><input type="text" name="grossreceipt" class="form-control"></td>
+												<td></td>
+											</tr> --}}
+
+										</tbody>
+									</table>
+									{{-- add tbody --}}
+									<div class="clearfix">
+										<div class="btn-group">
+											<button class="btn btn-success add btn-sm" data-toggle="modal" id="btnAddBusinessActivity">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
 								</td>
-							</tr> --}}
+							</tr>
+							<tr style="background: #DCDCDC; color: #000000;font-size: small;">
+								<td >I DECLARED UNDER PENALTY OF PERJURY that the foregoing information are true based on my personal knowledge and authentic records. I agree to comply with the regulatory requirement and other deficiencies within 30 days from release of the business permit.</td>
+							</tr>
+							
 							<tr>
 								<td align="right">
 									<button type="submit" class="btn btn-primary" id="btnSubmitBusinessRegistration">Submit</button>

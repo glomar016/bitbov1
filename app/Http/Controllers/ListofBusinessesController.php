@@ -21,14 +21,13 @@ class ListofBusinessesController extends Controller
     }
     public function gettable()
     {
-        return  $DisplayTable = COLLECT(\DB::SELECT("SELECT TB.BUSINESS_NAME, RBN.BUSINESS_NATURE_NAME,RBZ.BARANGAY_ZONE_NAME, 
+        return  $DisplayTable = COLLECT(\DB::SELECT("SELECT TB.BUSINESS_NAME, RBN.BUSINESS_NATURE_NAME, 
                                                     IFNULL(TB.BUSINESS_OR_NUMBER,'NO OR NUMBER') AS OR_NUMBER, TB.BUSINESS_ADDRESS, 
                                                     CONCAT(BUSINESS_OWNER_FIRSTNAME,' ',BUSINESS_OWNER_MIDDLENAME,' ',BUSINESS_OWNER_LASTNAME) AS FULLNAME
                                                     FROM t_business_information AS TB
                                                     INNER JOIN r_business_nature RBN
                                                     ON TB.BUSINESS_NATURE_ID = RBN.BUSINESS_NATURE_ID
-                                                    INNER JOIN r_barangay_zone RBZ
-                                                    ON TB.BARANGAY_ZONE_ID = RBZ.BARANGAY_ZONE_ID")); 
+                                                    ")); 
     }
 
     public function getfilterdisplay($data, $fromdate, $todate)

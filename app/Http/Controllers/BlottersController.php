@@ -18,78 +18,75 @@ class BlottersController extends Controller
 
     public function index(request $request)
     {
-       $blottersub = DB::table('t_blotter')->pluck('blotter_subject', 'blotter_subject_id');
+        $blottersub = DB::table('t_blotter')->pluck('blotter_subject', 'blotter_subject_id');
         $getBlotterID =  $request->input('EditBlotterIDH');
 
         $blottersub = DB::table('r_blotter_subjects')
-                            ->select('blotter_subject_id'
-                                , 'blotter_name') 
-                            ->where(['active_flag' => '1'])
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+        ->select('blotter_subject_id'
+            , 'blotter_name') 
+        ->where(['active_flag' => '1'])
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         $resident = DB::table('t_resident_basic_info')
-                            ->select('resident_id'
-                                , 'lastname'
-                                , 'middlename'
-                                , 'firstname')
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+        ->select('resident_id'
+            , 'lastname'
+            , 'middlename'
+            , 'firstname')
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         $dispblotter = DB::table('t_blotter AS B')                            
-                            ->leftjoin('t_resident_basic_info AS R', 'B.accused_resident', '=', 'R.resident_id')
-                            ->select('B.blotter_id'
-                                , 'B.blotter_code'
-                                , 'B.blotter_subject_id'
-                                , 'B.incident_date'
-                                , 'B.incident_area'
-                                , 'B.complaint_name'
-                                , 'B.respondent'
-                                , 'B.complaint_date'
-                                , 'B.complaint_statement'
-                                , 'B.resolution'
-                                , 'B.status'
-                                , 'B.blotter_subject'
-                                , 'R.resident_id'
-                                , 'R.lastname'
-                                , 'R.middlename'
-                                , 'R.firstname'
-                                , 'B.NO_OF_PATAWAG')
-                            ->where(['B.status' => 'Pending'])
-                            ->where(['B.ACTIVE_FLAG' => 1])
-                            ->orderBy('B.complaint_date', 'desc')
-                            ->get();
+        ->leftjoin('t_resident_basic_info AS R', 'B.accused_resident', '=', 'R.resident_id')
+        ->select('B.blotter_id'
+            , 'B.blotter_code'
+            , 'B.blotter_subject_id'
+            , 'B.incident_date'
+            , 'B.incident_area'
+            , 'B.complaint_name'
+            , 'B.respondent'
+            , 'B.complaint_date'
+            , 'B.complaint_statement'
+            , 'B.resolution'
+            , 'B.status'
+            , 'B.blotter_subject'
+            , 'R.resident_id'
+            , 'R.lastname'
+            , 'R.middlename'
+            , 'R.firstname'
+            , 'B.NO_OF_PATAWAG')
+        ->where(['B.status' => 'Pending'])
+        ->where(['B.ACTIVE_FLAG' => 1])
+        ->orderBy('B.complaint_date', 'desc')
+        ->get();
 
         $resolvedBlotter = DB::table('t_blotter AS B')
-                            
-                            ->leftjoin('t_resident_basic_info AS R', 'B.accused_resident', '=', 'R.resident_id')
-                            ->select('B.blotter_id'
-                                , 'B.blotter_code'
-                                , 'B.blotter_subject_id'
-                                , 'B.incident_date'
-                                , 'B.incident_area'
-                                , 'B.complaint_name'
-                                , 'B.respondent'
-                                , 'B.complaint_date'
-                                , 'B.complaint_statement'
-                                , 'B.resolution'
-                                , 'B.closed_date'
-                                , 'B.status'
-                                , 'B.blotter_subject'
-                                , 'R.resident_id'
-                                , 'R.lastname'
-                                , 'R.middlename'
-                                , 'R.firstname')
-                            ->where(['B.status' => 'Resolved'])
-                            ->orWhere(['B.status' => 'For Referral'])                            
-                            ->orderBy('B.closed_date', 'desc')
-                            ->get();
+        ->leftjoin('t_resident_basic_info AS R', 'B.accused_resident', '=', 'R.resident_id')
+        ->select('B.blotter_id'
+            , 'B.blotter_code'
+            , 'B.blotter_subject_id'
+            , 'B.incident_date'
+            , 'B.incident_area'
+            , 'B.complaint_name'
+            , 'B.respondent'
+            , 'B.complaint_date'
+            , 'B.complaint_statement'
+            , 'B.resolution'
+            , 'B.closed_date'
+            , 'B.status'
+            , 'B.blotter_subject'
+            , 'R.resident_id'
+            , 'R.lastname'
+            , 'R.middlename'
+            , 'R.firstname')
+        ->where(['B.status' => 'Resolved'])
+        ->orWhere(['B.status' => 'For Referral'])                            
+        ->orderBy('B.closed_date', 'desc')
+        ->get();
 
        
         return view('cases.blotter', compact('dispblotter', 'blottersub', 'resident', 'resolvedBlotter'));
-        // $string = DB::table('t_blotter')->select('RESPONDENT')->get();
-        // $respondents = explode (",", $string[0]->RESPONDENT);
-        // return $respondents;
+        
     }
 
     /**
@@ -111,21 +108,20 @@ class BlottersController extends Controller
     public function store(Request $request)
     {
 
-        $getID = DB::table('t_blotter')->insertGetId([
-                                                    'blotter_subject'=>$request->input('add_blotter_subject_id'),
-                                                    'incident_date'=>$request->input('add_incident_date'),
-                                                    'incident_area'=>$request->input('add_incident_area'),
-                                                    'complaint_name'=>$request->input('add_complainant_name'),
-                                                    'respondent'=>$request->input('add_resident_id'),
-                                                    'complaint_statement'=>$request->input('add_complain_statement'),
-                                                    'complaint_date'=>Carbon::today()->toDateString(),
-                                                    'created_at'=>\DB::RAW("CURRENT_TIMESTAMP")
-                                                    ]);
-        $blotterCode = "BLOT"."-".$getID;
+        
+        $getID = DB::table('t_blotter')
+        ->insertGetId([
+            'blotter_subject'=>$request->input('add_blotter_subject_id'),
+            'incident_date'=>$request->input('add_incident_date'),
+            'incident_area'=>$request->input('add_incident_area'),
+            'complaint_name'=>$request->input('add_complainant_name'),
+            'respondent'=>$request->input('add_resident_id'),
+            'complaint_statement'=>$request->input('add_complain_statement'),
+            'complaint_date'=>Carbon::today()->toDateString(),
+            'created_at'=>\DB::RAW("CURRENT_TIMESTAMP"),
+            'blotter_code'=>$request->input('blot_code')
+        ]);
 
-        $updateBlot=DB::table('t_blotter')
-                        ->where('blotter_id',$getID)
-                        ->update([ 'blotter_code'=>$blotterCode ]);
 
         return redirect('Blotter');
     }
@@ -151,10 +147,10 @@ class BlottersController extends Controller
         
         
         $resolveBlot=DB::table('t_blotter')
-                        ->where('blotter_id',$getID)
-                        ->update([ 'resolution'=>request('remarks'), 
-                            'status' => $status_name == 1 ? 'Resolved' : 'For Referral', 
-                            'closed_date'=>Carbon::today()->toDateString() ]);
+        ->where('blotter_id',$getID)
+        ->update([ 'resolution'=>request('remarks'), 
+            'status' => $status_name == 1 ? 'Resolved' : 'For Referral', 
+            'closed_date'=>Carbon::today()->toDateString() ]);
     }
 
     /**
@@ -168,15 +164,15 @@ class BlottersController extends Controller
     {
         $getBlotID = $request->input('EditBlotterID');
 
-        $updateBlotter=DB::table('t_blotter')
-                        ->where('blotter_id',$getBlotID)
-                        ->update([ 'incident_date'=>$request->input('EditIncidentDate'), 
-                            'incident_area' =>$request->input('EditIncidentArea'),
-                            'complaint_name' =>$request->input('EditComplainantName'),
-                            'accused_resident' =>$request->input('EditAccusedResident'),
-                            'blotter_subject_id' =>$request->input('EditBlotterSubject'),
-                            'complaint_statement' =>$request->input('EditComplainStatement')
-                             ]);
+        $updateBlotter = DB::table('t_blotter')
+        ->where('blotter_id',$getBlotID)
+        ->update([ 'incident_date'=>$request->input('EditIncidentDate'), 
+            'incident_area' =>$request->input('EditIncidentArea'),
+            'complaint_name' =>$request->input('EditComplainantName'),
+            'accused_resident' =>$request->input('EditAccusedResident'),
+            'blotter_subject_id' =>$request->input('EditBlotterSubject'),
+            'complaint_statement' =>$request->input('EditComplainStatement')
+        ]);
     }
 
     /**
@@ -193,24 +189,23 @@ class BlottersController extends Controller
        $getBlotterID =  $request->input('EditBlotterIDH');
 
         $disppatawag = DB::table('t_patawag')
-                            ->join('t_blotter', 't_patawag.blotter_id', '=', 't_blotter.blotter_id')
-                            ->select('t_patawag.patawag_id', 't_patawag.patawag_sched_datetime', 't_patawag.patawag_sched_place', 't_patawag.status')
-                            ->where('t_patawag.blotter_id', $getBlotterID)
-                            ->orderBy('t_patawag.patawag_sched_datetime', 'desc')
-                            ->get()->toArray();
+        ->join('t_blotter', 't_patawag.blotter_id', '=', 't_blotter.blotter_id')
+        ->select('t_patawag.patawag_id', 't_patawag.patawag_sched_datetime', 't_patawag.patawag_sched_place', 't_patawag.status')
+        ->where('t_patawag.blotter_id', $getBlotterID)
+        ->orderBy('t_patawag.patawag_sched_datetime', 'desc')
+        ->get()->toArray();
 
-        
-        
+                
         return response()->json(['result' => $disppatawag]);
     }
 
     public function remove()
     {
-       $blotter_id =  request('blotter_id');
+        $blotter_id =  request('blotter_id');
 
-       db::table('t_blotter')
-            ->where('blotter_id', $blotter_id)
-            ->update(['ACTIVE_FLAG' => 0]);
+        db::table('t_blotter')
+        ->where('blotter_id', $blotter_id)
+        ->update(['ACTIVE_FLAG' => 0]);
                   
     }
 }

@@ -170,7 +170,7 @@ document.onkeydown = function(e) {
                 {
                     if (data == "0") 
                     {
-                        $('input').val('');
+                        $("#PasswordTxt").val('');
                         errorAlert();
                     }
                     else if(data == 2)

@@ -71,18 +71,18 @@ xmlns="http://www.w3.org/TR/REC-html40">
 	margin-bottom:8.0pt;
 	line-height:107%;}
 @page WordSection2
-	{size:11.0in 8.5in;
+/*	{size:11.0in 8.5in;
 	
 	margin:1.0in 1.0in 1.0in 1.0in;
 	mso-header-margin:35.4pt;
 	mso-footer-margin:35.4pt;
-	mso-paper-source:0;}
-/*
+	mso-paper-source:0;}*/
+
 	{size:595.3pt 841.9pt;
 	margin:1.5in 1.0in 1.0in 1.0in;
   	mso-header-margin:35.4pt;
   	mso-footer-margin:35.4pt;
-	mso-paper-source:0;}*/
+	mso-paper-source:0;}
 div.WordSection2
 	{page:WordSection2;}
 -->
@@ -92,25 +92,124 @@ div.WordSection2
 
 <body lang=EN-US style='tab-interval:.5in;word-wrap:break-word'>
 
-<div class=WordSection2 id=fmbcfi>
-<img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/> 
-<img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]"width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/>
-<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
-normal'><span lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt;
-line-height:107%'>BARANGAY CLEARANCE<o:p></o:p></span></b></p>
+<div class=WordSection2 id=fmbcfi style=' margin-left: .20in; margin-right: 1.0in;'>
+  
+{{--header--}}
+  <img src="{{asset('upload/municipal/'.session('session_municipal_logo'))}}" alt="[no image content]" width="100px" height="100px" style="float: right; margin: 0px 15px 15px 0px;;"/> 
+  <img src="{{asset('upload/barangay/'.session('session_barangay_logo'))}}" alt="[no image content]" width="100px" height="100px" style="float: left; margin: 0px 15px 15px 0px;;"/>
 
-<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
-normal'><span lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt;
-line-height:107%'><o:p>&nbsp;</o:p></span></b></p><br><br><br>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>REPUBLIC OF THE PHILIPPINES<o:p></o:p></span></b></p>
 
-<p class=MsoNormal><span lang=EN-PH style='font-size:14.0pt;mso-bidi-font-size:
-11.0pt;line-height:107%'>TO WHOM IT MAY CONCERN:<o:p></o:p></span></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>Province of Rizal<o:p></o:p></span></b></p>
 
-<p class=MsoNormal><span lang=EN-PH style='font-size:14.0pt;mso-bidi-font-size:
-11.0pt;line-height:107%'><span style='mso-tab-count:1'>            </span>This
-is to certify that the person whose name, picture, signature and right
-thumbmark print appearing below requested for a CLEARANCE and the results are
-as follows:<o:p></o:p></span></p><br>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>Municipality of <span class=SpellE>Tanay</span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:20.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:red;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>BARANGAY {{ session('session_barangay_name')}}<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><span style='font-size:17.0pt;
+font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></p>
+  
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+center;line-height:normal;background:white'><span style='font-size:25.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+"Times New Roman";color:red;mso-color-alt:windowtext;mso-fareast-language:
+EN-PH'>TANGGAPAN NG PUNONG BARANGAY</span></p>
+
+
+
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:22.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;mso-fareast-language:EN-PH'>BARANGAY
+CLEARANCE FOR INDIVIDUAL<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><span style='font-size:17.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'>TO WHOM IT MAY CONCERN:</span><span style='font-size:15.0pt;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+color:black;mso-fareast-language:EN-PH'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;text-indent:.5in;line-height:normal;background:white'><span
+style='font-size:17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;mso-fareast-language:EN-PH'>This
+is to certify that the person whose name, picture, signature and right thumb mark print appearing below requested for a CLEARANCE and the results are follows:<o:p></o:p></span></p>
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;mso-fareast-language:EN-PH'><o:p>&nbsp;</o:p></span></b></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><b><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'><o:p>&nbsp;</o:p></span></b></p>
 
 <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=873
  style='width:655.05pt;border-collapse:collapse;border:none;mso-border-alt:
@@ -119,28 +218,20 @@ as follows:<o:p></o:p></span></p><br>
   <td width=328 colspan=2 valign=top style='width:245.7pt;border:solid windowtext 1.0pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Control No.&nbsp;<o:p id=lbl_control_no>222-2312</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Control No.<br><o:p id=lbl_control_no>222-2312</o:p></span></p>
   </td>
+
   <td width=328 colspan=2 valign=top style='width:245.95pt;border:solid windowtext 1.0pt;
   border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
   solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Valid until:&nbsp;<o:p id=lbl_valid_until>2020-1-9</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Valid until<br><o:p id=lbl_valid_until>2020-1-9</o:p></span></p>
   </td>
+
   <td width=218 rowspan=5 valign=top style='width:163.4pt;border:solid windowtext 1.0pt;
   border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
   solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal'><span lang=EN-PH style='font-size:12.0pt;mso-bidi-font-size:
-  11.0pt'>Photo<o:p></o:p></span></p>
+  <img id="profile_picture" class="profile_picture" src=""  style="">
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;height:38.7pt'>
@@ -148,14 +239,14 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:38.7pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Family Name:&nbsp;<o:p id=lbl_family_name>VIRAY</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Family Name<br><o:p id=lbl_family_name>VIRAY</o:p></span></p>
   </td>
   <td width=328 colspan=2 valign=top style='width:245.95pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:38.7pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>First Name:&nbsp;<o:p id=lbl_firstname>PATRICK</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>First Name<br><o:p id=lbl_firstname>PATRICK</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;height:.5in'>
@@ -163,7 +254,7 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Middle Name:&nbsp;<o:p id=lbl_middle_name>MENGURIO</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Middle Name<br><o:p id=lbl_middle_name>MENGURIO</o:p></span></p>
   </td>
   <td width=328 colspan=2 valign=top style='width:245.95pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -171,7 +262,7 @@ as follows:<o:p></o:p></span></p><br>
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
   lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Husband’s
-  Surname:&nbsp;<o:p id=lbl_husbands_name>VERGARA</o:p></span></p>
+  Surname<br><o:p id=lbl_husbands_name>VERGARA</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:3;height:.5in'>
@@ -179,7 +270,7 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Address:&nbsp;<o:p id=lbl_address>146 Area 2 Oriole Street Tanay Rizal</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Address<br><o:p id=lbl_address>146 Area 2 Oriole Street Tanay Rizal</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:4;height:38.7pt'>
@@ -187,14 +278,14 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:38.7pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Date of Birth:&nbsp;<o:p id=lbl_date_of_birth>2020-02-03</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Date of Birth<br><o:p id=lbl_date_of_birth>2020-02-03</o:p></span></p>
   </td>
   <td width=328 colspan=2 valign=top style='width:245.95pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:38.7pt'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Place of Birth:&nbsp;<o:p id=lbl_place_of_birth>Baguio City</o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Place of Birth<br><o:p id=lbl_place_of_birth>Baguio City</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:5;height:.5in'>
@@ -202,21 +293,21 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Citizenship:&nbsp;<o:p id=lbl_citizenship></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Citizenship<br><o:p id=lbl_citizenship></o:p></span></p>
   </td>
   <td width=237 colspan=2 valign=top style='width:178.1pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Civil Status:&nbsp;<o:p id=lbl_civil_status></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Civil Status<br><o:p id=lbl_civil_status></o:p></span></p>
   </td>
   <td width=193 valign=top style='width:144.7pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Gender:&nbsp;<o:p id=lbl_gender></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Gender<br><o:p id=lbl_gender></o:p></span></p>
   </td>
   <td width=218 valign=top style='width:163.4pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -231,16 +322,16 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Purpose:&nbsp;<o:p id=lbl_purpose></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Purpose<br><o:p id=lbl_purpose></o:p></span></p>
   </td>
   <td width=218 valign=top style='width:163.4pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Issued Date:&nbsp;<o:p id=lbl_issued_date></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Issued Date&nbsp;<o:p id=lbl_issued_date><?php echo date("Y-m-d");  ?></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>OR No:&nbsp;<o:p id=lbl_or_no></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>OR No&nbsp;<o:p id=lbl_or_no></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes;height:.5in'>
@@ -248,7 +339,7 @@ as follows:<o:p></o:p></span></p><br>
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:.5in'>
   <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Remarks:&nbsp;<o:p id=lbl_remarks></o:p></span></p>
+  lang=EN-PH style='font-size:15.0pt;mso-bidi-font-size:11.0pt'>Remarks<br><o:p id=lbl_remarks></o:p></span></p>
   </td>
   <td width=218 valign=top style='width:163.4pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -269,14 +360,28 @@ as follows:<o:p></o:p></span></p><br>
   <td width=218 style='border:none'></td>
  </tr>
  <![endif]>
-</table><br><br>
+</table><br><br><br><br>
 
-<p class=MsoNormal style="text-align: center;"><b style='mso-bidi-font-weight:normal'><span lang=EN-PH
-style='font-size:12.0pt;mso-bidi-font-size:11.0pt;line-height:107%'><o:p>&nbsp;{{session('session_brgychairman_name')}}</o:p></span></b></p>
+<h5><p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><b><span
+style='font-size:18.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Calibri;mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;
+mso-fareast-language:EN-PH'>{{session('session_brgychairman_name')}}<o:p></o:p></span></b></p></h5>
 
-<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
-normal'><span lang=EN-PH style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
-line-height:107%'>Punong Barangay<o:p></o:p></span></b></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><span style='font-size:
+17.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:-.75pt;mso-fareast-language:
+EN-PH'>Punong Barangay</span><span style='font-size:15.0pt;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
+color:black;mso-fareast-language:EN-PH'><o:p></o:p></span></p><br><br>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
+justify;line-height:normal;background:white'><span style='font-size:15.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+mso-bidi-theme-font:minor-latin;color:black;letter-spacing:.75pt;mso-fareast-language:
+EN-PH'>Note:<span style='mso-spacerun:yes'>  </span>Erasures, alteration and without the seal and signature of the Punong Barangay makes this Barangay Clearance invalid.<o:p></o:p></span></p>
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
 </div>
 

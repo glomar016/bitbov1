@@ -175,7 +175,7 @@
 	</div>
 
 	<div class="modal fade" id="modal-Infant" data-backdrop="static">
-		<div class="modal-dialog">
+		<div class="modal-dialog" style="max-width: 50%">
 			<div class="modal-content" >
 				<div class="modal-header" style="background: #90CA4B" id="modalHeader">
 					<h4 class="modal-title" style="color: #fff">Infant</h4>
@@ -185,72 +185,85 @@
 					<h3><b><label id="txt_name">Resident:</label></b></h3>
 					<input type="text" id="txt_nb_id" hidden> <input type="text" id="txt_i_id" hidden>
 					<div id="divNonResident">
-						<div class="col-md-10">
-							<h6>First Name</h6>
-							<input class="form-control" type="text" id="txt_nonresident_fname">
+						<div class="row">
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">First Name</label>
+								<input class="form-control" type="text" id="txt_nonresident_fname">
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">Middle Name</label>
+								<input class="form-control" type="text" id="txt_nonresident_mname" >
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">Last Name</label>
+								<input class="form-control" type="text" id="txt_nonresident_lname" >
+							</div>
 						</div>
+						
 						<br>
-						<div class="col-md-10">
-							<h6>Middle Name</h6>
-							<input class="form-control" type="text" id="txt_nonresident_mname" >
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Last Name</h6>
-							<input class="form-control" type="text" id="txt_nonresident_lname" >
-						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Sex</h6>
-							<select class="form-control" id="sel_nonresident_sex" style="color: black;" >
+						<div class="row">
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">Sex</label>
+								<select class="form-control" id="sel_nonresident_sex" style="color: black;" >
 								<option selected disabled value=""></option>
 								<option>Female</option>
 								<option>Male</option>
-							</select>
+								</select>
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">Birthdate</label>
+								<input type="date" class="form-control"  id="txt_nonresident_birthdate" name="txt_nonresident_birthdate" />
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">Type of Home Record</label>
+								<select class="form-control" id="sel_home_record" style="color: black;">
+									<option selected disabled value=""></option>
+									<option value="Mother and Child Book (MCB)">Mother and Child Book (MCB)</option>
+									<option value="Immunization Card (ECCD)">Immunization Card (ECCD)</option>
+								</select>
+							</div>
 						</div>
-						<br>
-						<div class="col-md-10">
-							<h6>Birthdate</h6>
-							<input type="date" class="form-control"  id="txt_nonresident_birthdate" name="txt_nonresident_birthdate" />
-						</div>
-						<br>
+						
+						
 					</div>	
 
-					<div class="col-md-10">
-						<label>Type of Home Record:</label>
-						<select class="form-control" id="sel_home_record" style="color: black;">
-							<option selected disabled value=""></option>
-							<option value="Mother and Child Book (MCB)">Mother and Child Book (MCB)</option>
-							<option value="Immunization Card (ECCD)">Immunization Card (ECCD)</option>
-						</select>
-					</div>
+					
 					<br>
-					<div class="col-md-10">
-						<h6>Operation Timbang (OPT)</h6>
-						<div class="row">
-							<div class="col-md-4">
-								<label>OPT Date</label>
-								<input type="date" class="form-control" style="width: 150px;" id="txt_OPTdate" />
+					<h6>Operation Timbang (OPT)</h6>
+					<div class="row">
+						
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">OPT Date</label>
+								<input type="date" class="form-control" id="txt_OPTdate" />
 							</div>
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">OPT Weight</label>
+								<div class="input-group mb-3">
+									  
+										<input type="text" class="form-control"   id="txt_OPTweight"/>
+									  
+									  <div class="input-group-append">
+									    <span class="input-group-text">kg</span>
+									  </div>
+									</div>
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label style="display: block; text-align: left">OPT Height</label>
+								<div class="input-group mb-3">
+									  
+										<input type="text" class="form-control"  id="txt_OPTheight"/>
+									  
+									  <div class="input-group-append">
+									    <span class="input-group-text">cm</span>
+									  </div>
+									</div>
+								
+							</div>
+					</div>
+					
+					<br>
 
-							<div class="col-md-4" style="margin-left: 50px" >
-								<label>OPT Weight</label>
-								<div class="row">
-									<input type="text" class="form-control" style="width: 70px;"  id="txt_OPTweight"/>
-									<span class="input-group-text">kg</span>
-								</div>
-							</div>
-							<br>
-							<div class="col-md-4" style="margin-left: 10px" >
-								<label>OPT Height</label>
-								<div class="row">
-									<input type="text" class="form-control" style="width: 70px; "   id="txt_OPTheight"/>
-									<span class="input-group-text">cm</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
+
 					<div class="col-md-10">
 						<div class="col-md-10">
 							<div class="row group"> 
@@ -262,112 +275,132 @@
 						</div>
 					</div>
 					<br>
-					<div class="col-md-10">
-						<h6>Mga Serbisyong Kailangan Matanggap</h6>
-						<div class="col-md-10">
-							<div class="row group"> 
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_GPabril" unchecked >
-									<label for="chk_GPabril">Vitamin A noong GP ng Abril </label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_GPoktubre" unchecked >
-									<label for="chk_GPoktubre">Vitamin A noong GP ng Oktubre</label>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="col-md-10">
-						<h6>Garantisadong Pambata (GP)</h6>
-						<div class="col-md-10">
-							<div class="row group">
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_penta1"unchecked >
-									<label for="chk_penta1" style="width: 80px">penta 1 </label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_penta2" unchecked >
-									<label for="chk_penta2" style="width: 80px">penta 2 </label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_penta3" unchecked >
-									<label for="chk_penta3" style="width: 80px">penta 3 </label>
-								</div>
-							</div>
-							<div class="row group">
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_opv1"unchecked >
-									<label for="chk_opv1" style="width: 80px">OPV 1</label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_opv2" unchecked >
-									<label for="chk_opv2" style="width: 80px">OPV 2</label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_opv3" unchecked >
-									<label for="chk_opv3" style="width: 80px">OPV 3</label>
-								</div>
-							</div>
-							<div class="row group">
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_rota1"   unchecked >
-									<label for="chk_rota1" style="width: 80px">Rota 1</label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_rota2"   unchecked >
-									<label for="chk_rota2" style="width: 80px">Rota 2</label>
-								</div>
-							</div>
-							<div class="row group">
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_antimeasles" unchecked >
-									<label for="chk_antimeasles" style="width: 160px">Anti-Measles</label>
-								</div>
-								<div class="checkbox checkbox-css">
-									<input type="checkbox" id="chk_vitaminA" unchecked >
-									<label for="chk_vitaminA" style="width: 80px">Vitamin A</label>
+					<div class="row">
+						
+						<div class="col-lg-6 col-md-6">
+							<div class="col-md-10">
+								<h6>Garantisadong Pambata (GP)</h6>
+								<div class="col-md-10">
+									<div class="row group">
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_penta1"unchecked >
+											<label for="chk_penta1" style="width: 80px">penta 1 </label>
+										</div>
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_penta2" unchecked >
+											<label for="chk_penta2" style="width: 80px">penta 2 </label>
+										</div>
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_penta3" unchecked >
+											<label for="chk_penta3" style="width: 80px">penta 3 </label>
+										</div>
+									</div>
+									<div class="row group">
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_opv1"unchecked >
+											<label for="chk_opv1" style="width: 80px">OPV 1</label>
+										</div>
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_opv2" unchecked >
+											<label for="chk_opv2" style="width: 80px">OPV 2</label>
+										</div>
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_opv3" unchecked >
+											<label for="chk_opv3" style="width: 80px">OPV 3</label>
+										</div>
+									</div>
+									<div class="row group">
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_rota1"   unchecked >
+											<label for="chk_rota1" style="width: 80px">Rota 1</label>
+										</div>
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_rota2"   unchecked >
+											<label for="chk_rota2" style="width: 80px">Rota 2</label>
+										</div>
+									</div>
+									<div class="row group">
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_antimeasles" unchecked >
+											<label for="chk_antimeasles" style="width: 160px">Anti-Measles</label>
+										</div>
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_vitaminA" unchecked >
+											<label for="chk_vitaminA" style="width: 80px">Vitamin A</label>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<br>
-					<div class="col-md-10" >
-						<h6>Danger Observe</h6>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doA" value="" unchecked >
-							<label for="chk_doA">A = Kombulsyon</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doB"  value="" unchecked >
-							<label for="chk_doB">B = Tumigil/mahina sa pagsuso</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doC"  value="" unchecked >
-							<label for="chk_doC">C = Pagtatae</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doD"  value="" unchecked >
-							<label for="chk_doD">D = Pamamanas ng paa o kamay</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doE" value="" unchecked >
-							<label for="chk_doE">E = Antukin o walang malay</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doF"  value="" unchecked >
-							<label for="chk_doF">F = Ubo</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doG"  value="" unchecked >
-							<label for="chk_doG">G = Lagnat</label>
-						</div>
-						<div class="checkbox checkbox-css">
-							<input type="checkbox" id="chk_doH" value="" unchecked >
-							<label for="chk_doH">H = Mabilis o hirap na paghinga</label>
-						</div>
+						<div class="col-lg-6 col-md-6">
 
-					</div><br>
+							<div class="col-md-10" >
+								<h6>Danger Observe</h6>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doA" value="" unchecked >
+									<label for="chk_doA">A = Kombulsyon</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doB"  value="" unchecked >
+									<label for="chk_doB">B = Tumigil/mahina sa pagsuso</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doC"  value="" unchecked >
+									<label for="chk_doC">C = Pagtatae</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doD"  value="" unchecked >
+									<label for="chk_doD">D = Pamamanas ng paa o kamay</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doE" value="" unchecked >
+									<label for="chk_doE">E = Antukin o walang malay</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doF"  value="" unchecked >
+									<label for="chk_doF">F = Ubo</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doG"  value="" unchecked >
+									<label for="chk_doG">G = Lagnat</label>
+								</div>
+								<div class="checkbox checkbox-css">
+									<input type="checkbox" id="chk_doH" value="" unchecked >
+									<label for="chk_doH">H = Mabilis o hirap na paghinga</label>
+								</div>
+
+							</div><br>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="col-md-10">
+								<h6>Mga Serbisyong Kailangan Matanggap</h6>
+								<div class="col-md-10">
+									<div class="row group"> 
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_GPabril" unchecked >
+											<label for="chk_GPabril">Vitamin A noong GP ng Abril </label>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-md-10">
+								
+								<div class="col-md-10">
+									<div class="row group"> 
+										
+										<div class="checkbox checkbox-css">
+											<input type="checkbox" id="chk_GPoktubre" unchecked >
+											<label for="chk_GPoktubre">Vitamin A noong GP ng Oktubre</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<br>
+					
 					<div class="col-md-10">
 						<label>Source Service Received:</label>
 						<select class="form-control" id="sel_ssr" style="color: black;"s>

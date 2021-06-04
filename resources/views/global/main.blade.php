@@ -1,11 +1,10 @@
  <!-- CHECK IF USER LOGIN -->
-@if(session('session_position') == '')
+ @if(session('session_position') == '')
 <script type="text/javascript">location.href='{{route("Login")}}'</script>
 @endif
 
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if !IE]><!-->
+
 <html lang="en">
 <!--<![endif]-->
 <?php echo
@@ -458,37 +457,62 @@ header('Content-Type: text/html');?>
 
 
 
- <li class="has-sub {{ Route::currentRouteName() == 'BusinessApplication' || Route::currentRouteName() == 'BusinessEvaluation'  ? 'active' : '' }} ">
+ <li class="has-sub {{ Route::currentRouteName() == 'BusinessApplication' || Route::currentRouteName() == 'BusinessEvaluation' ? 'active' : '' }} ">
         <a href="javascript:;">
             <b class="caret"></b>
-            <i class="fas fa-file-alt"></i>
+            <i class="fas fa-object-group"></i>
             <span>Business</span>
         </a>
         <ul class="sub-menu">
-            <li class="{{ session('session_permis_businesses') == 1 ? '' : 'hide'}} {{ Route::currentRouteName() == 'BusinessApplication' ? 'active' : '' }}"> <a href="{{route('BusinessApplication')}}">Registration</a></li>
+            <li class="{{ session('session_permis_businesses') == 1 ? '' : 'hide'}} {{ Route::currentRouteName() == 'BusinessApplication' ? 'active' : '' }}"> <a href="{{route('BusinessApplication')}}">Registration</a>
+
+            </li>
             <li class="{{ session('session_permis_business_approval') == 1 ? '' : 'hide'}} {{ Route::currentRouteName() == 'BusinessEvaluation' ? 'active' : '' }}"><a href="{{route('BusinessEvaluation')}}">Evaluation</a></li>
         </ul>
     </li>
+    <li class="has-sub {{ Route::currentRouteName() == 'BuildingApplication' || Route::currentRouteName() == 'BuildingEvaluation' ? 'active' : '' }} ">
+        <a href="javascript:;">
+            <b class="caret"></b>
+            <i class="fas fa-building"></i>
+            <span>Building</span>
+        </a>
+        <ul class="sub-menu">
+            <li class="{{ session('session_permis_businesses') == 1 ? '' : 'hide'}} {{ Route::currentRouteName() == 'BuildingApplication' ? 'active' : '' }}"> <a href="{{route('BuildingApplication')}}">Registration</a>
 
- <li class="has-sub {{session('session_permis_barangay_application_form') == 1 ? '' : 'hide'}}
+            </li>
+            <li class="{{ session('session_permis_business_approval') == 1 ? '' : 'hide'}} {{ Route::currentRouteName() == 'BuildingEvaluation' ? 'active' : '' }}"><a href="{{route('BuildingEvaluation')}}">Evaluation</a></li>
+        </ul>
+    </li>
+    <li class="has-sub {{ Route::currentRouteName() == 'WeightsAndMeasureApplication' ? 'active' : '' }} ">
+        <a href="javascript:;">
+            <b class="caret"></b>
+            <i class="fas fa-balance-scale"></i>
+            <span>Weights and Measure</span>
+        </a>
+        <ul class="sub-menu">
+            <li class="{{ session('session_permis_businesses') == 1 ? '' : 'hide'}} {{ Route::currentRouteName() == 'WeightsAndMeasureApplication' ? 'active' : '' }}"> <a href="{{route('WeightsAndMeasureApplication')}}">Registration</a>
+            </li>
+        </ul>
+    </li>
+    <li class="has-sub {{session('session_permis_barangay_application_form') == 1 ? '' : 'hide'}}
                     {{ Route::currentRouteName() == 'RequestPermit' ||
                         Route::currentRouteName() == 'RequestCertification' ||
                         Route::currentRouteName() == 'RequestClearance' ||
+                        Route::currentRouteName() == 'RequestClearanceNonBusiness' ||
                         Route::currentRouteName() == 'PCCEvaluation' ||
                         Route::currentRouteName() == 'Issuance'
-                    ? 'active' : ''}} 
-                    
+                    ? 'active' : ''}} ">
 
- ">
         <a href="javascript:;">
             <b class="caret"></b>
-            <i class="fas fa-file-alt"></i>
+            <i class="fas fa-envelope-open"></i>
             <span>Permit / Certification / Clearance</span>
         </a>
         <ul class="sub-menu">
             <li class="has-sub {{   Route::currentRouteName() == 'RequestPermit' ||
                                     Route::currentRouteName() == 'RequestCertification' ||
-                                    Route::currentRouteName() == 'RequestClearance'
+                                    Route::currentRouteName() == 'RequestClearance' ||
+                                    Route::currentRouteName() == 'RequestClearanceNonBusiness'
                                     ? 'active' : ''}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
@@ -497,9 +521,27 @@ header('Content-Type: text/html');?>
                 <ul class="sub-menu ">
                     <li class="{{Route::currentRouteName() == 'RequestPermit' ? 'active' : ''}}"><a href="{{ route('RequestPermit') }}">Permit</a></li>
                     <li class="{{Route::currentRouteName() == 'RequestCertification' ? 'active' : ''}}"><a href="{{ route('RequestCertification') }}">Certification</a></li>
-                    <li class="{{Route::currentRouteName() == 'RequestClearance' ? 'active' : ''}}"><a href="{{ route('RequestClearance') }}">Clearance</a></li>
+
+                    
+                    <li class="has-sub {{   Route::currentRouteName() == 'RequestPermit' ||
+                                    Route::currentRouteName() == 'RequestCertification' ||
+                                    Route::currentRouteName() == 'RequestClearance' ||
+                                    Route::currentRouteName() == 'RequestClearanceNonBusiness'
+                                    ? 'active' : ''}}">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            Clearance
+                        </a>
+                        <ul class="sub-menu ">
+                            <li class="{{Route::currentRouteName() == 'RequestClearance' ? 'active' : ''}}"><a href="{{ route('RequestClearance') }}">Business</a></li>
+                            
+                            <li class="{{Route::currentRouteName() == 'RequestClearanceNonBusiness' ? 'active' : ''}}"><a href="{{ route('RequestClearanceNonBusiness') }}">Building</a></li>
+                        </ul>
+                    </li>       
                 </ul>
-            </li>            
+            </li>       
+
+
         <li class="{{session('session_permis_barangay_application_evaluation') == 1 ? '' : 'hide'  }} {{Route::currentRouteName() == 'PCCEvaluation' ? 'active' : ''}}"><a href="{{route('PCCEvaluation')}}">Evaluation</a></li>
         <li  class="{{Route::currentRouteName() == 'Issuance' ? 'active' : ''}}" ><a href="{{route('Issuance')}}">Issuance </a></li>
         </ul>
@@ -694,29 +736,29 @@ Route::currentRouteName() == 'DisplayResidentElderly'
         {
             if(new_password == re_type_password  )
             {
-            $.ajax({
-                url:'ChangeDefaultPassword',
-                type:'post',
-                data:{
-                    new_password : re_type_password,
-                    _token       : token
-                },
-                success:function(data){
-                    swal("Password has been successfully change!", {
-                            icon: "success",
-                        }).then(function(){
-                        
-                            location.reload();
-                        
-                        });
-                        
-                },
-                error:function(){
-                    swal("error", {
-                            icon: "error",
-                        });
-                }
-            });
+                $.ajax({
+                    url:"{{route('ChangeDefaultPassword')}}",
+                    type:'post',
+                    data:{
+                        new_password : re_type_password,
+                        _token       : token
+                    },
+                    success:function(data){
+                        swal("Password has been successfully change!", {
+                                icon: "success",
+                            }).then(function(){
+                            
+                                location.reload();
+                            
+                            });
+                            
+                    },
+                    error:function(){
+                        swal("error", {
+                                icon: "error",
+                            });
+                    }
+                });
             }else{
                 swal("Your re-typed password does not match in your new password.",'','error');    
             }
@@ -858,12 +900,12 @@ Route::currentRouteName() == 'DisplayResidentElderly'
                                     url:'{{route("ChangePassword")}}',
                                     type:'post',
 
-                                    cache:false,
-                                    data:{'_token':'{{csrf_token()}}','NewPasswordTxt':newpass,'UserID':'{{session("session_user_id")}}'},
+                                    //cache:false,
+                                    data:{'_token':'{{csrf_token()}}','NewPasswordTxt':newpass},
                                     success:function()
                                     {
 
-                                        location.reload();
+                                        maslocation.reload();
                                     }
 
 
@@ -937,6 +979,8 @@ function show_confirmation(text,load_function)
              } else {
                 swal("Operation Cancelled.", {
                     icon: "error",
+                    buttons:false,
+                    timer:1000
                 });
             }
         });

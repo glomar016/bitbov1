@@ -147,15 +147,15 @@ class ResidentsController extends Controller
     
     public function rbi_store(Request $request)
     {
-        // $multi_rbi_first_name     = strtoupper(request('multi_rbi_first_name'));
-        // $multi_rbi_middle_name    = strtoupper(request('multi_rbi_middle_name'));
-        // $multi_rbi_last_name      = strtoupper(request('multi_rbi_last_name'));
-        // $multi_rbi_qualifier      = strtoupper(request('multi_rbi_qualifier'));
+        $multi_rbi_first_name     = strtoupper(request('multi_rbi_first_name'));
+        $multi_rbi_middle_name    = strtoupper(request('multi_rbi_middle_name'));
+        $multi_rbi_last_name      = strtoupper(request('multi_rbi_last_name'));
+        $multi_rbi_qualifier      = strtoupper(request('multi_rbi_qualifier'));
 
-        $multi_rbi_first_name     = request('multi_rbi_first_name');
-        $multi_rbi_middle_name    = request('multi_rbi_middle_name');
-        $multi_rbi_last_name      = request('multi_rbi_last_name');
-        $multi_rbi_qualifier      = request('multi_rbi_qualifier');
+        // $multi_rbi_first_name     = request('multi_rbi_first_name');
+        // $multi_rbi_middle_name    = request('multi_rbi_middle_name');
+        // $multi_rbi_last_name      = request('multi_rbi_last_name');
+        // $multi_rbi_qualifier      = request('multi_rbi_qualifier');
         $multi_rbi_sex            = request('multi_rbi_sex');
         $multi_rbi_date_of_birth  = request('multi_rbi_date_of_birth');
         $multi_rbi_age            = request('multi_rbi_age');
@@ -163,9 +163,9 @@ class ResidentsController extends Controller
         $multi_rbi_civil_status   = request('multi_rbi_civil_status');
         $multi_rbi_homeownership  = request('multi_rbi_homeownership');
         $multi_rbi_lotownership   = request('multi_rbi_lotownership');
-        $multi_rbi_houseno        = request('multi_rbi_houseno');
-        $multi_rbi_hstreet        = request('multi_rbi_hstreet');
-        $multi_rbi_hstreet_no     = request('multi_rbi_hstreet_no');
+        
+        
+        
         $multi_rbi_hbuilding      = request('multi_rbi_hbuilding');
         $multi_rbi_hunitno        = request('multi_rbi_hunitno');
         $multi_rbi_hsubdivision   = request('multi_rbi_hsubdivision');
@@ -173,104 +173,115 @@ class ResidentsController extends Controller
         $multi_rbi_occupation     = request('multi_rbi_occupation');
         $multi_rbi_rel_to_head    = request('multi_rbi_rel_to_head');
         $multi_rbi_status         = request('multi_rbi_status');
-        $multi_rbi_blk            = request('multi_rbi_blk');
+        
+        $household_no = request('household_no');
+        $address = request('full_address');
+        $national_id = request('national_id');
 
-        for($i = 0 ;  $i < count($multi_rbi_first_name) ; $i++)
+        $check = DB::TABLE('T_RESIDENT_BASIC_INFO')
+        ->where('LASTNAME',$multi_rbi_last_name)
+        ->where('MIDDLENAME',$multi_rbi_middle_name)
+        ->where('FIRSTNAME',$multi_rbi_first_name)
+        ->where('DATE_OF_BIRTH',$multi_rbi_date_of_birth)
+        ->where('SEX',$multi_rbi_sex)
+        ->get();
+
+        if($check->count() > 0)
         {
-            $check = DB::TABLE('T_RESIDENT_BASIC_INFO')
-                     ->where('LASTNAME',$multi_rbi_last_name[$i])
-                     ->where('MIDDLENAME',$multi_rbi_middle_name[$i])
-                     ->where('FIRSTNAME',$multi_rbi_first_name[$i])
-                     ->where('DATE_OF_BIRTH',$multi_rbi_date_of_birth[$i])
-                     ->where('SEX',$multi_rbi_sex[$i])
-                     ->get();
-            if($check->count() > 1)
-            {
-                return "Existing";
-            }
-            else{
-                $last_id = DB::TABLE('t_household_information')
-                ->INSERTGETID(
-                    [
-                        'HOME_OWNERSHIP' => $multi_rbi_homeownership[$i],
-                        'LOT_OWNERSHIP'  => $multi_rbi_lotownership[$i],                                    
-                        'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP'),
-                        'ACTIVE_FLAG' => 1
-                    ]
-                );
-                $check_rbi_if_complete = $multi_rbi_last_name[$i] != '' && $multi_rbi_first_name[$i] != '' && $multi_rbi_middle_name[$i] != '' && $multi_rbi_houseno[$i] != '' &&  $multi_rbi_hstreet[$i] != '' && $multi_rbi_hbuilding[$i] != '' && $multi_rbi_hunitno[$i] != '' &&  $multi_rbi_hsubdivision[$i] != ''       &&  $multi_rbi_date_of_birth[$i] != ''      &&  $multi_rbi_place_of_birth[$i] != ''     && $multi_rbi_sex[$i] != '' && $multi_rbi_civil_status[$i] != '' && $multi_rbi_citizenship[$i] != '' ?  1 : 0 ;
+            return "Existing";
+        }
+        else
+        {
+            $profile_name = '';
+            $last_id = DB::TABLE('t_household_information')
+                ->INSERTGETID([
+
+                    'HOME_OWNERSHIP' => $multi_rbi_homeownership,
+                    'LOT_OWNERSHIP'  => $multi_rbi_lotownership,                                    
+                    'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP'),
+                    'ACTIVE_FLAG' => 1
+                ]);
+
+                $check_rbi_if_complete = $multi_rbi_last_name != '' && 
+                $multi_rbi_first_name != '' && $multi_rbi_middle_name != '' && $address != '' &&  
+                $multi_rbi_date_of_birth != '' && $multi_rbi_place_of_birth != '' && $multi_rbi_sex != '' && 
+                $multi_rbi_civil_status != '' && $multi_rbi_citizenship != '' ?  1 : 0;
+
+                $profile_picture = request()->file('profile_picture');
+                if(!empty($profile_picture)) {
+                    $profile_name = $profile_picture->getClientOriginalName();
+                    $profile_picture->move(public_path('upload/residentspics'),$profile_picture->getClientOriginalName());
+                }
+                
                 $res_last_id = DB::TABLE('T_RESIDENT_BASIC_INFO')
+                
                 ->INSERTGETID(
                     [
                         'HOUSEHOLD_ID' => $last_id,
-                        'LASTNAME' => strtoupper($multi_rbi_last_name[$i]),
-                        'MIDDLENAME' => strtoupper($multi_rbi_middle_name[$i]),
-                        'FIRSTNAME' => strtoupper($multi_rbi_first_name[$i]),
-                        'ADDRESS_HOUSE_NO' => $multi_rbi_houseno[0],
-                        'ADDRESS_STREET_NO' => $multi_rbi_hstreet_no[0],
-                        'ADDRESS_STREET' => $multi_rbi_hstreet[0],
-                        //'ADDRESS_PHASE' => $multi_rbi_hphase[0],
-                        'ADDRESS_BUILDING' => $multi_rbi_hbuilding[0],
-                        'ADDRESS_UNIT_NO' => $multi_rbi_hunitno[0],
-                        'ADDRESS_SUBDIVISION' => $multi_rbi_hsubdivision[0],
+                        'LASTNAME' => strtoupper($multi_rbi_last_name),
+                        'MIDDLENAME' => strtoupper($multi_rbi_middle_name),
+                        'FIRSTNAME' => strtoupper($multi_rbi_first_name),
+                        'ADDRESS' => $address,
+                        'ADDRESS_HOUSE_NO' => $household_no,
+                        'ADDRESS_BUILDING' => $multi_rbi_hbuilding,
+                        'ADDRESS_UNIT_NO' => $multi_rbi_hunitno,
+                        'ADDRESS_SUBDIVISION' => $multi_rbi_hsubdivision,
 
-                        'QUALIFIER' => $multi_rbi_qualifier[$i],
-                        'DATE_OF_BIRTH' => $multi_rbi_date_of_birth[$i],
-                        'PLACE_OF_BIRTH' => $multi_rbi_place_of_birth[$i],
-                        'SEX' => $multi_rbi_sex[$i],
-                        'CIVIL_STATUS' => $multi_rbi_civil_status[$i],
-                        'OCCUPATION' => $multi_rbi_occupation[$i],
-                        'CITIZENSHIP' => $multi_rbi_citizenship[$i],
+                        'QUALIFIER' => $multi_rbi_qualifier,
+                        'DATE_OF_BIRTH' => $multi_rbi_date_of_birth,
+                        'PLACE_OF_BIRTH' => $multi_rbi_place_of_birth,
+                        'SEX' => $multi_rbi_sex,
+                        'CIVIL_STATUS' => $multi_rbi_civil_status,
+                        'OCCUPATION' => $multi_rbi_occupation,
+                        'CITIZENSHIP' => $multi_rbi_citizenship,
                         'IS_RBI_COMPLETE' => $check_rbi_if_complete ,
-                        'RELATION_TO_HOUSEHOLD_HEAD' => $multi_rbi_rel_to_head[$i],
-                        'BLK_LOT_PHASE' =>  $multi_rbi_blk[$i], 
+                        'RELATION_TO_HOUSEHOLD_HEAD' => $multi_rbi_rel_to_head,
+                        
                         'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP'),
-                        'ACTIVE_FLAG' => 1
+                        'ACTIVE_FLAG' => 1,
+                        'PROFILE_PICTURE' => $profile_name,
+                        'NATIONAL_ID' => $national_id
                     ]
                    
                 ); 
 
                 //edited by JAR - added a condition for those who are not belong in any group (blank $multi_rbi_status).
-                if ($multi_rbi_status[$i] != ""){
+                if ($multi_rbi_status != ""){
                     
-                    if ( $multi_rbi_status[$i] == "newborn" ) {
+                    if ( $multi_rbi_status == "newborn" ) {
                         DB::TABLE('t_hs_newborn')->INSERT(['RESIDENT_ID' => $res_last_id, 'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP')]);
                     }
-                    else if ( $multi_rbi_status[$i] == "infant" ) {
+                    else if ( $multi_rbi_status == "infant" ) {
                         DB::TABLE('t_hs_infant')->INSERT(['RESIDENT_ID' => $res_last_id, 'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP')]);
                     }
-                    else if ( $multi_rbi_status[$i] == "child" ) {
+                    else if ( $multi_rbi_status == "child" ) {
                          DB::TABLE('t_hs_child')->INSERT(['RESIDENT_ID' => $res_last_id, 'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP')]);
                     }
-                    else if ( $multi_rbi_status[$i] == "adolescent" ) {
+                    else if ( $multi_rbi_status == "adolescent" ) {
                         DB::TABLE('t_hs_adolescent')->INSERT(['RESIDENT_ID' => $res_last_id, 'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP')]);
                     }
-                    else if ( $multi_rbi_status[$i] == "elderly" ) {
+                    else if ( $multi_rbi_status == "elderly" ) {
                         DB::TABLE('t_hs_elderly')->INSERT(['RESIDENT_ID' => $res_last_id, 'CREATED_AT' => DB::RAW('CURRENT_TIMESTAMP')]);
                     }
                 }   
 
                 //added by JAR - a lot/housing owner is not automatically considered as household head.
-                if ($multi_rbi_rel_to_head[$i] == "Head"){
+                if ($multi_rbi_rel_to_head == "Head")
+                {
                     $get_family_header_last_id = DB::table('t_household_batch')
-                        ->insertgetid(['CREATED_AT' => Carbon::now(),
+                    ->insertgetid(['CREATED_AT' => Carbon::now(),
                                        'UPDATED_AT' => Carbon::now()]);
 
                     DB::table('t_household_members')
-                        ->insert([
-                                    'FAMILY_HEADER_ID' => $get_family_header_last_id,
-                                    'RESIDENT_ID'      => $res_last_id,
-                                    'CREATED_AT' => Carbon::now()
-                                ]);
+                    ->insert([
+                                'FAMILY_HEADER_ID' => $get_family_header_last_id,
+                                'RESIDENT_ID'      => $res_last_id,
+                                'CREATED_AT' => Carbon::now()
+                            ]);
                 }
-
-            }
-
-            echo 'good';
-
-                
         }
     }
+    
     public function store(Request $request)
     {
             //GETTING HOUSEHOLD MEMBERS INFO
@@ -593,34 +604,3 @@ class ResidentsController extends Controller
     }
 
 }
-
-
-       // //dd($display_data);
-       //  return Datatables::of($display_data)->make(true);
-
-        //return datatables()->of($display_data)->make(true);
-// $path = $request->file('select_file')->getRealPath();
-
-//                  $data = Excel::load($path)->get();
-
-//                  if($data->count() > 0)
-//                  {
-//                     foreach($data->toArray() as $key => $value)
-//                     {
-//                        foreach($value as $row)
-//                        {
-//                             $insert_data[] = array(
-//                              'fname'  => $row['firstname'],
-//                              'mname'   => $row['middlename'],
-//                              'lname'   => $row['lastname']
-//                             );
-//                        }
-//                     }
-
-//                       if(!empty($insert_data))
-//                       {
-//                             DB::table('Z_SAMPLE_MIGRATION')->insert($insert_data);
-//                       }
-//                  }
-//                  return back()->with(['success' => 'Excel Data Imported successfully.']);
-

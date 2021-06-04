@@ -17,13 +17,7 @@ class BarangaysetupController extends Controller
     public function index()
     {
         
-        // $displaydata = COLLECT(\DB::SELECT("SELECT BI.BARANGAY_ID, BI.BARANGAY_NAME, BI.BARANGAY_SEAL, CONCAT(U.LASTNAME,' ', U.FIRSTNAME, ' ', U.MIDDLENAME) AS PDO_NAME
-        //                                     FROM t_users U
-        //                                     INNER JOIN r_barangay_information BI ON U.USER_ID = BI.USER_ID"));
-        
         $displaydata = COLLECT(\DB::SELECT("SELECT BARANGAY_ID, BARANGAY_NAME, BARANGAY_SEAL, LAND_AREA FROM r_barangay_information"));
-        
-        // dd($displaydata);
         return view('setup.barangaysetup',compact('displaydata'));
     }
 
@@ -42,44 +36,26 @@ class BarangaysetupController extends Controller
     public function store(Request $request)
     {
 
-        $barangay_info = new RBarangayInformation.php();
-        $random_password = str_random(8);
-        $random_id = str_random(2);
-        $user_id = \DB::TABLE('t_users')->INSERTGETID
-        (
-            [
-                'FIRSTNAME' => request('FirstNameTxt'),
-                'MIDDLENAME' => request('MiddleNameTxt'),
-                'LASTNAME' => request('LastNameTxt'),
-                'EMAIL' => request('EmailTxt'),
-                'POSITION_ID' => 5,
-                'USERNAME' => '',
-                'PASSWORD' => bcrypt($random_password)
-            ]
-        );
-
-
+        $barangay_info = new RBarangayInformation();
         $barangay_info->barangay_name = request ('BarangayNameTxt');
         $barangay_seal = request()->file('BarangaySealTxt');
         $barangay_info->BARANGAY_SEAL = $barangay_seal->getClientOriginalName();
-       
         $barangay_info->USER_ID = $user_id;
-
         $barangay_seal->move(public_path('upload/barangay'),$barangay_seal->getClientOriginalName());    
 
         // INSERT DPO ACCOUNT
       
 
-        \DB::TABLE('t_users')->WHERE('USER_ID',$user_id)
-        ->UPDATE( ['USERNAME'=>"DPO-".$random_id]);
+        // \DB::TABLE('t_users')->WHERE('USER_ID',$user_id)
+        // ->UPDATE( ['USERNAME'=>"DPO-".$random_id]);
 
-        Mail::send('VerificationEmail', ['name'=>url('/')."/VerifyEmail?email_txt=".md5(request('EmailTxt')),'USERNAME' => "DPO-".$user_id,'PASSWORD' => $random_password],
-            function($message)
-            {   
-                 $message->from('srg8thgen@gmail.com','Barangay Profiling Information System')
-                ->to(request('EmailTxt'),request('EmailTxt'))
-                ->subject('Account Verification');
-            });
+        // Mail::send('VerificationEmail', ['name'=>url('/')."/VerifyEmail?email_txt=".md5(request('EmailTxt')),'USERNAME' => "DPO-".$user_id,'PASSWORD' => $random_password],
+        //     function($message)
+        //     {   
+        //          $message->from('srg8thgen@gmail.com','Barangay Profiling Information System')
+        //         ->to(request('EmailTxt'),request('EmailTxt'))
+        //         ->subject('Account Verification');
+        //     });
 
         $barangay_info->save();
 
@@ -131,7 +107,7 @@ class BarangaysetupController extends Controller
     public function remove()
     {
 
-        $barangay_info = new RBarangayInformation.php();
+        $barangay_info = new RBarangayInformation();
         $get_barangay_id = $barangay_info->WHERE('USER_ID',request('BarangayIDTxt'))->pluck('USER_ID');
         $get_user_id = \DB::TABLE('t_users')->where('USER_ID', $get_barangay_id)->first();
         $get_user_id->active_flag = 0;

@@ -170,68 +170,82 @@
     {{--For ADD FORM--}}
     <script>
 
+    $('#stext').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            AppendResident();
+        }
+    });
 
-        $(document).on('click','.search_btn',function() {
+    $(document).on('click','.search_btn',function() {
         
-        $('.list-of-residents').remove();
-        var searchval = $('#stext').val();
-        var faddress = "";
-        var profilepic = "";
-        $.ajax({
-            url: "{{route('ResidentsSearch')}}",
-            type: "post",
-            dataType:'json',
-            data: { searchval: searchval, _token: "{{csrf_token()}}" },
-            async:false,
-            success:function(data)
-            {
-
-               
-                if(data.length > 0) {
-                    data.map( value => {
-                        value['listofresidents'].map( residents => {
-                            fullname = residents['FULLNAME'];
-                            profilepic = residents['PROFILE_PICTURE'];
-                            image = 'background-image:url("{{asset("upload/residentspics/")}}/'+profilepic+'")';
-                            resident_id = residents['RESIDENT_ID'];
-                            residents['FULL_ADDRESS'] == null ? faddress = "" : faddress = residents['FULL_ADDRESS']
-                           $('.result-list').append(
-                            '<li class="list-of-residents">\n'
-
-                            +'<a href="#" class="result-image"></a>\n'
-
-                            +'<div class="result-info">\n'
-                +'<h4 class="title" hidden>'+residents['RESIDENT_ID']+'</h4>\n'
-                                +'<h4 class="title"><a href="javascript:;">'+residents['FULLNAME']+'</a></h4>\n'
-                                +'<p class="location" style="font-size: 20px; color: black;">Birth details: <h>'+residents['PLACE_OF_BIRTH']+', '+residents['DATE_OF_BIRTH']+'</h></p>\n'
-                                +'<p class="desc" style="font-size: 20pxpx">'+faddress+'</p>\n'
-                                 +'<button data-toggle="modal" data-target="#show_assigning" class="btn btn-yellow btn-block" id="ab_btn">Assign as Barangay Official</button>\n'
-                            +'</div>\n'
-
-                            // +'<div class="result-price" >Resident\n'
-                           
-                            // +'</div>\n'
-                            +'</li>'
-                            );
-
-                       })
-                    });
-                }
-                
-                
-                
-            }
-            ,
-            error:function(error)
-            {
-                console.log(error)
-            }
-
-        });
-        
-        $('.result-image').attr('style',image);
+        AppendResident();
 
     });
+
+    function AppendResident() {
+
+        
+        var searchval = $('#stext').val();
+        $('.list-of-residents').remove();
+        if(searchval != '')
+        {
+            
+            var faddress = "",profilepic = "";
+            $.ajax({
+                url: "{{route('ResidentsSearch')}}",
+                type: "post",
+                dataType:'json',
+                data: { searchval: searchval, _token: "{{csrf_token()}}" },
+                async:false,
+                success:function(data)
+                {
+
+                   
+                    if(data.length > 0) {
+                        data.map( value => {
+                            value['listofresidents'].map( residents => {
+                                fullname = residents['FULLNAME'];
+                                profilepic = residents['PROFILE_PICTURE'];
+                                image = 'background-image:url("{{asset("upload/residentspics/")}}/'+profilepic+'")';
+                                resident_id = residents['RESIDENT_ID'];
+                                residents['FULL_ADDRESS'] == null ? faddress = "" : faddress = residents['FULL_ADDRESS']
+                               $('.result-list').append(
+                                '<li class="list-of-residents">\n'
+
+                                +'<a href="#" class="result-image"></a>\n'
+
+                                +'<div class="result-info">\n'
+                    +'<h4 class="title" hidden>'+residents['RESIDENT_ID']+'</h4>\n'
+                                    +'<h4 class="title"><a href="javascript:;">'+residents['FULLNAME']+'</a></h4>\n'
+                                    +'<p class="location" style="font-size: 20px; color: black;">Birth details: <h>'+residents['PLACE_OF_BIRTH']+', '+residents['DATE_OF_BIRTH']+'</h></p>\n'
+                                    +'<p class="desc" style="font-size: 20pxpx">'+faddress+'</p>\n'
+                                     +'<button data-toggle="modal" data-target="#show_assigning" class="btn btn-yellow btn-block" id="ab_btn">Assign as Barangay Official</button>\n'
+                                +'</div>\n'
+
+                                // +'<div class="result-price" >Resident\n'
+                               
+                                // +'</div>\n'
+                                +'</li>'
+                                );
+
+                           })
+                        });
+                    }
+                    
+                    
+                    
+                }
+                ,
+                error:function(error)
+                {
+                    console.log(error)
+                }
+            });
+
+            $('.result-image').attr('style',image);
+        }
+    }
 
     $(document).on('click','#ab_btn',function() {
     var resident = $(this).closest("li div").find("h4").html();
@@ -486,13 +500,13 @@
                             <thead>
                             <tr>
                                 <th hidden>Official ID </th>
-                                <th style="width: 20%">Position</th>
-                                <th style="width: 25%">Name</th>
-                                <th>Start Term </th>
-                                <th>End Term</th>
-                                <th>Emlpoyee Number</th>
-                                <th hidden>Email</th>
-                                <th style="width: 142px">Actions </th>
+                                <th style="width: 15%"><center>Position</center></th>
+                                <th style="width: 15%"><center>Name</center></th>
+                                <th style="width: 12%"><center>Start Term</center></th>
+                                <th style="width: 12%"><center>End Term</center></th>
+                                <th style="width: 15%"><center>Emlpoyee Number</center></th>
+                                <th hidden>Email</center></th>
+                                <th style="width: 142px"><center>Actions</center></th>
                             </tr>
                             </thead>
 
@@ -500,20 +514,24 @@
                         @foreach( $dispOfficials as $officials )
                             <tr >
                                 <td hidden>{{$officials->barangay_official_id}}</td>
-                                <td>{{$officials->position_name}}</td>
-                                <td>{{$officials->firstname}} {{$officials->lastname}}</td>
-                                <td>{{$officials->start_term}}</td>
-                                <td>{{$officials->end_term}}</td>
-                                <td>{{$officials->employee_number}}</td>
+                                <td><center>{{$officials->position_name}}</center></td>
+                                <td><center>{{$officials->firstname}} {{$officials->lastname}}</center></td>
+                                <td><center>{{$officials->start_term}}</center></td>
+                                <td><center>{{$officials->end_term}}</center></td>
+                                <td><center>{{$officials->employee_number}}</center></td>
                                 <td hidden>{{$officials->email}}</td>
                                 <td>
                                     <button type='button' class='btn btn-success editOfficial' data-toggle='modal' data-target='#EditModal' >
                                         <i class='fa fa-edit'></i> Edit
                                     </button>
-
+                                    <button type='button' class='btn btn-info remove-btn' >
+                                        <i class='fa fa-undo'></i> Reset Password
+                                    </button>
+                                    
                                     <button type='button' class='btn btn-danger remove-btn' >
                                         <i class='fa fa-trash'></i> Remove
                                     </button>
+
                                 </td>
                             </tr>
                         @endforeach

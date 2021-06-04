@@ -28,7 +28,7 @@ header('Content-Type: text/html');?>
     <link rel='shortcut icon' type='image/x-icon' href="{{asset('assets/img/logo/ico/BPIS_Logo_dark.ico')}}" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
-       <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     
     <link href="{{asset('assets/plugins/parsley/src/parsley.css')}}" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -54,7 +54,7 @@ header('Content-Type: text/html');?>
         <div class="login  login-v2"  data-pageload-addclass="animated fadeIn">
             <!-- begin brand -->
             <div class="login-header" >
-                <div class="brand" > <img src="{{asset('assets/img/logo/BPIS_Logo_Light_Title_Cropped.png')}}" width="300" height="105" />
+                <div class="brand" > <img src="{{asset('assets/img/logo/BitBo_Logo.png')}}" width="300" height="105" />
                     <div class="icon">
                         <i class="fa fa-lock"></i>
                     </div>
@@ -76,36 +76,34 @@ header('Content-Type: text/html');?>
                                                                     <input type="email" name="EmailTxt" id="EmailTxt" placeholder="Your email"  class="form-control" data-parsley-group="step-3" data-parsley-required="true" />
                                                                 </div>
                                                             </div>
- -->
+                                                        -->
 
-                    <div class="form-group m-b-20">
-                     <span class="text-danger"></span>
-                        <input type="email"  name="EmailTxt"  id="EmailTxt" class="form-control form-control-lg" placeholder="Email Address" data-parsley-type="email"  data-parsley-required="true" />
-                    </div>
-
-
+                                                        <div class="form-group m-b-20">
+                                                           <span class="text-danger"></span>
+                                                           <input type="email"  name="EmailTxt"  id="EmailTxt" class="form-control form-control-lg" placeholder="Email Address" data-parsley-type="email"  data-parsley-required="true" />
+                                                       </div>
 
 
-                    <div class="login-buttons">
-                        <button   id="ResetPasswordBtn"  class="btn btn-success btn-block btn-lg">Reset Password</button>
 
 
-                    </div>
-                    <div class="m-t-20">
-                        Go back to<a href="{{route('Login')}}">  <b>LOGIN</b> </a> page
-                    </div>
-                </form>
-            </div>
-            <!-- end login-content -->
-        </div>
-        <!-- end login -->
-        
+                                                       <div class="login-buttons">
+                                                        <button   id="ResetPasswordBtn"  class="btn btn-success btn-block btn-lg">Reset Password</button>
 
 
-        <!-- ================== BEGIN BASE JS ================== -->
-        <script src="{{asset('assets/plugins/jquery/jquery-3.2.1.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap/4.0.0/js/bootstrap.bundle.min.js')}}"></script>
+                                                    </div>
+                                                    <div class="m-t-20">
+                                                        Go back to<a href="{{route('Login')}}"> <b>login</b> </a> page.
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- end login-content -->
+                                        </div>
+                                        <!-- end login -->
+                                        
+                                        <!-- ================== BEGIN BASE JS ================== -->
+                                        <script src="{{asset('assets/plugins/jquery/jquery-3.2.1.min.js')}}"></script>
+                                        <script src="{{asset('assets/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+                                        <script src="{{asset('assets/plugins/bootstrap/4.0.0/js/bootstrap.bundle.min.js')}}"></script>
 <!--[if lt IE 9]>
 <script src="{{asset('assets/crossbrowserjs/html5shiv.js')}}"></script>
 <script src="{{asset('assets/crossbrowserjs/respond.min.js')}}"></script>
@@ -119,7 +117,7 @@ header('Content-Type: text/html');?>
 
 <script src="{{asset('assets/plugins/parsley/dist/parsley.js')}}"></script>
 <script src="{{asset('assets/plugins/highlight/highlight.common.js')}}"></script>
-    <script src="{{asset('assets/js/demo/render.highlight.js')}}"></script>
+<script src="{{asset('assets/js/demo/render.highlight.js')}}"></script>
 
 <script src="{{asset('assets/plugins/gritter/js/jquery.gritter.js')}}"></script>
 <script src="{{asset('assets/plugins/bootstrap-sweetalert/sweetalert.min.js')}}"></script>
@@ -131,54 +129,54 @@ header('Content-Type: text/html');?>
 <script>
     $(document).ready(function() {
         App.init();
-            Highlight.init();
+        Highlight.init();
 
 
 
 
         $("#ResetPasswordBtn").click(function(e)
-        {   e.preventDefault();
+            {   e.preventDefault();
 
-            if($("#ResetPasswordForm").parsley().validate()==true)
-            {
-                  $.ajax({
-                url:'{{route("checkconnection")}}',
-                type:'POST',
-                data:{'_token':'{{csrf_token()}}'},
-                success:function(data)
+                if($("#ResetPasswordForm").parsley().validate()==true)
                 {
-                   
-
-
-                    if(data == 'offline')
+                  $.ajax({
+                    url:'{{route("checkconnection")}}',
+                    type:'POST',
+                    data:{'_token':'{{csrf_token()}}'},
+                    success:function(data)
                     {
-
-                        swal("No INTERNET CONNECTION!", 
-                    {
-                        icon: "warning",
-
-                    });
-
-                    }
-                    else{
-                      email=$("#EmailTxt").val();
-                    swal("Your reset password has been sent to your email!", 
-                    {
-                        icon: "success",
-
-                    });
-                      setTimeout(function(){ 
+                     
 
 
+                        if(data == 'offline')
+                        {
 
-                        $.ajax({
-                            url:'{{route("ForgotPassword")}}',
-                            type:'post',
-
-                            cache:false,
-                            data:{'_token':'{{csrf_token()}}','EmailTxt':email},
-                            success:function()
+                            swal("No INTERNET CONNECTION!", 
                             {
+                                icon: "warning",
+
+                            });
+
+                        }
+                        else{
+                          email=$("#EmailTxt").val();
+                          swal("Your reset password has been sent to your email!", 
+                          {
+                            icon: "success",
+
+                        });
+                          setTimeout(function(){ 
+
+
+
+                            $.ajax({
+                                url:'{{route("ForgotPassword")}}',
+                                type:'post',
+
+                                cache:false,
+                                data:{'_token':'{{csrf_token()}}','EmailTxt':email},
+                                success:function()
+                                {
 
 
                                 // location.reload();
@@ -187,28 +185,28 @@ header('Content-Type: text/html');?>
 
                         })
 
-                        
-                    }, 1000);
+                            
+                        }, 1000);
 
 
 
 
-                    }
+                      }
 
+                  }
+
+              });
+
+
+                  
               }
 
+
+
+              
+
+
           });
-
-
-                
-            }
-
-
-
-          
-
-
-        });
     });
 </script>
 

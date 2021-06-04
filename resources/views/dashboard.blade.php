@@ -1358,7 +1358,7 @@ Highcharts.chart('illness', {
             {{round($get_count_chronic_disease, 2)}}
             
         ]
-    }
+    },
     
         @endforeach
     ]
