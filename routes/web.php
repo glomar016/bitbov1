@@ -10,6 +10,8 @@
 |
 */
 
+Route::get('/getBusinessNumber', 'BusinessController@getBusinessNumber')->name('getBusinessNumber');
+
 Route::get('/getLineofBusiness', 'BusinessController@getLineofBusiness')->name('getLineofBusiness');
 Route::post('/improvement_building', 'BusinessController@improvement_building')->name('improvement_building');
 
@@ -634,6 +636,10 @@ Route::group(['prefix' => '/PermitCertificateClearance'], function () {
         Route::get('/Clearance/NonBusiness', 'PCC\RequestController@index')
             ->defaults('typeofview', 'RequestClearanceNonBusiness')
             ->name('RequestClearanceNonBusiness');
+
+        Route::get('/Clearance/RequestClearanceWeightsAndMeasure', 'PCC\RequestController@index')
+            ->defaults('typeofview', 'RequestClearanceWeightsAndMeasure')
+            ->name('RequestClearanceWeightsAndMeasure');
 
         // Clearance
         Route::post('/Clearance/Request', 'PCC\RequestController@CRUDRequestClearance')

@@ -165,6 +165,13 @@ class BusinessController extends Controller
         $line_of_business = DB::table('v_business_nature')->get();
         return response()->json(['line_of_business' => $line_of_business]);
     }
+    
+    public function getBusinessNumber()
+    {
+
+        $business_number = DB::table('v_official_business_list')->get();
+        return response()->json(['business_number' => $business_number]);
+    }
 
     public function getGross(Request $request)
     {

@@ -61,6 +61,9 @@ class RequestController extends Controller
                 ->orderBy('CREATED_AT', 'DESC')->get();
 
             return view('permit_certification_clearance.clearance_non_business', compact('buildings'));
+        } else if ($typeofview == "RequestClearanceWeightsAndMeasure") {
+
+            return view('permit_certification_clearance.clearance_weights_and_measure');
         }
     }
 

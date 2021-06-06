@@ -499,6 +499,7 @@ header('Content-Type: text/html');?>
                         Route::currentRouteName() == 'RequestCertification' ||
                         Route::currentRouteName() == 'RequestClearance' ||
                         Route::currentRouteName() == 'RequestClearanceNonBusiness' ||
+                        Route::currentRouteName() == 'RequestClearanceWeightsAndMeasure' ||
                         Route::currentRouteName() == 'PCCEvaluation' ||
                         Route::currentRouteName() == 'Issuance'
                     ? 'active' : ''}} ">
@@ -512,7 +513,8 @@ header('Content-Type: text/html');?>
             <li class="has-sub {{   Route::currentRouteName() == 'RequestPermit' ||
                                     Route::currentRouteName() == 'RequestCertification' ||
                                     Route::currentRouteName() == 'RequestClearance' ||
-                                    Route::currentRouteName() == 'RequestClearanceNonBusiness'
+                                    Route::currentRouteName() == 'RequestClearanceNonBusiness' ||
+                                    Route::currentRouteName() == 'RequestClearanceWeightsAndMeasure'
                                     ? 'active' : ''}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
@@ -526,7 +528,8 @@ header('Content-Type: text/html');?>
                     <li class="has-sub {{   Route::currentRouteName() == 'RequestPermit' ||
                                     Route::currentRouteName() == 'RequestCertification' ||
                                     Route::currentRouteName() == 'RequestClearance' ||
-                                    Route::currentRouteName() == 'RequestClearanceNonBusiness'
+                                    Route::currentRouteName() == 'RequestClearanceNonBusiness' ||
+                                    Route::currentRouteName() == 'RequestClearanceWeightsAndMeasure'
                                     ? 'active' : ''}}">
                         <a href="javascript:;">
                             <b class="caret"></b>
@@ -536,6 +539,8 @@ header('Content-Type: text/html');?>
                             <li class="{{Route::currentRouteName() == 'RequestClearance' ? 'active' : ''}}"><a href="{{ route('RequestClearance') }}">Business</a></li>
                             
                             <li class="{{Route::currentRouteName() == 'RequestClearanceNonBusiness' ? 'active' : ''}}"><a href="{{ route('RequestClearanceNonBusiness') }}">Building</a></li>
+                            
+                            <li class="{{Route::currentRouteName() == 'RequestClearanceWeightsAndMeasure' ? 'active' : ''}}"><a href="{{ route('RequestClearanceWeightsAndMeasure') }}">Weights and Measure</a></li>
                         </ul>
                     </li>       
                 </ul>

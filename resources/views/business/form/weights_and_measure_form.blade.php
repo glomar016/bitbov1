@@ -20,54 +20,38 @@
 						</thead>
 						<tbody>
 							
-							<tr style="background: #DCDCDC; color: #000000; font-size: small;">
-								<td style="font-weight: bolder;"> &nbsp 1 BASIC INFORMATION</td>
-							</tr>
-							{{--  --}}
-							<tr>
-								<td>
-									<div class="row">
-										<div class="col-lg-3 col-md-6">
-											<div class="stats-content">
-												<label>Business Category</label>
-												<select>
-                                                    <option>-- Business Category --</option>
-                                                    <option>Test</option>
-                                                </select>
-											</div>
-										</div>
-
-									</div>
-								</td>
-							</tr>
-							
 							<tr style="background: #DCDCDC">
 								<td style="font-weight: bolder; color: #000000; font-size: small;"> &nbsp; Weights and Measure</td>
 							</tr>
 							{{-- BUSINESS ACTIVITY --}}
 							<tr>
 								<td>
-									<table class="table table-striped table-bordered" id="tbl_business_acitivity">
+									<table class="table table-striped table-bordered" id="tbl_weights_and_measure_activity">
 										
 										<thead>
 											<tr>
+												<th style="text-align: center;">BUSINESS NUMBER</th>
 												<th style="text-align: center;">LICENSE_NO</th>
 												<th style="text-align: center;">LICENSE_DATE</th>
 												<th style="text-align: center;">DEVICE_TYPE</th>
 												<th style="text-align: center;">BRAND</th>
 												<th style="text-align: center;">MODEL</th>
 												<th style="text-align: center;">CAPACITY</th>
-												<th style="text-align: center;">Serial No</th>
+												<th style="text-align: center;">SERIAL NO</th>
 												
 											</tr>
 										</thead>
 										<tbody>
-
+										
 											{{-- <tr>
-												<td><input type="text" name="lineofbusiness" class="form-control"></td>
-												<td><input type="text" name="noofunit" class="form-control"></td>
-												<td><input type="text" name="capitalization" class="form-control"></td>
-												<td><input type="text" name="grossreceipt" class="form-control"></td>
+												<td><input type="text" name="BUSINESS_ID" class="form-control"></td>
+												<td><input type="text" name="LICENSE_NO" class="form-control"></td>
+												<td><input type="text" name="LICENSE_DATE" class="form-control"></td>
+												<td><input type="text" name="DEVICE_TYPE" class="form-control"></td>
+												<td><input type="text" name="BRAND" class="form-control"></td>
+												<td><input type="text" name="MODEL" class="form-control"></td>
+												<td><input type="text" name="CAPACITY" class="form-control"></td>
+												<td><input type="text" name="SERIAL_NO" class="form-control"></td>
 												<td></td>
 											</tr> --}}
 
@@ -76,7 +60,7 @@
 									{{-- add tbody --}}
 									<div class="clearfix">
 										<div class="btn-group">
-											<button class="btn btn-success add btn-sm" data-toggle="modal" id="btnAddBusinessActivity">
+											<button class="btn btn-success add btn-sm" data-toggle="modal" id="btnAddWeightsAndMeasureActivity">
 												<i class="fa fa-plus"></i>
 											</button>
 										</div>
@@ -89,7 +73,7 @@
 							
 							<tr>
 								<td align="right">
-									<button type="submit" class="btn btn-primary" id="btnSubmitBusinessRegistration">Submit</button>
+									<button type="submit" class="btn btn-primary" id="btnSubmitWeightsAndMeasureRegistration">Submit</button>
 								</td>
 							</tr>
 						</tbody>
