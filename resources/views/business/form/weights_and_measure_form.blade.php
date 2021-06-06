@@ -46,7 +46,7 @@
 											{{-- <tr>
 												<td><input type="text" name="BUSINESS_ID" class="form-control"></td>
 												<td><input type="text" name="LICENSE_NO" class="form-control"></td>
-												<td><input type="text" name="LICENSE_DATE" class="form-control"></td>
+												<td><input type="date" name="LICENSE_DATE" class="form-control"></td>
 												<td><input type="text" name="DEVICE_TYPE" class="form-control"></td>
 												<td><input type="text" name="BRAND" class="form-control"></td>
 												<td><input type="text" name="MODEL" class="form-control"></td>

@@ -83,7 +83,7 @@
                                             <center>Weights and Measure ID</center>
                                         </th>
                                         <th>
-                                            <center>Business Number</center>
+                                            <center>Business Name</center>
                                         </th>
                                         <th>
                                             <center>LICENSE_NO </center>
@@ -115,9 +115,9 @@
                                 <tbody>
                                     @foreach($weights_and_measure as $row)
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
-                                            <td>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
-                                            <td>{{$row->BUSINESS_ID}}</td>
-                                            <td style="text-transform: uppercase;">{{$row->LICENSE_NO == '' ? 'NOT STATED' : $row->BUSINESS_NAME}}</td>
+                                            <td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
+                                            <td>{{$row->BUSINESS_NAME}}</td>
+                                            <td>{{$row->LICENSE_NO}}</td>
                                             <td>{{$row->LICENSE_DATE}}</td>
                                             <td>{{$row->DEVICE_TYPE}}</td>
                                             <td>{{$row->BRAND}}</td>
@@ -130,7 +130,7 @@
                                                     <a href="javascript:;" class="btn btn-info">Action</a>
                                                     <a href="javascript:;" data-toggle="dropdown" class="btn btn-info dropdown-toggle"></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a data-toggle='modal' data-target='#modal-Edit' id="btnRenewOpen" style="cursor: pointer;">Edit</a></li>
+                                                        <li><a data-toggle='modal' data-target='#modal-Edit' id="btnEdit" style="cursor: pointer;">Edit</a></li>
                                                         <li><a id="btn_view" style="cursor: pointer;">View</a></li>
                                                         <li class="divider"></li>
                                                     </ul>
@@ -169,9 +169,94 @@
                         <!-- end panel-body -->
                     </div>
                 </div>
-
-
             </div>
+
+            <!-- MODALS -->
+            <div class="modal fade" id="modal-Edit">
+                <div class="modal-dialog" style="max-width: 80%;">
+                    <form>
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #17a2b8">
+                                <h4 class="modal-title" style="color: white">Edit Business</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <h3><label id="lbl_business_name">WBB Toy Shop</label></h3>
+                                <input type="text" id="txt_weights_and_measure_id" hidden readonly>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_business_number">Business Number<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_business_number" placeholder="" readonly value="XXXXX-XXXXX" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_business_name">Business Name<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_business_name" placeholder="" readonly value="Test Name" />
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_license_no_edit">License No.<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_license_no_edit" placeholder=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_license_date_edit">License Date<span class="text-danger"></span></label>
+                                            <input class="form-control" type="date" id="txt_license_date_edit" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_device_type_edit">Device Type<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_device_type_edit" placeholder=""  />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_brand_edit">Brand<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_brand_edit" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_model_edit">Model<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_model_edit" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_capacity_edit">Capacity<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_capacity_edit" placeholder=""  />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="stats-content">
+                                            <label for="txt_serial_no_edit">Serial No<span class="text-danger"></span></label>
+                                            <input class="form-control" id="txt_serial_no_edit" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+                                <a id="btnWeightsAndMeasureEdit" href="javascript:;" class="btn btn-yellow">Update</a>
+                            </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- END OF MODALS -->
 			
 
 			<!-- begin row -->
@@ -230,14 +315,18 @@
 			SERIAL_NO.push($(this).val());
 		});
 
-        console.log(BUSINESS_ID);
-        console.log(LICENSE_NO);
-        console.log(LICENSE_DATE);
-        console.log(DEVICE_TYPE);
-        console.log(BRAND);
-        console.log(MODEL);
-        console.log(CAPACITY);
-        console.log(SERIAL_NO);
+
+        let data = { 
+            '_token': " {{ csrf_token() }}"
+            , 'BUSINESS_ID': BUSINESS_ID
+            , 'LICENSE_NO': LICENSE_NO
+            , 'LICENSE_DATE': LICENSE_DATE
+            , 'DEVICE_TYPE': DEVICE_TYPE
+            , 'BRAND': BRAND
+            , 'MODEL': MODEL
+            , 'CAPACITY': CAPACITY
+            , 'SERIAL_NO': SERIAL_NO
+        };
 
         swal({
 				title: 'Success',
@@ -245,9 +334,18 @@
 				icon: 'success',
 				timer: 1000
 			});
-		setTimeout(() => {
-            window.location.reload();
-		}, 1000);
+
+            $.ajax({
+                url: "{{ route('CRUDWeightsAndMeasureApplication') }}",
+                method: "POST",
+                data: data,
+                success: function(data) {
+					window.location.reload();
+				},
+				error: function(error) {
+					console.log("error: " + error);
+				}
+            })
     })
 
 
@@ -274,7 +372,7 @@
                             </select>
                         </td>
                     <td><input type="text" name="LICENSE_NO[]" class="form-control"></td> \n'
-                    <td><input type="text" name="LICENSE_DATE[]" class="form-control"></td> \n'
+                    <td><input type="date" name="LICENSE_DATE[]" class="form-control"></td> \n'
                     <td><input type="text" name="DEVICE_TYPE[]" class="form-control"></td> \n'
                     <td><input type="text" name="BRAND[]" class="form-control"></td> \n'
                     <td><input type="text" name="MODEL[]" class="form-control"></td> \n'
@@ -293,6 +391,42 @@
             }
         })
     })
+
+    $('#btnEdit').on('click', function(e) {
+        e.preventDefault();
+		
+		var row = $(this).closest("tr");
+		weights_and_measure_id = $(this).closest('tr').attr('id');
+
+        console.log(weights_and_measure_id);
+
+		let data = {
+			'_token': " {{ csrf_token() }}",
+			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+			'TYPE': 'weightsandmeasure'
+		};
+		$.ajax({
+			url: "{{route('SpecificBusinessApplication')}}",
+			type: 'post',
+			data: data,
+			success:function(response) {
+                let newData = response.specific_business;
+                $('#txt_weights_and_measure_id').val(newData[0].WEIGHTS_AND_MEASURE_ID);
+                $('#txt_business_number').val(newData[0].BUSINESS_OR_NUMBER);
+                $('#txt_business_name').val(newData[0].BUSINESS_NAME);
+                $('#txt_license_no_edit').val(newData[0].LICENSE_NO);
+                $('#txt_license_date_edit').val(newData[0].LICENSE_DATE);
+                $('#txt_device_type_edit').val(newData[0].DEVICE_TYPE);
+                $('#txt_brand_edit').val(newData[0].BRAND);
+                $('#txt_model_edit').val(newData[0].MODEL);
+                $('#txt_capacity_edit').val(newData[0].CAPACITY);
+                $('#txt_serial_no_edit').val(newData[0].SERIAL_NO);
+			},
+			error:function(error) {
+				console.log(error)
+			}
+		});
+	});
 
 </script>
 

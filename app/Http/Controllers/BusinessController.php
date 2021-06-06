@@ -14,7 +14,9 @@ class BusinessController extends Controller
         $approved_business = DB::table('v_official_business_list')->get();
         $business_nature = DB::table('v_business_nature')->get();
         $line_of_business = DB::table('v_line_of_business')->get();
-        $weights_and_measure = DB::table('t_weights_and_measure')->get();
+        $weights_and_measure = DB::table('t_weights_and_measure as wm')
+        ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+        ->get();
         $businessNotApproved = DB::table('v_official_business_list')->where('STATUS', 'Pending')->get();
         $buildings = DB::table('v_building_list')
         ->orderBy('CREATED_AT', 'DESC')->get();
@@ -374,6 +376,36 @@ class BusinessController extends Controller
         }
     }
 
+    // Weights and Measure Reg
+    public function CRUDWeightsAndMeasureApplication(Request $request)
+    {
+
+        $BUSINESS_ID = $request->BUSINESS_ID;
+        $LICENSE_NO = $request->LICENSE_NO;
+        $LICENSE_DATE = $request->LICENSE_DATE;
+        $DEVICE_TYPE = $request->DEVICE_TYPE;
+        $BRAND = $request->BRAND;
+        $MODEL = $request->MODEL;
+        $CAPACITY = $request->CAPACITY;
+        $SERIAL_NO = $request->SERIAL_NO;
+
+        print_r($BUSINESS_ID);
+
+        for ($i = 0; $i < count($BUSINESS_ID); $i++) {
+            $insertWeightsAndMeasure = DB::table('t_weights_and_measure')
+                ->insert(array(
+                    'BUSINESS_ID' => $BUSINESS_ID[$i]
+                    , 'LICENSE_NO' => $LICENSE_NO[$i]
+                    , 'LICENSE_DATE' => $LICENSE_DATE[$i]
+                    , 'DEVICE_TYPE' => $DEVICE_TYPE[$i]
+                    , 'BRAND' => $BRAND[$i]
+                    , 'MODEL' => $MODEL[$i]
+                    , 'CAPACITY' => $CAPACITY[$i]
+                    , 'SERIAL_NO' => $SERIAL_NO[$i]
+                ));
+        }
+    }
+
     public function SpecificBuilding(Request $request)
     {
         $specific_business = DB::table('t_building_information')
@@ -450,10 +482,11 @@ class BusinessController extends Controller
         }
         return response()->json(['success' => 'success']);
     }
+
     public function SpecificBusiness(Request $request)
     {
-
         $TYPE = $request->TYPE;
+
         if ($TYPE == "business") {
             $BUSINESS_ID = $request->BUSINESS_ID;
             $specific_business = DB::table('v_business_information')
@@ -468,7 +501,15 @@ class BusinessController extends Controller
             $specific_business = DB::table('v_building_transactions')
                 ->where('BUILDING_ID', $BUILDING_ID)
                 ->get();
+        } else if ($TYPE == "weightsandmeasure") {
+            $WEIGHTS_AND_MEASURE_ID = $request->WEIGHTS_AND_MEASURE_ID;
+
+            $specific_business = DB::table('t_weights_and_measure as wm')
+                ->where('WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
+                ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+                ->get();
         }
+
         return response()->json(['specific_business' => $specific_business]);
     }
 
