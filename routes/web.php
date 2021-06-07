@@ -728,4 +728,7 @@ Route::group(['prefix' => '/WeightsAndMeasure'], function () {
     Route::get('/Registration', 'BusinessController@index')
         ->defaults('typeofview', 'weights_and_measure_registration')
         ->name('WeightsAndMeasureApplication');
+
+    Route::post('/updateWeightsAndMeasure', 'BusinessController@updateWeightsAndMeasure')
+        ->name('UpdateWeightsAndMeasure');
 });

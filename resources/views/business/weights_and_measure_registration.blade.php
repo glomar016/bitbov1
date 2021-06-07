@@ -174,7 +174,7 @@
             <!-- MODALS -->
             <div class="modal fade" id="modal-Edit">
                 <div class="modal-dialog" style="max-width: 80%;">
-                    <form>
+                    <form id="weightsandmeasure_form">
                         <div class="modal-content">
                             <div class="modal-header" style="background-color: #17a2b8">
                                 <h4 class="modal-title" style="color: white">Edit Business</h4>
@@ -183,18 +183,18 @@
                             
                             <div class="modal-body">
                                 <h3><label id="lbl_business_name">WBB Toy Shop</label></h3>
-                                <input type="text" id="txt_weights_and_measure_id" hidden readonly>
+                                <input type="text" id="txt_weights_and_measure_id" name="txt_weights_and_measure_id" hidden>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_business_number">Business Number<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_business_number" placeholder="" readonly value="XXXXX-XXXXX" />
+                                            <input class="form-control" id="txt_business_number" name="txt_business_number" placeholder="" readonly value="XXXXX-XXXXX" />
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_business_name">Business Name<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_business_name" placeholder="" readonly value="Test Name" />
+                                            <input class="form-control" id="txt_business_name" name="txt_business_name" placeholder="" readonly value="Test Name" />
                                         </div>
                                     </div>
                                 </div><br>
@@ -202,13 +202,13 @@
                                     <div class="col-lg-6 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_license_no_edit">License No.<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_license_no_edit" placeholder=""/>
+                                            <input class="form-control" id="txt_license_no_edit" name="txt_license_no_edit" placeholder=""/>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_license_date_edit">License Date<span class="text-danger"></span></label>
-                                            <input class="form-control" type="date" id="txt_license_date_edit" placeholder="" />
+                                            <input class="form-control" type="date" id="txt_license_date_edit" name="txt_license_date_edit" placeholder="" />
                                         </div>
                                     </div>
                                 </div><br>
@@ -216,19 +216,19 @@
                                     <div class="col-lg-4 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_device_type_edit">Device Type<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_device_type_edit" placeholder=""  />
+                                            <input class="form-control" id="txt_device_type_edit" name="txt_device_type_edit" placeholder=""  />
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_brand_edit">Brand<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_brand_edit" placeholder="" />
+                                            <input class="form-control" id="txt_brand_edit" name="txt_brand_edit" placeholder="" />
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_model_edit">Model<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_model_edit" placeholder="" />
+                                            <input class="form-control" id="txt_model_edit" name="txt_model_edit" placeholder="" />
                                         </div>
                                     </div>
                                 </div><br>
@@ -236,13 +236,13 @@
                                     <div class="col-lg-6 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_capacity_edit">Capacity<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_capacity_edit" placeholder=""  />
+                                            <input class="form-control" id="txt_capacity_edit" name="txt_capacity_edit" placeholder=""  />
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-8">
                                         <div class="stats-content">
                                             <label for="txt_serial_no_edit">Serial No<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_serial_no_edit" placeholder="" />
+                                            <input class="form-control" id="txt_serial_no_edit" name="txt_serial_no_edit" placeholder="" />
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +250,7 @@
                             
                             <div class="modal-footer">
                                 <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
-                                <a id="btnWeightsAndMeasureEdit" href="javascript:;" class="btn btn-yellow">Update</a>
+                                <input id="btnWeightsAndMeasureUpdate" class="btn btn-yellow" type="submit" value="Update">
                             </div>
                     </form>
                 </div>
@@ -427,6 +427,39 @@
 			}
 		});
 	});
+
+    $("#weightsandmeasure_form").on('submit', function(e){
+        e.preventDefault();
+        var form = $("#weightsandmeasure_form").serializeArray();
+        let data = {
+            '_token': " {{ csrf_token() }}",
+        }
+
+        
+        $.each(form, function(){
+            data[[this.name]] = this.value;
+        })
+
+        $.ajax({
+            url: "{{route('UpdateWeightsAndMeasure')}}",
+            type: "post",
+            data: data,
+
+            success: function(response){
+                swal({
+                    title: 'Success',
+                    text: 'Saved Record!',
+                    icon: 'success',
+                    timer: 1000
+                });
+                window.location.reload();
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+
+    })
 
 </script>
 

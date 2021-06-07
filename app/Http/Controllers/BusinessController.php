@@ -554,4 +554,21 @@ class BusinessController extends Controller
                 'BUSINESS_ID' => $BUSINESS_ID, 'BUILDING_ID' => $BUILDING_ID, 'STATUS' => 'Evaluated', 'APPROVED_BY' => $APPROVED_BY, 'DATE_APPROVED' => Carbon::now()->toDateString('Y-m-d')
             ));
     }
+
+    public function updateWeightsAndMeasure(Request $request)
+    {
+
+        $update = DB::table('t_weights_and_measure')
+            ->where('WEIGHTS_AND_MEASURE_ID', $request->txt_weights_and_measure_id)
+            ->update(array(
+                'LICENSE_NO' => $request->txt_license_no_edit
+                , 'LICENSE_DATE' => $request->txt_license_date_edit
+                , 'DEVICE_TYPE' => $request->txt_device_type_edit
+                , 'BRAND' => $request->txt_brand_edit
+                , 'MODEL' => $request->txt_model_edit
+                , 'CAPACITY' => $request->txt_capacity_edit
+                , 'SERIAL_NO' => $request->txt_serial_no_edit
+        ));
+    }
+
 }
