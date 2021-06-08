@@ -928,7 +928,6 @@
 
 					$.each(response["barangay_clearance"], function() {
 
-
 						business_name = this["BUSINESS_NAME"];
 						address = this["BUSINESS_ADDRESS"];
 						or_no = this["OR_NO"];

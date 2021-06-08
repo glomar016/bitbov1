@@ -63,7 +63,12 @@ class RequestController extends Controller
             return view('permit_certification_clearance.clearance_non_business', compact('buildings'));
         } else if ($typeofview == "RequestClearanceWeightsAndMeasure") {
 
-            return view('permit_certification_clearance.clearance_weights_and_measure');
+            $weights_and_measure = DB::table('t_weights_and_measure as wm')
+                ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+                ->where('wm.EVALUATED', 0)
+                ->orderBy('wm.CREATED_AT', 'DESC')->get();
+
+            return view('permit_certification_clearance.clearance_weights_and_measure', compact('weights_and_measure'));
         }
     }
 
@@ -252,7 +257,12 @@ class RequestController extends Controller
             $business_permit = DB::table('t_bf_barangay_clearance')
                 ->insert(array(
                     'F_LICENSE_NO' => $F_LICENSE_NO, 'F_DEVICE_TYPE' => $F_DEVICE_TYPE, 'F_BRAND' => $F_BRAND, 'F_MODEL' => $F_MODEL, 'F_CAPACITY' => $F_CAPACITY, 'F_SERIAL_NO' => $F_SERIAL_NO, 'CONSTRUCTION_ADDRESS' => $F_CONSTRUCTION_ADDRESS, 'REGISTERED_NAME' => $F_REGISTERED_NAME, 'F_REGISTRATION_NUMBER' => $F_REGISTRATION_NUMBER, 'FORM_ID' => $latest_form_id
+                ));
 
+            DB::table('t_weights_and_measure')
+            ->where('WEIGHTS_AND_MEASURE_ID', $request->WEIGHTS_AND_MEASURE_ID)
+                ->update(array(
+                    'EVALUATED' => 1
                 ));
 
             return response()->json(['message' => $latest_form_id]);
