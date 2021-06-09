@@ -494,410 +494,251 @@
 	</div>
 </div>
 
-<div class="modal fade" id="modal-View">
-	<div class="modal-dialog" style="max-width: 50%">
-		<form id="EditForm">
-			<div class="modal-content">
-				<div class="modal-header" style="background-color: #f59c1a">
-					<h4 class="modal-title" style="color: white"> Business Information</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
-				</div>
-				<div class="modal-body">
-					<input type="text" id="txt_business_id" hidden>
-					<h3><label class="lbl_business_name">WBB Toy Shop</label></h3>
-					{{--modal body start--}}
-					<h4>Business Details</h4>
-					{{-- 1 --}}
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_buiness_number_renew">Business Number<span class="text-danger"></span></label> <br>
-								<label class="txt_buiness_number_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_business_name_renew">Business Name<span class="text-danger"></span></label> <br>
-								<label class="txt_business_name_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_trade_name_renew">Trade Name<span class="text-danger"></span></label><br>
-								<label class="txt_trade_name_renew" style="font-weight: normal;">asd</label>
-
-							</div>
-						</div>
-					</div> <br>
-					{{-- 2 --}}
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Type of Business<span class="text-danger"></span></label><br>
-								<label class="sel_business_type_renew" style="font-weight: normal;">asd</label>
-
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">TIN No.<span class="text-danger"></span></label> <br>
-								<label class="txt_tin_no_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">DTI/SEC/CDA Registration No.<span class="text-danger"></span></label> <br>
-								<label class="txt_dti_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<h4>Address</h4>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Building No.<span class="text-danger"></span></label>
-								<br>
-								<label class="txt_building_number_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Building Name <span class="text-danger"></span></label> <br>
-								<label class="txt_building_name_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Unit <span class="text-danger"> </span></label> <br>
-								<label class="txt_unit_no_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
+	<div class="modal fade" id="modal-View">
+		<div class="modal-dialog" style="max-width: 50%">
+			<form id="EditForm">
+				<div class="modal-content">
+					<div class="modal-header" style="background-color: #f59c1a">
+						<h4 class="modal-title" style="color: white"> Business Information</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
 					</div>
-					<div class="row">
-						<div class="col-lg-3 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Street<span class="text-danger"></span></label> <br>
-								<label class="txt_street_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Sitio<span class="text-danger"></span></label> <br>
-								<label class="txt_sitio_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Subdivision<span class="text-danger"></span></label> <br>
-								<label class="txt_subdivision_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Postal Code<span class="text-danger"></span></label> <br>
-								<label class="txt_postal_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<h4>Contact Information</h4>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Email Address<span class="text-danger"></span></label><br>
-								<label class="txt_business_email_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Telephone No.<span class="text-danger"></span></label><br>
-								<label class="txt_business_telephone_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Mobile No.<span class="text-danger"></span></label><br>
-								<label class="txt_business_mobile_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Total number of employees in Establishment<span class="text-danger"></span></label> <br>
-								<label class="txt_total_employee_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Number of employees residing within LGU<span class="text-danger"></span></label> <br>
-								<label class="txt_total_lgu_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Area<span class="text-danger"></span></label><br> <br>
-								<label class="txt_business_area_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<h4>Owner Information</h4>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">First Name<span class="text-danger"></span></label><br>
-								<label class="txt_owner_firstname_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Middle Name<span class="text-danger"></span></label><br>
-								<label class="txt_middlename_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Last Name<span class="text-danger"></span></label> <br>
-								<label class="txt_lastname_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Owner Address<span class="text-danger"></span></label><br>
-								<label class="txt_owner_address_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Owner Postal<span class="text-danger"></span></label><br>
-								<label class="txt_owner_postal_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Owner Email Address<span class="text-danger"></span></label><br>
-								<label class="txt_owner_email_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Owner Telephone No.<span class="text-danger"></span></label><br>
-								<label class="txt_owner_telephone_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Owner Mobile No.<span class="text-danger"></span></label><br>
-								<label class="txt_owner_mobile_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-					<h4>Incase of emergency</h4>
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Emergency Contact Person<span class="text-danger"></span></label><br>
-								<label class="txt_emergency_contact_person_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Emergency Contact Person's Contact No<span class="text-danger"></span></label> <br>
-								<label class="txt_emergency_person_contact_renew" style="font-weight: normal;">asd</label>
-
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Emergency Contact Person's Email<span class="text-danger"></span></label> <br>
-								<label class="txt_emergency_person_email_renew" style="font-weight: normal;">asd</label>
-							</div>
-						</div>
-					</div> <br>
-
-					<h4>Rented Business Place</h4>
-					<div class="divRent">
+					<div class="modal-body">
+						<input type="text" id="txt_business_id" hidden>
+						<h3><label class="lbl_business_name">WBB Toy Shop</label></h3>
+						{{--modal body start--}}
+						<h4>Business Details</h4>
+						{{-- 1 --}}
 						<div class="row">
 							<div class="col-lg-4 col-md-8">
 								<div class="stats-content">
-									<label for="txt_">Lessor Full Name<span class="text-danger"></span></label><br>
-									<label class="txt_lessor_name_renew" style="font-weight: normal;">asd</label>
-
+									<label for="txt_buiness_number_renew">Business Number<span class="text-danger"></span></label> <br>
+									<label class="txt_buiness_number_renew" style="font-weight: normal;">asd</label>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-8">
 								<div class="stats-content">
-									<label for="txt_">Lessor Address<span class="text-danger"></span></label><br>
-									<label class="txt_lessor_Address_renew" style="font-weight: normal;">asd</label>
+									<label for="txt_business_name_renew">Business Name<span class="text-danger"></span></label> <br>
+									<label class="txt_business_name_renew" style="font-weight: normal;">asd</label>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-8">
 								<div class="stats-content">
-									<label for="txt_">Lessor Postal<span class="text-danger"></span></label> <br>
-									<label class="txt_lessor_postal_renew" style="font-weight: normal;">asd</label>
+									<label for="txt_trade_name_renew">Trade Name<span class="text-danger"></span></label><br>
+									<label class="txt_trade_name_renew" style="font-weight: normal;">asd</label>
 
 								</div>
 							</div>
 						</div> <br>
-
+						{{-- 2 --}}
 						<div class="row">
-							<div class="col-lg-3 col-md-8">
+							<div class="col-lg-4 col-md-8">
 								<div class="stats-content">
-									<label for="txt_">Lessor Email Address <span class="text-danger"></span></label><br>
-									<label class="txt_lessor_email_renew" style="font-weight: normal;">asd</label>
+									<label for="txt_">Type of Business<span class="text-danger"></span></label><br>
+									<label class="sel_business_type_renew" style="font-weight: normal;">asd</label>
 
 								</div>
 							</div>
-							<div class="col-lg-3 col-md-8">
+							<div class="col-lg-4 col-md-8">
 								<div class="stats-content">
-									<label for="txt_">Lessor Telephone No.<span class="text-danger"></span></label><br>
-									<label class="txt_lessor_telephone_renew" style="font-weight: normal;">asd</label>
-
+									<label for="txt_">TIN No.<span class="text-danger"></span></label> <br>
+									<label class="txt_tin_no_renew" style="font-weight: normal;">asd</label>
 								</div>
 							</div>
-							<div class="col-lg-3 col-md-8">
+							<div class="col-lg-4 col-md-8">
 								<div class="stats-content">
-									<label for="txt_">Lessor Mobile No.<span class="text-danger"></span></label><br>
-									<label class="txt_lessor_mobile_renew" style="font-weight: normal;">asd</label>
-
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-8">
-								<div class="stats-content">
-									<label for="txt_">Monthly Rental<span class="text-danger"></span></label><br>
-									<label class="txt_monthly_rental_renew" style="font-weight: normal;">asd</label>
+									<label for="txt_">DTI/SEC/CDA Registration No.<span class="text-danger"></span></label> <br>
+									<label class="txt_dti_renew" style="font-weight: normal;">asd</label>
 								</div>
 							</div>
 						</div> <br>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
-				</div>
-		</form>
-	</div>
-</div>
-</div>
-<div class="modal fade" id="modal-Renew">
-	<div class="modal-dialog" style="max-width: 80%">
-		<form id="EditForm">
-			<div class="modal-content">
-				<div class="modal-header" style="background-color: #ffd900">
-					<h4 class="modal-title" style="color: white"> Renew Business</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Address<span class="text-danger"></span></label>
-								<textarea class="form-control" id="txt_business_address_renew" placeholder="Building Number"></textarea>
+						<h4>Address</h4>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Building No.<span class="text-danger"></span></label>
+									<br>
+									<label class="txt_building_number_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Building Name <span class="text-danger"></span></label> <br>
+									<label class="txt_building_name_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Unit <span class="text-danger"> </span></label> <br>
+									<label class="txt_unit_no_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Email Address<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_business_email_renew" placeholder="" />
+						<div class="row">
+							<div class="col-lg-3 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Street<span class="text-danger"></span></label> <br>
+									<label class="txt_street_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-3 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Telephone No.<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_business_telephone_renew" placeholder="" />
+							<div class="col-lg-3 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Sitio<span class="text-danger"></span></label> <br>
+									<label class="txt_sitio_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-2 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Postal Code<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_business_postal_renew" placeholder="" />
+							<div class="col-lg-3 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Subdivision<span class="text-danger"></span></label> <br>
+									<label class="txt_subdivision_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-					</div><br>
-					<div class="row">
-						
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Business Mobile No.<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_business_mobile_renew" placeholder="" />
+							<div class="col-lg-3 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Postal Code<span class="text-danger"></span></label> <br>
+									<label class="txt_postal_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-					</div> <br>
-					<h4>Incase of emergency</h4>
-					<div class="row">
-					<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Emergency Contact Person<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_emergency_person_contact_renew" placeholder="" />
+						</div> <br>
+						<h4>Contact Information</h4>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Email Address<span class="text-danger"></span></label><br>
+									<label class="txt_business_email_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Emergency Contact Person's Contact No<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_emergency_person_contact_no_renew" placeholder="" />
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Telephone No.<span class="text-danger"></span></label><br>
+									<label class="txt_business_telephone_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_">Emergency Contact Person's Email<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_emergency_person_email_renew" placeholder="" />
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Mobile No.<span class="text-danger"></span></label><br>
+									<label class="txt_business_mobile_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-					</div> <br>
-					<h5>Total number of employees in Establishment / Number of employees residing within LGU</h5>
-					<div class="row">
-						<div class="col-lg-2 col-md-8">
-							<div class="stats-content">
-								<label for="txt_total_employee_male_renew">Male<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_total_employee_male_renew" placeholder="" />
+						</div> <br>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Total number of employees in Establishment<span class="text-danger"></span></label> <br>
+									<label class="txt_total_employee_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-2 col-md-8">
-							<div class="stats-content">
-								<label for="txt_total_employee_female_renew">Female<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_total_employee_female_renew" placeholder="" />
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Number of employees residing within LGU<span class="text-danger"></span></label> <br>
+									<label class="txt_total_lgu_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-2 col-md-8">
-							<div class="stats-content">
-								<label for="txt_total_lgu_male_renew">Male<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_total_lgu_male_renew" placeholder="" />
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Area<span class="text-danger"></span></label><br> <br>
+									<label class="txt_business_area_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-2 col-md-8">
-							<div class="stats-content">
-								<label for="txt_total_lgu_female_renew">Female<span class="text-danger"></span></label>
-								<input class="form-control" id="txt_total_lgu_female_renew" placeholder="" />
+						</div> <br>
+						<h4>Owner Information</h4>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">First Name<span class="text-danger"></span></label><br>
+									<label class="txt_owner_firstname_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-4 col-md-8">
-							<div class="stats-content">
-								<label for="txt_business_area_renew">Business Area (SQM)<span class="text-danger"></span></label> <br>
-								<input class="form-control" id="txt_business_area_renew" placeholder="" />
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Middle Name<span class="text-danger"></span></label><br>
+									<label class="txt_middlename_renew" style="font-weight: normal;">asd</label>
+								</div>
 							</div>
-						</div>
-					</div> <br>
-					<h4>Rented Business Place</h4>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Last Name<span class="text-danger"></span></label> <br>
+									<label class="txt_lastname_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+						</div> <br>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Owner Address<span class="text-danger"></span></label><br>
+									<label class="txt_owner_address_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Owner Postal<span class="text-danger"></span></label><br>
+									<label class="txt_owner_postal_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+						</div> <br>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Owner Email Address<span class="text-danger"></span></label><br>
+									<label class="txt_owner_email_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Owner Telephone No.<span class="text-danger"></span></label><br>
+									<label class="txt_owner_telephone_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Owner Mobile No.<span class="text-danger"></span></label><br>
+									<label class="txt_owner_mobile_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+						</div> <br>
+						<h4>Incase of emergency</h4>
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Emergency Contact Person<span class="text-danger"></span></label><br>
+									<label class="txt_emergency_contact_person_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Emergency Contact Person's Contact No<span class="text-danger"></span></label> <br>
+									<label class="txt_emergency_person_contact_renew" style="font-weight: normal;">asd</label>
+
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Emergency Contact Person's Email<span class="text-danger"></span></label> <br>
+									<label class="txt_emergency_person_email_renew" style="font-weight: normal;">asd</label>
+								</div>
+							</div>
+						</div> <br>
+
+						<h4>Rented Business Place</h4>
 						<div class="divRent">
 							<div class="row">
 								<div class="col-lg-4 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Lessor Full Name<span class="text-danger"></span></label>
-										<input class="form-control" id="txt_lessor_name_renew" placeholder="" />
+										<label for="txt_">Lessor Full Name<span class="text-danger"></span></label><br>
+										<label class="txt_lessor_name_renew" style="font-weight: normal;">asd</label>
+
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Lessor Address<span class="text-danger"></span></label>
-										<input class="form-control" id="txt_lessor_Address_renew" placeholder="" />
+										<label for="txt_">Lessor Address<span class="text-danger"></span></label><br>
+										<label class="txt_lessor_Address_renew" style="font-weight: normal;">asd</label>
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Lessor Postal<span class="text-danger"></span></label>
-										<input class="form-control" id="txt_lessor_postal_renew" placeholder="" />
+										<label for="txt_">Lessor Postal<span class="text-danger"></span></label> <br>
+										<label class="txt_lessor_postal_renew" style="font-weight: normal;">asd</label>
+
 									</div>
 								</div>
 							</div> <br>
@@ -905,70 +746,229 @@
 							<div class="row">
 								<div class="col-lg-3 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Lessor Email Address <span class="text-danger"></span></label>
-										<input class="form-control" id="txt_lessor_email_renew" placeholder="" />
+										<label for="txt_">Lessor Email Address <span class="text-danger"></span></label><br>
+										<label class="txt_lessor_email_renew" style="font-weight: normal;">asd</label>
+
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Lessor Telephone No.<span class="text-danger"></span></label>
-										<input class="form-control" id="txt_lessor_telephone_renew" placeholder="" />
+										<label for="txt_">Lessor Telephone No.<span class="text-danger"></span></label><br>
+										<label class="txt_lessor_telephone_renew" style="font-weight: normal;">asd</label>
+
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Lessor Mobile No.<span class="text-danger"></span></label>
-										<input class="form-control" id="txt_lessor_mobile_renew" placeholder="" />
+										<label for="txt_">Lessor Mobile No.<span class="text-danger"></span></label><br>
+										<label class="txt_lessor_mobile_renew" style="font-weight: normal;">asd</label>
+
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-8">
 									<div class="stats-content">
-										<label for="txt_">Monthly Rental<span class="text-danger"></span></label>
-										<input class="form-control" id="txt_monthly_rental_renew" placeholder="" />
+										<label for="txt_">Monthly Rental<span class="text-danger"></span></label><br>
+										<label class="txt_monthly_rental_renew" style="font-weight: normal;">asd</label>
 									</div>
 								</div>
 							</div> <br>
 						</div>
-					<table class="table table-striped table-bordered" id="tbl_business_acitivity_renew">
-
-						<thead>
-							<tr>
-								<th style="text-align: center;">Line of Business</th>
-								<th style="text-align: center;" width="10%">No of units</th>
-								<th style="text-align: center;">Capitalization (for new business) </th>
-								<th style="text-align: center;" colspan="2">Gross/Sales Receipts</th>
-								<th style="text-align: center;">Action</th>
-
-							</tr>
-							<tr>
-
-								<th></th>
-								<th></th>
-								<th></th>
-								<th style="text-align: center;">ESSENTIAL</th>
-								<th style="text-align: center;">NON-ESSENTIAL</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-
-						</tbody>
-					</table>
-					<div class="clearfix">
-						<div class="btn-group">
-							<button type="button" class="btn btn-success add btn-sm" id="btnRenewBusinessActivity">
-								<i class="fa fa-plus"></i>
-							</button>
-						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
-					<a style="background-color: #ffd900;" href="javascript:;" class="btn btn-white" id="btnRenewSubmit">Renew</a>
-				</div>
-		</form>
+					<div class="modal-footer">
+						<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+					</div>
+			</form>
+		</div>
 	</div>
 </div>
+	<div class="modal fade" id="modal-Renew">
+		<div class="modal-dialog" style="max-width: 80%">
+			<form id="EditForm">
+				<div class="modal-content">
+					<div class="modal-header" style="background-color: #ffd900">
+						<h4 class="modal-title" style="color: white"> Renew Business</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Address<span class="text-danger"></span></label>
+									<textarea class="form-control" id="txt_business_address_renew" placeholder="Building Number"></textarea>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Email Address<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_business_email_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Telephone No.<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_business_telephone_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Postal Code<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_business_postal_renew" placeholder="" />
+								</div>
+							</div>
+						</div><br>
+						<div class="row">
+							
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Business Mobile No.<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_business_mobile_renew" placeholder="" />
+								</div>
+							</div>
+						</div> <br>
+						<h4>Incase of emergency</h4>
+						<div class="row">
+						<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Emergency Contact Person<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_emergency_person_contact_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Emergency Contact Person's Contact No<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_emergency_person_contact_no_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_">Emergency Contact Person's Email<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_emergency_person_email_renew" placeholder="" />
+								</div>
+							</div>
+						</div> <br>
+						<h5>Total number of employees in Establishment / Number of employees residing within LGU</h5>
+						<div class="row">
+							<div class="col-lg-2 col-md-8">
+								<div class="stats-content">
+									<label for="txt_total_employee_male_renew">Male<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_total_employee_male_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-8">
+								<div class="stats-content">
+									<label for="txt_total_employee_female_renew">Female<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_total_employee_female_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-8">
+								<div class="stats-content">
+									<label for="txt_total_lgu_male_renew">Male<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_total_lgu_male_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-8">
+								<div class="stats-content">
+									<label for="txt_total_lgu_female_renew">Female<span class="text-danger"></span></label>
+									<input class="form-control" id="txt_total_lgu_female_renew" placeholder="" />
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-8">
+								<div class="stats-content">
+									<label for="txt_business_area_renew">Business Area (SQM)<span class="text-danger"></span></label> <br>
+									<input class="form-control" id="txt_business_area_renew" placeholder="" />
+								</div>
+							</div>
+						</div> <br>
+						<h4>Rented Business Place</h4>
+							<div class="divRent">
+								<div class="row">
+									<div class="col-lg-4 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Lessor Full Name<span class="text-danger"></span></label>
+											<input class="form-control" id="txt_lessor_name_renew" placeholder="" />
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Lessor Address<span class="text-danger"></span></label>
+											<input class="form-control" id="txt_lessor_Address_renew" placeholder="" />
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Lessor Postal<span class="text-danger"></span></label>
+											<input class="form-control" id="txt_lessor_postal_renew" placeholder="" />
+										</div>
+									</div>
+								</div> <br>
+
+								<div class="row">
+									<div class="col-lg-3 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Lessor Email Address <span class="text-danger"></span></label>
+											<input class="form-control" id="txt_lessor_email_renew" placeholder="" />
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Lessor Telephone No.<span class="text-danger"></span></label>
+											<input class="form-control" id="txt_lessor_telephone_renew" placeholder="" />
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Lessor Mobile No.<span class="text-danger"></span></label>
+											<input class="form-control" id="txt_lessor_mobile_renew" placeholder="" />
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-8">
+										<div class="stats-content">
+											<label for="txt_">Monthly Rental<span class="text-danger"></span></label>
+											<input class="form-control" id="txt_monthly_rental_renew" placeholder="" />
+										</div>
+									</div>
+								</div> <br>
+							</div>
+						<table class="table table-striped table-bordered" id="tbl_business_acitivity_renew">
+
+							<thead>
+								<tr>
+									<th style="text-align: center;">Line of Business</th>
+									<th style="text-align: center;" width="10%">No of units</th>
+									<th style="text-align: center;">Capitalization (for new business) </th>
+									<th style="text-align: center;" colspan="2">Gross/Sales Receipts</th>
+									<th style="text-align: center;">Action</th>
+
+								</tr>
+								<tr>
+
+									<th></th>
+									<th></th>
+									<th></th>
+									<th style="text-align: center;">ESSENTIAL</th>
+									<th style="text-align: center;">NON-ESSENTIAL</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+						</table>
+						<div class="clearfix">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success add btn-sm" id="btnRenewBusinessActivity">
+									<i class="fa fa-plus"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+						<a style="background-color: #ffd900;" href="javascript:;" class="btn btn-white" id="btnRenewSubmit">Renew</a>
+					</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 </div>

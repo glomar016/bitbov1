@@ -106,6 +106,9 @@
                                         <th>
                                             <center>SERIAL_NO   </center>
                                         </th>
+                                        <th>
+                                            <center>STATUS   </center>
+                                        </th>
                                         {{-- <th>Period</th> --}}
                                         <th>
                                             <center>Action</center>
@@ -124,15 +127,29 @@
                                             <td>{{$row->MODEL}}</td>
                                             <td>{{$row->CAPACITY}}</td>
                                             <td>{{$row->SERIAL_NO}}</td>
-                                            
+                                            @if($row->NEW_RENEW_STATUS == "New")
+                                            <td>
+                                                <h5><span class="label label-success">New</span></h5>
+                                            </td>
+                                            @else
+                                            <td>
+                                                <h5><span class="label label-purple">Renewed</span></h5>
+                                            </td>
+                                            @endif
                                             <td>
                                                 <div class="btn-group m-r-5 m-b-5">
                                                     <a href="javascript:;" class="btn btn-info">Action</a>
                                                     <a href="javascript:;" data-toggle="dropdown" class="btn btn-info dropdown-toggle"></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a data-toggle='modal' data-target='#modal-Edit' id="btnEdit" style="cursor: pointer;">Edit</a></li>
-                                                        <li><a id="btn_view" style="cursor: pointer;">View</a></li>
+                                                        <li><a data-toggle='modal' data-target='#modal-View' id="btnView" style="cursor: pointer;">View</a></li>
+                                                        @if((date('j') == '1') && date('n') > 1 && date('n') < 20 && $row->NEW_RENEW_STATUS == "New")
+                                                        <li><a data-toggle='modal' data-target='#modal-Renew' id="btn_renew" style="cursor: pointer;">Renew</a></li>
+                                                        @else
+                                                        <li><a data-toggle='modal' data-target='#modal-Renew' id="btn_renew" style="cursor: pointer;">Renew (Has Penalty)</a></li>
+                                                        @endif
                                                         <li class="divider"></li>
+
                                                     </ul>
                                                 </div>
                                             </td>
@@ -169,92 +186,271 @@
                         <!-- end panel-body -->
                     </div>
                 </div>
+
             </div>
 
-            <!-- MODALS -->
-            <div class="modal fade" id="modal-Edit">
-                <div class="modal-dialog" style="max-width: 80%;">
-                    <form id="weightsandmeasure_form">
-                        <div class="modal-content">
-                            <div class="modal-header" style="background-color: #17a2b8">
-                                <h4 class="modal-title" style="color: white">Edit Business</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
-                            </div>
-                            
-                            <div class="modal-body">
-                                <h3><label id="lbl_business_name">WBB Toy Shop</label></h3>
-                                <input type="text" id="txt_weights_and_measure_id" name="txt_weights_and_measure_id" hidden>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_business_number">Business Number<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_business_number" name="txt_business_number" placeholder="" readonly value="XXXXX-XXXXX" />
+            <div><!-- MODALS -->
+                <div class="modal fade" id="modal-Edit">
+                    <div class="modal-dialog" style="max-width: 80%;">
+                        <form id="weightsandmeasure_form">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #17a2b8">
+                                    <h4 class="modal-title" style="color: white">Edit Business</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+                                </div>
+                                
+                                <div class="modal-body">
+                                    <h3><label id="lbl_business_name">WBB Toy Shop</label></h3>
+                                    <input type="text" id="txt_weights_and_measure_id" name="txt_weights_and_measure_id" hidden>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_business_number">Business Number<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_business_number" name="txt_business_number" placeholder="" readonly value="XXXXX-XXXXX" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_business_name">Business Name<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_business_name" name="txt_business_name" placeholder="" readonly value="Test Name" />
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_business_name">Business Name<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_business_name" name="txt_business_name" placeholder="" readonly value="Test Name" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div><br>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_license_no_edit">License No.<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_license_no_edit" name="txt_license_no_edit" placeholder=""/>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_license_no_edit">License No.<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_license_no_edit" name="txt_license_no_edit" placeholder=""/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_license_date_edit">License Date<span class="text-danger"></span></label>
-                                            <input class="form-control" type="date" id="txt_license_date_edit" name="txt_license_date_edit" placeholder="" />
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_license_date_edit">License Date<span class="text-danger"></span></label>
+                                                <input class="form-control" type="date" id="txt_license_date_edit" name="txt_license_date_edit" placeholder="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div><br>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_device_type_edit">Device Type<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_device_type_edit" name="txt_device_type_edit" placeholder=""  />
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_device_type_edit">Device Type<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_device_type_edit" name="txt_device_type_edit" placeholder=""  />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_brand_edit">Brand<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_brand_edit" name="txt_brand_edit" placeholder="" />
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_brand_edit">Brand<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_brand_edit" name="txt_brand_edit" placeholder="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_model_edit">Model<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_model_edit" name="txt_model_edit" placeholder="" />
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_model_edit">Model<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_model_edit" name="txt_model_edit" placeholder="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div><br>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_capacity_edit">Capacity<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_capacity_edit" name="txt_capacity_edit" placeholder=""  />
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_capacity_edit">Capacity<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_capacity_edit" name="txt_capacity_edit" placeholder=""  />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-8">
-                                        <div class="stats-content">
-                                            <label for="txt_serial_no_edit">Serial No<span class="text-danger"></span></label>
-                                            <input class="form-control" id="txt_serial_no_edit" name="txt_serial_no_edit" placeholder="" />
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_serial_no_edit">Serial No<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_serial_no_edit" name="txt_serial_no_edit" placeholder="" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="modal-footer">
-                                <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
-                                <input id="btnWeightsAndMeasureUpdate" class="btn btn-yellow" type="submit" value="Update">
-                            </div>
-                    </form>
+                                
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+                                    <input id="btnWeightsAndMeasureUpdate" class="btn btn-yellow" type="submit" value="Update">
+                                </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            
+            <div>
+                <!-- MODALS -->
+                <div class="modal fade" id="modal-View">
+                    <div class="modal-dialog" style="max-width: 50%;">
+                        <form id="weightsandmeasure_renew_form">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #28a745">
+                                    <h4 class="modal-title" style="color: black">View Business</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+                                </div>
+                                
+                                <div class="modal-body">
+                                    <h3><label id="lbl_business_name_view">WBB Toy Shop</label></h3>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_business_number_view">Business Number<span class="text-danger"></span></label><br>
+                                                <label class="txt_business_number_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_business_name_view">Business Name<span class="text-danger"></span></label><br>
+                                                <label class="txt_business_name_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_license_no_view">License No.<span class="text-danger"></span></label><br>
+                                                <label class="txt_license_no_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_license_date_view">License Date<span class="text-danger"></span></label><br>
+                                                <label class="txt_license_date_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_device_type_view">Device Type<span class="text-danger"></span></label><br>
+                                                <label class="txt_device_type_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_brand_view">Brand<span class="text-danger"></span></label><br>
+                                                <label class="txt_buiness_number_renew" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_model_view">Model<span class="text-danger"></span></label><br>
+                                                <label class="txt_model_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_capacity_view">Capacity<span class="text-danger"></span></label><br>
+                                                <label class="txt_capacity_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_serial_no_view">Serial No<span class="text-danger"></span></label><br>
+                                                <label class="txt_serial_no_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="modal fade" id="modal-Renew">
+                    <div class="modal-dialog" style="max-width: 80%">
+                        <form id="viewForm">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #f59c1a">
+                                    <h4 class="modal-title" style="color: white"> Business Information</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+                                </div>
+                                
+                                <div class="modal-body">
+                                    <h3><label id="lbl_business_name_renew">WBB Toy Shop</label></h3>
+                                    <input type="text" id="txt_weights_and_measure_id_renew" name="txt_weights_and_measure_id_renew" hidden>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_business_number_renew">Business Number<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_business_number_renew" name="txt_business_number_renew" placeholder="" readonly value="XXXXX-XXXXX" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_business_name_renew">Business Name<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_business_name_renew" name="txt_business_name_renew" placeholder="" readonly value="Test Name" />
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_license_no_edit_renew">License No.<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_license_no_edit_renew" name="txt_license_no_edit_renew" placeholder=""/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_license_date_edit_renew">License Date<span class="text-danger"></span></label>
+                                                <input class="form-control" type="date" id="txt_license_date_edit_renew" name="txt_license_date_edit_renew" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_device_type_edit_renew">Device Type<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_device_type_edit_renew" name="txt_device_type_edit_renew" placeholder=""  />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_brand_edit_renew">Brand<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_brand_edit_renew" name="txt_brand_edit_renew" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_model_edit_renew">Model<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_model_edit_renew" name="txt_model_edit_renew" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_capacity_edit_renew">Capacity<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_capacity_edit_renew" name="txt_capacity_edit_renew" placeholder=""  />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_serial_no_edit_renew">Serial No<span class="text-danger"></span></label>
+                                                <input class="form-control" id="txt_serial_no_edit_renew" name="txt_serial_no_edit_renew" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+                                    <input id="btnWeightsAndMeasureRenew" class="btn btn-success" type="submit" value="Renew">
+                                </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            
+            
+
+
+            
 
             <!-- END OF MODALS -->
 			
@@ -264,6 +460,8 @@
 			<!-- end row -->
 		</div>
 		<!-- end #content -->
+
+            
 
     
 @endsection
@@ -348,7 +546,6 @@
             })
     })
 
-
     $("#btnAddWeightsAndMeasureActivity").on('click', function(e){
         e.preventDefault();
 
@@ -392,6 +589,41 @@
         })
     })
 
+    $('#btnView').on('click', function(e) {
+        e.preventDefault();
+		
+		var row = $(this).closest("tr");
+		weights_and_measure_id = $(this).closest('tr').attr('id');
+
+        console.log(weights_and_measure_id);
+
+		let data = {
+			'_token': " {{ csrf_token() }}",
+			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+			'TYPE': 'weightsandmeasure'
+		};
+		$.ajax({
+			url: "{{route('SpecificBusinessApplication')}}",
+			type: 'post',
+			data: data,
+			success:function(response) {
+                let newData = response.specific_business;
+                $('#lbl_business_name_view').html(newData[0].BUSINESS_NAME);
+                $('.txt_business_number_view').html(newData[0].BUSINESS_OR_NUMBER);
+                $('.txt_business_name_view').html(newData[0].BUSINESS_NAME);
+                $('.txt_license_no_view').html(newData[0].LICENSE_NO);
+                $('.txt_license_date_view').html(newData[0].LICENSE_DATE);
+                $('.txt_device_type_view').html(newData[0].DEVICE_TYPE);
+                $('.txt_brand_view').html(newData[0].BRAND);
+                $('.txt_model_view').html(newData[0].MODEL);
+                $('.txt_capacity_view').html(newData[0].CAPACITY);
+                $('.txt_serial_no_view').html(newData[0].SERIAL_NO);
+			},
+			error:function(error) {
+				console.log(error)
+			}
+		});
+	});
     $('#btnEdit').on('click', function(e) {
         e.preventDefault();
 		
@@ -411,6 +643,7 @@
 			data: data,
 			success:function(response) {
                 let newData = response.specific_business;
+                $('#lbl_business_name').html(newData[0].BUSINESS_NAME);
                 $('#txt_weights_and_measure_id').val(newData[0].WEIGHTS_AND_MEASURE_ID);
                 $('#txt_business_number').val(newData[0].BUSINESS_OR_NUMBER);
                 $('#txt_business_name').val(newData[0].BUSINESS_NAME);
@@ -428,17 +661,89 @@
 		});
 	});
 
+    $('#btn_renew').on('click', function(e) {
+        e.preventDefault();
+		
+		var row = $(this).closest("tr");
+		weights_and_measure_id = $(this).closest('tr').attr('id');
+
+		let data = {
+			'_token': " {{ csrf_token() }}",
+			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+			'TYPE': 'weightsandmeasure'
+		};
+		$.ajax({
+			url: "{{route('SpecificBusinessApplication')}}",
+			type: 'post',
+			data: data,
+			success:function(response) {
+                let newData = response.specific_business;
+                $('#lbl_business_name_renew').html(newData[0].BUSINESS_NAME)
+                $('#txt_weights_and_measure_id_renew').val(newData[0].WEIGHTS_AND_MEASURE_ID);
+                $('#txt_business_number_renew').val(newData[0].BUSINESS_OR_NUMBER);
+                $('#txt_business_name_renew').val(newData[0].BUSINESS_NAME);
+                $('#txt_license_no_edit_renew').val(newData[0].LICENSE_NO);
+                $('#txt_license_date_edit_renew').val(newData[0].LICENSE_DATE);
+                $('#txt_device_type_edit_renew').val(newData[0].DEVICE_TYPE);
+                $('#txt_brand_edit_renew').val(newData[0].BRAND);
+                $('#txt_model_edit_renew').val(newData[0].MODEL);
+                $('#txt_capacity_edit_renew').val(newData[0].CAPACITY);
+                $('#txt_serial_no_edit_renew').val(newData[0].SERIAL_NO);
+			},
+			error:function(error) {
+				console.log(error)
+			}
+		});
+	});
+
     $("#weightsandmeasure_form").on('submit', function(e){
         e.preventDefault();
         var form = $("#weightsandmeasure_form").serializeArray();
         let data = {
             '_token': " {{ csrf_token() }}",
+            'TYPE': "NEW",
         }
 
         
         $.each(form, function(){
             data[[this.name]] = this.value;
         })
+
+        $.ajax({
+            url: "{{route('UpdateWeightsAndMeasure')}}",
+            type: "post",
+            data: data,
+
+            success: function(response){
+                swal({
+                    title: 'Success',
+                    text: 'Saved Record!',
+                    icon: 'success',
+                    timer: 1000
+                });
+                window.location.reload();
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+
+    })
+    
+    $("#weightsandmeasure_renew_form").on('submit', function(e){
+        e.preventDefault();
+        var form = $("#weightsandmeasure_renew_form").serializeArray();
+        let data = {
+            '_token': " {{ csrf_token() }}",
+            'TYPE': "RENEW",
+        }
+
+        
+        $.each(form, function(){
+            data[[this.name]] = this.value;
+        })
+
+        console.log(data);
 
         $.ajax({
             url: "{{route('UpdateWeightsAndMeasure')}}",

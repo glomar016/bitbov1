@@ -558,7 +558,22 @@ class BusinessController extends Controller
     public function updateWeightsAndMeasure(Request $request)
     {
 
-        $update = DB::table('t_weights_and_measure')
+        if($request->TYPE == "RENEW"){
+            $update = DB::table('t_weights_and_measure')
+            ->where('WEIGHTS_AND_MEASURE_ID', $request->txt_weights_and_measure_id_renew)
+            ->update(array(
+                'LICENSE_NO' => $request->txt_license_no_edit_renew
+                , 'LICENSE_DATE' => $request->txt_license_date_edit_renew
+                , 'DEVICE_TYPE' => $request->txt_device_type_edit_renew
+                , 'BRAND' => $request->txt_brand_edit_renew
+                , 'MODEL' => $request->txt_model_edit_renew
+                , 'CAPACITY' => $request->txt_capacity_edit_renew
+                , 'SERIAL_NO' => $request->txt_serial_no_edit_renew
+                , 'NEW_RENEW_STATUS' => 'Renew'
+        ));
+        }
+        else if($request->TYPE == "NEW"){
+            $update = DB::table('t_weights_and_measure')
             ->where('WEIGHTS_AND_MEASURE_ID', $request->txt_weights_and_measure_id)
             ->update(array(
                 'LICENSE_NO' => $request->txt_license_no_edit
@@ -569,6 +584,9 @@ class BusinessController extends Controller
                 , 'CAPACITY' => $request->txt_capacity_edit
                 , 'SERIAL_NO' => $request->txt_serial_no_edit
         ));
+        }
+
+        
     }
 
 

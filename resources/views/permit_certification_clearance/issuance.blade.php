@@ -1504,7 +1504,6 @@
 					adddress_cap = address.charAt(0).toUpperCase() + name.slice(1)
 					var nextMonth = moment.addRealMonth(moment(date_issued)).format('YYYY-MM-DD');
 
-
 					if (Object.keys(response['deregatory_record']).length == 0) {
 						$('#lbl_remarks').text('NO DEREGATORY RECORD');
 					} else {
