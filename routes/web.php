@@ -11,6 +11,7 @@
 */
 
 Route::get('/getBusinessNumber', 'BusinessController@getBusinessNumber')->name('getBusinessNumber');
+Route::get('/getSpecificWeightsAndMeasure', 'BusinessController@getSpecificWeightsAndMeasure')->name('getSpecificWeightsAndMeasure');
 
 Route::get('/getLineofBusiness', 'BusinessController@getLineofBusiness')->name('getLineofBusiness');
 Route::post('/improvement_building', 'BusinessController@improvement_building')->name('improvement_building');

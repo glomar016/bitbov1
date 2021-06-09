@@ -929,6 +929,7 @@
 					$.each(response["barangay_clearance"], function() {
 
 						business_name = this["BUSINESS_NAME"];
+						business_id = this["BUSINESS_ID"];
 						address = this["BUSINESS_ADDRESS"];
 						or_no = this["OR_NO"];
 						or_date = this["OR_DATE"];
@@ -949,7 +950,30 @@
 					$('#lbl_owners_name').text(owners_name);
 					$('#lbl_owners_address').text(owners_address);
 
+					let wmData = {
+						'_token': " {{ csrf_token() }}",
+						'BUSINESS_ID': business_id
+					}
 
+					$.ajax({
+						url: "{{route('getSpecificWeightsAndMeasure')}}",
+						type: "GET",
+						data: wmData,
+						
+						success: function(response){
+							var weights_and_measure = response.weights_and_measure;
+							console.log(weights_and_measure);
+							$('#lbl_reg_no').text(weights_and_measure[0].LICENSE_NO);
+							$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
+							$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
+							$('#lbl_device_model').text(weights_and_measure[0].MODEL);
+							$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
+							$('#lbl_device_serial').text(weights_and_measure[0].SERIAL_NO);
+							$('#lbl_business_name').text(weights_and_measure[0].BUSINESS_NAME);
+							$('#lbl_business_address').text(weights_and_measure[0].BUSINESS_ADDRESS);
+						}
+					})
+					
 
 					$("#fmbcfwm").printThis({
 						debug: false,

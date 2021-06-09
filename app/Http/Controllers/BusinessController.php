@@ -589,5 +589,15 @@ class BusinessController extends Controller
         
     }
 
+    public function getSpecificWeightsAndMeasure(Request $request)
+    {
+        $weights_and_measure = DB::table('t_weights_and_measure as wm')
+        ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+        ->where('wm.BUSINESS_ID', $request->BUSINESS_ID)
+        ->get();
+
+        return response()->json(['weights_and_measure' => $weights_and_measure]);
+    }
+
 
 }
