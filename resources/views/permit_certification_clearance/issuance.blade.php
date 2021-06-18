@@ -42,6 +42,12 @@
 				<span class="d-sm-block d-none">Residents</span>
 			</a>
 		</li>
+		<li class="nav-items">
+			<a href="#nav-pills-tab-4" data-toggle="tab" class="nav-link">
+
+				<span class="d-sm-block d-none">Weights and Measure</span>
+			</a>
+		</li>
 	</ul>
 
 	<div class="tab-content">
@@ -210,7 +216,7 @@
 			</div>
 		</div>
 
-		{{-- NAV PILLS TAB 2 --}}
+		{{-- NAV PILLS TAB 3 --}}
 		<div class="tab-pane fade" id="nav-pills-tab-3">
 			<div class="panel panel-inverse">
 				<!-- begin panel-heading -->
@@ -288,6 +294,66 @@
 					</table>
 				</div>
 				<!-- end panel-body -->
+			</div>
+		</div>
+		
+		{{-- NAV PILLS TAB 4 --}}
+		<div class="tab-pane fade" id="nav-pills-tab-4">
+			<div class="panel panel-inverse">
+				<div class="panel-heading">
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+					<h4 class="panel-title">Issuance Verification </h4>
+				</div>
+				<div class="alert alert-yellow fade show">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					The following are the existing records of the residents within the system.
+				</div>
+				<div class="panel-body">
+					<table id="tbl_business_weights_and_measure_list" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								{{-- <th>Form Number</th> --}}
+								<th style="width: 12%">
+									<center>Business Number</center>
+								</th>
+								<th style="width: 20%">
+									<center>Business Name</center>
+								</th>
+								<th>
+									<center>Owner's Name</center>
+								</th>
+								<th width>
+									<center>Action</center>
+								</th>
+								<th hidden>
+								<th hidden>FORM_ID</th>
+								<th hidden>CLEARANCE_ID</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($approved_weights_and_measure as $row)
+							<tr class="gradeC" id="	">
+								{{-- <th>{{$row->FORM_NUMBER}}</th> --}}
+								<td>{{$row->BUSINESS_OR_NUMBER}}</td> {{-- 0 --}}
+								<td>{{$row->BUSINESS_NAME}}</td> {{-- 1 --}}
+								<td>{{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}} {{$row->BUSINESS_OWNER_LASTNAME}}</td> {{-- 1 --}}
+								<td>
+									<button type="button" class="btn btn-yellow btn_print_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
+										<i class="fa fa-file-alt">&nbsp;</i> Print
+									</button>
+								</td> {{-- 6 --}}
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 
@@ -1003,6 +1069,8 @@
 		});
 	});
 
+	
+
 	function getAge(dateString) {
 		var today = new Date();
 		var birthDate = new Date(dateString);
@@ -1602,6 +1670,69 @@
 		});
 
 	});
+
+
+	$('.btn_print_weights_and_measure').on('click', function(){
+		var weights_and_measure_id = this.id;
+
+		console.log(weights_and_measure_id);
+
+		let data = {
+			'_token': " {{ csrf_token() }}",
+			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+			'TYPE': 'weightsandmeasure'
+		};
+
+		$.ajax({
+			url: "{{route('getApprovedWeightsAndMeasureApplicationForm')}}",
+			type: 'POST',
+			data: data,
+
+			success: function(response) {
+				let weights_and_measure = response.pending_weights_and_measure;
+				console.log(response);
+
+				let control_no = formatCtrlNo(weights_and_measure[0].CONTROL_NO);
+
+				$('#lbl_or_no_f').text(weights_and_measure[0].OR_NO);
+				$('#lbl_control_no_f').text(control_no);
+				$('#lbl_or_date_f').text(weights_and_measure[0].OR_DATE);
+				$('#lbl_amount_f').text(weights_and_measure[0].OR_AMOUNT);
+				$('#lbl_account_no_f').text(weights_and_measure[0].BUSINESS_OR_NUMBER);
+
+				$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
+				$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);
+
+				$('#lbl_reg_no').text(weights_and_measure[0].LICENSE_NO);
+				$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
+				$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
+				$('#lbl_device_model').text(weights_and_measure[0].MODEL);
+				$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
+				$('#lbl_device_serial').text(weights_and_measure[0].SERIAL_NO);
+				$('#lbl_business_name').text(weights_and_measure[0].BUSINESS_NAME);
+				$('#lbl_business_address').text(weights_and_measure[0].BUSINESS_ADDRESS);
+			
+				$("#fmbcfwm").printThis({
+						debug: false,
+						debug: false,
+						importCSS: true,
+						importStyle: true,
+						loadCSS: "",
+						pageTitle: "fdas",
+						removeInline: false,
+						printDelay: 1000,
+						header: null,
+						footer: "",
+						base: false,
+						formValues: true,
+						canvas: false,
+						doctypeString: null,
+						removeScripts: false,
+						copyTagClasses: false
+					});
+			}
+		})
+	})
 
 	// for modal
 	function hideModal() {

@@ -215,6 +215,7 @@ class RequestController extends Controller
         $PURPOSE = $request->PURPOSE;
         $RESIDENT_ID = $request->RESIDENT_ID;
         $BUILDING_ID = $request->BUILDING_ID;
+        $WEIGHTS_AND_MEASURE_ID = $request->F_WEIGHTS_AND_MEASURE_ID;
         $TRANSACTION_ID = $request->TRANSACTION_ID;
 
         $clearance_type_id = DB::table('r_paper_type')
@@ -251,7 +252,7 @@ class RequestController extends Controller
         } else if ($PAPER_TYPE_CLEARANCE == "Barangay Clearance Weights and Measure") {
             $application_form = DB::Table('t_application_form')
                 ->insert(array(
-                    'FORM_NUMBER' => 'SSSS-SSSS', 'PAPER_TYPE_ID' => $form_type_id->PAPER_TYPE_ID, 'STATUS' => 'Pending', 'BUSINESS_ID' => $BUSINESS_ID, 'RECEIVED_BY' => session('session_full_name'), 'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID, 'APPLICANT_NAME' => $APPLICANT_NAME, 'FORM_ID' => $latest_form_id
+                    'FORM_NUMBER' => 'SSSS-SSSS', 'PAPER_TYPE_ID' => $form_type_id->PAPER_TYPE_ID, 'STATUS' => 'Pending', 'WEIGHTS_AND_MEASURE_ID' => $WEIGHTS_AND_MEASURE_ID, 'RECEIVED_BY' => session('session_full_name'), 'REQUESTED_PAPER_TYPE_ID' => $clearance_type_id->PAPER_TYPE_ID, 'APPLICANT_NAME' => $APPLICANT_NAME, 'FORM_ID' => $latest_form_id
                 ));
 
             $business_permit = DB::table('t_bf_barangay_clearance')
@@ -262,7 +263,8 @@ class RequestController extends Controller
             DB::table('t_weights_and_measure')
             ->where('WEIGHTS_AND_MEASURE_ID', $request->WEIGHTS_AND_MEASURE_ID)
                 ->update(array(
-                    'EVALUATED' => 1
+                    'EVALUATED' => 1,
+                    'STATUS' => 'Pending'
                 ));
 
             return response()->json(['message' => $latest_form_id]);

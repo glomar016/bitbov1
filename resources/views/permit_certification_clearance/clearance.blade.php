@@ -589,7 +589,7 @@
 		$('#txt_company_name_e').val(business_name);
 		$('#txt_address_e').val(business_address);
 
-		//Clearance Weight and Measure)
+		//Clearance Weight and Measure
 		$('#txt_company_name_f').val(business_name);
 		$('#txt_address_f').val(business_address);
 

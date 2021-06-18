@@ -43,6 +43,12 @@
 				<span class="d-sm-block d-none">Resident Application</span>
 			</a>
 		</li>
+		<li class="nav-items">
+			<a href="#nav-pills-tab-4" data-toggle="tab" class="nav-link" >
+
+				<span class="d-sm-block d-none">Weights and Measure Application</span>
+			</a>
+		</li>
 	</ul>
 
 	<div class="tab-content">	
@@ -260,6 +266,79 @@
 			</div> 
 		</div>
 
+		{{-- NAV PILLS TAB 4 --}}
+		<div class="tab-pane fade" id="nav-pills-tab-4">
+			<div class="panel panel-inverse">
+				<!-- begin panel-heading -->
+				<div class="panel-heading">
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+					<h4 class="panel-title">Issuance Verification </h4>
+				</div>
+				<!-- end panel-heading -->
+				<div class="alert alert-yellow fade show">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">×</span>
+					</button>
+					The following are the existing records of the businesses within the system.
+				</div>
+				
+				<!-- begin panel-body -->
+				<div class="panel-body">
+					<table id="tbl_pending_weights_and_measure" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th style="width: 15%"><center>Business Number<center></th>
+								<th><center>Business Name</center></th>
+								<th><center>License No</center></th>
+								<th><center>Device Type</center></th>
+								<th><center>Brand</center></th>
+								<th><center>Model</center></th>
+								<th><center>Capacity</center></th>
+								<th><center>Serial No</center></th>
+								<th><center>Requested Date</center></th>
+								<th><center>Applicant Name</center></th>
+								<th><center>Action</center></th>
+								<th hidden >REQUESTED_PAPER_TYPE</th>
+								<th hidden >FORM_PAPER_TYPE</th>
+								<th hidden >BUSINESS_NATURE_NAME</th>
+								<th hidden >FORM_ID</th>
+								<th hidden >REQUESTED_PAPER_TYPE</th>
+								<th hidden>FORM date</th>
+								<th hidden>Business ID</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($pending_weights_and_measure as $row)
+							<tr class="gradeC" id="{{$row->BUSINESS_ID}}">
+								<td><center>{{$row->BUSINESS_OR_NUMBER}}</center></td> {{-- 0 --}}
+								<td><center>{{$row->BUSINESS_NAME}}</center></td> {{-- 1 --}}
+								<td><center>{{$row->LICENSE_NO}}</center></td> {{-- 2 --}}
+								<td><center>{{$row->DEVICE_TYPE}}</center></td> {{-- 3 --}}
+								<td><center>{{$row->BRAND}}</center></td> {{-- 4 --}}
+								<td><center>{{$row->MODEL}}</center></td> {{-- 5 --}}
+								<td><center>{{$row->CAPACITY}}</center></td> {{-- 6 --}}
+								<td><center>{{$row->SERIAL_NO}}</center></td> {{-- 7 --}}
+								<td><center>{{$row->FORM_DATE}}</center></td> {{-- 7 --}}
+								<td><center>{{$row->APPLICANT_NAME}}</center></td> {{-- 7 --}}
+								<td>
+									<button type="button" class="btn btn-primary btnEvaluateWeightsAndMeasure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}"  data-toggle="modal">
+										<i class="fa fa-circle"></i> Evaluate 
+									</button>
+								</td> {{-- 6 --}}
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+				<!-- end panel-body -->
+			</div> 
+		</div>
+
 	</div>		
 	{{-- modal Approval - Business --}}
 	<div class="modal fade" id="modal-Approval" data-backdrop="static">
@@ -440,6 +519,60 @@
 								</div>
 							</div>
 						</div>
+
+						<div id="divWeightsAndMeasure">
+							<h3><b><label id="lbl_resident_name" >Weights and Measure</label></b></h3>
+							<input class="form-control" type="text" placeholder="Readonly input here…" readonly="" id="txt_weights_and_measure_form_id" hidden>
+							
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Business No.</label>
+								<div class="col-sm-9">
+									<textarea class="form-control" type="text" readonly="" id="txt_wm_business_no" style="background-color: white;font-weight: bold; color: black;"></textarea>
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Business Name</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text"  readonly="" id="txt_wm_business_name" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">License No.</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" readonly="" id="txt_license_no" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Device Type</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" readonly="" id="txt_device_type" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Brand</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" readonly="" id="txt_brand" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Model</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" readonly="" id="txt_model" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Capacity</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" readonly="" id="txt_capacity" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Serial No</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" readonly="" id="txt_serial_no" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+						</div>
 							
 
 							{{-- OR DETAILS --}}
@@ -538,6 +671,9 @@
 		$("table[id='tbl_pending_issuance_resident']").DataTable({
 			"bSort" : false
 		});
+		$("table[id='tbl_pending_weights_and_measure']").DataTable({
+			"bSort" : false
+		});
 		// tbl_pending_issuance_resident
 		// moment().subtract(1, 'days').calendar();
 		// moment().startOf('day').fromNow();
@@ -585,6 +721,7 @@
 
 		$('#divBusiness').hide();
 		$('#divResident').hide();
+		$('#divWeightsAndMeasure').hide();
 		$('#divBuilding').show();
 		
 		$('#modal-Evaluate').modal('show');
@@ -596,6 +733,7 @@
 
 		$('#divResident').hide();
 		$('#divBuilding').hide();
+		$('#divWeightsAndMeasure').hide();
 		$('#divBusiness').show();
 		let row = $(this).closest("tr")
 		, business_or = $(row.find("td")[0]).text()
@@ -626,6 +764,7 @@
 	$('#tbl_pending_issuance_resident').on('click', '#btnEvaluateResidentIssuance', function(){
 		$('#txt_resident_or_business').val('Business');
 		$('#divBusiness').hide();
+		$('#divWeightsAndMeasure').hide();
 		$('#modal-Evaluate').modal('show');
 
 		let row = $(this).closest("tr")
@@ -650,6 +789,47 @@
 
 	});
 
+
+	$('.btnEvaluateWeightsAndMeasure').on('click', function(e){
+		e.preventDefault();
+		var WEIGHTS_AND_MEASURE_ID = this.id;
+
+		let data = {
+			'_token': " {{ csrf_token() }}",
+			'WEIGHTS_AND_MEASURE_ID': WEIGHTS_AND_MEASURE_ID,
+			'TYPE': 'weightsandmeasure'
+		};
+
+		$.ajax({
+			url: "{{route('getWeightsAndMeasureApplicationForm')}}",
+			type: "POST",
+			data: data,
+
+			success: function(response){	
+				let wmData = response.pending_weights_and_measure;
+				console.log(wmData);
+
+				$('#txt_form_id').val(wmData[0].FORM_ID);
+				$('#txt_wm_business_no').val(wmData[0].BUSINESS_OR_NUMBER);
+				$('#txt_wm_business_name').val(wmData[0].BUSINESS_NAME);
+				$('#txt_license_no').val(wmData[0].LICENSE_NO);
+				$('#txt_device_type').val(wmData[0].DEVICE_TYPE);
+				$('#txt_brand').val(wmData[0].BRAND);
+				$('#txt_model').val(wmData[0].MODEL);
+				$('#txt_capacity').val(wmData[0].CAPACITY);
+				$('#txt_serial_no').val(wmData[0].SERIAL_NO);
+
+				$('#divResident').hide();
+				$('#divBuilding').hide();
+				$('#divBusiness').hide();
+				$('#modal-Evaluate').modal('show');
+			}
+		})
+
+		
+
+	});
+
 	$('#btnEvaluateIssuance').on('click', function(){
 		
 		
@@ -663,7 +843,8 @@
 		, form_id = $('#txt_form_id').val()
 		, business_id = $('#txt_business_id_issuance').val()
 		, resident_id = $('#txt_resident_id').val()
-		, building_id = $('#txt_building_id').val();
+		, building_id = $('#txt_building_id').val()
+		, weights_and_measure_id = $('#txt_weights_and_measure_id').val();
 
 		var year_month = <?php echo date("Y"); ?> + '-' + <?php echo date("m"); ?>
 
@@ -681,6 +862,7 @@
 			,'BUSINESS_ID' : business_id
 			,'RESIDENT_ID' : resident_id
 			,'BUILDING_ID' : building_id
+			,'WEIGHTS_AND_MEASURE_ID' : weights_and_measure_id
 			,'YEAR_MONTH' : year_month
 		};
 
@@ -721,6 +903,7 @@
 		$('#modal-Approval').modal('show');
 
 	});
+	
 
 	$('#modal-Approval').on('click', '#btnEvaluate', function(){
 		var Status = $('#sel_status option:selected').text()

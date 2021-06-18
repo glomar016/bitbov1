@@ -24,7 +24,12 @@ class IssuanceController extends Controller
             ->orderBy('CONTROL_NO', 'desc')
             ->get();
 
-        return view('permit_certification_clearance.issuance', compact('approved_application_form', 'business_nature', 'application_form_resident', 'approved_buildings'));
+        $approved_weights_and_measure = DB::table('t_weights_and_measure as wm')
+            ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+            ->where('wm.EVALUATED', '1')
+            ->get();
+
+        return view('permit_certification_clearance.issuance', compact('approved_application_form', 'business_nature', 'application_form_resident', 'approved_buildings', 'approved_weights_and_measure'));
     }
 
     public function SpecificBusiness(Request $request)

@@ -141,12 +141,12 @@
                                                     <a href="javascript:;" class="btn btn-info">Action</a>
                                                     <a href="javascript:;" data-toggle="dropdown" class="btn btn-info dropdown-toggle"></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a data-toggle='modal' data-target='#modal-Edit' id="btnEdit" style="cursor: pointer;">Edit</a></li>
-                                                        <li><a data-toggle='modal' data-target='#modal-View' id="btnView" style="cursor: pointer;">View</a></li>
+                                                        <li><a data-toggle='modal' data-target='#modal-Edit' class="btnEdit" style="cursor: pointer;">Edit</a></li>
+                                                        <li><a data-toggle='modal' data-target='#modal-View' class="btnView" style="cursor: pointer;">View</a></li>
                                                         @if((date('j') == '1') && date('n') > 1 && date('n') < 20 && $row->NEW_RENEW_STATUS == "New")
-                                                        <li><a data-toggle='modal' data-target='#modal-Renew' id="btn_renew" style="cursor: pointer;">Renew</a></li>
+                                                        <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li>
                                                         @else
-                                                        <li><a data-toggle='modal' data-target='#modal-Renew' id="btn_renew" style="cursor: pointer;">Renew (Has Penalty)</a></li>
+                                                        <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew (Has Penalty)</a></li>
                                                         @endif
                                                         <li class="divider"></li>
 
@@ -589,7 +589,7 @@
         })
     })
 
-    $('#btnView').on('click', function(e) {
+    $('.btnView').on('click', function(e) {
         e.preventDefault();
 		
 		var row = $(this).closest("tr");
@@ -624,7 +624,7 @@
 			}
 		});
 	});
-    $('#btnEdit').on('click', function(e) {
+    $('.btnEdit').on('click', function(e) {
         e.preventDefault();
 		
 		var row = $(this).closest("tr");
@@ -661,7 +661,7 @@
 		});
 	});
 
-    $('#btn_renew').on('click', function(e) {
+    $('.btn_renew').on('click', function(e) {
         e.preventDefault();
 		
 		var row = $(this).closest("tr");

@@ -270,6 +270,7 @@
 			,'F_SERIAL_NO' : $("#txt_serial_no_f").val() // serial no 
 			,'F_BRAND' : $("#txt_device_brand_f").val() // serial no 
 			,'F_MODEL' : $("#txt_device_model_f").val() // serial no 
+			,'F_WEIGHTS_AND_MEASURE_ID' : WEIGHTS_AND_MEASURE_ID // serial no 
 
 			//General
 			,'BUSINESS_ID' : BUSINESS_ID

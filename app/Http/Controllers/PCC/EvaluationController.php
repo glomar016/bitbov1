@@ -19,12 +19,18 @@ class EvaluationController extends Controller
             ->get();
 
         $pending_buildings = DB::table('v_building_application')->where('STATUS', 'Pending')->get();
+        $pending_weights_and_measure = DB::table('t_application_form as af')
+        ->join('t_weights_and_measure as wm','af.WEIGHTS_AND_MEASURE_ID','wm.WEIGHTS_AND_MEASURE_ID')
+        ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+        ->where('af.STATUS', 'Pending')
+        ->get();
 
         return view('permit_certification_clearance.verification', compact(
             'businessNotApproved',
             'pending_application_form',
             'application_form_resident',
-            'pending_buildings'
+            'pending_buildings',
+            'pending_weights_and_measure'
         ));
     }
     // BUSINESS
@@ -100,5 +106,32 @@ class EvaluationController extends Controller
                     'CONTROL_NO' => $control_no, 'ISSUED_DATE' => date('Y-m-d'), 'OR_NO' => $OR_NO, 'OR_DATE' => $OR_DATE, 'OR_AMOUNT' => $OR_AMOUNT, 'FORM_ID' => $FORM_ID, 'PAPER_TYPE_ID' => $PAPER_TYPE_ID
                 ));
         }
+    }
+
+    public function getWeightsAndMeasureApplicationForm(Request $request){
+        $WEIGHTS_AND_MEASURE_ID = $request->WEIGHTS_AND_MEASURE_ID;
+
+        $pending_weights_and_measure = DB::table('t_application_form as af')
+        ->join('t_weights_and_measure as wm','af.WEIGHTS_AND_MEASURE_ID','wm.WEIGHTS_AND_MEASURE_ID')
+        ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+        ->where('af.STATUS', 'Pending')
+        ->where('af.WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
+        ->get();
+
+        return response()->json(['pending_weights_and_measure' => $pending_weights_and_measure]);
+    }
+
+    public function getApprovedWeightsAndMeasureApplicationForm(Request $request){
+        $WEIGHTS_AND_MEASURE_ID = $request->WEIGHTS_AND_MEASURE_ID;
+
+        $pending_weights_and_measure = DB::table('t_application_form as af')
+        ->join('t_weights_and_measure as wm','af.WEIGHTS_AND_MEASURE_ID','wm.WEIGHTS_AND_MEASURE_ID')
+        ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+        ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
+        ->where('af.STATUS', 'Approved')
+        ->where('af.WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
+        ->get();
+
+        return response()->json(['pending_weights_and_measure' => $pending_weights_and_measure]);
     }
 }
