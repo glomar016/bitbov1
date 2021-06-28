@@ -345,9 +345,21 @@
 								<td>{{$row->BUSINESS_NAME}}</td> {{-- 1 --}}
 								<td>{{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}} {{$row->BUSINESS_OWNER_LASTNAME}}</td> {{-- 1 --}}
 								<td>
-									<button type="button" class="btn btn-yellow btn_print_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
-										<i class="fa fa-file-alt">&nbsp;</i> Print
-									</button>
+									<div class="row">
+										<div class="col-sm-3">
+											<button	button type="button" class="btn btn-yellow btn_print_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
+												<i class="fa fa-file-alt">&nbsp;</i> Print
+											</button>
+										</div>
+										<div class="col-sm-3">
+											<button type="button" class="btn btn-seondary btn_deactivate_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
+												<i class="fa fa-trash-alt">&nbsp;</i> Deactivate
+											</button>
+										</div>
+										
+										
+									</div>
+									
 								</td> {{-- 6 --}}
 							</tr>
 							@endforeach
@@ -358,6 +370,8 @@
 		</div>
 
 	</div>
+
+	
 
 	{{-- modal Print --}}
 	<div class="modal fade" id="modal-PrintClearance" data-backdrop="static">
@@ -381,6 +395,37 @@
 						<button class="btn btn-yellow m-r-9" style="background: #FFD900" id="btnEvaluate">Print</button>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<div class="modal fade" id="modal-Deactivate">
+			<div class="modal-dialog" style="max-width: 35%;">
+				<form id="weightsandmeasure_application_form_deactivate">
+					<div class="modal-content">
+						<div class="modal-header" style="background-color: #17a2b8">
+							<h4 class="modal-title" style="color: white">Deactivate Weights and Measure Issuance</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+						</div>
+						
+						<div class="modal-body">
+							<input type="text" id="txt_weights_and_measure_id_deactivate" name="txt_weights_and_measure_id_deactivate" hidden>
+							<div class="row">
+								<div class="col-lg-12 col-md-8">
+									<div class="stats-content">
+										<label for="txt_reason">Deactivation Reason<span class="text-danger"></span></label>
+										<textarea class="form-control" id="txt_reason" name="txt_reason" rows="12"  ></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+							<input id="btnWeightsAndMeasureDeactivate" class="btn btn-danger" type="submit" value="Deactivate">
+						</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -1029,7 +1074,7 @@
 						success: function(response){
 							var weights_and_measure = response.weights_and_measure;
 							console.log(weights_and_measure);
-							$('#lbl_reg_no').text(weights_and_measure[0].LICENSE_NO);
+							$('#lbl_reg_no').text(weights_and_measure[0].DEVICE_NUMBER);
 							$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
 							$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
 							$('#lbl_device_model').text(weights_and_measure[0].MODEL);
@@ -1671,6 +1716,52 @@
 
 	});
 
+	$('.btn_deactivate_weights_and_measure').on('click', function(e){
+		e.preventDefault();
+
+        let weights_and_measure_id = this.id;
+        console.log(weights_and_measure_id)
+        $('#txt_weights_and_measure_id_deactivate').val(weights_and_measure_id)
+
+        $('#modal-Deactivate').modal()
+
+		
+	})
+
+	$('#weightsandmeasure_application_form_deactivate').on('submit', function(e){
+        e.preventDefault();
+
+        let weights_and_measure_id = $('#txt_weights_and_measure_id_deactivate').val();
+        let deactivation_reason = $('#txt_reason').val();
+		
+		let data = {
+			'_token': " {{ csrf_token() }}",
+			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+			'TYPE': 'deactivate',
+			'REASON': deactivation_reason
+		};
+
+		$.ajax({
+			url: "{{route('updateApproveWeightsAndMeasureApplicationForm')}}",
+			type: "post",
+            data: data,
+
+            success: function(response){
+                swal({
+                    title: 'Success',
+                    text: 'Record updated!',
+                    icon: 'success',
+                    timer: 1000
+                });
+                window.location.reload();
+            },
+            error: function(error){
+                console.log(error)
+            }
+		})
+
+    })
+
 
 	$('.btn_print_weights_and_measure').on('click', function(){
 		var weights_and_measure_id = this.id;
@@ -1703,7 +1794,7 @@
 				$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
 				$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);
 
-				$('#lbl_reg_no').text(weights_and_measure[0].LICENSE_NO);
+				$('#lbl_reg_no').text(weights_and_measure[0].DEVICE_NUMBER);
 				$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
 				$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
 				$('#lbl_device_model').text(weights_and_measure[0].MODEL);

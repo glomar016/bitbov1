@@ -145,40 +145,52 @@
 								<input type="text" id="txt_weights_and_measure_id" hidden>
 								<input type="text" id="txt_business_id" hidden>
 								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Business No.</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_business_no_f" name="txt_business_no_f" readonly>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Business Address.</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_business_address_f" name="txt_business_address_f" readonly>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">License No.</label>
 									<div class="col-md-8">
-										<input type="text"  class="form-control" id="txt_license_no_f" name="txt_license_no_f">
+										<input type="text"  class="form-control" id="txt_license_no_f" name="txt_license_no_f" readonly>
 									</div>
 								</div>
 
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Device Type</label>
 									<div class="col-md-8">
-										<input class="form-control" id="txt_device_type_f" name="txt_device_type_f"/>
+										<input class="form-control" id="txt_device_type_f" name="txt_device_type_f" readonly/>
 									</div>
 								</div>
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Device Brand</label>
 									<div class="col-md-8">
-										<input class="form-control" id="txt_device_brand_f" name="txt_device_brand_f"/>
+										<input class="form-control" id="txt_device_brand_f" name="txt_device_brand_f" readonly/>
 									</div>
 								</div>
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Device Model</label>
 									<div class="col-md-8">
-										<input class="form-control" id="txt_device_model_f" name="txt_device_model_f"/>
+										<input class="form-control" id="txt_device_model_f" name="txt_device_model_f" readonly/>
 									</div>
 								</div>
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Capacity</label>
 									<div class="col-md-8">
-										<input type="text"  class="form-control" id="txt_capacity_f" name="txt_capacity_f">
+										<input type="text"  class="form-control" id="txt_capacity_f" name="txt_capacity_f" readonly>
 									</div>
 								</div>
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Serial No.</label>
 									<div class="col-md-8">
-										<input type="text"  class="form-control" id="txt_serial_no_f" name="txt_serial_no_f">
+										<input type="text"  class="form-control" id="txt_serial_no_f" name="txt_serial_no_f" readonly>
 									</div>
 								</div>
 
@@ -240,6 +252,8 @@
                 $('#txt_business_id').val(newData[0].BUSINESS_ID);
                 $('#txt_applicant_name').val(newData[0].BUSINESS_OWNER_FIRSTNAME + " " + newData[0].BUSINESS_OWNER_MIDDLENAME + " " + newData[0].BUSINESS_OWNER_LASTNAME);
                 $('#lbl_business_name').html(newData[0].BUSINESS_NAME);
+                $('#txt_business_no_f').val(newData[0].BUSINESS_OR_NUMBER);
+                $('#txt_business_address_f').val(newData[0].BUSINESS_ADDRESS);
                 $('#txt_license_no_f').val(newData[0].LICENSE_NO);
                 $('#txt_device_type_f').val(newData[0].DEVICE_TYPE);
                 $('#txt_device_brand_f').val(newData[0].BRAND);

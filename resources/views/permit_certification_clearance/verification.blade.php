@@ -537,6 +537,18 @@
 								</div>
 							</div>
 							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Business Address</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text"  readonly="" id="txt_business_address" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Device Number</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text"  readonly="" id="txt_device_number" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
+							<div class="form-group row m-b-10">
 								<label class="col-sm-3 col-form-label">License No.</label>
 								<div class="col-sm-9">
 									<input class="form-control" type="text" readonly="" id="txt_license_no" style="background-color: white;font-weight: bold; color: black;">
@@ -812,6 +824,8 @@
 				$('#txt_form_id').val(wmData[0].FORM_ID);
 				$('#txt_wm_business_no').val(wmData[0].BUSINESS_OR_NUMBER);
 				$('#txt_wm_business_name').val(wmData[0].BUSINESS_NAME);
+				$('#txt_business_address').val(wmData[0].BUSINESS_ADDRESS);
+				$('#txt_device_number').val(wmData[0].DEVICE_NUMBER);
 				$('#txt_license_no').val(wmData[0].LICENSE_NO);
 				$('#txt_device_type').val(wmData[0].DEVICE_TYPE);
 				$('#txt_brand').val(wmData[0].BRAND);
@@ -822,6 +836,7 @@
 				$('#divResident').hide();
 				$('#divBuilding').hide();
 				$('#divBusiness').hide();
+				$('#divWeightsAndMeasure').show();
 				$('#modal-Evaluate').modal('show');
 			}
 		})

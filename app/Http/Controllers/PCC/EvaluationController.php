@@ -130,8 +130,21 @@ class EvaluationController extends Controller
         ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
         ->where('af.STATUS', 'Approved')
         ->where('af.WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
+        ->where('af.ACTIVE_FLAG', 1)
         ->get();
 
         return response()->json(['pending_weights_and_measure' => $pending_weights_and_measure]);
+    }
+
+    public function updateApproveWeightsAndMeasureApplicationForm(Request $request){
+        $WEIGHTS_AND_MEASURE_ID = $request->WEIGHTS_AND_MEASURE_ID;
+
+        $update = DB::table('t_application_form')
+            ->where('WEIGHTS_AND_MEASURE_ID', $request->WEIGHTS_AND_MEASURE_ID)
+            ->update(array(
+                'ACTIVE_FLAG' => 0
+                , 'DEACTIVATION_REASON' => $request->REASON
+        ));
+
     }
 }

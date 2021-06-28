@@ -14,6 +14,7 @@ Route::get('/getBusinessNumber', 'BusinessController@getBusinessNumber')->name('
 Route::get('/getSpecificWeightsAndMeasure', 'BusinessController@getSpecificWeightsAndMeasure')->name('getSpecificWeightsAndMeasure');
 Route::post('/getWeightsAndMeasureApplicationForm', 'PCC\EvaluationController@getWeightsAndMeasureApplicationForm')->name('getWeightsAndMeasureApplicationForm');
 Route::post('/getApprovedWeightsAndMeasureApplicationForm', 'PCC\EvaluationController@getApprovedWeightsAndMeasureApplicationForm')->name('getApprovedWeightsAndMeasureApplicationForm');
+Route::post('/updateApproveWeightsAndMeasureApplicationForm', 'PCC\EvaluationController@updateApproveWeightsAndMeasureApplicationForm')->name('updateApproveWeightsAndMeasureApplicationForm');
 
 Route::get('/getLineofBusiness', 'BusinessController@getLineofBusiness')->name('getLineofBusiness');
 Route::post('/improvement_building', 'BusinessController@improvement_building')->name('improvement_building');
