@@ -12,6 +12,7 @@
 <script src="{{asset('assets/plugins/pace/pace.min.js')}}"></script>
 {{-- <link href="../assets/plugins/jquery-smart-wizard/src/css/smart_wizard.css" rel="stylesheet" /> --}}
 {{-- <script src="../assets/plugins/pace/pacgsise.min.js"></script> --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 
 @section('content')
@@ -46,6 +47,12 @@
 			<a href="#nav-pills-tab-4" data-toggle="tab" class="nav-link">
 
 				<span class="d-sm-block d-none">Weights and Measure</span>
+			</a>
+		</li>
+		<li class="nav-items">
+			<a href="#nav-pills-tab-5" data-toggle="tab" class="nav-link">
+
+				<span class="d-sm-block d-none">Archive</span>
 			</a>
 		</li>
 	</ul>
@@ -321,13 +328,22 @@
 							<tr>
 								{{-- <th>Form Number</th> --}}
 								<th style="width: 12%">
-									<center>Business Number</center>
+									<center>Clearance Control Number</center>
 								</th>
 								<th style="width: 20%">
 									<center>Business Name</center>
 								</th>
 								<th>
-									<center>Owner's Name</center>
+									<center>Device Registration Number</center>
+								</th>
+								<th>
+									<center>Brand</center>
+								</th>
+								<th>
+									<center>Capacity</center>
+								</th>
+								<th>
+									<center>Device Type</center>
 								</th>
 								<th width>
 									<center>Action</center>
@@ -341,23 +357,127 @@
 							@foreach($approved_weights_and_measure as $row)
 							<tr class="gradeC" id="	">
 								{{-- <th>{{$row->FORM_NUMBER}}</th> --}}
-								<td>{{$row->BUSINESS_OR_NUMBER}}</td> {{-- 0 --}}
+								<td>{{$row->CONTROL_NO}}</td> {{-- 0 --}}
 								<td>{{$row->BUSINESS_NAME}}</td> {{-- 1 --}}
-								<td>{{$row->BUSINESS_OWNER_FIRSTNAME}} {{$row->BUSINESS_OWNER_MIDDLENAME}} {{$row->BUSINESS_OWNER_LASTNAME}}</td> {{-- 1 --}}
-								<td>
+								<td>{{$row->DEVICE_NUMBER}}</td> {{-- 1 --}}
+								<td>{{$row->BRAND}}</td> {{-- 1 --}}
+								<td>{{$row->CAPACITY}} kg</td> {{-- 1 --}}
+								@if($row->DEVICE_TYPE == "LM")
+                                            <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "MC")
+                                            <td>Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </td>
+                                            @elseif($row->DEVICE_TYPE == "GS")
+                                            <td>Graduated Scale Balance (Weighing Scales, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "AB")
+                                            <td>Apothecary Balances (Mineral and Medicinal Uses)</td>
+                                            @else
+                                            <td></td>
+                                            @endif
+								<td  style="text-align: center">
 									<div class="row">
-										<div class="col-sm-3">
-											<button	button type="button" class="btn btn-yellow btn_print_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
+										<div class="col-sm-12">
+											<button	button type="button" class="btn btn-yellow btn_print_weights_and_measure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
 												<i class="fa fa-file-alt">&nbsp;</i> Print
 											</button>
 										</div>
-										<div class="col-sm-3">
+										<!-- <div class="col-sm-3">
 											<button type="button" class="btn btn-seondary btn_deactivate_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
 												<i class="fa fa-trash-alt">&nbsp;</i> Deactivate
 											</button>
+										</div> -->
+										
+										
+									</div>
+									
+								</td> {{-- 6 --}}
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="nav-pills-tab-5">
+			<div class="panel panel-inverse">
+				<div class="panel-heading">
+					<div class="panel-heading-btn">
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+					</div>
+					<h4 class="panel-title">Issuance Verification </h4>
+				</div>
+				<div class="alert alert-yellow fade show">
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					The following are the existing records of the residents within the system.
+				</div>
+				<div class="panel-body">
+					<table id="tbl_archived_business_weights_and_measure_list" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								{{-- <th>Form Number</th> --}}
+								<th style="width: 12%">
+									<center>Clearance Control Number</center>
+								</th>
+								<th style="width: 20%">
+									<center>Business Name</center>
+								</th>
+								<th>
+									<center>Device Registration Number</center>
+								</th>
+								<th>
+									<center>Brand</center>
+								</th>
+								<th>
+									<center>Capacity</center>
+								</th>
+								<th>
+									<center>Device Type</center>
+								</th>
+								<th width>
+									<center>Action</center>
+								</th>
+								<th hidden>
+								<th hidden>FORM_ID</th>
+								<th hidden>CLEARANCE_ID</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($archived_weights_and_measure as $row)
+							<tr class="gradeC" id="	">
+								{{-- <th>{{$row->FORM_NUMBER}}</th> --}}
+								<td>{{$row->CONTROL_NO}}</td> {{-- 0 --}}
+								<td>{{$row->BUSINESS_NAME}}</td> {{-- 1 --}}
+								<td>{{$row->DEVICE_NUMBER}}</td> {{-- 1 --}}
+								<td>{{$row->BRAND}}</td> {{-- 1 --}}
+								<td>{{$row->CAPACITY}} kg</td> {{-- 1 --}}
+								@if($row->DEVICE_TYPE == "LM")
+                                            <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "MC")
+                                            <td>Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </td>
+                                            @elseif($row->DEVICE_TYPE == "GS")
+                                            <td>Graduated Scale Balance (Weighing Scales, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "AB")
+                                            <td>Apothecary Balances (Mineral and Medicinal Uses)</td>
+                                            @else
+                                            <td></td>
+                                            @endif
+								<td  style="text-align: center">
+									<div class="row">
+										<div class="col-sm-12">
+											<button	button type="button" class="btn btn-yellow btn_archived_print_weights_and_measure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
+												<i class="fa fa-file-alt">&nbsp;</i> Print
+											</button>
 										</div>
-										
-										
+										<!-- <div class="col-sm-3">
+											<button type="button" class="btn btn-seondary btn_deactivate_weights_and_measure form-control" id="{{$row->WEIGHTS_AND_MEASURE_ID}}" data-toggle="modal">
+												<i class="fa fa-trash-alt">&nbsp;</i> Deactivate
+											</button>
+										</div> -->
 									</div>
 									
 								</td> {{-- 6 --}}
@@ -473,6 +593,12 @@
 
 		});
 		$("table[id='tbl_approved_issuance_resident']").DataTable({
+			"bSort": false
+		});
+		$("table[id='tbl_business_weights_and_measure_list']").DataTable({
+			"bSort": false
+		});
+		$("table[id='tbl_archived_business_weights_and_measure_list']").DataTable({
 			"bSort": false
 		});
 
@@ -1716,29 +1842,13 @@
 
 	});
 
-	$('.btn_deactivate_weights_and_measure').on('click', function(e){
-		e.preventDefault();
 
-        let weights_and_measure_id = this.id;
-        console.log(weights_and_measure_id)
-        $('#txt_weights_and_measure_id_deactivate').val(weights_and_measure_id)
-
-        $('#modal-Deactivate').modal()
-
-		
-	})
-
-	$('#weightsandmeasure_application_form_deactivate').on('submit', function(e){
-        e.preventDefault();
-
-        let weights_and_measure_id = $('#txt_weights_and_measure_id_deactivate').val();
-        let deactivation_reason = $('#txt_reason').val();
-		
+	function deactivateIssuance(id){
+        
 		let data = {
 			'_token': " {{ csrf_token() }}",
-			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
-			'TYPE': 'deactivate',
-			'REASON': deactivation_reason
+			'WEIGHTS_AND_MEASURE_ID': id,
+			'TYPE': 'deactivate'
 		};
 
 		$.ajax({
@@ -1747,31 +1857,104 @@
             data: data,
 
             success: function(response){
-                swal({
-                    title: 'Success',
-                    text: 'Record updated!',
-                    icon: 'success',
-                    timer: 1000
-                });
-                window.location.reload();
+                
             },
             error: function(error){
                 console.log(error)
             }
 		})
 
-    })
+    }
 
 
 	$('.btn_print_weights_and_measure').on('click', function(){
 		var weights_and_measure_id = this.id;
 
-		console.log(weights_and_measure_id);
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "After printing, the issuances will be archived.",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, print it!'
+			}).then((result) => {
+			if (result.isConfirmed) {
+				console.log(weights_and_measure_id);
+
+				let data = {
+					'_token': " {{ csrf_token() }}",
+					'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+					'TYPE': 'Approved'
+				};
+
+				$.ajax({
+					url: "{{route('getApprovedWeightsAndMeasureApplicationForm')}}",
+					type: 'POST',
+					data: data,
+
+					success: function(response) {
+						let weights_and_measure = response.pending_weights_and_measure;
+						console.log(response);
+
+						let control_no = formatCtrlNo(weights_and_measure[0].CONTROL_NO);
+
+						$('#lbl_or_no_f').text(weights_and_measure[0].OR_NO);
+						$('#lbl_control_no_f').text(control_no);
+						$('#lbl_or_date_f').text(weights_and_measure[0].OR_DATE);
+						$('#lbl_amount_f').text(weights_and_measure[0].OR_AMOUNT);
+						$('#lbl_account_no_f').text(weights_and_measure[0].BUSINESS_OR_NUMBER);
+
+						$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
+						$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);
+
+						$('#lbl_reg_no').text(weights_and_measure[0].DEVICE_NUMBER);
+						$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
+						$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
+						$('#lbl_device_model').text(weights_and_measure[0].MODEL);
+						$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
+						$('#lbl_device_serial').text(weights_and_measure[0].SERIAL_NO);
+						$('#lbl_business_name').text(weights_and_measure[0].BUSINESS_NAME);
+						$('#lbl_business_address').text(weights_and_measure[0].BUSINESS_ADDRESS);
+					
+						$("#fmbcfwm").printThis({
+								debug: false,
+								debug: false,
+								importCSS: true,
+								importStyle: true,
+								loadCSS: "",
+								pageTitle: "fdas",
+								removeInline: false,
+								printDelay: 1000,
+								header: null,
+								footer: "",
+								base: false,
+								formValues: true,
+								canvas: false,
+								doctypeString: null,
+								removeScripts: false,
+								copyTagClasses: false
+							});
+
+						
+
+						deactivateIssuance(weights_and_measure_id)
+					}
+				})
+			}
+		})
+
+		
+	})
+
+	$('.btn_archived_print_weights_and_measure').on('click', function(){
+		var weights_and_measure_id = this.id;
+		console.log(weights_and_measure_id)
 
 		let data = {
 			'_token': " {{ csrf_token() }}",
 			'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
-			'TYPE': 'weightsandmeasure'
+			'TYPE': 'Archived'
 		};
 
 		$.ajax({
@@ -1823,6 +2006,7 @@
 					});
 			}
 		})
+		
 	})
 
 	// for modal

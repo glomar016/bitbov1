@@ -27,11 +27,21 @@ class IssuanceController extends Controller
         $approved_weights_and_measure = DB::table('t_weights_and_measure as wm')
             ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
             ->join('t_application_form as af','wm.WEIGHTS_AND_MEASURE_ID','af.WEIGHTS_AND_MEASURE_ID')
+            ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
             ->where('wm.EVALUATED', '1')
             ->where('af.ACTIVE_FLAG', 1)
             ->get();
 
-        return view('permit_certification_clearance.issuance', compact('approved_application_form', 'business_nature', 'application_form_resident', 'approved_buildings', 'approved_weights_and_measure'));
+        $archived_weights_and_measure = DB::table('t_weights_and_measure as wm')
+            ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+            ->join('t_application_form as af','wm.WEIGHTS_AND_MEASURE_ID','af.WEIGHTS_AND_MEASURE_ID')
+            ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
+            ->where('wm.EVALUATED', '1')
+            ->where('af.ACTIVE_FLAG', 0)
+            ->get();
+
+        return view('permit_certification_clearance.issuance', compact('approved_application_form', 'business_nature', 'application_form_resident'
+                                                                        , 'approved_buildings', 'approved_weights_and_measure', 'archived_weights_and_measure'));
     }
 
     public function SpecificBusiness(Request $request)

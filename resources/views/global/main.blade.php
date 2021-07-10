@@ -614,7 +614,7 @@ Route::currentRouteName() == 'DisplayResidentElderly'
 </ul>
 </li>
 
-<li class="has-sub {{ Route::currentRouteName() == 'listofresidents' || Route::currentRouteName() == 'ListofBarangayOfficials' || Route::currentRouteName() == 'ListofBusinesses' || Route::currentRouteName() == 'LisfofOrdianance' || Route::currentRouteName() == 'ListOfBlotters' ? 'active' : '' }} {{ session('session_permis_system_reports') == 1 ? '' : 'hide' }}">
+<li class="has-sub {{ Route::currentRouteName() == 'listofresidents' || Route::currentRouteName() == 'ListofBarangayOfficials' || Route::currentRouteName() == 'ListofWeightsAndMeasure' || Route::currentRouteName() == 'ListofBusinesses' || Route::currentRouteName() == 'LisfofOrdianance' || Route::currentRouteName() == 'ListOfBlotters' ? 'active' : '' }} {{ session('session_permis_system_reports') == 1 ? '' : 'hide' }}">
     <a href="javascript:;">
         <b class="caret"></b>
         <i class="fas fa-search"></i>
@@ -624,6 +624,7 @@ Route::currentRouteName() == 'DisplayResidentElderly'
         <li class="{{ Route::currentRouteName() == 'listofresidents' ? 'active' : '' }}"><a href="{{ route('listofresidents') }}">List of Residents</a></li>
         <li class="{{ Route::currentRouteName() == 'ListofBarangayOfficials' ? 'active' : '' }}"><a href="{{ route('ListofBarangayOfficials') }}">List of Officials</a></li>
         <li class="{{ Route::currentRouteName() == 'ListofBusinesses' ? 'active' : '' }}"><a href="{{ route('ListofBusinesses') }}">List of Businesses</a></li>
+        <li class="{{ Route::currentRouteName() == 'ListofWeightsAndMeasure' ? 'active' : '' }}"><a href="{{ route('ListofWeightsAndMeasure') }}">List of Weights and Measure</a></li>
         <li class="{{ Route::currentRouteName() == 'LisfofOrdianance' ? 'active' : '' }}"><a href="{{ route('LisfofOrdianance') }}">List of Ordinances</a></li>
         <li class="{{ Route::currentRouteName() == 'ListofResolution' ? 'active' : '' }}"><a href="{{ route('ListofResolution') }}">List of Resolution</a></li>
         <li class="{{ Route::currentRouteName() == 'ListOfBlotters' ? 'active' : '' }}"><a href="{{route('ListOfBlotters')}}">List of Blotters</a></li>

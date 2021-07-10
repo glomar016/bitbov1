@@ -43,6 +43,7 @@
         fd.append('todate', todate);
         fd.append('_token',"{{ csrf_token() }}");
         let result;
+        
         filterdisplay(fd);
 
     });

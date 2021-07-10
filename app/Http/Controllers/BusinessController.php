@@ -17,7 +17,7 @@ class BusinessController extends Controller
         $weights_and_measure = DB::table('t_weights_and_measure as wm')
         ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
         ->where('wm.ACTIVE_FLAG', 1)
-        ->get();
+        ->get(['wm.NEW_RENEW_STATUS as WM_NEW_RENEW_STATUS', 'wm.*', 'bi.*']);
         $businessNotApproved = DB::table('v_official_business_list')->where('STATUS', 'Pending')->get();
         $buildings = DB::table('v_building_list')
         ->orderBy('CREATED_AT', 'DESC')->get();
@@ -384,6 +384,7 @@ class BusinessController extends Controller
         $BUSINESS_ID = $request->BUSINESS_ID;
         $LICENSE_NO = $request->LICENSE_NO;
         $LICENSE_DATE = $request->LICENSE_DATE;
+        $SALES_INVOICE = $request->SALES_INVOICE;
         $DEVICE_TYPE = $request->DEVICE_TYPE;
         $BRAND = $request->BRAND;
         $MODEL = $request->MODEL;
@@ -398,13 +399,14 @@ class BusinessController extends Controller
 
             $dateToday = getdate();
             $dateToday = sprintf("%'02d", $dateToday['mon']).sprintf("%'02d", $dateToday['mday']).$dateToday['year'];
-            $DEVICE_NUMBER = strval($DEVICE_TYPE[$i]).'-'.strval($dateToday).'-'.sprintf("%'05d", ($countOfType+1));;
+            $DEVICE_NUMBER = strval($DEVICE_TYPE[$i]).'-'.strval($dateToday).'-'.sprintf("%'05d", ($countOfType+1));
 
             $insertWeightsAndMeasure = DB::table('t_weights_and_measure')
                 ->insert(array(
                     'BUSINESS_ID' => $BUSINESS_ID
                     , 'LICENSE_NO' => $LICENSE_NO[$i]
                     , 'LICENSE_DATE' => $LICENSE_DATE[$i]
+                    , 'SALES_INVOICE' => $SALES_INVOICE[$i]
                     , 'DEVICE_TYPE' => $DEVICE_TYPE[$i]
                     , 'BRAND' => $BRAND[$i]
                     , 'MODEL' => $MODEL[$i]
@@ -565,20 +567,16 @@ class BusinessController extends Controller
     }
 
     public function updateWeightsAndMeasure(Request $request)
-    {
+    {   
+
+        $dateToday = $request->RENEW_DATE;
 
         if($request->TYPE == "RENEW"){
             $update = DB::table('t_weights_and_measure')
-            ->where('WEIGHTS_AND_MEASURE_ID', $request->txt_weights_and_measure_id_renew)
+            ->where('WEIGHTS_AND_MEASURE_ID', $request->WEIGHTS_AND_MEASURE_ID)
             ->update(array(
-                'LICENSE_NO' => $request->txt_license_no_edit_renew
-                , 'LICENSE_DATE' => $request->txt_license_date_edit_renew
-                , 'DEVICE_TYPE' => $request->txt_device_type_edit_renew
-                , 'BRAND' => $request->txt_brand_edit_renew
-                , 'MODEL' => $request->txt_model_edit_renew
-                , 'CAPACITY' => $request->txt_capacity_edit_renew
-                , 'SERIAL_NO' => $request->txt_serial_no_edit_renew
-                , 'NEW_RENEW_STATUS' => 'Renew'
+                'NEW_RENEW_STATUS' => $request->NEW_RENEW_STATUS
+                , 'RENEW_DATE' => now()
         ));
         }
         else if($request->TYPE == "NEW"){
@@ -587,6 +585,7 @@ class BusinessController extends Controller
             ->update(array(
                 'LICENSE_NO' => $request->txt_license_no_edit
                 , 'LICENSE_DATE' => $request->txt_license_date_edit
+                , 'SALES_INVOICE' => $request->txt_sales_invoice_edit
                 , 'DEVICE_TYPE' => $request->txt_device_type_edit
                 , 'BRAND' => $request->txt_brand_edit
                 , 'MODEL' => $request->txt_model_edit

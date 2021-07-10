@@ -123,16 +123,30 @@ class EvaluationController extends Controller
 
     public function getApprovedWeightsAndMeasureApplicationForm(Request $request){
         $WEIGHTS_AND_MEASURE_ID = $request->WEIGHTS_AND_MEASURE_ID;
+        
+        if($request->TYPE == 'Approved'){
+            $pending_weights_and_measure = DB::table('t_application_form as af')
+            ->join('t_weights_and_measure as wm','af.WEIGHTS_AND_MEASURE_ID','wm.WEIGHTS_AND_MEASURE_ID')
+            ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+            ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
+            ->where('af.STATUS', 'Approved')
+            ->where('af.WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
+            ->where('af.ACTIVE_FLAG', 1)
+            ->get();
+        }
 
-        $pending_weights_and_measure = DB::table('t_application_form as af')
-        ->join('t_weights_and_measure as wm','af.WEIGHTS_AND_MEASURE_ID','wm.WEIGHTS_AND_MEASURE_ID')
-        ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
-        ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
-        ->where('af.STATUS', 'Approved')
-        ->where('af.WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
-        ->where('af.ACTIVE_FLAG', 1)
-        ->get();
+        else if($request->TYPE == 'Archived'){
+            $pending_weights_and_measure = DB::table('t_application_form as af')
+            ->join('t_weights_and_measure as wm','af.WEIGHTS_AND_MEASURE_ID','wm.WEIGHTS_AND_MEASURE_ID')
+            ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
+            ->join('t_clearance_certification as cc','af.FORM_ID','cc.FORM_ID')
+            ->where('af.STATUS', 'Approved')
+            ->where('af.WEIGHTS_AND_MEASURE_ID', $WEIGHTS_AND_MEASURE_ID)
+            ->where('af.ACTIVE_FLAG', 0)
+            ->get();
+        }
 
+        
         return response()->json(['pending_weights_and_measure' => $pending_weights_and_measure]);
     }
 

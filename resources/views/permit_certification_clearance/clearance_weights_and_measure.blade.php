@@ -63,28 +63,31 @@
                                             <center>Weights and Measure ID</center>
                                         </th>
                                         <th>
-                                            <center>Business Number</center>
+                                            <center>Business Name</center>
                                         </th>
                                         <th>
-                                            <center>LICENSE_NO </center>
+                                            <center>Device Number </center>
                                         </th>
                                         <th>
-                                            <center>LICENSE_DATE</center>
+                                            <center>License Number </center>
                                         </th>
                                         <th>
-                                            <center>DEVICE_TYPE</center>
+                                            <center>License Date</center>
                                         </th>
                                         <th>
-                                            <center>BRAND</center>
+                                            <center>Device Type</center>
                                         </th>
                                         <th>
-                                            <center>MODEL </center>
+                                            <center>Brand</center>
                                         </th>
                                         <th>
-                                            <center>CAPACITY  </center>
+                                            <center>Model </center>
                                         </th>
                                         <th>
-                                            <center>SERIAL_NO   </center>
+                                            <center>Capacity  </center>
+                                        </th>
+                                        <th>
+                                            <center>Serial Number   </center>
                                         </th>
                                         {{-- <th>Period</th> --}}
                                         <th width="20%">
@@ -95,18 +98,29 @@
                                 <tbody>
                                     @foreach($weights_and_measure as $row)
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
-                                            <td>{{$row->BUSINESS_OR_NUMBER}}</td>
+                                            <td>{{$row->BUSINESS_NAME}}</td>
+                                            <td>{{$row->DEVICE_NUMBER}}</td>
                                             <td>{{$row->LICENSE_NO}}</td>
                                             <td>{{$row->LICENSE_DATE}}</td>
-                                            <td>{{$row->DEVICE_TYPE}}</td>
+                                            @if($row->DEVICE_TYPE == "LM")
+                                            <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "MC")
+                                            <td>Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </td>
+                                            @elseif($row->DEVICE_TYPE == "GS")
+                                            <td>Graduated Scale Balance (Weighing Scales, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "AB")
+                                            <td>Apothecary Balances (Mineral and Medicinal Uses)</td>
+                                            @else
+                                            <td></td>
+                                            @endif
                                             <td>{{$row->BRAND}}</td>
                                             <td>{{$row->MODEL}}</td>
                                             <td>{{$row->CAPACITY}}</td>
                                             <td>{{$row->SERIAL_NO}}</td>
 
-                                            <td>
-                                                <button type="button" class="btn btn-primary form-control btnRequestWeightsAndMeasure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}"  data-toggle="modal">
-                                                    <i class="fa fa-file-alt">&nbsp</i> Request Weighing and Measuring Devices Clearance
+                                            <td style="text-align: center">
+                                                <button type="button" class="btn btn-primary btnRequestWeightsAndMeasure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}"  data-toggle="modal">
+                                                    <i class="fa fa-file-alt">&nbsp</i> Request Clearance
                                                 </button>
                                             </td>
                                         </tr>
@@ -160,6 +174,18 @@
 									<label class="col-md-4 col-form-label text-md-right">License No.</label>
 									<div class="col-md-8">
 										<input type="text"  class="form-control" id="txt_license_no_f" name="txt_license_no_f" readonly>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Sales Invoice</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_sales_invoice_f" name="txt_sales_invoice_f" readonly>
+									</div>
+								</div>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Device No.</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_device_number_f" name="txt_device_number_f" readonly>
 									</div>
 								</div>
 
@@ -230,6 +256,10 @@
 		});
     });
 
+    function hideModal(){
+        $('#modal-ChooseApplication').modal('hide');
+    }
+
 
     $(".btnRequestWeightsAndMeasure").on('click', function(e){
         e.preventDefault();
@@ -255,6 +285,8 @@
                 $('#txt_business_no_f').val(newData[0].BUSINESS_OR_NUMBER);
                 $('#txt_business_address_f').val(newData[0].BUSINESS_ADDRESS);
                 $('#txt_license_no_f').val(newData[0].LICENSE_NO);
+                $('#txt_sales_invoice_f').val(newData[0].SALES_INVOICE);
+                $('#txt_device_number_f').val(newData[0].DEVICE_NUMBER);
                 $('#txt_device_type_f').val(newData[0].DEVICE_TYPE);
                 $('#txt_device_brand_f').val(newData[0].BRAND);
                 $('#txt_device_model_f').val(newData[0].MODEL);

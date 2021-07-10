@@ -294,14 +294,12 @@
 							<tr>
 								<th style="width: 15%"><center>Business Number<center></th>
 								<th><center>Business Name</center></th>
-								<th><center>License No</center></th>
+								<th><center>Device Number</center></th>
+								<th><center>License Number</center></th>
 								<th><center>Device Type</center></th>
-								<th><center>Brand</center></th>
-								<th><center>Model</center></th>
 								<th><center>Capacity</center></th>
 								<th><center>Serial No</center></th>
 								<th><center>Requested Date</center></th>
-								<th><center>Applicant Name</center></th>
 								<th><center>Action</center></th>
 								<th hidden >REQUESTED_PAPER_TYPE</th>
 								<th hidden >FORM_PAPER_TYPE</th>
@@ -317,14 +315,22 @@
 							<tr class="gradeC" id="{{$row->BUSINESS_ID}}">
 								<td><center>{{$row->BUSINESS_OR_NUMBER}}</center></td> {{-- 0 --}}
 								<td><center>{{$row->BUSINESS_NAME}}</center></td> {{-- 1 --}}
+								<td><center>{{$row->DEVICE_NUMBER}}</center></td> {{-- 2 --}}
 								<td><center>{{$row->LICENSE_NO}}</center></td> {{-- 2 --}}
-								<td><center>{{$row->DEVICE_TYPE}}</center></td> {{-- 3 --}}
-								<td><center>{{$row->BRAND}}</center></td> {{-- 4 --}}
-								<td><center>{{$row->MODEL}}</center></td> {{-- 5 --}}
-								<td><center>{{$row->CAPACITY}}</center></td> {{-- 6 --}}
+								@if($row->DEVICE_TYPE == "LM")
+								<td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
+								@elseif($row->DEVICE_TYPE == "MC")
+								<td>Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </td>
+								@elseif($row->DEVICE_TYPE == "GS")
+								<td>Graduated Scale Balance (Weighing Scales, etc)</td>
+								@elseif($row->DEVICE_TYPE == "AB")
+								<td>Apothecary Balances (Mineral and Medicinal Uses)</td>
+								@else
+								<td></td>
+								@endif
+								<td><center>{{$row->CAPACITY}} kg</center></td> {{-- 6 --}}
 								<td><center>{{$row->SERIAL_NO}}</center></td> {{-- 7 --}}
 								<td><center>{{$row->FORM_DATE}}</center></td> {{-- 7 --}}
-								<td><center>{{$row->APPLICANT_NAME}}</center></td> {{-- 7 --}}
 								<td>
 									<button type="button" class="btn btn-primary btnEvaluateWeightsAndMeasure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}"  data-toggle="modal">
 										<i class="fa fa-circle"></i> Evaluate 
@@ -820,6 +826,16 @@
 			success: function(response){	
 				let wmData = response.pending_weights_and_measure;
 				console.log(wmData);
+				let deviceType;
+
+				if(wmData[0].DEVICE_TYPE == "LM")
+					deviceType = "Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)"
+				else if(wmData[0].DEVICE_TYPE == "MC")
+					deviceType = "Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc)"
+				else if(wmData[0].DEVICE_TYPE == "GS")
+					deviceType = "Graduated Scale Balance (Weighing Scales, etc)"
+				else if(wmData[0].DEVICE_TYPE == "AB")
+					deviceType = "Apothecary Balances (Mineral and Medicinal Uses)"
 
 				$('#txt_form_id').val(wmData[0].FORM_ID);
 				$('#txt_wm_business_no').val(wmData[0].BUSINESS_OR_NUMBER);
@@ -827,10 +843,10 @@
 				$('#txt_business_address').val(wmData[0].BUSINESS_ADDRESS);
 				$('#txt_device_number').val(wmData[0].DEVICE_NUMBER);
 				$('#txt_license_no').val(wmData[0].LICENSE_NO);
-				$('#txt_device_type').val(wmData[0].DEVICE_TYPE);
+				$('#txt_device_type').val(deviceType);
 				$('#txt_brand').val(wmData[0].BRAND);
 				$('#txt_model').val(wmData[0].MODEL);
-				$('#txt_capacity').val(wmData[0].CAPACITY);
+				$('#txt_capacity').val(wmData[0].CAPACITY + ' kg');
 				$('#txt_serial_no').val(wmData[0].SERIAL_NO);
 
 				$('#divResident').hide();

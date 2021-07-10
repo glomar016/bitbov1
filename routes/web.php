@@ -136,6 +136,7 @@ ROUTE::GROUP(['prefix' => ''], function () {
     ROUTE::POST('/ListofBarangayOfficialsPrint', 'ListofBarangayOfficialsController@filterprint')
         ->NAME('ListofBarangayOfficialsPrint');
 });
+
 ROUTE::GROUP(['prefix' => ''], function () {
 
     ROUTE::GET('/ListofBusinesses', 'ListofBusinessesController@index')
@@ -146,6 +147,18 @@ ROUTE::GROUP(['prefix' => ''], function () {
     ROUTE::POST('/ListofBusinessesFilterPrint', 'ListofBusinessesController@filterdisplay')
         ->NAME('ListofBusinessesFilterPrint');
 });
+
+ROUTE::GROUP(['prefix' => ''], function () {
+
+    ROUTE::GET('/ListofWeightsAndMeasure', 'ListofWeightsAndMeasureController@index')
+        ->NAME('ListofWeightsAndMeasure');
+    ROUTE::POST('/ListofWeightsAndMeasurePrint', 'ListofWeightsAndMeasureController@filterprint')
+        ->NAME('ListofWeightsAndMeasurePrint');
+
+    ROUTE::POST('/ListofWeightsAndMeasureFilterPrint', 'ListofWeightsAndMeasureController@filterdisplay')
+        ->NAME('ListofWeightsAndMeasureFilterPrint');
+});
+
 ROUTE::GROUP(['prefix' => ''], function () {
 
     ROUTE::GET('/LisfofOrdianance', 'ListofOrdinanceController@index')

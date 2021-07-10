@@ -86,28 +86,40 @@
                                             <center>Business Name</center>
                                         </th>
                                         <th>
-                                            <center>LICENSE_NO </center>
+                                            <center>Business Number</center>
                                         </th>
                                         <th>
-                                            <center>LICENSE_DATE</center>
+                                            <center>Business Address</center>
                                         </th>
                                         <th>
-                                            <center>DEVICE_TYPE</center>
+                                            <center>Device Number </center>
                                         </th>
                                         <th>
-                                            <center>BRAND</center>
+                                            <center>License Number </center>
                                         </th>
                                         <th>
-                                            <center>MODEL </center>
+                                            <center>License Date</center>
                                         </th>
                                         <th>
-                                            <center>CAPACITY  </center>
+                                            <center>Sales Invoice</center>
                                         </th>
                                         <th>
-                                            <center>SERIAL_NO   </center>
+                                            <center>Device Type</center>
                                         </th>
                                         <th>
-                                            <center>STATUS   </center>
+                                            <center>Brand</center>
+                                        </th>
+                                        <th>
+                                            <center>Model </center>
+                                        </th>
+                                        <th>
+                                            <center>Capacity</center>
+                                        </th>
+                                        <th>
+                                            <center>Serial Number   </center>
+                                        </th>
+                                        <th>
+                                            <center>Status   </center>
                                         </th>
                                         {{-- <th>Period</th> --}}
                                         <th>
@@ -120,14 +132,28 @@
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
                                             <td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
                                             <td>{{$row->BUSINESS_NAME}}</td>
+                                            <td>{{$row->BUSINESS_OR_NUMBER}}</td>
+                                            <td>{{$row->BUSINESS_ADDRESS}}</td>
+                                            <td>{{$row->DEVICE_NUMBER}}</td>
                                             <td>{{$row->LICENSE_NO}}</td>
                                             <td>{{$row->LICENSE_DATE}}</td>
-                                            <td>{{$row->DEVICE_TYPE}}</td>
+                                            <td>{{$row->SALES_INVOICE}}</td>
+                                            @if($row->DEVICE_TYPE == "LM")
+                                            <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "MC")
+                                            <td>Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </td>
+                                            @elseif($row->DEVICE_TYPE == "GS")
+                                            <td>Graduated Scale Balance (Weighing Scales, etc)</td>
+                                            @elseif($row->DEVICE_TYPE == "AB")
+                                            <td>Apothecary Balances (Mineral and Medicinal Uses)</td>
+                                            @else
+                                            <td></td>
+                                            @endif
                                             <td>{{$row->BRAND}}</td>
                                             <td>{{$row->MODEL}}</td>
-                                            <td>{{$row->CAPACITY}}</td>
+                                            <td>{{$row->CAPACITY}} kg</td>
                                             <td>{{$row->SERIAL_NO}}</td>
-                                            @if($row->NEW_RENEW_STATUS == "New")
+                                            @if($row->WM_NEW_RENEW_STATUS == "New")
                                             <td>
                                                 <h5><span class="label label-success">New</span></h5>
                                             </td>
@@ -238,7 +264,7 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_device_type_edit">Device Type<span class="text-danger"></span></label><br>
                                                 <select id="txt_device_type_edit">
@@ -250,19 +276,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-8">
-                                            <div class="stats-content">
-                                                <label for="txt_device_number_edit">Device Type<span class="text-danger"></span></label><br>
-                                                <input class="form-control" id="txt_device_number_edit" name="txt_device_number_edit" placeholder="" readonly/>
-                                            </div>
-                                        </div><br><br>
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_brand_edit">Brand<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_brand_edit" name="txt_brand_edit" placeholder="" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_model_edit">Model<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_model_edit" name="txt_model_edit" placeholder="" />
@@ -270,16 +290,22 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_capacity_edit">Capacity<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_capacity_edit" name="txt_capacity_edit" placeholder=""  />
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_serial_no_edit">Serial No<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_serial_no_edit" name="txt_serial_no_edit" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_sales_invoice_edit">Sales Invoice<span class="text-danger"></span></label>
+                                                <input class="form-control" type="text" id="txt_sales_invoice_edit" name="txt_sales_invoice_edit" placeholder="" />
                                             </div>
                                         </div>
                                     </div>
@@ -311,8 +337,13 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-8">
                                                 <div class="stats-content">
-                                                    <label for="txt_reason">Deactivation Reason<span class="text-danger"></span></label>
-                                                    <textarea class="form-control" id="txt_reason" name="txt_reason" rows="12"  ></textarea>
+                                                    <label for="txt_reason">Deactivation Reason: <span class="text-danger"></span></label>
+                                                    <select id="txt_reason">
+                                                        <option selected disabled>-- Select Deactivation Reason --</option>
+                                                        <option value="Worn-out/Replaced">Worn-out/Replaced</option>
+                                                        <option value="Ownership transferred">Ownership transferred</option>
+                                                        <option value="Business closure">Business closure</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -334,7 +365,7 @@
                 <!-- MODALS -->
                 <div class="modal fade" id="modal-View">
                     <div class="modal-dialog" style="max-width: 50%;">
-                        <form id="weightsandmeasure_renew_form">
+                        <form id="viewForm">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #28a745">
                                     <h4 class="modal-title" style="color: black">View Business</h4>
@@ -404,16 +435,22 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_capacity_view">Capacity<span class="text-danger"></span></label><br>
                                                 <label class="txt_capacity_view" style="font-weight: normal;">asd</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_serial_no_view">Serial No<span class="text-danger"></span></label><br>
                                                 <label class="txt_serial_no_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_sales_invoice_view">Sales Invoice<span class="text-danger"></span></label><br>
+                                                <label class="txt_sales_invoice_view" style="font-weight: normal;">asd</label>
                                             </div>
                                         </div>
                                     </div>
@@ -431,7 +468,7 @@
             <div>
                 <div class="modal fade" id="modal-Renew">
                     <div class="modal-dialog" style="max-width: 80%">
-                        <form id="viewForm">
+                        <form id="weightsandmeasure_renew_form">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #f59c1a">
                                     <h4 class="modal-title" style="color: white"> Business Information</h4>
@@ -502,16 +539,22 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_capacity_edit_renew">Capacity<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_capacity_edit_renew" name="txt_capacity_edit_renew" readonly  placeholder=""  />
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-8">
+                                        <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_serial_no_edit_renew">Serial No<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_serial_no_edit_renew" name="txt_serial_no_edit_renew" readonly  placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_sales_invoice_edit_renew">Sales Invoice<span class="text-danger"></span></label>
+                                                <input class="form-control" type="date" id="txt_sales_invoice_edit_renew" name="txt_sales_invoice_edit_renew"   readonly placeholder="" />
                                             </div>
                                         </div>
                                     </div>
@@ -577,6 +620,7 @@
         var BUSINESS_ID,
             LICENSE_NO = [],
 			LICENSE_DATE = [],
+			SALES_INVOICE = [],
 			DEVICE_TYPE = [],
 			BRAND = [];
 			MODEL = [];
@@ -591,6 +635,9 @@
 		});
 		$("input[name='LICENSE_DATE[]']").each(function() {
 			LICENSE_DATE.push($(this).val());
+		});
+		$("input[name='SALES_INVOICE[]']").each(function() {
+			SALES_INVOICE.push($(this).val());
 		});
 		$(".device_type_list option:selected").each(function() {
 			DEVICE_TYPE.push($(this).val());
@@ -614,6 +661,7 @@
             , 'BUSINESS_ID': BUSINESS_ID
             , 'LICENSE_NO': LICENSE_NO
             , 'LICENSE_DATE': LICENSE_DATE
+            , 'SALES_INVOICE': SALES_INVOICE
             , 'DEVICE_TYPE': DEVICE_TYPE
             , 'BRAND': BRAND
             , 'MODEL': MODEL
@@ -662,6 +710,7 @@
                     <tr class="classTrWeightsAndMeasureActivity">
                     <td><input type="text" name="LICENSE_NO[]" class="form-control"></td> \n'
                     <td><input type="date" name="LICENSE_DATE[]" class="form-control"></td> \n'
+                    <td><input type="text" name="SALES_INVOICE[]" class="form-control"></td> \n'
                     <td>
                         <select class="device_type_list" name="DEVICE_TYPPE[]">
                             <option disabled selected> -- Select Device Type -- </option>
@@ -726,6 +775,7 @@
                     $('.txt_device_type_view').html('Apothecary Balances')
                 }
                 $('.txt_license_date_view').html(newData[0].LICENSE_DATE);
+                $('.txt_sales_invoice_view').html(newData[0].SALES_INVOICE);
                 $('.txt_device_number_view').html(newData[0].DEVICE_NUMBER);
                 $('.txt_brand_view').html(newData[0].BRAND);
                 $('.txt_model_view').html(newData[0].MODEL);
@@ -763,6 +813,7 @@
                 $('#txt_business_address').val(newData[0].BUSINESS_ADDRESS);
                 $('#txt_license_no_edit').val(newData[0].LICENSE_NO);
                 $('#txt_license_date_edit').val(newData[0].LICENSE_DATE);
+                $('#txt_sales_invoice_edit').val(newData[0].SALES_INVOICE);
                 $('#txt_device_type_edit').val(newData[0].DEVICE_TYPE);
                 $('#txt_brand_edit').val(newData[0].BRAND);
                 $('#txt_device_number_edit').val(newData[0].DEVICE_NUMBER);
@@ -855,6 +906,7 @@
                     $('#txt_device_type_edit_renew').val('Apothecary Balances')
                 }
                 $('#txt_license_date_edit_renew').val(newData[0].LICENSE_DATE);
+                $('#txt_sales_invoice_edit_renew').val(newData[0].SALES_INVOICE);
                 $('#txt_device_number_renew').val(newData[0].DEVICE_NUMBER);
                 $('#txt_brand_edit_renew').val(newData[0].BRAND);
                 $('#txt_model_edit_renew').val(newData[0].MODEL);
@@ -903,16 +955,12 @@
     
     $("#weightsandmeasure_renew_form").on('submit', function(e){
         e.preventDefault();
-        var form = $("#weightsandmeasure_renew_form").serializeArray();
         let data = {
             '_token': " {{ csrf_token() }}",
+            'NEW_RENEW_STATUS': "Renew",
             'TYPE': "RENEW",
+            'WEIGHTS_AND_MEASURE_ID': $('#txt_weights_and_measure_id_renew').val()
         }
-
-        
-        $.each(form, function(){
-            data[[this.name]] = this.value;
-        })
 
         console.log(data);
 
