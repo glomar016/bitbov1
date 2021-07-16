@@ -1,0 +1,6 @@
+1. added SI_Date Column on t_weights_and_measure
+    -   Query
+            ALTER TABLE t_weights_and_measure
+            ADD SI_DATE DATE
+
+            

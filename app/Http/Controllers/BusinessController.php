@@ -385,6 +385,7 @@ class BusinessController extends Controller
         $LICENSE_NO = $request->LICENSE_NO;
         $LICENSE_DATE = $request->LICENSE_DATE;
         $SALES_INVOICE = $request->SALES_INVOICE;
+        $SI_DATE = $request->SI_DATE;
         $DEVICE_TYPE = $request->DEVICE_TYPE;
         $BRAND = $request->BRAND;
         $MODEL = $request->MODEL;
@@ -407,6 +408,7 @@ class BusinessController extends Controller
                     , 'LICENSE_NO' => $LICENSE_NO[$i]
                     , 'LICENSE_DATE' => $LICENSE_DATE[$i]
                     , 'SALES_INVOICE' => $SALES_INVOICE[$i]
+                    , 'SI_DATE' => $SI_DATE[$i]
                     , 'DEVICE_TYPE' => $DEVICE_TYPE[$i]
                     , 'BRAND' => $BRAND[$i]
                     , 'MODEL' => $MODEL[$i]
@@ -586,6 +588,7 @@ class BusinessController extends Controller
                 'LICENSE_NO' => $request->txt_license_no_edit
                 , 'LICENSE_DATE' => $request->txt_license_date_edit
                 , 'SALES_INVOICE' => $request->txt_sales_invoice_edit
+                , 'SI_DATE' => $request->txt_sales_invoice_date_edit
                 , 'DEVICE_TYPE' => $request->txt_device_type_edit
                 , 'BRAND' => $request->txt_brand_edit
                 , 'MODEL' => $request->txt_model_edit

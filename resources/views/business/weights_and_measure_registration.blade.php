@@ -83,25 +83,7 @@
                                             <center>Weights and Measure ID</center>
                                         </th>
                                         <th>
-                                            <center>Business Name</center>
-                                        </th>
-                                        <th>
-                                            <center>Business Number</center>
-                                        </th>
-                                        <th>
-                                            <center>Business Address</center>
-                                        </th>
-                                        <th>
-                                            <center>Device Number </center>
-                                        </th>
-                                        <th>
-                                            <center>License Number </center>
-                                        </th>
-                                        <th>
-                                            <center>License Date</center>
-                                        </th>
-                                        <th>
-                                            <center>Sales Invoice</center>
+                                            <center>Device Registration Number </center>
                                         </th>
                                         <th>
                                             <center>Device Type</center>
@@ -119,6 +101,15 @@
                                             <center>Serial Number   </center>
                                         </th>
                                         <th>
+                                            <center>Sales Invoice</center>
+                                        </th>
+                                        <th>
+                                            <center>License Number </center>
+                                        </th>
+                                        <th>
+                                            <center>Business Name</center>
+                                        </th>
+                                        <th>
                                             <center>Status   </center>
                                         </th>
                                         {{-- <th>Period</th> --}}
@@ -131,13 +122,7 @@
                                     @foreach($weights_and_measure as $row)
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
                                             <td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
-                                            <td>{{$row->BUSINESS_NAME}}</td>
-                                            <td>{{$row->BUSINESS_OR_NUMBER}}</td>
-                                            <td>{{$row->BUSINESS_ADDRESS}}</td>
                                             <td>{{$row->DEVICE_NUMBER}}</td>
-                                            <td>{{$row->LICENSE_NO}}</td>
-                                            <td>{{$row->LICENSE_DATE}}</td>
-                                            <td>{{$row->SALES_INVOICE}}</td>
                                             @if($row->DEVICE_TYPE == "LM")
                                             <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
                                             @elseif($row->DEVICE_TYPE == "MC")
@@ -153,6 +138,9 @@
                                             <td>{{$row->MODEL}}</td>
                                             <td>{{$row->CAPACITY}} kg</td>
                                             <td>{{$row->SERIAL_NO}}</td>
+                                            <td>{{$row->SALES_INVOICE}}</td>
+                                            <td>{{$row->LICENSE_NO}}</td>
+                                            <td>{{$row->BUSINESS_NAME}}</td>
                                             @if($row->WM_NEW_RENEW_STATUS == "New")
                                             <td>
                                                 <h5><span class="label label-success">New</span></h5>
@@ -222,12 +210,12 @@
                         <form id="weightsandmeasure_form">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #17a2b8">
-                                    <h4 class="modal-title" style="color: white">Edit Business</h4>
+                                    <h4 class="modal-title" style="color: white">Edit Weights and Measure</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
                                 </div>
                                 
                                 <div class="modal-body">
-                                    <h3><label id="lbl_business_name">WBB Toy Shop</label></h3>
+                                    <h3><label id="lbl_weights_and_measure_number">WBB Toy Shop</label></h3>
                                     <input type="text" id="txt_weights_and_measure_id" name="txt_weights_and_measure_id" hidden>
                                     <div class="row">
                                         <div class="col-lg-2 col-md-8">
@@ -290,22 +278,28 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_capacity_edit">Capacity<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_capacity_edit" name="txt_capacity_edit" placeholder=""  />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_serial_no_edit">Serial No<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_serial_no_edit" name="txt_serial_no_edit" placeholder="" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_sales_invoice_edit">Sales Invoice<span class="text-danger"></span></label>
                                                 <input class="form-control" type="text" id="txt_sales_invoice_edit" name="txt_sales_invoice_edit" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_sales_invoice_date_edit">Sales Invoice Date<span class="text-danger"></span></label>
+                                                <input class="form-control" type="text" id="txt_sales_invoice_date_edit" name="txt_sales_invoice_date_edit" placeholder="" />
                                             </div>
                                         </div>
                                     </div>
@@ -368,12 +362,12 @@
                         <form id="viewForm">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #28a745">
-                                    <h4 class="modal-title" style="color: black">View Business</h4>
+                                    <h4 class="modal-title" style="color: black">View Weights and Measure</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
                                 </div>
                                 
                                 <div class="modal-body">
-                                    <h3><label id="lbl_business_name_view">WBB Toy Shop</label></h3>
+                                    <h3><label id="lbl_weights_and_measure_number_view">WBB Toy Shop</label></h3>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-8">
                                             <div class="stats-content">
@@ -435,22 +429,28 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_capacity_view">Capacity<span class="text-danger"></span></label><br>
                                                 <label class="txt_capacity_view" style="font-weight: normal;">asd</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_serial_no_view">Serial No<span class="text-danger"></span></label><br>
                                                 <label class="txt_serial_no_view" style="font-weight: normal;">asd</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_sales_invoice_view">Sales Invoice<span class="text-danger"></span></label><br>
                                                 <label class="txt_sales_invoice_view" style="font-weight: normal;">asd</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_sales_invoice_date_view">Sales Invoice Date<span class="text-danger"></span></label><br>
+                                                <label class="txt_sales_invoice_date_view" style="font-weight: normal;">asd</label>
                                             </div>
                                         </div>
                                     </div>
@@ -471,12 +471,12 @@
                         <form id="weightsandmeasure_renew_form">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #f59c1a">
-                                    <h4 class="modal-title" style="color: white"> Business Information</h4>
+                                    <h4 class="modal-title" style="color: white"> Weights and Measure Information</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
                                 </div>
                                 
                                 <div class="modal-body">
-                                    <h3><label id="lbl_business_name_renew">WBB Toy Shop</label></h3>
+                                    <h3><label id="lbl_weights_and_measure_number_renew">WBB Toy Shop</label></h3>
                                     <input type="text" id="txt_weights_and_measure_id_renew" name="txt_weights_and_measure_id_renew" hidden>
                                     <div class="row">
                                         <div class="col-lg-2 col-md-8">
@@ -539,22 +539,28 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_capacity_edit_renew">Capacity<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_capacity_edit_renew" name="txt_capacity_edit_renew" readonly  placeholder=""  />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_serial_no_edit_renew">Serial No<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_serial_no_edit_renew" name="txt_serial_no_edit_renew" readonly  placeholder="" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_sales_invoice_edit_renew">Sales Invoice<span class="text-danger"></span></label>
-                                                <input class="form-control" type="date" id="txt_sales_invoice_edit_renew" name="txt_sales_invoice_edit_renew"   readonly placeholder="" />
+                                                <input class="form-control" type="text" id="txt_sales_invoice_edit_renew" name="txt_sales_invoice_edit_renew"   readonly placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-8">
+                                            <div class="stats-content">
+                                                <label for="txt_sales_invoice_date_edit_renew">Sales Invoice Date<span class="text-danger"></span></label>
+                                                <input class="form-control" type="date" id="txt_sales_invoice_date_edit_renew" name="txt_sales_invoice_date_edit_renew"   readonly placeholder="" />
                                             </div>
                                         </div>
                                     </div>
@@ -621,6 +627,7 @@
             LICENSE_NO = [],
 			LICENSE_DATE = [],
 			SALES_INVOICE = [],
+			SI_DATE = [],
 			DEVICE_TYPE = [],
 			BRAND = [];
 			MODEL = [];
@@ -638,6 +645,9 @@
 		});
 		$("input[name='SALES_INVOICE[]']").each(function() {
 			SALES_INVOICE.push($(this).val());
+		});
+        $("input[name='SI_DATE[]']").each(function() {
+			SI_DATE.push($(this).val());
 		});
 		$(".device_type_list option:selected").each(function() {
 			DEVICE_TYPE.push($(this).val());
@@ -662,6 +672,7 @@
             , 'LICENSE_NO': LICENSE_NO
             , 'LICENSE_DATE': LICENSE_DATE
             , 'SALES_INVOICE': SALES_INVOICE
+            , 'SI_DATE': SI_DATE
             , 'DEVICE_TYPE': DEVICE_TYPE
             , 'BRAND': BRAND
             , 'MODEL': MODEL
@@ -711,8 +722,9 @@
                     <td><input type="text" name="LICENSE_NO[]" class="form-control"></td> \n'
                     <td><input type="date" name="LICENSE_DATE[]" class="form-control"></td> \n'
                     <td><input type="text" name="SALES_INVOICE[]" class="form-control"></td> \n'
+                    <td><input type="date" name="SI_DATE[]" class="form-control"></td> \n'
                     <td>
-                        <select class="device_type_list" name="DEVICE_TYPPE[]">
+                        <select class="device_type_list" name="DEVICE_TYPE[]">
                             <option disabled selected> -- Select Device Type -- </option>
                             <option value="LM">Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc.)</option>
                             <option value="MC">Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </option>
@@ -732,7 +744,7 @@
                 $.each(data["business_number"], function() {
 					$('.business_name_list').append(`<option class="business_name_list_val" value="${this['BUSINESS_ID']}"> 
                                    ${this['BUSINESS_NAME']} 
-                              </option>`);
+                    </option>`);
 				});
             }
         })
@@ -757,7 +769,7 @@
 			data: data,
 			success:function(response) {
                 let newData = response.specific_business;
-                $('#lbl_business_name_view').html(newData[0].BUSINESS_NAME);
+                $('#lbl_weights_and_measure_number_view').html(newData[0].DEVICE_NUMBER);
                 $('.txt_business_number_view').html(newData[0].BUSINESS_OR_NUMBER);
                 $('.txt_business_name_view').html(newData[0].BUSINESS_NAME);
                 $('.txt_business_address_view').html(newData[0].BUSINESS_ADDRESS);
@@ -776,6 +788,7 @@
                 }
                 $('.txt_license_date_view').html(newData[0].LICENSE_DATE);
                 $('.txt_sales_invoice_view').html(newData[0].SALES_INVOICE);
+                $('.txt_sales_invoice_date_view').html(newData[0].SI_DATE);
                 $('.txt_device_number_view').html(newData[0].DEVICE_NUMBER);
                 $('.txt_brand_view').html(newData[0].BRAND);
                 $('.txt_model_view').html(newData[0].MODEL);
@@ -806,7 +819,7 @@
 			data: data,
 			success:function(response) {
                 let newData = response.specific_business;
-                $('#lbl_business_name').html(newData[0].BUSINESS_NAME);
+                $('#lbl_weights_and_measure_number').html(newData[0].DEVICE_NUMBER);
                 $('#txt_weights_and_measure_id').val(newData[0].WEIGHTS_AND_MEASURE_ID);
                 $('#txt_business_number').val(newData[0].BUSINESS_OR_NUMBER);
                 $('#txt_business_name').val(newData[0].BUSINESS_NAME);
@@ -814,6 +827,7 @@
                 $('#txt_license_no_edit').val(newData[0].LICENSE_NO);
                 $('#txt_license_date_edit').val(newData[0].LICENSE_DATE);
                 $('#txt_sales_invoice_edit').val(newData[0].SALES_INVOICE);
+                $('#txt_sales_invoice_date_edit').val(newData[0].SI_DATE);
                 $('#txt_device_type_edit').val(newData[0].DEVICE_TYPE);
                 $('#txt_brand_edit').val(newData[0].BRAND);
                 $('#txt_device_number_edit').val(newData[0].DEVICE_NUMBER);
@@ -887,7 +901,7 @@
 			data: data,
 			success:function(response) {
                 let newData = response.specific_business;
-                $('#lbl_business_name_renew').html(newData[0].BUSINESS_NAME)
+                $('#lbl_weights_and_measure_number_renew').html(newData[0].DEVICE_NUMBER)
                 $('#txt_weights_and_measure_id_renew').val(newData[0].WEIGHTS_AND_MEASURE_ID);
                 $('#txt_business_number_renew').val(newData[0].BUSINESS_OR_NUMBER);
                 $('#txt_business_name_renew').val(newData[0].BUSINESS_NAME);
@@ -907,6 +921,7 @@
                 }
                 $('#txt_license_date_edit_renew').val(newData[0].LICENSE_DATE);
                 $('#txt_sales_invoice_edit_renew').val(newData[0].SALES_INVOICE);
+                $('#txt_sales_invoice_date_edit_renew').val(newData[0].SI_DATE);
                 $('#txt_device_number_renew').val(newData[0].DEVICE_NUMBER);
                 $('#txt_brand_edit_renew').val(newData[0].BRAND);
                 $('#txt_model_edit_renew').val(newData[0].MODEL);

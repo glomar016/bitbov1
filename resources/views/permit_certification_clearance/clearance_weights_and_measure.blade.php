@@ -63,16 +63,7 @@
                                             <center>Weights and Measure ID</center>
                                         </th>
                                         <th>
-                                            <center>Business Name</center>
-                                        </th>
-                                        <th>
-                                            <center>Device Number </center>
-                                        </th>
-                                        <th>
-                                            <center>License Number </center>
-                                        </th>
-                                        <th>
-                                            <center>License Date</center>
+                                            <center>Device Registration Number </center>
                                         </th>
                                         <th>
                                             <center>Device Type</center>
@@ -84,13 +75,22 @@
                                             <center>Model </center>
                                         </th>
                                         <th>
-                                            <center>Capacity  </center>
+                                            <center>Capacity</center>
                                         </th>
                                         <th>
                                             <center>Serial Number   </center>
                                         </th>
+                                        <th>
+                                            <center>Sales Invoice</center>
+                                        </th>
+                                        <th>
+                                            <center>License Number </center>
+                                        </th>
+                                        <th>
+                                            <center>Business Name</center>
+                                        </th>
                                         {{-- <th>Period</th> --}}
-                                        <th width="20%">
+                                        <th>
                                             <center>Action</center>
                                         </th>
                                     </tr>
@@ -98,10 +98,8 @@
                                 <tbody>
                                     @foreach($weights_and_measure as $row)
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
-                                            <td>{{$row->BUSINESS_NAME}}</td>
+                                            <<td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
                                             <td>{{$row->DEVICE_NUMBER}}</td>
-                                            <td>{{$row->LICENSE_NO}}</td>
-                                            <td>{{$row->LICENSE_DATE}}</td>
                                             @if($row->DEVICE_TYPE == "LM")
                                             <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
                                             @elseif($row->DEVICE_TYPE == "MC")
@@ -115,9 +113,11 @@
                                             @endif
                                             <td>{{$row->BRAND}}</td>
                                             <td>{{$row->MODEL}}</td>
-                                            <td>{{$row->CAPACITY}}</td>
+                                            <td>{{$row->CAPACITY}} kg</td>
                                             <td>{{$row->SERIAL_NO}}</td>
-
+                                            <td>{{$row->SALES_INVOICE}}</td>
+                                            <td>{{$row->LICENSE_NO}}</td>
+                                            <td>{{$row->BUSINESS_NAME}}</td>
                                             <td style="text-align: center">
                                                 <button type="button" class="btn btn-primary btnRequestWeightsAndMeasure" id="{{$row->WEIGHTS_AND_MEASURE_ID}}"  data-toggle="modal">
                                                     <i class="fa fa-file-alt">&nbsp</i> Request Clearance
@@ -150,7 +150,7 @@
 				</div>
 				<div class="modal-body">
 					{{-- <div class="panel-body"> --}}
-						<h3><b><label id="lbl_business_name" >Business:</label></b></h3> <input type="text" hidden> <input type="text" id="txt_form_type" hidden>
+						<h3><b><label id="lbl_weights_and_measure_number" >Business:</label></b></h3> <input type="text" hidden> <input type="text" id="txt_form_type" hidden>
                         <form>
 							{{-- F - Clearance Weights and Measure  --}}
 							<div class="col-md-10" id="divClearanceWeightsAndMeasure">
@@ -158,6 +158,12 @@
 								<h5 id="divFilloutInstruction">Fill out the following information:</h5><br>
 								<input type="text" id="txt_weights_and_measure_id" hidden>
 								<input type="text" id="txt_business_id" hidden>
+								<div class="form-group row m-b-10">
+									<label class="col-md-4 col-form-label text-md-right">Business Name</label>
+									<div class="col-md-8">
+										<input type="text"  class="form-control" id="txt_business_name_f" name="txt_business_name_f" readonly>
+									</div>
+								</div>
 								<div class="form-group row m-b-10">
 									<label class="col-md-4 col-form-label text-md-right">Business No.</label>
 									<div class="col-md-8">
@@ -281,7 +287,8 @@
                 $('#txt_weights_and_measure_id').val(newData[0].WEIGHTS_AND_MEASURE_ID);
                 $('#txt_business_id').val(newData[0].BUSINESS_ID);
                 $('#txt_applicant_name').val(newData[0].BUSINESS_OWNER_FIRSTNAME + " " + newData[0].BUSINESS_OWNER_MIDDLENAME + " " + newData[0].BUSINESS_OWNER_LASTNAME);
-                $('#lbl_business_name').html(newData[0].BUSINESS_NAME);
+                $('#lbl_weights_and_measure_number').html(newData[0].DEVICE_NUMBER);
+                $('#txt_business_name_f').val(newData[0].BUSINESS_NAME);
                 $('#txt_business_no_f').val(newData[0].BUSINESS_OR_NUMBER);
                 $('#txt_business_address_f').val(newData[0].BUSINESS_ADDRESS);
                 $('#txt_license_no_f').val(newData[0].LICENSE_NO);

@@ -38,14 +38,15 @@
 										<thead>
 											<tr>
 												<th hidden style="text-align: center;">BUSINESS NUMBER</th>
-												<th style="text-align: center;">LICENSE_NO</th>
-												<th style="text-align: center;">LICENSE_DATE</th>
-												<th style="text-align: center;">SALES INVOICE</th>
-												<th style="text-align: center;">DEVICE_TYPE</th>
-												<th style="text-align: center;">BRAND</th>
-												<th style="text-align: center;">MODEL</th>
-												<th style="text-align: center;">CAPACITY in kg</th>
-												<th style="text-align: center;">SERIAL NO</th>
+												<th style="text-align: center;">License Number</th>
+												<th style="text-align: center;">License Date</th>
+												<th style="text-align: center;">Sales Invoice Number</th>
+												<th style="text-align: center;">SI Date</th>
+												<th style="text-align: center;">Device Type</th>
+												<th style="text-align: center;">Brand Name</th>
+												<th style="text-align: center;">Model</th>
+												<th style="text-align: center;">Capacity in kg</th>
+												<th style="text-align: center;">Serial Number</th>
 												
 											</tr>
 										</thead>
@@ -56,6 +57,7 @@
 												<td><input type="text" name="LICENSE_NO" class="form-control"></td>
 												<td><input type="date" name="LICENSE_DATE" class="form-control"></td>
 												<td><input type="date" name="SALES_INVOICE" class="form-control"></td>
+												<td><input type="text" name="SI_DATE" class="form-control"></td>
 												<td><input type="text" name="DEVICE_TYPE" class="form-control"></td>
 												<td><input type="text" name="BRAND" class="form-control"></td>
 												<td><input type="text" name="MODEL" class="form-control"></td>
