@@ -17,7 +17,7 @@ class BusinessController extends Controller
         $weights_and_measure = DB::table('t_weights_and_measure as wm')
         ->join('t_business_information as bi','wm.BUSINESS_ID','bi.BUSINESS_ID')
         ->where('wm.ACTIVE_FLAG', 1)
-        ->get(['wm.NEW_RENEW_STATUS as WM_NEW_RENEW_STATUS', 'wm.*', 'bi.*']);
+        ->get(['wm.NEW_RENEW_STATUS as WM_NEW_RENEW_STATUS', 'wm.CREATED_AT as WM_CREATED_AT', 'wm.*', 'bi.*']);
         $businessNotApproved = DB::table('v_official_business_list')->where('STATUS', 'Pending')->get();
         $buildings = DB::table('v_building_list')
         ->orderBy('CREATED_AT', 'DESC')->get();
@@ -602,6 +602,14 @@ class BusinessController extends Controller
             ->update(array(
                 'ACTIVE_FLAG' => 0
                 , 'DEACTIVATION_REASON' => $request->REASON
+            ));
+        }
+        else if($request->TYPE == "REVOKE"){
+            $update = DB::table('t_weights_and_measure')
+            ->where('WEIGHTS_AND_MEASURE_ID', $request->WEIGHTS_AND_MEASURE_ID)
+            ->update(array(
+                'NEW_RENEW_STATUS' => "Revoke"
+                , 'REVOKE_REASON' => $request->REASON
             ));
         }
     }

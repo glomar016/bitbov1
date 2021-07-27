@@ -529,7 +529,12 @@
 						<div id="divWeightsAndMeasure">
 							<h3><b><label id="lbl_resident_name" >Weights and Measure</label></b></h3>
 							<input class="form-control" type="text" placeholder="Readonly input here…" readonly="" id="txt_weights_and_measure_form_id" hidden>
-							
+							<div class="form-group row m-b-10">
+								<label class="col-sm-3 col-form-label">Device Number</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text"  readonly="" id="txt_device_number" style="background-color: white;font-weight: bold; color: black;">
+								</div>
+							</div>
 							<div class="form-group row m-b-10">
 								<label class="col-sm-3 col-form-label">Business No.</label>
 								<div class="col-sm-9">
@@ -548,12 +553,7 @@
 									<input class="form-control" type="text"  readonly="" id="txt_business_address" style="background-color: white;font-weight: bold; color: black;">
 								</div>
 							</div>
-							<div class="form-group row m-b-10">
-								<label class="col-sm-3 col-form-label">Device Number</label>
-								<div class="col-sm-9">
-									<input class="form-control" type="text"  readonly="" id="txt_device_number" style="background-color: white;font-weight: bold; color: black;">
-								</div>
-							</div>
+							
 							<div class="form-group row m-b-10">
 								<label class="col-sm-3 col-form-label">License No.</label>
 								<div class="col-sm-9">

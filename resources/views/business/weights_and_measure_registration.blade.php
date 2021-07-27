@@ -119,7 +119,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($weights_and_measure as $row)
+                                    @foreach($weights_and_measure as $row)               
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
                                             <td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
                                             <td>{{$row->DEVICE_NUMBER}}</td>
@@ -145,6 +145,10 @@
                                             <td>
                                                 <h5><span class="label label-success">New</span></h5>
                                             </td>
+                                            @elseif($row->WM_NEW_RENEW_STATUS == "Revoke")
+                                            <td>
+                                                <h5><span class="label label-danger">Revoked</span></h5>
+                                            </td>
                                             @else
                                             <td>
                                                 <h5><span class="label label-purple">Renewed</span></h5>
@@ -158,8 +162,9 @@
                                                         <li><a data-toggle='modal' data-target='#modal-Edit' class="btnEdit" style="cursor: pointer;">Edit</a></li>
                                                         <li><a data-toggle='modal' data-target='#modal-View' class="btnView" style="cursor: pointer;">View</a></li>
                                                         <li><a data-toggle='modal' id="{{$row->WEIGHTS_AND_MEASURE_ID}}" class="btnDeactivate" style="cursor: pointer;">Deactivate</a></li>
-                                                        @if((date('j') == '1') && date('n') > 1 && date('n') < 20 && $row->NEW_RENEW_STATUS == "New")
-                                                        <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li>
+                                                        <li><a data-toggle='modal' id="{{$row->WEIGHTS_AND_MEASURE_ID}}" class="btnRevoke" style="cursor: pointer;">Revocation</a></li>
+                                                        @if(date('Y', strtotime($row->WM_CREATED_AT)) <= date('Y'))
+                                                        <!-- <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li> -->
                                                         @else
                                                         <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li>
                                                         @endif
@@ -346,6 +351,37 @@
                                     <div class="modal-footer">
                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
                                         <input id="btnWeightsAndMeasureDeactivate" class="btn btn-danger" type="submit" value="Deactivate">
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal fade" id="modal-Revoke">
+                        <div class="modal-dialog" style="max-width: 35%;">
+                            <form id="weightsandmeasure_form_revoke">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background-color: #17a2b8">
+                                        <h4 class="modal-title" style="color: white">Revocation</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">×</button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        <input type="text" id="txt_weights_and_measure_id_revoke" name="txt_weights_and_measure_id_revoke" hidden>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-8">
+                                                <div class="stats-content">
+                                                    <label for="txt_revokereason">Revoked Due: <span class="text-danger"></span></label>
+                                                    <textarea class="form-control" id="txt_revokereason" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Close</a>
+                                        <input id="btnWeightsAndMeasureRevoke" class="btn btn-danger" type="submit" value="Revoke">
                                     </div>
                             </form>
                         </div>
@@ -851,6 +887,16 @@
         $('#modal-Deactivate').modal()
     })
 
+    $('.btnRevoke').on('click', function(e){
+        e.preventDefault();
+
+        let weights_and_measure_id = this.id;
+        console.log(weights_and_measure_id)
+        $('#txt_weights_and_measure_id_revoke').val(weights_and_measure_id)
+
+        $('#modal-Revoke').modal()
+    })
+
     $('#weightsandmeasure_form_deactivate').on('submit', function(e){
         e.preventDefault();
 
@@ -862,6 +908,40 @@
             'TYPE': "DEACTIVATE",
             'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
             'REASON': deactivation_reason
+        }
+        
+        $.ajax({
+            url: "{{route('UpdateWeightsAndMeasure')}}",
+            type: "post",
+            data: data,
+
+            success: function(response){
+                swal({
+                    title: 'Success',
+                    text: 'Record updated!',
+                    icon: 'success',
+                    timer: 1000
+                });
+                window.location.reload();
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+    })
+
+    $('#weightsandmeasure_form_revoke').on('submit', function(e){
+        e.preventDefault();
+
+        let weights_and_measure_id = $('#txt_weights_and_measure_id_revoke').val();
+        let revoke_reason = $('#txt_revokereason').val();
+        console.log(revoke_reason)
+
+        let data = {
+            '_token': " {{ csrf_token() }}",
+            'TYPE': "REVOKE",
+            'WEIGHTS_AND_MEASURE_ID': weights_and_measure_id,
+            'REASON': revoke_reason
         }
         
         $.ajax({

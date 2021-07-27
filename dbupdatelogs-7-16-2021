@@ -3,4 +3,7 @@
             ALTER TABLE t_weights_and_measure
             ADD SI_DATE DATE
 
-            
+2. added revoke reason
+    -   Query 
+            ALTER TABLE t_weights_and_measure
+            ADD REVOKE_REASON VARCHAR(500);
