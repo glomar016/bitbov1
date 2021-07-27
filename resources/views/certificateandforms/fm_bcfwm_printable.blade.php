@@ -228,14 +228,6 @@ lang=EN-PH style='font-size:20.0pt;color:black'>BARANGAY CLEARANCE FOR WEIGHING
 AND MEASURING DEVICES<o:p></o:p></span></b></p><br><br><br>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-normal;background:white'><b style='mso-bidi-font-weight:normal'><span
-lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
-
-<p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
-normal;background:white'><b style='mso-bidi-font-weight:normal'><span
-lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
-
-<p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
 normal;background:white'><span lang=EN-PH style='font-size:15.0pt;color:black'>TO
 WHOM IT MAY CONCERN:<o:p></o:p></span></p>
 
@@ -283,27 +275,22 @@ style='mso-bidi-font-weight:normal'><u id='lbl_owners_address'>G TRINIDAD STREET
   padding:2.75pt 2.75pt 2.75pt 2.75pt'>
   <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
   normal;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:
-  yes'><span lang=EN-PH style='font-size:15.0pt;color:black'><o:p id='lbl_business_address'>G TRINIDAD STREET, BARANGAY WAWA, TANAY, RIZAL</o:p></span></p>
+  yes'><span lang=EN-PH style='font-size:15.0pt;color:black'><o:p id='lbl_business_address_f'>G TRINIDAD STREET, BARANGAY WAWA, TANAY, RIZAL</o:p></span></p>
   </td>
- </tr>
- <tr style='mso-yfti-irow:2'>
-  <td width=207 colspan=2 valign=top style='width:155.45pt;border:none;
-  border-bottom:solid black 1.0pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-  mso-border-shadow:yes'><span lang=EN-PH style='font-size:15.0pt;color:black'>Device
-  Type<o:p></o:p></span></p>
-  </td>
-  <td width=207 valign=top style='width:155.5pt;border:none;border-bottom:solid black 1.0pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
-  line-height:normal;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-  mso-border-shadow:yes'><span lang=EN-PH style='font-size:15.0pt;color:black'>Capacity<o:p></o:p></span></p>
-  </td>
+ <tr style='mso-yfti-irow:3'>
+ 
+<p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
+normal;background:white'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
+normal;background:white'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-PH style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
  </tr>
  <tr style='mso-yfti-irow:3'>
-  <td width=207 colspan=2 valign=top style='width:155.45pt;border:none;
+  <td width=207 colspan=2 valign=top style='width:155.45pt;border-left:none;border-top:
+  solid black 1.0pt;
   border-bottom:solid black 1.0pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt'>
   <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:

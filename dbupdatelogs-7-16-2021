@@ -7,3 +7,24 @@
     -   Query 
             ALTER TABLE t_weights_and_measure
             ADD REVOKE_REASON VARCHAR(500);
+
+Remove at wm printables 
+Line 288: 
+</tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=207 colspan=2 valign=top style='width:155.45pt;border:none;
+  border-bottom:solid black 1.0pt;mso-border-bottom-alt:solid black .5pt;
+  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-PH style='font-size:15.0pt;color:black'>Device
+  Type<o:p></o:p></span></p>
+  </td>
+  <td width=207 valign=top style='width:155.5pt;border:none;border-bottom:solid black 1.0pt;
+  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-PH style='font-size:15.0pt;color:black'>Capacity<o:p></o:p></span></p>
+  </td>
+ </tr>
+

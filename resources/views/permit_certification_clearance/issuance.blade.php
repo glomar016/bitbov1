@@ -1207,7 +1207,7 @@
 							$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
 							$('#lbl_device_serial').text(weights_and_measure[0].SERIAL_NO);
 							$('#lbl_business_name').text(weights_and_measure[0].BUSINESS_NAME);
-							$('#lbl_business_address').text(weights_and_measure[0].BUSINESS_ADDRESS);
+							$('#lbl_business_address_f').text(weights_and_measure[0].BUSINESS_ADDRESS);
 						}
 					})
 					
@@ -1915,7 +1915,7 @@
 						$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
 						$('#lbl_device_serial').text(weights_and_measure[0].SERIAL_NO);
 						$('#lbl_business_name').text(weights_and_measure[0].BUSINESS_NAME);
-						$('#lbl_business_address').text(weights_and_measure[0].BUSINESS_ADDRESS);
+						$('#lbl_business_address_f').text(weights_and_measure[0].BUSINESS_ADDRESS);
 					
 						$("#fmbcfwm").printThis({
 								debug: false,
@@ -1984,7 +1984,7 @@
 				$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
 				$('#lbl_device_serial').text(weights_and_measure[0].SERIAL_NO);
 				$('#lbl_business_name').text(weights_and_measure[0].BUSINESS_NAME);
-				$('#lbl_business_address').text(weights_and_measure[0].BUSINESS_ADDRESS);
+				$('#lbl_business_address_f').text(weights_and_measure[0].BUSINESS_ADDRESS);
 			
 				$("#fmbcfwm").printThis({
 						debug: false,
