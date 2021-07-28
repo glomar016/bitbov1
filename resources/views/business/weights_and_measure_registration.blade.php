@@ -756,11 +756,11 @@
                     `
                     <tr class="classTrWeightsAndMeasureActivity">
                     <td><input type="text" name="LICENSE_NO[]" class="form-control"></td> \n'
-                    <td><input type="date" name="LICENSE_DATE[]" class="form-control"></td> \n'
+                    <td><input style="width:140px" type="date" name="LICENSE_DATE[]" class="form-control"></td> \n'
                     <td><input type="text" name="SALES_INVOICE[]" class="form-control"></td> \n'
-                    <td><input type="date" name="SI_DATE[]" class="form-control"></td> \n'
+                    <td><input style="width:140px" type="date" name="SI_DATE[]" class="form-control"></td> \n'
                     <td>
-                        <select class="device_type_list" name="DEVICE_TYPE[]">
+                        <select style="width:150px" class="device_type_list" name="DEVICE_TYPE[]">
                             <option disabled selected> -- Select Device Type -- </option>
                             <option value="LM">Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc.)</option>
                             <option value="MC">Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc) </option>
