@@ -1200,8 +1200,23 @@
 						success: function(response){
 							var weights_and_measure = response.weights_and_measure;
 							console.log(weights_and_measure);
+							let w_device_type;
+
+							if(weights_and_measure[0].DEVICE_TYPE == "LM"){
+								w_device_type = "Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "MC"){
+								w_device_type = "Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "GS"){
+								w_device_type = "Graduated Scale Balance (Weighing Scales, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "AB"){
+								w_device_type = "Apothecary Balances (Mineral and Medicinal Uses)"
+							}
+
 							$('#lbl_reg_no').text(weights_and_measure[0].DEVICE_NUMBER);
-							$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
+							$('#lbl_device_type').text(w_device_type);
 							$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
 							$('#lbl_device_model').text(weights_and_measure[0].MODEL);
 							$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
@@ -1896,20 +1911,36 @@
 					success: function(response) {
 						let weights_and_measure = response.pending_weights_and_measure;
 						console.log(response);
+						let w_device_type;
+
+							if(weights_and_measure[0].DEVICE_TYPE == "LM"){
+								w_device_type = "Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "MC"){
+								w_device_type = "Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "GS"){
+								w_device_type = "Graduated Scale Balance (Weighing Scales, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "AB"){
+								w_device_type = "Apothecary Balances (Mineral and Medicinal Uses)"
+							}
 
 						let control_no = formatCtrlNo(weights_and_measure[0].CONTROL_NO);
 
 						$('#lbl_or_no_f').text(weights_and_measure[0].OR_NO);
 						$('#lbl_control_no_f').text(control_no);
-						$('#lbl_or_date_f').text(weights_and_measure[0].OR_DATE);
+						$('#lbl_or_date_f').text(moment(weights_and_measure[0].OR_DATE).format('LL'));
 						$('#lbl_amount_f').text(weights_and_measure[0].OR_AMOUNT);
-						$('#lbl_account_no_f').text(weights_and_measure[0].BUSINESS_OR_NUMBER);
+						$('#lbl_account_no_f').text(moment(weights_and_measure[0].OR_DATE).format('YYYY'));
 
 						$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
 						$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);
 
+						
+
 						$('#lbl_reg_no').text(weights_and_measure[0].DEVICE_NUMBER);
-						$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
+						$('#lbl_device_type').text(w_device_type);
 						$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
 						$('#lbl_device_model').text(weights_and_measure[0].MODEL);
 						$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);
@@ -1966,19 +1997,37 @@
 				let weights_and_measure = response.pending_weights_and_measure;
 				console.log(response);
 
+				let w_device_type;
+
+							if(weights_and_measure[0].DEVICE_TYPE == "LM"){
+								w_device_type = "Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "MC"){
+								w_device_type = "Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "GS"){
+								w_device_type = "Graduated Scale Balance (Weighing Scales, etc)"
+							}
+							else if(weights_and_measure[0].DEVICE_TYPE == "AB"){
+								w_device_type = "Apothecary Balances (Mineral and Medicinal Uses)"
+							}
+
+
 				let control_no = formatCtrlNo(weights_and_measure[0].CONTROL_NO);
 
 				$('#lbl_or_no_f').text(weights_and_measure[0].OR_NO);
 				$('#lbl_control_no_f').text(control_no);
-				$('#lbl_or_date_f').text(weights_and_measure[0].OR_DATE);
+				$('#lbl_or_date_f').text(moment(weights_and_measure[0].OR_DATE).format('LL'));
 				$('#lbl_amount_f').text(weights_and_measure[0].OR_AMOUNT);
-				$('#lbl_account_no_f').text(weights_and_measure[0].BUSINESS_OR_NUMBER);
+				$('#lbl_year_and_quarter').text(moment(weights_and_measure[0].OR_DATE).format('YYYY'));
 
 				$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
 				$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);
 
+				
+
 				$('#lbl_reg_no').text(weights_and_measure[0].DEVICE_NUMBER);
-				$('#lbl_device_type').text(weights_and_measure[0].DEVICE_TYPE);
+				$('#lbl_device_type').text(w_device_type);
 				$('#lbl_device_brand').text(weights_and_measure[0].BRAND);
 				$('#lbl_device_model').text(weights_and_measure[0].MODEL);
 				$('#lbl_device_capacity').text(weights_and_measure[0].CAPACITY);

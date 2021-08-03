@@ -257,7 +257,7 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-12 col-md-12">
                                             <div class="stats-content">
                                                 <label for="txt_device_type_edit">Device Type<span class="text-danger"></span></label><br>
                                                 <select id="txt_device_type_edit">
@@ -269,13 +269,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_brand_edit">Brand<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_brand_edit" name="txt_brand_edit" placeholder="" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-8">
+                                        <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_model_edit">Model<span class="text-danger"></span></label>
                                                 <input class="form-control" id="txt_model_edit" name="txt_model_edit" placeholder="" />
@@ -295,6 +298,8 @@
                                                 <input class="form-control" id="txt_serial_no_edit" name="txt_serial_no_edit" placeholder="" />
                                             </div>
                                         </div>
+                                    </div><br>
+                                    <div class="row">
                                         <div class="col-lg-6 col-md-8">
                                             <div class="stats-content">
                                                 <label for="txt_sales_invoice_edit">Sales Invoice<span class="text-danger"></span></label>

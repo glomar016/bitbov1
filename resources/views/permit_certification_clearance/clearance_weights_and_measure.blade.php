@@ -98,7 +98,7 @@
                                 <tbody>
                                     @foreach($weights_and_measure as $row)
                                         <tr class="gradeC" id="{{$row->WEIGHTS_AND_MEASURE_ID}}">
-                                            <<td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
+                                            <td hidden>{{$row->WEIGHTS_AND_MEASURE_ID}}</td>
                                             <td>{{$row->DEVICE_NUMBER}}</td>
                                             @if($row->DEVICE_TYPE == "LM")
                                             <td>Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)</td>
@@ -284,6 +284,22 @@
 			data: data,
 			success:function(response) {
                 let newData = response.specific_business;
+
+                let w_device_type;
+
+                    if(newData[0].DEVICE_TYPE == "LM"){
+                        w_device_type = "Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)"
+                    }
+                    else if(newData[0].DEVICE_TYPE == "MC"){
+                        w_device_type = "Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc)"
+                    }
+                    else if(newData[0].DEVICE_TYPE == "GS"){
+                        w_device_type = "Graduated Scale Balance (Weighing Scales, etc)"
+                    }
+                    else if(newData[0].DEVICE_TYPE == "AB"){
+                        w_device_type = "Apothecary Balances (Mineral and Medicinal Uses)"
+                    }
+                            
                 $('#txt_weights_and_measure_id').val(newData[0].WEIGHTS_AND_MEASURE_ID);
                 $('#txt_business_id').val(newData[0].BUSINESS_ID);
                 $('#txt_applicant_name').val(newData[0].BUSINESS_OWNER_FIRSTNAME + " " + newData[0].BUSINESS_OWNER_MIDDLENAME + " " + newData[0].BUSINESS_OWNER_LASTNAME);
@@ -293,8 +309,10 @@
                 $('#txt_business_address_f').val(newData[0].BUSINESS_ADDRESS);
                 $('#txt_license_no_f').val(newData[0].LICENSE_NO);
                 $('#txt_sales_invoice_f').val(newData[0].SALES_INVOICE);
+
+
                 $('#txt_device_number_f').val(newData[0].DEVICE_NUMBER);
-                $('#txt_device_type_f').val(newData[0].DEVICE_TYPE);
+                $('#txt_device_type_f').val(w_device_type);
                 $('#txt_device_brand_f').val(newData[0].BRAND);
                 $('#txt_device_model_f').val(newData[0].MODEL);
                 $('#txt_capacity_f').val(newData[0].CAPACITY);
@@ -313,12 +331,29 @@
         let WEIGHTS_AND_MEASURE_ID = $('#txt_weights_and_measure_id').val()
         let BUSINESS_ID = $('#txt_business_id').val()
         let APPLICANT_NAME = $('#txt_applicant_name').val()
+        let NW_DEVICE_TYPE = $("#txt_device_type_f").val()
+
+        if(NW_DEVICE_TYPE == "Linear Measure (Tape Measure, Yardstick, Caliper, Gauge, etc)"){
+                        w_device_type = "LM"
+                    }
+                    else if(NW_DEVICE_TYPE == "Measure of Capacity (Fuel Dispensing Pump, calibration bucket, etc)"){
+                        w_device_type = "MC"
+                    }
+                    else if(NW_DEVICE_TYPE== "Graduated Scale Balance (Weighing Scales, etc)"){
+                        w_device_type = "GS"
+                    }
+                    else if(NW_DEVICE_TYPE == "Apothecary Balances (Mineral and Medicinal Uses)"){
+                        w_device_type = "AB"
+                    }
+                    
+                            
+        
         let data = {
 			'_token' : " {{ csrf_token() }}"
 
 			// Weights and Measure - F
 			,'F_LICENSE_NO' : $("#txt_license_no_f").val() // license no
-			,'F_DEVICE_TYPE' : $("#txt_device_type_f").val() // device type
+			,'F_DEVICE_TYPE' : w_device_type // device type
 			,'F_CAPACITY' : $("#txt_capacity_f").val() // capacity
 			,'F_SERIAL_NO' : $("#txt_serial_no_f").val() // serial no 
 			,'F_BRAND' : $("#txt_device_brand_f").val() // serial no 
