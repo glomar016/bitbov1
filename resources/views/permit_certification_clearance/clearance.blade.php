@@ -133,7 +133,7 @@
 									<option>Barangay Clearance Zonal</option>
 									<option>Barangay Clearance Tricycle</option>
 									<option>Barangay Clearance General Purposes</option>	
-									<option>Barangay Clearance Weights and Measure</option>
+									<!-- <option>Barangay Clearance Weights and Measure</option> -->
 									<option>Barangay Clearance Fishery Rental and Privellege</option>
 								</select>
 							</div>

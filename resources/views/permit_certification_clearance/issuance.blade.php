@@ -586,7 +586,6 @@
 		$("table[id='tbl_pending_issuance']").DataTable();
 		$("table[id='tbl_business_approved_lst']").DataTable({
 			"bSort": false
-
 		});
 		$("table[id='tbl_building_approved_lst']").DataTable({
 			"bSort": false
@@ -605,6 +604,7 @@
 
 
 	});
+
 
 	function formatCtrlNo(control_no) {
 
@@ -1932,7 +1932,7 @@
 						$('#lbl_control_no_f').text(control_no);
 						$('#lbl_or_date_f').text(moment(weights_and_measure[0].OR_DATE).format('LL'));
 						$('#lbl_amount_f').text(weights_and_measure[0].OR_AMOUNT);
-						$('#lbl_account_no_f').text(moment(weights_and_measure[0].OR_DATE).format('YYYY'));
+						$('#lbl_year_and_quarter').text(moment().endOf("year").format('LL'));
 
 						$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
 						$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);
@@ -2019,7 +2019,7 @@
 				$('#lbl_control_no_f').text(control_no);
 				$('#lbl_or_date_f').text(moment(weights_and_measure[0].OR_DATE).format('LL'));
 				$('#lbl_amount_f').text(weights_and_measure[0].OR_AMOUNT);
-				$('#lbl_year_and_quarter').text(moment(weights_and_measure[0].OR_DATE).format('YYYY'));
+				$('#lbl_year_and_quarter').text(moment().endOf("year").format('LL'));
 
 				$('#lbl_owners_name').text(weights_and_measure[0].BUSINESS_OWNER_FIRSTNAME + " " + weights_and_measure[0].BUSINESS_OWNER_MIDDLENAME + " " + weights_and_measure[0].BUSINESS_OWNER_LASTNAME);
 				$('#lbl_owners_address').text(weights_and_measure[0].OWNER_ADDRESS);

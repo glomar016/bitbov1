@@ -162,12 +162,13 @@
                                                         <li><a data-toggle='modal' data-target='#modal-Edit' class="btnEdit" style="cursor: pointer;">Edit</a></li>
                                                         <li><a data-toggle='modal' data-target='#modal-View' class="btnView" style="cursor: pointer;">View</a></li>
                                                         <li><a data-toggle='modal' id="{{$row->WEIGHTS_AND_MEASURE_ID}}" class="btnDeactivate" style="cursor: pointer;">Deactivate</a></li>
-                                                        <li><a data-toggle='modal' id="{{$row->WEIGHTS_AND_MEASURE_ID}}" class="btnRevoke" style="cursor: pointer;">Revocation</a></li>
-                                                        @if(date('Y', strtotime($row->WM_CREATED_AT)) <= date('Y'))
-                                                        <!-- <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li> -->
-                                                        @else
+                                                        <!-- <li><a data-toggle='modal' id="{{$row->WEIGHTS_AND_MEASURE_ID}}" class="btnRevoke" style="cursor: pointer;">Revocation</a></li> -->
                                                         <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li>
-                                                        @endif
+                                                        <!-- @if(date('Y', strtotime($row->WM_CREATED_AT)) <= date('Y')) -->
+                                                        <!-- <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li> -->
+                                                        <!-- @else -->
+                                                        <!-- <li><a data-toggle='modal' data-target='#modal-Renew' class="btn_renew" style="cursor: pointer;">Renew</a></li> -->
+                                                        <!-- @endif -->
                                                         <li class="divider"></li>
 
                                                     </ul>

@@ -201,7 +201,7 @@ EN-PH'><o:p>&nbsp;</o:p></span></b></p>
         <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
         justify;line-height:normal;margin-left: 28%'><span style='font-size:15.0pt;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;
-        color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>Year and Quarter:&nbsp;<o:p id="lbl_year_and_quarter"></o:p></span></p>
+        color:black;letter-spacing:-.75pt;mso-fareast-language:EN-PH'>Validity:&nbsp;<o:p id="lbl_year_and_quarter"></o:p></span></p>
       </td>
 
 
@@ -439,7 +439,7 @@ line-height:normal;background:white'><span lang=EN-PH style='font-size:10.0pt'><
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;line-height:
 normal;background:white'><span lang=EN-PH style='font-size:15.0pt;color:black;
 mso-color-alt:windowtext'>Note:<span style='mso-spacerun:yes'>  </span>Any
-violation(s) or illegal act(s) committed by the tricycle operator<a
+violation(s) or illegal act(s) committed by the business establishment<a
 name=kix.tqve8cim52hk></a> will be cause for cancellation of this clearance.</span><span
 lang=EN-PH style='font-size:10.0pt'><o:p></o:p></span></p>
 
